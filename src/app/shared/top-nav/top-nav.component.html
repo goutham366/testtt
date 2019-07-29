@@ -1,0 +1,57 @@
+
+<div class="main">
+        <div class="row cust-nav">
+          <!-- <div class="col-md-2 "><app-top-nav></app-top-nav></div> -->
+          <div class="col-md-12 p-0 m-0">
+            <nav class="navbar navbar-expand-lg fixed-top-nav navbar-light bg-light bottomline color">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+             
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item dropdown " routerLink="/pages"  (click)="getTab('film')" [ngClass]="(highlight1) ? 'setColor' : 'removeColor'">
+                    <i class="material-icons  icon-music">theaters</i>
+                    <span data-toggle="dropdown" class="v-align"> Film</span>
+                    <br>
+                    <span class="new-design">{{selectedItem}}
+                    </span>
+                    <ul class="dropdown-menu">
+                      <div *ngFor="let film of filmList">
+                        <li style="cursor: pointer" (click)="filmSelection(film.name)">{{film.name}}</li>
+                      </div>
+                    </ul>
+                  </li>
+                  <li class="nav-item" routerLink="/television" (click)="getTab('television')" [ngClass]="(highlight2) ? 'setColor' : 'removeColor'">
+                    <i class="material-icons icon-television">tv</i>
+                    <span class="v-align"> Television</span>
+                  </li>
+                  <li class="nav-item dropdown" routerLink="/login" (click)="getTab('itunes')" [ngClass]="(highlight3) ? 'setColor' : 'removeColor'" >
+                    <i class="fa fa-music icon-music" aria-hidden="true"></i> iTunes
+                  </li>
+                  <li class="nav-item" routerLink="/pages/apo/titles" (click)="getTab('apo')" [ngClass]="(highlight4) ? 'setColor' : 'removeColor'">
+                    <i class="material-icons">fast_forward</i> <span class="v-align"> APO</span> 
+                  </li>
+                  <li class="nav-item" routerLink="/login" (click)="getTab('adhoc')" [ngClass]="(highlight5) ? 'setColor' : 'removeColor'">
+                    <i class="material-icons v-align">folder_special</i>
+                    <span class="res"> Adhoc</span>
+                  </li>
+                </ul>
+                <div class="parentelement">
+                    <ngx-loading-bar [includeSpinner]="false" [fixed]="false"></ngx-loading-bar>
+                  </div>
+              </div>
+              <!-- <form class="form-inline my-0 my-lg-0">
+                <input class="form-control mr-sm-2 search" type="text" *ngIf="show">
+                <i class="fa fa-search" aria-hidden="true" (click)="toggle()"></i>
+              </form> -->
+            </nav>
+         
+           
+          </div>
+        </div>
+      </div>
+
+      

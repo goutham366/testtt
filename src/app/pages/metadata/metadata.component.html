@@ -1,0 +1,177 @@
+
+
+<!-- <div class="flex-box">
+  <div class="flex-description">
+
+  </div>
+  <div class="flex-description">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+    </nav>
+  </div>
+</div> -->
+<div class="container">
+  <div class="d-flex">
+    <div class="flex-grow-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">Library</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+
+      <div class="card">
+        <div class="d-flex">
+          <div class="flex-description box-1">
+            <img class="img-card" src="../../../assets/images/lego.jpg">
+          </div>
+          <div class="flex-description box-2">
+            <div class="d-flex">
+              <div class="card-data">
+                <div class="card-content">
+                  <ul>
+                    <li>The Lego Movie 2</li>
+                    <li class="cust-text">
+                      <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
+                  </ul>
+                </div>
+                <div class="circle" (click)="showTitleStatus(i)">
+                  <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                </div>
+              </div>
+              <div class="card-menu">
+                <div class="container mt-3">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#metaData">Metadata</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-description box-3">
+              <i class="material-icons">vertical_align_center</i>
+              <i class="material-icons">replay</i>
+              <i class="material-icons">title<sup>+</sup></i>
+              <i class="material-icons">title<sup>-</sup></i>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid padding-side">
+        <div class="tab-content">
+          <div id="insight" class="container tab-pane active">
+            <h3>Insight</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</p>
+          </div>
+          <div id="metaData" class="tab-pane fade">
+            <div class="d-flex">
+              <div class="tab-content">
+                  <div id="Global" class="tab-pane active">
+                    <div class="metaData-content">
+                        <div class="table-1">
+                          <ul>
+                            <li>Abstarct EIDR</li>
+                            <li>Account</li>
+                            <li>Activation Status</li>
+                            <li>Actors</li>
+                            <li>Aired End Date</li>
+                            <li>Aired From Date</li>
+                            <li>Announcement Date</li>
+                            <!-- <li>Announcement Name</li> -->
+                            <li>Atlas MCR Number</li>
+                            <li>Audio Language Description</li>
+                            <li>Broadcast Vehicle</li>
+                            <li>Bundle Video Version Number</li>
+                            <li>Bussiness Unit</li>
+                            <li>Change Status</li>
+                            <li>Change Fields</li>
+                            <li>Channel</li>
+                            <li>Cleared For sale</li>
+                            <li>Client End</li>
+                          </ul>
+        
+        
+                        </div>
+                        <div class="table-2">
+                          <ul *ngFor="let x of metaDataList">
+                            <li>{{x.abstractEIDR}}</li>
+                            <li>{{x.account}}</li>
+                            <li>{{x.activationStatus}}</li>
+                            <li>Actors</li>
+                            <li>{{x.airedEndDate}}</li>
+                            <li>{{x.AiredFromDate}}</li>
+                            <li>{{x.announcementDate}}</li>
+                            <li>{{x.atlasnumber}}</li>
+                            <li>{{x.audioLanguage}}</li>
+                            <li>{{x.broadcastVehicle}}</li>
+                            <li>{{x.bundleVersion}}</li>
+                            <li>{{x.businessUnit}}</li>
+                            <li>{{x.changeStatus}}</li>
+                            <li>{{x.changeFields}}</li>
+                            <li>{{x.channel}}</li>
+                            <li>{{x.ClearedForSale}}</li>
+                            <li>{{x.ClientEnd}}</li>
+                            <!-- <li>{{x.ClientEnd}}</li>
+                              <li>{{x.ClientEnd}}</li> -->
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+                  <div id="Language" class="container tab-pane fade"><br>
+                    <h3>Language</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <div id="Territorial" class="container tab-pane fade"><br>
+                    <h3>Territorial</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                  </div>
+                </div>
+              
+              <div class="comment-data">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
+                  </li>
+                </ul>
+                <ul class="comment-box">
+                  
+                  <li *ngFor="let comment of comments">
+                    <div class="d-flex user-details">
+                      <span>JohnPaul</span>
+                      <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                    </div>
+                    {{comment.name}}</li>
+                </ul>
+                <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
+                <button (click)="addComment(newComment.value)">Add</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

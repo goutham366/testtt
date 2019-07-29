@@ -1,0 +1,48 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+#forgotOtp .otpSubmit{
+    margin-top: 24% !important;
+}
+#forgotOtp a {
+    color: #007bff !important;
+}
+.timeAlign{
+    top: 198px;
+    position: absolute;
+    text-align: center;
+    /* left: 246px; */
+    float:right;
+   
+}
+.timerAlign{
+    padding-right: 65%;
+    margin-top: 7%;
+    font-size: 14px;
+    color: #6c757d;
+}
+.otpExpAlign{
+    /* margin-left: 39%; */
+    font-size: 14px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.OtpExpColor{
+    //margin-left: 63%;
+    //color: rgba(0, 0, 0, 0.52);
+    float: right;
+    color: #6c757d;
+}
+.warnOTP{
+    // color: red;
+    position: absolute;
+    bottom: 36%;
+    font-size: 12px;
+    margin-left: 18%;
+}
+
+
+
+
+
+

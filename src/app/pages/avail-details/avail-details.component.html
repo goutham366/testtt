@@ -1,0 +1,370 @@
+<div class="page-header acc-style">
+  <h6>Avails</h6>
+</div>
+
+<div class="row" style="margin-left: -3%;">
+  <div class="col-sm-4">
+    <div class="card text-white mb-3 shadow-sm" style="width: 483%;">
+      <div class="hidden-header" [hidden]="showDetails">CA JAN152019</div>
+      <div class="card-header" style="padding: 0px 0px 0px 13px;" [hidden]="!showDetails">
+        <span style="float: right; margin-top: 1%;">
+          <circle-progress [percent]="60" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+            [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+        </span>
+        <br>
+        <p style="font-size: 16px;">CA JAN152019</p>
+        <p class="avail-date">
+          <img src="assets/images/Icons/PNG/calendar.png">01/15-21/03</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="" style="margin-left: 60%;">
+    
+    <h6 class="status-text">Status</h6>
+    <p class="status" ><b>123</b> Pending Translations</p>
+    <p class="status"><b>112</b> Pending Ratings</p>
+    <p class="status"><b>15</b>Pending Clarifications</p>
+    <p class="status"><b>2</b> Escalations</p>
+   
+  </div> -->
+  <div class="row justify-content-end">
+    <div class="col-md-3">
+      <!-- <div *ngIf="showStatus">-->
+      <h6 class="status-text">Status</h6>
+      <p class="status"><b>123</b> Pending Translations</p>
+      <p class="status"><b>112</b> Pending Ratings</p>
+      <p class="status"><b>15</b>Pending Clarifications</p>
+      <p class="status"><b>2</b> Escalations</p>
+      <!-- </div>  -->
+    </div>
+    <div class="col-md-3 " style="margin-right: -10%;">
+      
+        
+          
+            <h6 class="status-text">Timeline</h6>
+            <ul class="timeline">
+              <li>
+                <a href="#" class="timeline-status">2/22/2019</a>
+                <p class="timeline-status">Announced</p>
+              </li>
+              <li>
+                <a href="#" class="timeline-status">3/18/2019</a>
+                <p class="timeline-status">Completed</p>
+              </li>
+              <li>
+                <a href="#" class="timeline-status">03/19/2019</a>
+                <p class="timeline-status">Acknowledged</p>
+              </li>
+            </ul>
+          
+       
+      
+    </div>
+  </div>
+<div class="acc-style">
+  <div class="row containerFlex">
+    <div style="height: 600px">
+      <div class="col-md-6">
+        <div class="box-swap" ngDraggable [preventDefaultEvent]="true" [zIndexMoving]="9999" [trackPosition]="false" [position]="positionA"
+        (movingOffset)="onMoving($event)">
+        
+        <div class=""  *ngIf="account == i">
+            <div class="row" style="display: flex;justify-content: center;align-items: center;flex-direction: row;">
+              <div class="legend-status" style="margin-left: 100%;">
+                <div class="complete-legend"></div>
+                <div class="col-md-6 legend-text">Completed</div>
+              </div>
+              <div class="legend-status" style="margin-left: 135%;margin-top: -2%;">
+           
+                <div class="pending-legend"></div>
+                <div class="col-md-3 legend-pending-text">Pending</div>
+              </div>
+            </div>
+          </div>
+          
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <a class="avail-details" (click)="showDetails3 = !showDetails3">
+                  <img src="assets/images/Icons/PNG/titles.png">&nbsp;100 Titles</a>
+                <!-- <strong [hidden]="showDetails">Titles</strong> -->
+                <div class="progress progress-main">
+                  <div class="progress-bar bg-success" (click)="filterTitles('completed');" style="width: 70%">
+                    70
+                  </div>
+                  <div class="progress-bar" (click)="filterTitles('pending');" style="width: 30%">
+                    30
+                  </div>
+                </div>&nbsp;&nbsp;
+    
+                <div *ngIf="!clickedOnTitle" class="row row-list">
+                  <div class="col-md-12 avail-list">
+                    <div *ngFor="let x of availDetailsViewList">
+                      <div *ngFor="let y of x.avail_details">
+                      
+                          <span  *ngFor="let z of y.titlesDetails" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
+                            <ul>
+                              <li>{{z.title_name}} </li>
+                            </ul>
+                          </span>
+                        
+                        
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="clickedOnTitle" class="row row-list">
+                  <div class="col-md-12 avail-list">
+                      <span *ngFor="let filterTitle of filteredTitle" [ngClass]="[filterTitle.status == 'completed' ? 'progress bg-success' : 'progress']">
+                          <ul>
+                            <li>{{filterTitle.title_name}} </li>
+                          </ul>
+                        </span>
+                  </div>
+                </div>
+    
+              </div>
+              <div class="col-md-4">
+                <a class="avail-details" (click)="showDetails3 = !showDetails3">
+                  <i class="material-icons md-18 md-grey v-align">language</i>&nbsp; 32 Countries</a>
+                <div class="progress progress-main">
+                  <div class="progress-bar bg-success" (click)="filterCountries('completed');" style="width: 50%">
+                    16
+                  </div>
+                  <div class="progress-bar" (click)="filterCountries('pending');" style="width: 50%">
+                    16
+                  </div>
+                </div>&nbsp;&nbsp;
+                <div *ngIf="!clickedOnCountry" class="row row-list">
+                  <div class="col-md-12 avail-list">
+                    <div *ngFor="let x of availDetailsViewList">
+                      <div *ngFor="let y of x.avail_details">
+                        <span *ngFor="let z of y.countries" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
+                          <ul>
+                            <li>{{z.country_name}} </li>
+                          </ul>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="clickedOnCountry" class="row row-list">
+                    <div class="col-md-12 avail-list">
+                        <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'completed' ? 'progress bg-success' : 'progress']">
+                            <ul>
+                              <li>{{filterCountry.country_name}} </li>
+                            </ul>
+                          </span>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <a class="avail-details" (click)="showDetails3 = !showDetails3">
+                  <i class="material-icons md-18 md-grey v-align">translate</i>&nbsp; 28 Languages</a>
+                <div class="progress progress-main">
+                  <div class="progress-bar bg-success" (click)="filterlanguages('completed');" style="width: 20%">
+                    8
+                  </div>
+                  <div class="progress-bar" (click)="filterlanguages('pending');" style="width: 80%">
+                    20
+                  </div>
+                </div>&nbsp;&nbsp;
+                <div *ngIf="!clickedOnLanguage" class="row row-list">
+                  <div class="col-md-12 avail-list">
+                    <div *ngFor="let x of availDetailsViewList">
+                      <div *ngFor="let y of x.avail_details">
+                        <span *ngFor="let z of y.languages" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
+                          <ul>
+                            <li>{{z.language_name}} </li>
+                          </ul>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="clickedOnLanguage" class="row row-list">
+                    <div class="col-md-12 avail-list">
+                        <span *ngFor="let filterLanguage of filteredLanguage" [ngClass]="[filterLanguage.status == 'completed' ? 'progress bg-success' : 'progress']">
+                            <ul>
+                              <li>{{filterLanguage.language_name}} </li>
+                            </ul>
+                          </span>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div>&nbsp;</div>
+    
+            <!-- progress bar -->
+            <div style="margin: 20px 21px 24px 5px;" [hidden]="showDetails3">
+              <div class="progress">
+                <div [ngStyle]="{'width.%': width}" class="inner-progress">100</div>
+              </div>
+            </div>
+            <!-- progress bar -->
+          </div>
+      </div>
+      </div>
+
+      <div class="col-md-6 ">
+            <div class="containerFlex">
+              <div class="d-flex">
+             
+              <!-- <div class="">
+               
+               
+                
+              </div> -->
+            
+            <div class="">
+        <div class="box-swap static-block" [ngDraggable]="false" [preventDefaultEvent]="true" [position]="positionB">
+          
+
+        
+            <div class="row">
+              <div class="col-md-12">
+                <div id = "rightContain" class="container mt-3">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#comment">Comments</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#log">Log</a>
+                    </li>
+                  </ul>
+      
+                  <!-- Tab panes -->
+                  <div class="tab-content cmnt-list-scroll">
+                    <div id="comment" class="container tab-pane active">
+                      <ul id="comments-list" class="comments-list">
+                        <li>
+                          <div class="comment-main-level">
+                            <div class="comment-box">
+                              <div class="comment-head">
+                                <h6 class="comment-name"><a href="#">John Paul</a></h6>
+                                <span class="date">01/12 11:24</span>
+                              </div>
+                              <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt eros nec ante laoreet mattis. Suspendisse sollicitudintortor
+                                id nulla dictum, at congue turpis tristique. Maecenas eget consectetur tortor. Donec ut maurissit
+                                amet ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus</div>
+                            </div>
+                          </div>
+                          <ul class="comments-list reply-list">
+                            <li>
+                              <div class="comment-box">
+                                <div class="comment-head">
+                                  <h6 class="comment-name"><a href="#">Samwell Tarly</a></h6>
+                                  <span class="date">01/12 12:16</span>
+                                </div>
+                                <div class="comment-content">
+                                  Ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus vitae accumsan</div>
+                              </div>
+                            </li>
+                          </ul>
+                        </li>
+      
+                        <li>
+                          <div class="comment-main-level">
+                            <div class="comment-box">
+                              <div class="comment-head">
+                                <h6 class="comment-name"><a href="#">Emilia Targaryen</a></h6>
+                                <span class="date">01/13 10:15</span>
+                              </div>
+                              <div class="comment-content">
+                                Cras tempor, ante ac suscipit venenatis, neque nibh molestie libero, non rutrum risus dui quis ante. Cras tristique, sapienac
+                                fermentum laoreet, turpis quam rutr tellus, efficitur volutpat arcu lectus nec justo. ut ornare
+                                neque,sit amet ultricies sapien. Cras sed ornare lorem, finibus laoreet urna. Nullam efficitur,
+                                massa a vestibulum interdum, lacus odio facilisis velit, eu rhoncus tellus risus sit amet lacus.
+                                Proin volutpat justo veltincidunt mollis. Cras aliquam, elit ornare tempus</div>
+                            </div>
+                          </div>
+                        </li>
+      
+                        <li>
+                          <div class="comment-main-level">
+                            <div class="comment-box">
+                              <div class="comment-head">
+                                <h6 class="comment-name"><a href="#">Emilia Targaryen</a></h6>
+                                <span class="date">01/13 10:15</span>
+                              </div>
+                              <div class="col-md-12">
+                                <label class="comment-content" *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
+                              </div>
+                              <div class="comment-content">
+                                <!-- <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea> -->
+                                <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+      
+                    <div id="log" class="container tab-pane fade"><br>
+                      <ul id="comments-list" class="comments-list">
+                        <li>
+                          <div class="comment-main-level">
+                            <div class="comment-box">
+                              <div class="comment-log-head">
+                                <h6 class="comment-name"><a href="#">John Paul</a></h6>
+                                <span class="date">01/12 11:24</span>
+                              </div>
+                              <div class="comment-content">
+                                <img src="assets/images/a_star_is_born_big.jpg" alt="events">
+                                <span><p>Removed</p>
+                                  <p>Thumbnail Image</p></span>
+                              </div>
+                              <div id="drag" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <ul class="comments-list reply-list">
+                            <li>
+                              <div class="comment-box">
+                                <div class="comment-log-head">
+                                  <h6 class="comment-name"><a href="#">Samwell Tarly</a></h6>
+                                  <span class="date">01/12 12:16</span>
+                                </div>
+                                <div class="comment-content">
+                                  <span><p>Edited</p>
+                                    <p>Title: The Lego Movie 2</p></span>
+                                </div>
+                                
+                              </div>
+                            </li>
+                          </ul>
+                        </li>
+      
+                        <li>
+                          <div class="comment-main-level">
+                            <div class="comment-box">
+                              <div class="comment-log-head">
+                                <h6 class="comment-name"><a href="#">Emilia Targaryen</a></h6>
+                                <span class="date">01/13 10:15</span>
+                              </div>
+                              <div class="comment-content">
+                                <img src="assets/images/a_star_is_born_big.jpg" alt="events">
+                                <span><p>Uploaded</p>
+                                  <p>Thumbnail Image</p></span>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>

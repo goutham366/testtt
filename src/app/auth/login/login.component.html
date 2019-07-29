@@ -1,0 +1,99 @@
+
+
+ <div class="mainContainer">
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container-head">
+        <a class="navbar-brand" href="#"><img src="assets/images/Icons/SVG/logo.svg"></a>
+      </div>
+    </nav>
+</div>
+
+<div class="text-overflow">
+
+  <div class="container navAlign" align="center">
+      <ul class="nav nav-tabs marginL">
+        <li class="nav-item"><a (click)="checkId(1)" class="nav-link active" data-toggle="tab" href="#home"><img class="imgSiz" src="assets/images/Icons/SVG/demostration.svg"></a></li>
+        <li class="nav-item"><a (click)="checkId(2)" class="nav-link" data-toggle="tab" href="#menu1"><img class="imgSiz" src="assets/images/Icons/SVG/baseline-confirmation_number-24px.svg" ></a></li>
+        <li class="nav-item"><a (click)="checkId(3)" class="nav-link" data-toggle="tab" href="#menu2"><img class="imgSiz" src="assets/images/Icons/SVG/analysis-chart.svg"></a></li>
+        <li class="nav-item"><a (click)="checkId(4)" class="nav-link" data-toggle="tab" href="#menu3"><img class="imgSiz" src="assets/images/Icons/SVG/click.svg" ></a></li>
+      </ul>
+    </div>
+    <br>
+  <div class="login-main">
+  <div class="row boxAlign p-6">
+
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 primaryColor">
+      
+      <ng-template ngFor let-nav  [ngForOf]="[ selectedNav ]">
+        <div [@navAnimation]="orientation " class="navigation">
+          <h3 class="leftNavTitle">{{nav.sideTitle}}</h3>
+          <p>{{nav.sideData}}</p>
+          </div>
+      </ng-template>
+    
+    </div>
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 secondaryColor p-3">
+        <h2 class="text-center alignP">User Login</h2> 
+      <form [formGroup]="loginForm" class="text-center p-4" >
+          
+            
+            
+            <div class="form-group formFields">
+                <div>
+                  <input [ngClass]="(textColor) ? 'form-control errorForm' : 'form-control'" (focus)="focus()" placeholder="Username" type="text" formControlName="name" autocomplete="off" >
+                </div>
+                <div class="padTop">
+                  <input [ngClass]="(textColor) ? 'form-control errorForm' : 'form-control'" (keyup)="passwordEntered()" type="{{type}}" formControlName="password" placeholder="Password" autocomplete="off" minlength="1">
+                  <label [hidden]="!showEye" class="fa fa-eye eyePos" (mousedown)="showMe()" (mouseup)="hideMe()"></label>
+                </div>
+                
+            </div>
+            <div *ngIf="showError" class="errorPos">
+           <span>
+              Invalid Credentials. Try again!!!
+            </span>
+          </div>
+            <div *ngIf="!transComp" class="outer" (click)="onSubmit()">
+              Login
+              <div [ngClass]="{'inner active': classAdd, 'inner': classAdd}" ></div>
+            </div>
+            <div *ngIf="transComp" class="tick">
+              <span class="checkmark"></span>
+            </div>
+
+            <div class="resendOtpAlign">
+              <span id="resendOtpLink"><a routerLink="/forgot">Forgot Password</a></span>
+            </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <div class="login-footer text-left">
+      <div class="container">
+        <h2>Infosys Media Platform</h2>
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </span>
+      </div>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

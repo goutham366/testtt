@@ -1,0 +1,252 @@
+/*fresh*/
+.navbar{
+    padding: 0 10px;
+}
+.navAlign{
+    border-bottom: none;
+
+
+    .nav-tabs{
+        border-bottom: none;
+        display: flex;
+        justify-content: center;
+
+        .nav-item{
+            background: #f3f3f3;
+            border-bottom: 1px solid #bdbdbd;
+            margin: 10px;
+            width: 88px;
+            height: 74px;
+            display: flex;
+            justify-content: center;
+        }
+        .nav-link{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .nav-link.active {
+            background-color: #92D1FF;
+            width: 100%;
+        }
+        
+       
+
+    }
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: transparent !important;
+}
+.imgSiz{
+    width: 56px;
+    height: 45px;
+}
+div.navigation {
+    color: white;
+    size: 12px;
+    height: 380px;
+    left: 0px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 314px;
+    font-size: 12px;
+    padding-right: 29px;
+    padding-left: 40px;
+    padding-top: 50px;
+    text-align: left;
+}
+.leftNavTitle{
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.login-main{
+    width: 608px;
+    height: 380px;
+    margin: auto;
+}
+.boxAlign{
+    height: 380px;
+    .primaryColor{
+        background: #007CC3;
+    }
+    .secondaryColor{
+        background: #92D1FF;
+    }
+}
+.alignP{
+    padding-top: 10% !important;
+    font-size: 24px;
+    font-weight: 500;
+}
+.formFields{
+    //padding-top: 1.5rem!important;
+     margin-left: -2%;
+  }
+.floatLeft{
+    float: left !important;
+}
+
+  /***formcontrol override***/
+.form-control {
+    background-color: #92D1FF;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+    transition: none;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(255,255,255, 0.4);
+    transition: 0.3s linear;
+}
+.form-control:focus {
+    background-color: #92D1FF;
+    border-color: none;
+    outline: 0;
+    box-shadow: none !important;
+    padding-left: 0;
+    border-bottom: 2px solid #fff;
+}
+.errorForm{
+    color: red !important;
+}
+.errorPos{
+    color: red;
+    position: absolute;
+    bottom: 38%;
+    font-size: 12px;
+    margin-left: 12%;
+}
+.padTop{
+    padding-top:5%;
+}
+.eyePos{
+   float: right;
+    cursor: pointer;
+    position: relative;
+    bottom: 30px;
+}
+
+.outer{
+    transition: background-color 0.4s ease !important;
+    box-sizing: border-box !important;
+    width: 56% !important;
+    margin-top: 24% !important;
+    text-align: center !important;
+    position: relative !important;
+    background-color: #007CC3 !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    padding: 10px 6px !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto;
+}
+.inner{
+    transition: opacity 0s ease !important;
+    width: 100% !important;
+    height: 60px !important;
+    background-color: rgba(4, 79, 122, 0.6) !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    opacity: 0 !important;
+
+    &.active{
+        opacity: 1 !important;
+        animation: progressAnimation 1s ease !important;
+    }
+}
+.otpAligin{
+    margin-top: 53% !important;
+}
+@keyframes progressAnimation{
+    0% {width:0}
+    95% {width: 95%}
+    100% {width: 100%}
+}
+@-webkit-keyframes progressAnimation{
+    0% {width:0}
+    95% {width: 95%}
+    100% {width: 100%}
+}
+.checkmark{
+    display: inline-block !important;
+    &:after{
+        content: '' !important;
+        display: block !important;
+        width: 10px !important;
+        height: 20px !important;
+        border: solid #fff !important;
+        border-width: 0 4px 4px 0 !important;
+        transform: rotate(45deg) !important;
+    }
+}
+.tick{
+    width: 56% !important;
+    height: 44px;
+    text-align: center !important;
+    position: relative !important;
+    background-color:#007CC3 !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    padding: 10px 6px !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto;
+    margin-top: 24%  !important;
+}
+.resendOtpAlign{
+    text-align: center;
+    font-size: 11px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    a{
+        text-decoration: none;
+    }
+}
+#forgotId .OtpButton {
+    text-align: center;
+    margin-top: 45% !important;
+}
+#forgotId .buttonColor {
+    background-color: #007CC3;
+    color: white;
+    width: 54%;
+    padding: 4px;
+}
+.login-footer span{
+    opacity: 0.6;
+    font-size: 12px;
+    color: #000000
+  }
+  .login-footer h2{
+    font-size: 24px;
+    color: #007CC3
+  }
+  .login-footer{
+    margin-top: 2%;
+  }
+
+  .passwordStrength{
+    font-size: 12px;
+    //margin-left: 17%;
+    position: relative;
+    top: 10px;
+    justify-content: center;
+}
+.minlength-fail{
+    opacity: 0.5;
+}
+.minlength-success{
+    opacity: 1;
+}
+.errorPatten{
+    float: right;
+    font-size: 12px;
+}

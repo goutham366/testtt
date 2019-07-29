@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal2">
+              <i class="material-icons">filter_list</i>
+              
+            </button>
+          </ul>
+        </div>
+      </nav>
+      <div class="container demo">
+        <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!-- <div class="btn-fun" (click)="filter()">
+                  <i class="material-icons">filter_list</i>
+                  <p>Filter</p> 
+                  
+                </div>
+                <div class="btn-fun" (click)="uploadDoc()">
+                    <i class="material-icons">
+                        create_new_folder
+                      </i>
+                      <p >Upload</p>
+                </div>
+                <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active btn-fun" data-toggle="tab" href="#filter">
+                        <i class="material-icons">filter_list</i>
+                        <p>Filter</p> </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn-fun" data-toggle="tab" href="#upload"><i class="material-icons">
+                          create_new_folder
+                        </i>
+                        <p>Upload</p></a>
+                    </li>
+                    <!-- <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
+                  </ul>
+              </div>
+              <div class="modal-body p-0">
+              <div class="tab-content">
+                  <div id="filter" class="container tab-pane active">
+                      <div class="modal-body">
+                          <div class="">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <ul class="fliter-des">
+                                  <li class="filter-content">
+                                    <div class="form-group">
+                                      <span class="fa fa-search form-control-feedback"></span>
+                                      <input type="text" placeholder="{{avail_title}}">
+                                    </div>
+                                  </li>
+                                  <h6>Date Range</h6>
+                                  <li class="filter-content">
+                                    <div class="form-group">
+                                      <div class="date-group p-0 responsive">
+                                        <input type="text" (click)="clickDate(0)" placeholder="DD/MM/YYYY" [value]="startDate" [ngClass]="(highlight15) ? 'setColor' : 'removeColor'"> -
+                                        <input type="text" (click)="clickDate(1)" placeholder="DD/MM/YYYY" [value]="myDate" [ngClass]="(highlight16) ? 'setColor' : 'removeColor'">
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <h6>Status</h6>
+                                  <div class="filter-group">
+            
+                                    <li class="filter-content">
+            
+                                      <div (click)="call(5)" class="tiles margin-l" [ngClass]="(highlight5) ? 'setColor' : 'removeColor'">Announced</div>
+                                      <div (click)="call(6)" class="tiles" [ngClass]="(highlight6) ? 'setColor' : 'removeColor'">In Progress</div>
+                                      <div (click)="call(7)" class="tiles" [ngClass]="(highlight7) ? 'setColor' : 'removeColor'">Completed</div>
+                                      <div (click)="call(8)" class="tiles" [ngClass]="(highlight8) ? 'setColor' : 'removeColor'">Overdue</div>
+                                    </li>
+                                  </div>
+            
+                                  <div class="filter-group">
+            
+                                    <li class="filter-content">
+                                      <h6 class="m-0 p-0 f-2">Sort</h6>
+                                      <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                      </label>
+                                    </li>
+                                  </div>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div id="upload" class="tab-pane fade">
+                      <div class="container">
+                          <div class="modal-body upload">
+                              <div class="form-group">
+                                <span class="upload-text">Upload Avail Docs</span><br>
+                                <div class="flex">
+                                    <label for="files" class="btn  uploadcolor">Upload</label>
+                                    <span class="filename">{{this.filename}}</span> 
+                                    <span *ngIf="(!availDocName)" class="errorMessage">{{errorMessage}}</span>
+                                    <input id="files" style="visibility:hidden;" type="file" (change)="upload($event.target.files)">
+                                </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
