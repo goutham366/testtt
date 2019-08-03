@@ -49,6 +49,9 @@ export class AvailFilterComponent implements OnInit {
   errorMessage:any;
   filename:any;
   filterShow:any;
+  uploadreleaseData: any;
+  triggerData: Object;
+  
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.highlight1 = false;
     this.highlight2 = false;
@@ -231,17 +234,33 @@ export class AvailFilterComponent implements OnInit {
     this.triggerDocName=this.filename.includes('Trigger');
     this.relaseDocumentName=this.filename.includes('Release');
     if(this.relaseDocumentName===true){
-      this.httpService.uploadrelease(formData).subscribe(event => {  
-        console.log('release done')
-      })
+      this.httpService.uploadrelease(formData).subscribe(data => {  
+        this.uploadreleaseData=data;
+      },
+       error => {
+          this.errorMessage=error.error.message;
+         // window.location.reload();
+          console.log('Release Doc Eror', error.error.message);
+        }
+      )
     }
+
     else if(this.triggerDocName===true){
-      this.httpService.uploadtrigger(formData).subscribe(event => {  
-        console.log('done')
-      })
+      this.httpService.uploadtrigger(formData).subscribe(data => {  
+        this.triggerData=data;
+
+      },
+      error => {
+        this.errorMessage=error.error.message;
+        //window.location.reload();
+        console.log('Trigger Doc Error', error.error.message);
+      }
+        
+      )
     }
    else if(this.relaseDocumentName===false ||this.triggerDocName===false){
         this.errorMessage="Is not a valid file format";
+        
     }
     
   }

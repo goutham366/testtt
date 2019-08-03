@@ -11,7 +11,7 @@ import { HttpService } from '../../services/http.service';
 import { Title } from '../../../../node_modules/@angular/platform-browser';
 import { RoundProgressModule, ROUND_PROGRESS_DEFAULTS } from 'angular-svg-round-progressbar';
 
-fdescribe('AvailDashboardComponent', () => {
+describe('AvailDashboardComponent', () => {
   let component: AvailDashboardComponent;
   let fixture: ComponentFixture<AvailDashboardComponent>;
   let httpMock: HttpTestingController;
@@ -147,6 +147,8 @@ fdescribe('AvailDashboardComponent', () => {
     }
     component.rotate(title, clickedText);
   });
+
+
 
 
 });

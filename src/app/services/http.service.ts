@@ -23,7 +23,7 @@ export class HttpService {
     });*/
   }
   getAPODetails() {
-    return  this.http.get(`https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage/apo/APO`);
+    return  this.http.get(`http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/apo/APO`);
   }
   getlanguagesData() {
     return  this.http.get(`./assets/json/languages.json`);
@@ -41,7 +41,7 @@ export class HttpService {
     return this.http.get(`./assets/json/avails-details.json`);
   }
   getAvailData() {
-    return  this.http.get(`https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage/avails/FILMS`);
+    return  this.http.get(`http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/avails/FILMS`);
   }
     getMetaData() {
     return  this.http.get(`./assets/json/metaData.json`);
@@ -53,17 +53,28 @@ export class HttpService {
   //   return  this.http.get(`./assets/json/apo_api.json`);
   // }
   uploadrelease(formData){
-    this.relaseuploadURL=`https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage/release/releaseUpload`
-    //let headers: HttpHeaders = new HttpHeaders();
-   // headers = headers.append('Content-Type', 'application/octet-stream');
-    return this.http.post(this.relaseuploadURL , formData);
-  // return this.http.post(``,formData);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Accept', 'application/json');
+    // headers = headers.append('Content-Type', 'multipart-form/data');
+    headers=headers.append("Access-Control-Allow-Origin", "*");
+    this.relaseuploadURL=`http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/release/uploadRelease`
+       return this.http.post(this.relaseuploadURL , formData, { headers: headers });
+  
   }
   uploadtrigger(formData){
-    this.triggerUploadUrl='https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage/data/apoUpload';
-    return this.http.post(this.triggerUploadUrl , formData);
+    let headers: HttpHeaders = new HttpHeaders();
+       headers = headers.append('Accept', 'application/json');
+      //  headers = headers.append('Content-Type', 'multipart/form-data');
+       headers=headers.append("Access-Control-Allow-Origin", "*");
+    this.triggerUploadUrl='https://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/data/uploadAPO';
+    return this.http.post(this.triggerUploadUrl , formData, { headers: headers });
   }
-  uploadAvail(formData){
-    return this.http.post(`https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage/data/availUpload`,formData);
+  uploadAvail(formData)
+  {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Accept', 'application/json');
+    //headers = headers.append('Content-Type', 'multipart-form/data');
+    headers=headers.append("Access-Control-Allow-Origin", "*");
+    return this.http.post(`http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/data/uploadAvails`,formData, { headers: headers });
   }
 }

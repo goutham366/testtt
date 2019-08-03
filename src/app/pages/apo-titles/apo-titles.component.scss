@@ -74,7 +74,7 @@ input[type="file"] {
    
 }
 .circle{
-    margin: auto;
+    
     cursor: pointer;
 }
 
@@ -149,7 +149,7 @@ input[type="file"] {
     padding: 13.5px;
 }
 .status-text-padding{
-    padding: 9px 7px !important;
+    padding: 17px 7px !important;
 }
 .spacer{
     margin-left: -3%;
@@ -362,3 +362,7 @@ i{
 .zerocolor{
     background-color:red
 }
+.card-flex{
+    display: flex !important;
+    justify-content: space-between;
+ }

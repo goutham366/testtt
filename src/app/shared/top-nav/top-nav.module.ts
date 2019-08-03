@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
+   
   ],
   declarations: [],
   exports: []

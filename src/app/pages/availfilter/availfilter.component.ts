@@ -50,6 +50,7 @@ export class AvailfilterComponent implements OnInit {
   filename:any;
   filterShow:any;
   availDocName:any;
+  availuploadData: Object;
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.highlight1 = false;
     this.highlight2 = false;
@@ -233,11 +234,14 @@ export class AvailfilterComponent implements OnInit {
     
     if(this.availDocName===true){
       this.httpService.uploadAvail(formData).subscribe(event => {  
-        console.log('release done')
+        this.availuploadData=event;
+        window.location.reload();
+        console.log('Avail upload done')
       })
     }
    else if(this.availDocName===false){
         this.errorMessage="Is not a valid file format";
+        window.location.reload();
     }
     
   }

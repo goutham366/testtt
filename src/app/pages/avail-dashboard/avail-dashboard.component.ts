@@ -15,15 +15,8 @@ export class AvailDashboardComponent implements OnInit {
   width: any;
   posts: any;
   AvailAPIservice: any;
-
   availsList: any;
-  availsList1 = [];
-  // availsList2 = [];
   availsData: any = [];
-  availsData1: any = [];
-  availsData2: any = [];
-  availsListCopy: any = [];
-
   showTitlesText: any;
   showCountriesText: any;
   showLanguagesText: any;
@@ -37,41 +30,36 @@ export class AvailDashboardComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getAvailData().subscribe(data => {
+      this.availsData = data;
+      this.availsList = [];
+      for (let i = 0; i < this.availsData.length; i++) {
+        let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
+        if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
+          this.availsList.push(this.availsData[i]);
+        }
+      }
+    });
     this.httpService.currentMessage.subscribe(message => {
       this.selected = message;
-      this.httpService.getAvailData().subscribe(data => {
-        this.availsData = data;
+      if (this.selected === 'New') {
         this.availsList = [];
-        for (let i = 0; this.availsData.length; i++) {
+          for (let i = 0; i < this.availsData.length; i++) {
+            let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
+            if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
+              this.availsList.push(this.availsData[i]);
+            }
+          }
+      }
+        else if (this.selected === 'Catalog') {
+        this.availsList = [];
+        for (let i = 0; i < this.availsData.length; i++) {
           let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
-          if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
+          if (filteredAvailName === 'FC') {
             this.availsList.push(this.availsData[i]);
           }
         }
-      });
-      if (this.selected === 'New') {
-        this.availsList = [];
-        this.httpService.getAvailData().subscribe(data => {
-          this.availsData = data;
-          for (let i = 0; this.availsData.length; i++) {
-            let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
-            if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
-            }
-          }
-        });
-      }
-      else if (this.selected === 'Catalog') {
-        this.httpService.getAvailData().subscribe(data => {
-          this.availsData = data;
-          for (let i = 0; this.availsData.length; i++) {
-            let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
-            if (filteredAvailName === 'FC') {
-              this.availsList.length = 0;
-              this.availsList[i] = this.availsData[i];
-            }
-          }
-        });
-      }
+    }
     });
 
     this.title = "Avails"
@@ -79,6 +67,7 @@ export class AvailDashboardComponent implements OnInit {
     this.width = 75;
 
   }
+
   getOverlayStyle() {
     let isSemi = this.semicircle;
     let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
@@ -97,16 +86,16 @@ export class AvailDashboardComponent implements OnInit {
   showtitlesDiv(event, index) {
     this.showDetails = index;
     this.titlesClicked = true;
-  
-  
+
+
   }
   showcountriesDiv(event, index) {
     this.showDetails = index;
-  
+
   }
   showlanguagesDiv(event, index) {
     this.showDetails = index;
-  
+
 
   }
 

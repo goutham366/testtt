@@ -20,7 +20,7 @@
 
                             </div>
                             <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
-                                <div class="card-content d-flex" *ngIf="showStatus!==i">
+                                <div class="card-content card-flex" *ngIf="showStatus!==i">
                                     <ul>
                                         <li>
                                             <h6 class="title-text"> {{x.GlobalTitle}}</h6>
@@ -78,7 +78,7 @@
                                     <div class="completeColor" [style.width.%]="width">
                                         {{x.AccontsCompletedCount}}
                                     </div>
-                                    <div class="pendingColor" [style.width.%]="remaining">
+                                    <div class="pendingColor" [style.width.%]="remainingpercent">
                                         {{x.AccontsPendingCount}}
                                     </div>
                                     

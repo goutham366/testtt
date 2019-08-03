@@ -177,7 +177,7 @@ export class LoginComponent implements OnInit {
           this.transComp = true;
           this.delay(200).then(any => {
             this.router.navigate(['pages'], {  
-          skipLocationChange: true } );
+          skipLocationChange: false } );
           })
         })
         break;
