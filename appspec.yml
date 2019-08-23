@@ -1,5 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: /dist
+  - source: /dist/warnerbros-ui
     destination: /tmp
