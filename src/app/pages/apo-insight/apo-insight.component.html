@@ -1,47 +1,55 @@
-<div class="d-flex">
-  <div class="space-box"></div>
-  <div class="flex-grow-1">
-    <!-- <nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="#">Home</a></li>
-<li class="breadcrumb-item"><a href="#">Library</a></li>
-<li class="breadcrumb-item active" aria-current="page">Data</li>
-</ol>
-</nav> -->
-
-    <div class="card">
-      <div class="d-flex">
-        <div class="flex-description">
-          <img class="img-card" src="../../../assets/images/lego.jpg" (click)="cropImage($event)">
+<div class="acc-style-top">
+  <div class="card">
+    <div class="d-flex top-bar">
+      <div class="flex-description box-1">
+        <!-- <img class="img-card" src="../../../assets/images/lego.jpg"> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage(src)">
+        </button>
+      </div>
+      <div class="flex-description box-2">
+        <div class="d-flex">
+          <div class="card-data">
+            <div class="card-content">
+              <h6 class="main-title">The Lego Movie</h6>
+              <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</h6>
+              <!-- <ul>
+                <li>The Lego Movie 2</li>
+                <li class="cust-text">
+                  <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
+              </ul> -->
+            </div>
+            <div class="circle" (click)="showTitleStatus(i)">
+              <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+            </div>
+          </div>
+          <div class="card-menu">
+            <div class="container mt-3">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#metaData">Metadata</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="flex-description box1">
-          <h6>The Lego Movie</h6>
-        </div>
+      </div>
+      <div class="flex-description box-3">
+        <i class="material-icons">vertical_align_center</i>
+        <i class="material-icons" (click)="reload()">replay</i>
+        <i class="material-icons">title<sup>+</sup></i>
+        <i class="material-icons">title<sup>-</sup></i>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="row" style="margin-left: -3%;">
-  <div class="col-sm-4">
-    <div class="card text-white mb-3 shadow-sm" style="width: 483%;">
-      <div class="hidden-header" [hidden]="showDetails">CA JAN152019</div>
-      <div class="card-header" style="padding: 0px 0px 0px 13px;" [hidden]="!showDetails">
-        <span style="float: right; margin-top: 1%;">
-          <circle-progress [percent]="60" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-            [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
-        </span>
-        <br>
-        <p style="font-size: 16px;">CA JAN152019</p>
-        <p class="avail-date">
-          <img src="assets/images/Icons/PNG/calendar.png">01/15-21/03</p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="status_legend"  *ngIf="account == i" style="float:left;">
-  <div class="row">
+<div class=""  *ngIf="account == i">
+  <div class="row legend">
     <div class="legend-status">
       <div class="complete-legend"></div>
       <div class="col-md-6 legend-text">Completed</div>
@@ -153,8 +161,8 @@
     <div class="col-md-1 line-middle"></div>
 
     <div class="col-md-6 line-last">
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row comman-row">
+        <div class="col-md-12 block">
           <!-- <div *ngIf="showStatus">-->
           <h6 class="status-text">Status</h6>
           <p class="status">
@@ -170,17 +178,19 @@
       </div>
       <br>
 
-      <div class="row">
+      <div class="row block">
+        <div>
+          <h6 class="status-text">History</h6>
+        </div>
         <div class="col-md-12 avail-card">
-
           <div class="col-md-6" *ngFor="let avail of availsList; let i = index">
             <div class="card text-white mb-3 shadow-sm card-width complete-card">
               <div class="c-pointer" (click)="showDetails = null">
-                <div class="hidden-header" [attr.id]="'undoBtn'+i" *ngIf="showDetails == i">{{avail.avail_title}}</div>
+
               </div>
 
               <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
-                <span class="avail-status c-pointer" (click)="showAvailStatus(i)">
+                <span class="avail-status c-pointer">
                   <span class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x icon-background4"></i>
                     <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
@@ -191,7 +201,7 @@
                 </span>
                 <!-- <br> -->
                 <span>
-                  <p class="avail-title" routerLink="/pages/titles/titleview" [queryParams]="{ avail_title: avail.avail_title }">{{avail.avail_title}}</p>
+                  <p class="avail-title">{{avail.avail_title}}</p>
                   <p class="avail-date">
                     <img src="assets/images/Icons/PNG/calendar.png"> {{avail.date_of_arrival}} -
                     <span>{{avail.date_of_delivery}}</span>
@@ -201,20 +211,20 @@
               </div>
               <div class="card-body" *ngFor="let detail of avail.avail_details">
                 <div class="equalHMWrap" *ngIf="showStatus !==i">
-                  <span (click)="showtitlesDiv($event,i);" id="titlesDiv">
-                    <span class="avail-details titlesBox" (click)="rotate(avail.avail_name, 'titles')">
+                  <span id="titlesDiv">
+                    <span class="avail-details titlesBox">
                       <img src="assets/images/Icons/PNG/titles.png"> {{detail.titlesCount}}
                       <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
                     </span>
                   </span>
-                  <span (click)="showcountriesDiv($event,i)" id="countriesDiv">
-                    <span class="avail-details countriesBox" (click)="rotate(avail.avail_name, 'countries')">
+                  <span id="countriesDiv">
+                    <span class="avail-details countriesBox">
                       <i class="material-icons md-18 md-grey v-align">language</i> {{detail.countriesCount}}
                       <span *ngIf="showDetails == i">{{showCountriesText}}</span>
                     </span>
                   </span>
-                  <span (click)="showlanguagesDiv($event,i)" id="languagesDiv">
-                    <span class="avail-details languagesBox" (click)="rotate(avail.avail_name, 'languages')">
+                  <span id="languagesDiv">
+                    <span class="avail-details languagesBox">
                       <i class="material-icons md-18 md-grey v-align">translate</i> {{detail.languagesCount}}
                       <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
                     </span>
@@ -287,17 +297,17 @@
       </div>
       <br>
 
-      <div class="row">
+      <div class="row comman-row">
         <div class="col-md-3">
           <div class="container">
-            <div class="row">
+            <div class="row block-timeline">
               <div class="col-md-6 offset-md-3">
                 <h6 class="status-text">Timeline</h6>
                 <br>
                 <ul class="timeline">
                   <li>
                     <a href="#" class="timeline-status">2/22/2019</a>
-                    <p class="timeline-status">Announced</p>
+                    <p class="timeline-status"> Announced</p>
                   </li>
                   <li>
                     <a href="#" class="timeline-status">03/03/2019</a>
@@ -315,13 +325,9 @@
               </div>
             </div>
           </div>
-
-
-
-
-
         </div>
-        <div class="col-md-9">
+
+        <div class="col-md-9 block-timeline">
           <div class="container">
             <ul class="nav nav-tabs">
               <li class="nav-item">
@@ -337,74 +343,26 @@
               <div id="comment" class="container tab-pane active">
                 <ul id="comments-list" class="comments-list">
                   <li>
-                    <div class="comment-main-level">
-                      <div class="comment-box">
-                        <div class="comment-head">
+                    <div class="comment-main-level" *ngFor="let x of availDetailsViewList">
+                      <div class="comment-box" *ngFor="let y of x.avail_details">
+                        <div class="comment-head" *ngFor="let z of y.commentDetails">
                           <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">John Paul</a>
+                            <a href="http://creaticode.com/blog">{{z.name}}</a>
                           </h6>
-                          <span class="date">01/12 11:24</span>
+                          <span class="date">{{z.comment_dateAndTime}}</span>
+                          <span class="comment-content">{{z.comment_text}}</span>
                         </div>
-                        <div class="comment-content">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt eros nec ante laoreet mattis. Suspendisse sollicitudintortor
-                          id nulla dictum, at congue turpis tristique. Maecenas eget consectetur tortor. Donec ut maurissit
-                          amet ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus</div>
                       </div>
                     </div>
-                    <ul class="comments-list reply-list">
-                      <li>
-                        <div class="comment-box">
-                          <div class="comment-head">
-                            <h6 class="comment-name">
-                              <a href="http://creaticode.com/blog">Samwell Tarly</a>
-                            </h6>
-                            <span class="date">01/12 12:16</span>
-                          </div>
-                          <div class="comment-content">
-                            Ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus vitae accumsan</div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
 
-                  <li>
-                    <div class="comment-main-level">
-                      <div class="comment-box">
-                        <div class="comment-head">
-                          <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">Emilia Targaryen</a>
-                          </h6>
-                          <span class="date">01/13 10:15</span>
-                        </div>
-                        <div class="comment-content">
-                          Cras tempor, ante ac suscipit venenatis, neque nibh molestie libero, non rutrum risus dui quis ante. Cras tristique, sapienac
-                          fermentum laoreet, turpis quam rutr tellus, efficitur volutpat arcu lectus nec justo. ut ornare
-                          neque,sit amet ultricies sapien. Cras sed ornare lorem, finibus laoreet urna. Nullam efficitur,
-                          massa a vestibulum interdum, lacus odio facilisis velit, eu rhoncus tellus risus sit amet lacus.
-                          Proin volutpat justo veltincidunt mollis. Cras aliquam, elit ornare tempus</div>
-                      </div>
-                    </div>
                   </li>
-
-                  <li>
-                    <div class="comment-main-level">
-                      <div class="comment-box">
-                        <div class="comment-head">
-                          <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">Emilia Targaryen</a>
-                          </h6>
-                          <span class="date">01/13 10:15</span>
-                        </div>
-                        <div class="col-md-12">
-                          <label class="comment-content" *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
-                        </div>
-                        <div class="comment-content">
-                          <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
-                          <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+                  <div class="col-md-12">
+                    <label class="comment-content" *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
+                  </div>
+                  <div class="comment-content">
+                    <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
+                    <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
+                  </div>
                 </ul>
               </div>
 
@@ -412,59 +370,22 @@
                 <br>
                 <ul id="comments-list" class="comments-list">
                   <li>
-                    <div class="comment-main-level">
-                      <div class="comment-box">
-                        <div class="comment-log-head">
+                    <div class="comment-main-level" *ngFor="let x of availDetailsViewList">
+                      <div class="comment-box" *ngFor="let y of x.avail_details">
+                        <div class="comment-log-head" *ngFor="let z of y.logDetails">
                           <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">John Paul</a>
+                            <a href="http://creaticode.com/blog">{{z.name}}</a>
                           </h6>
-                          <span class="date">01/12 11:24</span>
-                        </div>
-                        <div class="comment-content">
-                          <img src="assets/images/a_star_is_born_big.jpg" alt="events">
-                          <span>
-                            <p>Removed</p>
-                            <p>Thumbnail Image</p>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <ul class="comments-list reply-list">
-                      <li>
-                        <div class="comment-box">
-                          <div class="comment-log-head">
-                            <h6 class="comment-name">
-                              <a href="http://creaticode.com/blog">Samwell Tarly</a>
-                            </h6>
-                            <span class="date">01/12 12:16</span>
-                          </div>
+                          <span class="date">{{z.log_dateAndTime}}</span>
+
                           <div class="comment-content">
-                            <span>
-                              <p>Edited</p>
-                              <p>Title: The Lego Movie 2</p>
+                            <img class="log_img" src="assets/images/a_star_is_born_big.jpg" alt="events">
+                            <span class="log-img-cmt">
+                              <p>{{z.status}}</p>
+                              <!-- <p>{{z.image_url/fileName}}</p> -->
                             </span>
+                            <span class="log-img-status"> <p>Thumbnail Image</p></span>
                           </div>
-
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <div class="comment-main-level">
-                      <div class="comment-box">
-                        <div class="comment-log-head">
-                          <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">Emilia Targaryen</a>
-                          </h6>
-                          <span class="date">01/13 10:15</span>
-                        </div>
-                        <div class="comment-content">
-                          <img src="assets/images/a_star_is_born_big.jpg" alt="events">
-                          <span>
-                            <p>Uploaded</p>
-                            <p>Thumbnail Image</p>
-                          </span>
                         </div>
                       </div>
                     </div>
@@ -481,3 +402,25 @@
   </div>
 </div>
 
+<div class="container  acc-style">
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-view">
+        <!-- <img class="img-card img-crop" src="assets/images/lego.jpg" (click)="cropImage(src);"> -->
+        <div>
+          <img-cropper name="crop_img" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+          <br>
+          <span class="result rounded" *ngIf="data.image">
+            <img name="final_img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight"
+              style="visibility: hidden;">
+          </span>
+          <div class="crop-save-btn">
+            <button (click)="saveCropImage(src)" data-dismiss="modal" style="font-size:35px ; color: #007CC3 ; background-color: transparent; border: aliceblue;"
+              class="fa">&#xf058;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

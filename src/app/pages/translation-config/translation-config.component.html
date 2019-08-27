@@ -1,13 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
       <div class="bottomline">
-        <i class="material-icons v-align  md-18 md-grey">
-          tune
-        </i>Translation Configuration</div>
+        <i class="material-icons v-align  md-18 md-grey"> tune </i>Translation Configuration</div>
       <div class="row">
-
         <div class="col-md-7">
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -15,19 +11,17 @@
                 <thead>
                   <tr>
                     <th class="table-heading" scope="col">
-                      <i class="material-icons md-18  v-align">language</i>Countries</th>
+                      <i class="material-icons md-18  v-align">language</i>{{countryCount}} Countries</th>
                     <th class="table-heading" scope="col">
-                      <i class="material-icons md-18  v-align">translate</i>Languages</th>
+                      <i class="material-icons md-18  v-align">translate</i>{{languageCount}} Languages</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="row-align" *ngFor="let lang of languageData;let i=index">
                     <td class="country-hover" [ngStyle]="{'background-color':getColor(i),color:'white'}">{{lang.country_name}}</td>
                     <td class="height-fix" [ngStyle]="{'background-color':getColorlang2(i)}" (click)="selectLang(lang.language_name)">{{lang.language_name}}</td>
-
                   </tr>
                 </tbody>
-
               </table>
             </div>
             <div class="col-md-6 range">
@@ -39,29 +33,59 @@
               <div class="t-none" *ngIf="lang_name">
                 <span class="contact">Contacts</span>
                 <div *ngFor="let user of userData">
-                  <p class ="user-email" (click)="showComments()"> {{user.user_email}} </p>
+                  <p class="user-email" (click)="showComments()"> {{user.user_email}} </p>
                 </div>
               </div>
               <div class="comments-log" *ngIf="displayComments">
-                <input #Comments (keyup.enter)="addComments(Comments.value)" (blur)="addComments(Comments.value); Comments.value='' ">
-              </div>
+                <input #Comments (keyup.enter)="addComments(Comments.value)" (blur)="addComments(Comments.value); Comments.value='' "> </div>
             </div>
           </div>
         </div>
         <div class="col-md-5 log">
           <span class="font-align">Log</span>
-         
-          <div *ngFor="let comment of comments">
+          
+              <div class="log-box">
+                  <div class="timestamp">
+                    <span>John Paul</span>
+                    <span>01/12 11:24</span>
+                  </div>
+                  <div class="bold">Added</div>
+                  <div class="comment">Language: Danish to Country: Argentina</div>
+                </div>
+                <div class="log-box">
+                    <div class="timestamp">
+                      <span>John Paul</span>
+                      <span>01/12 11:24</span>
+                    </div>
+                    <div class="bold">Added</div>
+                    <div class="comment">Language: Danish to Country: Bolivia</div>
+                  </div>
+                  <div class="log-box">
+                      <div class="timestamp">
+                        <span>John Paul</span>
+                        <span>01/12 11:24</span>
+                      </div>
+                      <div class="bold">Added</div>
+                      <div class="comment">Language: Danish to Country: Aruba</div>
+                    </div>
+                    <div class="log-box">
+                        <div class="timestamp">
+                          <span>John Paul</span>
+                          <span>01/12 11:24</span>
+                        </div>
+                        <div class="bold">Added</div>
+                        <div class="comment">Language: Danish to Country: Aruba</div>
+                      </div>
+                    <div *ngFor="let comment of comments">
             <div class="log-box">
               <div class="timestamp">
-                <span>Jhon Paul</span>
+                <span>John Paul</span>
                 <span>01/12 11:24</span>
               </div>
               <div class="bold">Added</div>
               <div class="comment">{{comment}}</div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>

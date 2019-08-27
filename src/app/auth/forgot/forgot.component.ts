@@ -101,8 +101,10 @@ export class ForgotComponent {
   private changeDetectRef: ChangeDetectorRef;
   private navs: Nav[];
   showEmailError:boolean;
+  emailNotEmpty: boolean;
  constructor(changeDetectRef: ChangeDetectorRef, private router: Router) {
    this.showEmailError = false;
+   this.emailNotEmpty = false;
     this.changeDetectRef = changeDetectRef;
     this.orientation = "none";
     this.navs = [
@@ -160,12 +162,18 @@ public navSelect(id, orient){
     }
 }
   emailEntered(){
-    console.log("values entered"+ this.emailFormControl.valid);
-    if(this.emailFormControl.valid){
-    this.showEmailError= false;
+    if(this.emailFormControl.value.length>0){
+      this.emailNotEmpty = true;
+      if(this.emailFormControl.valid){
+      this.showEmailError= false;
+      }else{
+        this.showEmailError = true;
+      }
     }else{
-      this.showEmailError = true;
+      this.emailNotEmpty = false;
+      this.showEmailError= false;
     }
+    
   }
 
   prevId:any = 1;
@@ -177,6 +185,8 @@ public navSelect(id, orient){
     }
     this.prevId = id;
   }
+
+  
 
   
   

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages-component';
-import { LanguageComponent } from './language/language.component';
-
 
 const routes: Routes = [
   {
@@ -39,41 +37,53 @@ const routes: Routes = [
         loadChildren: 'src/app/pages/apo-insight/apo-insight.module#AvailInsightModule'
       },
       {
-        path:'transconfig',
+        path: 'transconfig',
         loadChildren: 'src/app/pages/translation-config/translation-config.module#TranslationConfigModule'
-        },
-        {
-          path:'translation',
-          loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
-        },
+      },
       {
-        path:'rating',
+        path: 'translation',
         loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
       },
       {
-        path:'clarification',
+        path: 'rating',
         loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
       },
       {
-        path:'complete',
+        path: 'clarification',
+        loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
+      },
+      {
+        path: 'complete',
         loadChildren: 'src/app/pages/avail-complete/avail-complete.module#AvailCompleteModule'
       },
       {
-        path:'overdue',
+        path: 'overdue',
         loadChildren: 'src/app/pages/avail-overdue/avail-overdue.module#AvailOverdueModule'
       },
       {
-        path:'escalation',
+        path: 'escalation',
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
+      },
+      {
+        path:'calendar',
+        loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
       },
       {
         path:'profile',
         loadChildren: 'src/app/pages/profile-page/profile-page.module#ProfilePageModule'
       },
       {
-        path:'language',
-        component:LanguageComponent
-      }
+        path:'user',
+        loadChildren: 'src/app/pages/userconfig/userconfig.module#UserConfiguartionModule'
+      },
+      {
+        path: 'itunes',
+        loadChildren: 'src/app/pages/itunes/itunes.module#ItunesModule'
+      },
+      {
+        path:'ratingconfig',
+        loadChildren: 'src/app/pages/rating-config/rating-config.module#RatingConfigModule'
+        }
     ]
   }
 ]

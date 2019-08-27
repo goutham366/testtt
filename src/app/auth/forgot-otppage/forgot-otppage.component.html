@@ -39,10 +39,10 @@
             
             <div class="form-group formFields ">
                 <div>
-                  <input class="form-control"  placeholder="{{emailformControl}}" readonly>
+                  <input class="form-control forgotOTPHighlight"  placeholder="{{emailformControl}}" readonly [disabled]="true">
                 </div>
                 <div class="padTop" [@itemAnim]>
-                  <input (keyup)="otpEntered()" maxlength="6" class="form-control" placeholder="OTP" [formControl]="OTPFormControl" autocomplete="off" (keypress)="numberOnly($event)">
+                  <input (keyup)="otpEntered()" maxlength="6" class="form-control" placeholder="OTP" [ngStyle]="{'border-bottom': otpNotEmpty ? '2px solid #fff' : '1px solid rgba(255,255,255, 0.4)' }" [formControl]="OTPFormControl" autocomplete="off" (keypress)="numberOnly($event)">
                 </div>
                 <div class="row float-right ">
                 <div *ngIf="!otpExpired" class="timerAlign" [@itemAnim]><span>{{message}}</span>

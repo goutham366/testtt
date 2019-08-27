@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { Subject } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-avail-details',
@@ -8,6 +10,7 @@ import { HttpService } from '../../services/http.service';
 })
 export class AvailDetailsComponent implements OnInit {
   showDetails: boolean;
+  runspinner: any;
   showDetails1: boolean;
   showDetails2: boolean;
   showDetails3: boolean;
@@ -19,20 +22,18 @@ export class AvailDetailsComponent implements OnInit {
   multipleList: any = [];
   multipleArray: any = [];
   availDetailsViewList: any;
-  clickedOnTitle:boolean;
-  clickedOnCountry:boolean;
-  clickedOnLanguage:boolean;
+  clickedOnTitle: boolean;
+  clickedOnCountry: boolean;
+  clickedOnLanguage: boolean;
   // positionA = { x: 0, y: 0 };
   // positionB = { x: 530, y: 0 };
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,private location: Location) {
     this.removeButton = false;
     this.removeAddButton = true;
     this.clickedOnTitle = false;
     this.clickedOnCountry = false;
     this.clickedOnLanguage = false;
   }
-  
-
 
   ngOnInit() {
     this.showDetails = true;
@@ -45,13 +46,17 @@ export class AvailDetailsComponent implements OnInit {
       console.log('Avails Details data', this.availDetailsViewList);
     })
   }
+
+  getAvailDetailsView() {
+
+  }
   addMultipleValue(point) {
+    console.log('*******');
     if (!this.multipleList[point]) {
       this.multipleList[point] = [];
       this.multipleArray[point] = [];
       this.removeAddButton = false;
     }
-
     var val = ''
     switch (point) {
       case this.COMMENTS:
@@ -62,7 +67,6 @@ export class AvailDetailsComponent implements OnInit {
         break;
     }
     if (val) {
-
       this.multipleList[point].push({ n: val });
       this.multipleArray[point].push(val);
     }
@@ -77,7 +81,6 @@ export class AvailDetailsComponent implements OnInit {
   positionB = { x: 550, y: -20 };
 
   onMoving(event) {
-    console.log(event.x, event.y);
     const boxWidth = 200;
     const boxHeight = 500;
     if (this.positionA.x < this.positionB.x &&
@@ -100,71 +103,61 @@ export class AvailDetailsComponent implements OnInit {
   }
 
 
-  filteredTitle:any;
-  filterTitles(data){
-    console.log("@@@@@@@@@@@@@@@@@@@@@@ ",this.availDetailsViewList);
+  filteredTitle: any;
+  filterTitles(data) {
+    var availListA = this.availDetailsViewList;
     this.clickedOnTitle = true;
-    var filterTitle =[];
-    for(let gg of this.availDetailsViewList){
-      console.log("id ", gg.id);
-      for(let kk of gg.avail_details){
-        console.log("titles ", kk.titlesDetails);
-       
-        for(let ll of kk.titlesDetails){
-          //console.log("3rd ",ll.status);
-          if(ll.status == data){
-            console.log("found ", ll.status);
-            filterTitle.push({"status":ll.status, "title_name": ll.title_name});
+    var filterTitle = [];
+    for (let a of availListA) {
+      for (let b of a.avail_details) {
+        for (let c of b.titlesDetails) {
+          if (c.status == data) {
+            filterTitle.push({ "status": c.status, "title_name": c.title_name });
           }
-        }  
-        console.log("filtered ",this.filteredTitle);
+        }
       }
     }
     this.filteredTitle = filterTitle;
-    
+
 
   }
-  filteredCountry:any;
-  filterCountries(data){
+  filteredCountry: any;
+  filterCountries(data) {
+    var availListB = this.availDetailsViewList;
     this.clickedOnCountry = true;
     var filterCountry = [];
-    for(let gg of this.availDetailsViewList){
-      //console.log("id ", gg.id);
-      for(let kk of gg.avail_details){
-        //console.log("titles ", kk.countries);
-       
-        for(let ll of kk.countries){
-          //console.log("3rd ",ll.status);
-          if(ll.status == data){
-            //console.log("found ", ll.status);
-            filterCountry.push({"status":ll.status, "country_name": ll.country_name});
+    for (let d of availListB) {
+      for (let e of d.avail_details) {
+        for (let f of e.countries) {
+          if (f.status == data) {
+
+            filterCountry.push({ "status": f.status, "country_name": f.country_name });
           }
-        }  
-        // console.log("filtered ",this.filtered);
+        }
       }
     }
     this.filteredCountry = filterCountry;
   }
-  filteredLanguage:any;
-  filterlanguages(data){
+  filteredLanguage: any;
+  filterlanguages(data) {
+    var availListC = this.availDetailsViewList;
     this.clickedOnLanguage = true;
     var filterLanguage = [];
-    for(let gg of this.availDetailsViewList){
-     
-      for(let kk of gg.avail_details){
-        
-       
-        for(let ll of kk.languages){
-         
-          if(ll.status == data){
-            
-            filterLanguage.push({"status":ll.status, "language_name": ll.language_name});
+    for (let g of availListC) {
+      for (let h of g.avail_details) {
+        for (let l of h.languages) {
+          if (l.status == data) {
+            filterLanguage.push({ "status": l.status, "language_name": l.language_name });
           }
-        }  
-        
+        }
+
       }
     }
     this.filteredLanguage = filterLanguage;
+  }
+
+  reload() {
+    location.reload();
   }
 
 }

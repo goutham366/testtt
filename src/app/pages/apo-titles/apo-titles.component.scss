@@ -1,15 +1,33 @@
-.container{
-    overflow: hidden;
+// .container{
+//     overflow: hidden;
+// }
+.height-100{
+    height: 100%;
 }
-.margin-b{
+.filter{
+    position: relative;
+    top: 0.5em;
+    right: 0.5em;
+
+}
+.apo-margin{
     margin-bottom: 20px !important;
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
+.file-display {
+    display:none;
+}
 .card-body {
     flex: 1 1 auto;
     padding: 0.5em;
-
+    .due-date{
+        color:white;
+        background :red;
+    }
+    .lessthan-todaydate{
+        color:black;
+    } 
 }
 .card-img{
     height: 88px;
@@ -29,9 +47,9 @@
     cursor: pointer;
 }}
 
-input[type="file"] {
-    //display: none;
-  }
+// input[type="file"] {     //can't leave blank tags
+ //     //display: none;
+//   }
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +69,7 @@ input[type="file"] {
     display: flex;
    // margin: auto 0;
     letter-spacing: 11px;
-    margin-left: -13px;
+    margin-left: -13px;//negative values
     margin-top: 5px;
 }
 .card-main{
@@ -59,7 +77,7 @@ input[type="file"] {
     height: 100%;
 }
 .card-content{
-    display: -webkit-inline-box;
+    display: -webkit-inline-box;//webkit will effect
     ul{
         margin: 0;
         padding: 0;
@@ -87,10 +105,11 @@ input[type="file"] {
 .status{
     margin:0 0 0 3px ;
      padding: 0;
+     color: #9a9797;
      
 }
-.text-color{
-   
+.font-number{
+    color: black;
 }
 .progressBar{
     margin: 20px 21px 24px 10px;
@@ -133,17 +152,17 @@ input[type="file"] {
     color: #0AAD43;
      font-size: 10px; 
      padding:0px;
-      margin: -3px;
+      margin: -3px; // negative values
 }
 .legend-pending-text {
     color: #007CC3;
      font-size: 10px; 
      padding:0px;
-      margin: -3px;
+      margin: -3px; // negative values
       margin-left: initial;
 }
 .status_legend{
-    margin: -12px 21px 5px 5px;
+    margin: -12px 21px 5px 5px; // negative values
 }
 .status-padding{
     padding: 13.5px;
@@ -152,7 +171,7 @@ input[type="file"] {
     padding: 17px 7px !important;
 }
 .spacer{
-    margin-left: -3%;
+    margin-left: -3%; // negative values
 }
 .v-align {
     vertical-align: text-bottom;
@@ -216,46 +235,35 @@ input[type="file"] {
     .text-space{
         padding-left: 5px;
     }
-    .box{
+    .accountsBox{
         transition: width 0.15s; 
         padding: 3px;
         display: flex;
-        opacity: 0.6;
-       
    }
-   .boxclicked{
+   .accountsBoxclicked{
        display: flex;
        justify-content: space-between;
        padding: 3px;
-       opacity:1;
-      
    }
-   .box1{
+   .countriesBox{
     transition: width 0.15s; 
     padding: 3px;
     display: flex;
-    opacity: 0.6;
-    
 }
-.box1clicked{
+.countriesBoxclicked{
    display: flex;
    justify-content: space-between;
    padding: 3px;
-   opacity:1;
-   
 }
-.box2{
+.languagesBox{
     transition: width 0.15s; 
     padding: 3px;
     display: flex;
-    opacity: 0.6;
 }
-.box2clicked{
+.languagesBoxclicked{
    display: flex;
    justify-content: space-between;
    padding: 3px;
-   opacity:1;
-
 }
 i{
     color: rgba(0, 0, 0, 0.4);
@@ -289,7 +297,12 @@ i{
     white-space: nowrap;
     width: 240px;
 }
+@media (max-width: 1200px){
+    .wizard-progress {
+        width: 100%;
+    }
 
+}
 .wizard-progress li {
     float: left;
     position: relative;
@@ -327,7 +340,7 @@ i{
     content: "";
     display: block;
     background: #92D1FF;
-    height: 2px;
+    height: 1px;
     width: 52px;
     position: absolute;
     bottom: 7px;
@@ -350,7 +363,7 @@ i{
     right:64px;
 }
 .marginProgress{
-    margin-top: -10%;
+    margin-top: -10%; // negative values
 }
 .align-spacer{
     flex: 0 0 14.5%;

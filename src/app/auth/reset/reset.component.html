@@ -41,8 +41,12 @@
             
             <div class="form-group formFields ">
                 <div class="">
-                  <input (keyup)="newPwdEntered()" class="form-control" type="{{typeNewPwd}}" placeholder="New Password" formControlName="newpassword">
-                  <span [hidden]="!showEyeNewPwd" class="fa fa-eye eyePos" (mousedown)="showMeNewPwd()" (mouseup)="hideMeNewPwd()"></span>
+                  <input (keyup)="newPwdEntered()" class="form-control" [ngStyle]="{'border-bottom':newPwdNotEmpty ? '2px solid #fff' : '1px solid rgba(255,255,255, 0.4)' }" type="{{typeNewPwd}}" placeholder="New Password" formControlName="newpassword">
+                  <span [hidden]="!newPwdNotEmpty" class="eyePos" (mousedown)="showMeNewPwd()" (mouseup)="hideMeNewPwd()">
+                      <i class="material-icons pointer">
+                          visibility
+                          </i>
+                  </span>
                 </div>
                   <div *ngIf="f.newpassword.invalid && (f.newpassword.dirty  || f.newpassword.touched)">
                     <div *ngIf="f.newpassword?.errors">
@@ -58,8 +62,12 @@
                 
                
                 <div class="padTop">
-                  <input (keyup)="cnfPwdEntered()" class="form-control" type="{{typeCnfPwd}}" placeholder="Confirm password" formControlName="confirmpassword"  >
-                  <span [hidden]="!showEyeCnfPwd" class="fa fa-eye eyePos" (mousedown)="showMeCnfPwd()" (mouseup)="hideMeCnfPwd()"></span>
+                  <input (keyup)="cnfPwdEntered()" class="form-control" [ngStyle]="{'border-bottom':cnfPwdNotEmpty ? '2px solid #fff' : '1px solid rgba(255,255,255, 0.4)' }" type="{{typeCnfPwd}}" placeholder="Confirm password" formControlName="confirmpassword"  >
+                  <span [hidden]="!cnfPwdNotEmpty" class="eyePos" (mousedown)="showMeCnfPwd()" (mouseup)="hideMeCnfPwd()">
+                      <i class="material-icons pointer">
+                          visibility
+                          </i>
+                  </span>
                 </div>
                 <div *ngIf="f.confirmpassword.errors">
                   <div *ngIf="f.confirmpassword.errors.mustMatch" class="errorPatten">Mismatch</div>

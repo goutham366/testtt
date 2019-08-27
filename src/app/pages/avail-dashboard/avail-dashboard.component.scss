@@ -48,9 +48,10 @@ $topnav-background-color: #007CC3;
     position: fixed;
     z-index: 1000;
     top: 0px;
-    left: 235px;
+    left: 0;
+    // left: 235px; no need to write both 
     width: 235px;
-    margin-left: -235px;
+    // margin-left: -235px; no need to write both
     margin-bottom: 48px;
     border: none;
     border-radius: 0;
@@ -194,13 +195,15 @@ $topnav-background-color: #007CC3;
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 0px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 0 0px rgba(255, 255, 255, 1); // we can't write webkit styles only
+    box-shadow: inset 0 0 0px rgba(255, 255, 255, 1);
     border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 1);// we can't write webkit styles only
+    box-shadow: inset 0 0 0px rgba(255, 255, 255, 1);
 }
 
 .toggle-button {
@@ -231,17 +234,16 @@ $topnav-background-color: #007CC3;
 }
 
 // card css 
-.ml-16 {
-    margin-left:16%
+.avail-heading {
+    padding: 10px;
 }
 .cust-style {
-display: flex;
-position: relative;
-left: 190px;
+    justify-content: space-between;
 }
 .cus-box{
-    justify-content: space-around;
-    width: 84%;
+    justify-content: space-between;
+    width: 100%;
+
 }
 .align-spacer{
     flex: 0 0 14.5%;
@@ -249,9 +251,6 @@ left: 190px;
 .avail-card {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -44px;
-
     .card-header {
         background-color: #000000, 10%;
         color: #007CC3;
@@ -269,9 +268,8 @@ left: 190px;
     }
     .avail-status {
         float: right; 
-        margin-top: -1%;
         position: absolute;
-        top: 15%;
+        top: 4%;
         left: 74%;
     }
     .current {
@@ -290,7 +288,7 @@ left: 190px;
         color: black;
       }
       .progressBar{
-        margin: 9px 20px 8px 4px;
+        margin: 0 11% 0 3%;
         .progress {
             height:23px;
             width:108%;
@@ -305,11 +303,12 @@ left: 190px;
       .avail-details {
         font-size: 15px;
         color: black !important;
-        cursor: pointer;
-     
+      }
+      .status-padding {
+        padding:5px;
       }
       .legend-margin {
-        margin: 0px -1px 2px 5px;
+        margin: 7px 0px 7px 5px;
       }
       .complete-legend {
         height: 0.5em;
@@ -330,16 +329,14 @@ left: 190px;
       }
       .legend-text {
         color: #0AAD43;
-         font-size: 10px; 
+         font-size: 10.3px; 
          padding:0px;
     }
     .legend-pending-text {
         color: #007CC3;
-         font-size: 9px; 
+         font-size: 10.3px; 
          padding:0px;
     }
-    
-    
       .v-align {
         vertical-align: text-bottom;
     }
@@ -382,7 +379,7 @@ left: 190px;
         .countriesBox {
             width: 50px;
             transition: width 0.15s;
-            font-size: 11px;
+            font-size: 12px;
         }
         .countriesBox.clicked {
             width: 100px;
@@ -391,7 +388,7 @@ left: 190px;
         .languagesBox{
             width: 50px;
             transition: width 0.15s;
-            font-size: 10.5px;
+            font-size: 12px;
         }
         .languagesBox.clicked {
             width: 110px;
@@ -399,6 +396,19 @@ left: 190px;
         } 
      
     }
+    .completeColor{
+        background: rgba(10, 173, 67, 1);
+        color: #fff;
+        display: flex;
+        align-items: center;
+    }
+    .pendingColor{
+        background:rgba(0, 124, 195, 1);
+        color: #fff;
+        padding-left: 5px;
+        display: flex;
+        align-items: center;
+    } 
 
     .cust-text { 
     font-size: 13px;
@@ -409,7 +419,6 @@ left: 190px;
     }
     .status-text {
         color: #007CC3;
-        cursor: pointer;
        }
    .status {
        margin:0 0 0 3px ;
@@ -418,6 +427,9 @@ left: 190px;
    }
    .status-font {
     font-size: 15px
+   }
+   .status-color {
+       color: black;
    }
 
 // modal css
@@ -468,8 +480,6 @@ left: 190px;
     border: none;
 }
 .modal-header {
-    // border-bottom-color: #EEEEEE;
-    // background-color: #FAFAFA;
     border-bottom: none !important;
 
 .close{
@@ -496,12 +506,11 @@ button:focus{
    
 }
 }
-
 @media (min-width: 576px) {
-    .col-sm-4 {
-        flex: 0 0 33.33333333%;
-        max-width: 16.5%;
-        left: 14em;
+    .avail-box{
+        flex: 0 0 20%;
+        max-width: 19.8%;
+        padding-right: 0px;
     }
 }
 .tabSelected{

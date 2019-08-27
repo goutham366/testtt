@@ -144,6 +144,7 @@ type Orientation = ( "prev" | "next" | "none" );
     transComp:boolean;
     showOTPError: boolean;
     emailformControl: any;
+    otpNotEmpty:boolean;
     constructor(private route: ActivatedRoute, changeDetectRef: ChangeDetectorRef, private router: Router) {
         this.changeDetectRef = changeDetectRef;
         this.orientation = "none";
@@ -151,6 +152,7 @@ type Orientation = ( "prev" | "next" | "none" );
         this.classAdd = false;
         this.transComp = false;
         this.showOTPError = false;
+        this.otpNotEmpty = false;
         this.navs = [
         {
             id: 1,
@@ -277,9 +279,6 @@ type Orientation = ( "prev" | "next" | "none" );
       this.message = ``;
       this.secondVar = ``;
       this.delay(1000).then(any => {
-        //this.secondVar = `00`;
-       // this.message = `05:`;
-       
       this.intervalId = 0;
       this.seconds = 60;
       this.min = 4;
@@ -322,12 +321,21 @@ type Orientation = ( "prev" | "next" | "none" );
 
     otpEntered(){
       console.log("values entered"+ this.OTPFormControl.value);
-      if(this.OTPFormControl.value !="" &&  this.OTPFormControl.value.length==6){
-        this.showOTPError = false;
+      if(this.OTPFormControl.value !="" ){  
+        this.otpNotEmpty = true;
+        if(this.OTPFormControl.value.length==6){
+          this.showOTPError = false;
+        }else{
+          this.showOTPError = true;
+        }
       }else{
-        this.showOTPError = true;
-      }
+        this.otpNotEmpty = false;
+      }  
     }
+
+   
+  
+   
 
   
   }

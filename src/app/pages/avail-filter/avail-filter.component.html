@@ -3,7 +3,7 @@
       <nav class="navbar navbar-expand-lg p-0">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal2">
+            <button type="button" class="btn btn-light" (click)="openingModal();" data-toggle="modal" data-target="#myModal2">
               <i class="material-icons">filter_list</i>
               
             </button>
@@ -28,12 +28,12 @@
                 </div>
                 <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
                 <ul class="nav nav-tabs">
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="removingText('filter')">
                       <a class="nav-link active btn-fun" data-toggle="tab" href="#filter">
                         <i class="material-icons">filter_list</i>
                         <p>Filter</p> </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" >
                       <a class="nav-link btn-fun" data-toggle="tab" href="#upload"><i class="material-icons">
                           create_new_folder
                         </i>
@@ -133,12 +133,13 @@
                       <div class="container">
                           <div class="modal-body upload">
                               <div class="form-group">
-                                <span class="upload-text">Upload APO Docs</span><br>
+                                <span class="upload-text">Upload {{childMessage}} Docs</span><br>
                                 <div class="flex">
                                     <label for="files" class="btn  uploadcolor">Upload</label>
                                     <span class="filename">{{this.filename}}</span> 
-                                    <span *ngIf="(!relaseDocumentName || !triggerDocName)" class="errorMessage">{{errorMessage}}</span>
-                                    <input id="files" style="visibility:hidden;" type="file" (change)="upload($event.target.files)">
+                                    <span *ngIf="errorCase" class="errorMessage">{{errorMessage}}</span>
+                                    <span *ngIf="successCase" class="successMessage">{{successMessage}}</span>
+                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file" (change)="upload($event.target.files)">
                                 </div>
                                 </div>
                           </div>

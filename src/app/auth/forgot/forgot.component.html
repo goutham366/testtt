@@ -46,14 +46,14 @@
               
               <div class="form-group formFields ">
                   <div>
-                    <input (keyup)="emailEntered()" class="form-control" placeholder="Email ID" [formControl]="emailFormControl"
+                    <input (keyup)="emailEntered()" class="form-control" [ngStyle]="{'border-bottom': emailNotEmpty ? '2px solid #fff' : '1px solid rgba(255,255,255, 0.4)' }" placeholder="Email ID" [formControl]="emailFormControl"
                    autocomplete="off" 
                     pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
                   </div>
               </div>
               <div *ngIf="showEmailError" class="errorEmail">
            
-                Invalid email!!
+                Invalid email
               
             </div>
               <div  class="OtpButton">

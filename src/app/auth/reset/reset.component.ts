@@ -105,16 +105,16 @@ export class ResetComponent {
   typeCnfPwd:String;
   classAdd:boolean;
   transComp:boolean;
-  showEyeNewPwd:boolean;
-  showEyeCnfPwd:boolean;
+  newPwdNotEmpty:boolean;
+  cnfPwdNotEmpty:boolean;
   
   constructor(private fb:FormBuilder,  changeDetectRef: ChangeDetectorRef, private router: Router) {
     this.changeDetectRef = changeDetectRef;
         this.orientation = "none";
         this.typeNewPwd = "password";
         this.typeCnfPwd = "password";
-        this.showEyeNewPwd = false;
-        this.showEyeCnfPwd = false;
+        this.newPwdNotEmpty = false;
+        this.cnfPwdNotEmpty = false;
         this.classAdd = false;
         this.transComp = false;
 
@@ -218,17 +218,17 @@ public navSelect(id, orient){
   newPwdEntered(){
     
     if(this.resetForm.value.newpassword.length >0){
-     this.showEyeNewPwd = true;
+     this.newPwdNotEmpty = true;
      }else{
-      this.showEyeNewPwd = false;
+      this.newPwdNotEmpty = false;
     }
   }
   cnfPwdEntered(){
     
     if(this.resetForm.value.confirmpassword.length >0){
-     this.showEyeCnfPwd = true;
+     this.cnfPwdNotEmpty = true;
      }else{
-      this.showEyeCnfPwd = false;
+      this.cnfPwdNotEmpty = false;
     }
   }
 }

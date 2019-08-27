@@ -1,0 +1,38 @@
+[
+{
+"username":"johnsnow",
+"mail_id":"johnsnow@infosys.com",
+"user_id":"#johnsnow35242"
+},
+{
+"username":"johnpaul",
+"mail_id":"johnpaul@infosys.com",
+"user_id":"#johnpaul35242"
+},
+{
+"username":"Esther Willis",
+"mail_id":"Estherwillis@email.com ",
+"user_id":"#dataanalystinfy"
+},
+{
+"username":"Stephanie Martin",
+"mail_id":"stephaniemartin@email.com",
+"user_id":"#managergroup1"
+},
+{
+"username":"Kent Henry",
+"mail_id":"kentHenry@email.com",
+"user_id":"#dataanalyt_infy_team_red"
+},
+{
+"username":"Penny Craig",
+"mail_id":"penny.craig99@example.com",
+"user_id":"#managergroup1"
+},
+{
+"username":"Leonard Ray",
+"mail_id":"leonard.ray29@example.com",
+"user_id":"#managergroup1"
+}
+
+]

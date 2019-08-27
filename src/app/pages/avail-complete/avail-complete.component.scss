@@ -231,8 +231,13 @@ $topnav-background-color: #007CC3;
 }
 
 // card css 
-.ml-16 {
-    margin-left:16%
+.cust-style {
+    justify-content: space-between;
+}
+.cus-box{
+    justify-content: space-between;
+    // width: 100%;
+
 }
 .breadcrumb {
     display: flex;
@@ -253,14 +258,11 @@ $topnav-background-color: #007CC3;
     display: flex;
    // margin: auto 0;
     letter-spacing: 11px;
-    margin-left: -13px;
     margin-top: 5px;
 }
 .avail-card {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -44px;
 
     .card-header {
         background-color: #000000, 10%;
@@ -304,6 +306,10 @@ $topnav-background-color: #007CC3;
             }
         }
        
+    }
+    .progress-style {
+        text-align: center; 
+        margin: 9px;
     }
       .avail-details {
         font-size: 15px;
@@ -449,10 +455,16 @@ $topnav-background-color: #007CC3;
 
 
 @media (min-width: 576px) {
-    .col-sm-4 {
-        flex: 0 0 33.33333333%;
-        max-width: 16.5%;
-        left: 15em;
+    // .col-sm-4 {
+    //     flex: 0 0 33.33333333%;
+    //     max-width: 16.5%;
+    //     left: 15em;
+    // }
+    .avail-box{
+        flex: 0 0 20%;
+        // max-width: 16.5%; //min-width u have to right
+        max-width: 19.8%;
+        padding-right: 0px;
     }
 }
 

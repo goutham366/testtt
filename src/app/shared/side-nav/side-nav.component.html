@@ -1,46 +1,62 @@
-
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
-        <!-- <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-                <i class="fa fa-bars text-muted" aria-hidden="true"></i>
-                </button> -->
-    <div class="list-group">
-            <a style="background: #006FAD" class="list-group-item">DATA ANAYLST</a>
-            
-        <a style="background: #006FAD"  class="list-group-item">
-            <img src="assets/images/dummy1.jpg"> John Paul &nbsp;
-        </a>
-        <a routerLink="/pages" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact: true}" class="list-group-item" style="margin-top: 12px;">
-            <i class="material-icons v-align">equalizer</i>&nbsp;
-            <span>Dashboard</span>
-        </a>
-        <a routerLink="/pages/translation" [queryParams]="{ sidenav: 'Translation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="material-icons v-align">translate</i>&nbsp;
-            <span>Translation</span>
-        </a>
-        <a routerLink="/pages/rating" [queryParams]="{ sidenav: 'Ratings' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="material-icons v-align">local_play</i>&nbsp;
-            <span>Ratings</span>
-        </a>
-        <a routerLink="/pages/clarification" [queryParams]="{ sidenav: 'Clarification' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
-            <i class="material-icons v-align">chat</i>&nbsp;
-            <span>Clarification</span>
-        </a>
-        <a routerLink="/pages/complete" [queryParams]="{ sidenav: 'Complete' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="material-icons v-align">check_circle</i>&nbsp;
-            <span>Complete</span>
-        </a>
-        <a routerLink="/pages/overdue" [queryParams]="{ sidenav: 'Overdue' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
-            <i class="material-icons v-align">timer</i>&nbsp;
-            <span>OverDue</span>
-        </a>
-        <a routerLink="/pages/escalation" [queryParams]="{ sidenav: 'Escalation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="material-icons md-18">new_releases</i>&nbsp;
-            <span>Escalation</span>
-        </a>
-        <a routerLink=""  class="list-group-item">
-            <i class="material-icons v-align">today</i>&nbsp;
-            <span>Calendar</span>
-        </a>
-
+ <div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+            <!-- <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+                    <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+                    </button> -->
+        <div class="list-group">
+                <a style="background: #006FAD" class="list-group-item">DATA ANAYLST</a>
+                
+            <a style="background: #006FAD"  class="list-group-item">
+                <img src="assets/images/dummy1.jpg"> John Paul &nbsp;
+            </a>
+            <a routerLink="/pages" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact: true}" class="list-group-item" style="margin-top: 12px;">
+                <i class="material-icons v-align">equalizer</i>&nbsp;
+                <span>Dashboard</span>
+            </a>
+            <a routerLink="/pages/translation" [queryParams]="{ sidenav: 'Translation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="material-icons v-align">translate</i>&nbsp;
+                <span>Translation</span>
+            </a>
+            <a routerLink="/pages/rating" [queryParams]="{ sidenav: 'Ratings' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="material-icons v-align">local_play</i>&nbsp;
+                <span>Ratings</span>
+            </a>
+            <a routerLink="/pages/clarification" [queryParams]="{ sidenav: 'Clarification' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
+                <i class="material-icons v-align">chat</i>&nbsp;
+                <span>Clarification</span>
+            </a>
+            <a routerLink="/pages/complete" [queryParams]="{ sidenav: 'Complete' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="material-icons v-align">check_circle</i>&nbsp;
+                <span>Complete</span>
+            </a>
+            <a routerLink="/pages/overdue" [queryParams]="{ sidenav: 'Overdue' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
+                <i class="material-icons v-align">timer</i>&nbsp;
+                <span>OverDue</span>
+            </a>
+            <a routerLink="/pages/escalation" [queryParams]="{ sidenav: 'Escalation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="material-icons md-18">new_releases</i>&nbsp;
+                <span>Escalation</span>
+            </a>
+            <a class="list-group-item">
+                <i class="material-icons v-align">today</i>&nbsp;
+                <span>Calendar</span>
+            </a>
+    
+        </div>
+    </nav>
     </div>
-</nav>
+    <!-- Content -->
+    <div id="content">
+            <app-top-nav></app-top-nav>
+            <router-outlet></router-outlet>
+      <!-- <div class="container-fluid">
+        <h1>Simple Sidebar</h1>
+        <p>
+          Make sure to keep all page content within the 
+          <code>#content</code>.
+        </p>
+      </div> -->
+    </div>
+  </div>

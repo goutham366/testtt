@@ -251,6 +251,48 @@
                         "status": "completed"
                     }
                 ],
+                "commentDetails": [
+                    {
+                        "name": "John Paul",
+                        "comment_dateAndTime": "01/12 11:24",
+                        "comment_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt eros nec ante laoreet mattis. Suspendisse sollicitudintortor id nulla dictum, at congue turpis tristique. Maecenas eget consectetur tortor. Donec ut maurissit amet ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus."
+                    },
+                    {
+                        "name": "Samwell Tarly",
+                        "comment_dateAndTime": "01/12 12:16",
+                        "comment_text": "Ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus vitae accumsan."
+                    },
+                    {
+                        "name": "Emilia Targaryen",
+                        "comment_dateAndTime": "01/13 10:15",
+                        "comment_text": "Cras tempor, ante ac suscipit venenatis, neque nibh molestie libero, non rutrum risus dui quis ante. Cras tristique, sapien ac fermentum laoreet, turpis quam rutr tellus, efficitur volutpat arcu lectus nec justo. ut ornare neque, sit amet ultricies sapien. Cras sed ornare lorem, finibus laoreet urna. Nullam efficitur, massa a vestibulum interdum, lacus odio facilisis velit, eu rhoncus tellus risus sit amet lacus. Proin volutpat justo vel tincidunt mollis. Cras aliquam, elit ornare tempus"
+                    },
+                    {
+                        "name": "Samwell Tarly",
+                        "comment_dateAndTime": "01/12 12:16",
+                        "comment_text": "Ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus vitae accumsan."
+                    }
+                ],
+                "logDetails": [
+                    {
+                        "name": "John Paul",
+                        "log_dateAndTime": "01/12 11:34",
+                        "status": "Removed",
+                        "image_url/fileName": "assets/images/12strong_big.jpg"
+                    },
+                    {
+                        "name": "Samwell Tarly",
+                        "log_dateAndTime": "01/12 12:16",
+                        "status": "Edited",
+                        "image_url/fileName": "A Star is Born"
+                    },
+                    {
+                        "name": "Emilia Targaryen",
+                        "log_dateAndTime": "01/13 10:15",
+                        "status": "Uploaded",
+                        "image_url/fileName": "assets/images/a_star_is_born_big.jpg"
+                    }
+                ],
                 "titlesCount": "114",
                 "titlesCompleted": "100",
                 "titlesPending": "14",

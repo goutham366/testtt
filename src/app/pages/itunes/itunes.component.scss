@@ -1,0 +1,147 @@
+.itune-heading{
+    padding: 10px;
+}
+.itune-title {
+    font-size: 14px;
+    outline: none;
+    font-family: Roboto, Regular;
+    margin-bottom: 0.5rem;
+}
+.itune-date {
+    font-size: 11px;
+    color: black;
+  }
+  .card-header {
+    background-color: #000000, 10%;
+    color: #007CC3;
+    border-bottom: 1px solid lightgrey;
+}
+.card-padding {
+    padding: 13px 0px 0px 10px;
+}
+.hidden-header {
+    font-size: 13px;
+    color: #007CC3;
+    border-bottom: 1px solid lightgrey;
+    padding-left: 3%;
+}
+@media (min-width: 576px) {
+    // .col-sm-4 {
+    //     flex: 0 0 33.33333333%;
+    //     max-width: 16.5%;
+    //     left: 14em;
+    // }can't change styles like this
+    .itune-box{
+        flex: 0 0 20%;
+        // max-width: 16.5%; //min-width u have to right
+        max-width: 19.8%;
+        padding-right: 0px;
+    }
+}
+.itune-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+.current {
+    position: absolute;
+    color: green;
+  }
+  .itune-status {
+    // float: right; 
+    // margin-top: -1%; //negative values
+    // position: absolute;
+    // top: 15%;
+    // left: 74%;
+
+    float: right;
+    position: relative;
+    right: 10px;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 0rem;
+}
+.progressBar{
+    margin: 3px 5px 6px 4px;
+    .progress {
+        height:23px;
+        background: #007CC3;
+        
+    }
+   
+}
+.status-padding {
+    padding:5px;
+}
+.equalHMWrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem;
+    font-family: Roboto, Regular;
+}
+.itune-details {
+    font-size: 15px;
+    color: black !important;
+    .iconPos{
+        position: relative;
+        top: 4px;
+    }
+    .titleFont{
+        font-size: 12px;
+    }
+  }
+  .legend-margin {
+    padding: 4px 0px 5px 5px; 
+  }
+  .complete-legend {
+    height: 0.5em;
+    width: 0.5em;
+    background: #0AAD43;
+    border-radius: 0;
+    color: #0AAD43;
+  }
+  .pending-legend {
+    height: 0.5em;
+    width: 0.5em;
+    background: #007CC3;
+    border-radius: 0;
+    color:#007CC3;
+  }
+  .pending-legend-margin {
+    margin: 0px 0px 0px 8px;
+  }
+  .legend-text {
+    color: #0AAD43;
+     font-size: 10.3px; 
+     padding:0px;
+}
+.legend-pending-text {
+    color: #007CC3;
+     font-size: 10.3px; 
+     padding:0px;
+}
+.cust-text { 
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    padding: 7px;
+    background: rgba(0,0,0,.03);
+    .status-text {
+        color: #007CC3;
+       
+    }
+    .status {
+        margin:0 0 0 3px ;
+         padding: 0;
+         color: rgba(0, 0, 0, 0.4);
+         span{
+            color: black !important;
+         }
+    }
+    .status-font {
+     font-size: 15px
+    }
+}
+.cus-box{
+    justify-content: space-between;
+    width: 100%;
+}

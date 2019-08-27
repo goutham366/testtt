@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
+import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 //import { ActivatedRoute } from '@angular/router';
 interface Stages {
   stageTitle: String;
@@ -10,12 +12,14 @@ interface Stages {
   styleUrls: ['./apo-titles.component.scss']
 })
 export class ApoTitlesComponent implements OnInit {
+  
   showStatus: any;
   apoList: any;
   titleStatus: boolean = false;
   langStatus: boolean = false;
   transStatus: boolean = false;
   accStatus: boolean = false;
+  emptyMsg:boolean;
   width: any;
   account: any;
   titleName: any;
@@ -36,8 +40,11 @@ export class ApoTitlesComponent implements OnInit {
   translationsClicked: boolean = false;
   todaydate: any;
   duedate: any;
-  constructor(private httpService: HttpService) {
+  parentMessage:any;
 
+  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+
+    this.parentMessage = "APO";
     this.stages = [
       { stageTitle: "Announced" },
       { stageTitle: "Data Collation" },
@@ -90,7 +97,6 @@ export class ApoTitlesComponent implements OnInit {
           this.titleName = title;
           this.width = (this.apoList[i].CountriesCompletedCount / this.apoList[i].CountriesCount) * 100;
           this.remaining = (this.apoList[i].CountriesPendingCount / this.apoList[i].CountriesCount) * 100;
-         // console.log("width", this.width, this.remaining);
         }
         else if (tabselected == "languages") {
           this.accStatus = false;
@@ -104,25 +110,21 @@ export class ApoTitlesComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit() {
-
-
-    //console.log('this.todaydate',this.todaydate.toU());
-    this.account = -1;
-    this.showStatus = -1;
+  getApoData() {
     this.httpService.getAPODetails().subscribe(data => {
       this.apoList = data;
-      for (let i = 0; i < this.apoList; i++) {
-        this.duedate = this.apoList[i].DueDate;
-      }
+    })
+  }
+  ngOnInit() {
+    this.account = -1;
+    this.showStatus = -1;
+    this.getApoData();
+    this.httpService.refresh('apo').subscribe(dataof => {
+      this.getApoData();
     })
 
-
   }
-
   imgClickTrack(record, index) {
-
     this.showStatus = -1;
     this.accStatus = false;
     this.langStatus = false;
@@ -139,7 +141,6 @@ export class ApoTitlesComponent implements OnInit {
     this.fileToUpload = file.item(0);
     var reader = new FileReader();
     reader.onload = (event: any) => {
-      //this.ImageUrl = event.target.result;
       this.selectedRecord.ImageURL = event.target.result;
     }
     reader.readAsDataURL(this.fileToUpload);
@@ -154,7 +155,21 @@ export class ApoTitlesComponent implements OnInit {
   }
 
   getProgress(title) {
-    switch (title) {
+    var l = title.length;
+    var result= this.getProgressSwitch(title,l);
+    return result;
+  }
+  getProgressFill(title) {
+    var l = title.length;
+    if(title[l-1].StatusMessage==""){
+      return -1
+    }else{
+      var result= this.getProgressSwitch(title,l);
+      return result;
+    }
+  }
+  getProgressSwitch(title,l){
+    switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
       case "Data Collation": this.progress = 1;
@@ -163,12 +178,13 @@ export class ApoTitlesComponent implements OnInit {
         break;
       case "Data Delivery": this.progress = 3;
         break;
-      case "": this.progress = -1;
+      case "": this.progress = 0;
         break;
 
     }
     return this.progress;
   }
+
 
   getColor(duedate) {
     var todaydate = new Date();
@@ -176,20 +192,12 @@ export class ApoTitlesComponent implements OnInit {
     var duedat = duedate.getMonth() + 1 + '/' + duedate.getDate() + '/' + duedate.getFullYear();
     var date = todaydate.getMonth() + 1 + '/' + todaydate.getDate() + '/' + todaydate.getFullYear();
     //console.log(duedat, date, '&&&&&')
-    if (duedat > date) {
-      return "none";
+    if (date<duedat) {
+      return "lessthan-todaydate";
     }
     else {
-      return "red";
+      return "due-date";
     }
   }
-  upload(files: File[]){
-    var formData = new FormData();
-    console.log('Filename',files);
-    Array.from(files).forEach(f => formData.append('file', f))
-    console.log('file',formData);
-    this.httpService.uploadrelease(formData).subscribe(event => {  
-        console.log('done')
-      })
-  }
+
 }

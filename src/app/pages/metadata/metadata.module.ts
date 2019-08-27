@@ -4,6 +4,7 @@ import {MatCardModule,  MatButtonModule} from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
 import { MetadataComponent } from './metadata.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { FormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: '', component: MetadataComponent
@@ -13,6 +14,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

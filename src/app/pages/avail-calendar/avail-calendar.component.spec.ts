@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserConfigComponent } from './user-config.component';
+import { AvailCalendarComponent } from './avail-calendar.component';
 
-describe('UserConfigComponent', () => {
-  let component: UserConfigComponent;
-  let fixture: ComponentFixture<UserConfigComponent>;
+describe('AvailCalendarComponent', () => {
+  let component: AvailCalendarComponent;
+  let fixture: ComponentFixture<AvailCalendarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserConfigComponent ]
+      declarations: [ AvailCalendarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserConfigComponent);
+    fixture = TestBed.createComponent(AvailCalendarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
