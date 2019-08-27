@@ -1,8 +1,7 @@
-<div class="acc-style-top">
+<!-- <div class="acc-style-top">
   <div class="card">
     <div class="d-flex top-bar">
       <div class="flex-description box-1">
-        <!-- <img class="img-card" src="../../../assets/images/lego.jpg"> -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage(src)">
         </button>
@@ -13,11 +12,6 @@
             <div class="card-content">
               <h6 class="main-title">The Lego Movie</h6>
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</h6>
-              <!-- <ul>
-                <li>The Lego Movie 2</li>
-                <li class="cust-text">
-                  <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
-              </ul> -->
             </div>
             <div class="circle" (click)="showTitleStatus(i)">
               <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
@@ -69,7 +63,6 @@
           <div class="col-md-4">
             <a class="avail-details" (click)="showDetails3 = !showDetails3">
               <img src="assets/images/Icons/PNG/titles.png">&nbsp;100 Titles</a>
-            <!-- <strong [hidden]="showDetails">Titles</strong> -->
             <div class="progress progress-main">
               <div class="progress-bar bg-success" style="width: 70%">
                 70
@@ -148,13 +141,11 @@
         </div>
         <div>&nbsp;</div>
 
-        <!-- progress bar -->
         <div style="margin: 20px 21px 24px 5px;" [hidden]="showDetails3">
           <div class="progress">
             <div [ngStyle]="{'width.%': width}" class="inner-progress">100</div>
           </div>
         </div>
-        <!-- progress bar -->
       </div>
 
     </div>
@@ -163,7 +154,6 @@
     <div class="col-md-6 line-last">
       <div class="row comman-row">
         <div class="col-md-12 block">
-          <!-- <div *ngIf="showStatus">-->
           <h6 class="status-text">Status</h6>
           <p class="status">
             <b>123</b> Pending Translations</p>
@@ -173,7 +163,6 @@
             <b>15</b>Pending Clarifications</p>
           <p class="status">
             <b>2</b> Escalations</p>
-          <!-- </div>  -->
         </div>
       </div>
       <br>
@@ -196,10 +185,8 @@
                     <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
                     <i class="fa fa-check fa-stack-1x custom-fa"></i>
                   </span>
-                  <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                    [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
+  
                 </span>
-                <!-- <br> -->
                 <span>
                   <p class="avail-title">{{avail.avail_title}}</p>
                   <p class="avail-date">
@@ -230,7 +217,7 @@
                     </span>
                   </span>
                 </div>
-                <!-- progress bar -->
+  
                 <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
                   <div class="progress">
                     <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
@@ -276,7 +263,7 @@
                     </div>
                     <div class="col-md-2 legend-pending-text">Pending</div>
                   </div>
-                  <!-- progress bar -->
+  
                 </div>
                 <div class="cust-text" *ngIf="showStatus== i">
                   <span class="status-text" (click)="showStatus = null">
@@ -338,7 +325,7 @@
               </li>
             </ul>
 
-            <!-- Tab panes -->
+  
             <div class="tab-content cmnt-list-scroll">
               <div id="comment" class="container tab-pane active">
                 <ul id="comments-list" class="comments-list">
@@ -382,7 +369,7 @@
                             <img class="log_img" src="assets/images/a_star_is_born_big.jpg" alt="events">
                             <span class="log-img-cmt">
                               <p>{{z.status}}</p>
-                              <!-- <p>{{z.image_url/fileName}}</p> -->
+  
                             </span>
                             <span class="log-img-status"> <p>Thumbnail Image</p></span>
                           </div>
@@ -403,11 +390,10 @@
 </div>
 
 <div class="container  acc-style">
-  <!-- The Modal -->
+  
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-view">
-        <!-- <img class="img-card img-crop" src="assets/images/lego.jpg" (click)="cropImage(src);"> -->
         <div>
           <img-cropper name="crop_img" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
           <br>
@@ -423,4 +409,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
