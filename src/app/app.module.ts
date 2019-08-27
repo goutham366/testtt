@@ -7,8 +7,10 @@ import { ROUTES } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from './services/http.service';
+// import { SearchPipePipe } from './directives/search.pipes';
+
 import {
   MatInputModule,
   MatOptionModule,
@@ -26,16 +28,29 @@ import { ForgotComponent } from './auth/forgot/forgot.component';
 import { ForgotOTPpageComponent } from './auth/forgot-otppage/forgot-otppage.component';
 import { ResetComponent } from './auth/reset/reset.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 
+import { ResizableDirective } from './directives/resizable';
+import { ResizerDirective } from './directives/resizer.directive';
+//import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     ForgotComponent,
     ForgotOTPpageComponent,
     ResetComponent,
-
     //ImageCropperComponent
-
+    ResizableDirective,
+    ResizerDirective
   ],
   imports: [
     BrowserModule,
@@ -53,11 +68,19 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     MatButtonModule,
     MatGridListModule,
     MatTabsModule,
+    MatToolbarModule,
+    MatProgressBarModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     // MDBBootstrapModule.forRoot()
-     //MDBBootstrapModule.forRoot()
+    //MDBBootstrapModule.forRoot()
   ],
-  providers: [HttpService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    HttpService,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

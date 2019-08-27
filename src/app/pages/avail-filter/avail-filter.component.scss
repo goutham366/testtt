@@ -252,7 +252,13 @@ span{
 
   .modal-backdrop{
     background-color: red !important;
-}.upload{
+    }
+.visibilityText{
+    visibility:hidden;
+}
+    
+
+.upload{
     cursor: pointer;
     .upload-text{
         font-size: 14px;
@@ -265,8 +271,16 @@ span{
     .errorMessage{
         position: fixed;
         color: red;
-        top: 119px;
-        left: 110px;
+        top: 26%;
+        left: 28%;
+    }
+    .successMessage{
+        position: fixed;
+        color: green;
+        top: 24%;
+        left: 28%;
+        // top: 119px;
+        // left: 110px;
     }
     .uploadcolor{
         border: 1px outset #007CC3;

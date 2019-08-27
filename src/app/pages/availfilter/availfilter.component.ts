@@ -51,9 +51,16 @@ export class AvailfilterComponent implements OnInit {
   filterShow:any;
   availDocName:any;
   availuploadData: Object;
+  successCase: boolean;
+  successMessage: any;
+  s3Resp:any;
+  secndUrlResp: any;
+  errorCase: boolean;
+
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.highlight1 = false;
     this.highlight2 = false;
+    this.errorCase = false;
     this.httpService.getAvailsDetails().subscribe(data => {
       this.availList = data;
       this.availCount = this.availList.length;
@@ -228,24 +235,93 @@ export class AvailfilterComponent implements OnInit {
   upload(files: File[]){
     var formData = new FormData();
     this.errorMessage=null;
+    this.successMessage=null;
+    this.successCase=false;
     this.filename=files[0].name;
     Array.from(files).forEach(f => formData.append('file', f))
     this.availDocName=this.filename.includes('Feature');
     
     if(this.availDocName===true){
-      this.httpService.uploadAvail(formData).subscribe(event => {  
-        this.availuploadData=event;
-        window.location.reload();
-        console.log('Avail upload done')
-      })
+    //   this.httpService.uploadAvail(formData).subscribe(data => {  
+    //     if(data['status']="success"){
+    //       this.successCase=true;
+    //       this.successMessage=data['successMessage'];
+    //     }
+    //     this.availuploadData=event;
+    //     //  window.location.reload();
+    //     console.log('Avail upload done')
+    //   },
+    //   error => {
+    //     this.successCase=false;
+    //     this.successMessage=null;
+    //     this.availDocName=false;
+    //     this.errorMessage=error.error.message;
+    //     console.log('Avail Doc Error', error.error.message);
+    //   }
+    // )
+
+    this.httpService.uploadToS3(formData).subscribe(data => {  
+      //this.uploadreleaseData=data;
+        this.s3Resp = data;
+        
+        this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {  
+          console.log("second call data : "+ data);
+            this.secndUrlResp = data;
+
+            // this.httpService.uploadAvailToBack(this.secndUrlResp.aws_file_path).subscribe(data => {  
+            //   console.log("third call data : "+ data);
+              if(data['status']="success"){
+                this.successCase=true;
+                this.errorCase = false;
+                this.successMessage=data['successMessage'];
+                this.httpService.availrefreshcomp.next();
+              // this.thirdUrlData = data;
+              }
+                
+            // },
+            // error => {
+            //   this.successCase=false;
+            //   this.successMessage=null;
+            //   this.errorMessage=error.error.message;
+            //   console.log('third call Error', error.error.message);
+            // }
+            // )
+
+          },
+          error => {
+              this.successCase=false;
+              this.successMessage=null;
+              this.errorCase = true;
+              this.errorMessage=error.error.message;
+              console.log('second call Error', error.error.message);
+            }
+          )
+    },
+      error => {
+        this.successCase=false;
+        this.successMessage=null;
+        this.errorCase = true;
+        this.errorMessage=error.error.message;
+        console.log('S3 Doc Error', error.error.message);
+      }
+    )
     }
    else if(this.availDocName===false){
-        this.errorMessage="Is not a valid file format";
-        window.location.reload();
+      this.errorMessage="Is not a valid file format";
+       // window.location.reload();
+       this.errorCase = true;
+       this.successCase=false;
+       this.successMessage=null;
     }
     
   }
   filter(){
     this.filterShow=true;
+  }
+  openingModal(){
+    this.successCase=false;
+    this.errorCase = false;
+    this.filename='';
+    this.errorMessage="";
   }
 }

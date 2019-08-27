@@ -20,38 +20,43 @@ export class AvailDashboardComponent implements OnInit {
   showTitlesText: any;
   showCountriesText: any;
   showLanguagesText: any;
-  completedWidth: any;
-  pendingWidth: any;
+  completedTitlesWidth: any;
+  pendingTitlesWidth: any;
+  completedCountriesWidth: any;
+  pendingCountriesWidth: any;
+  completedLanguagesWidth: any;
+  pendingLanguagesWidth: any;
   semicircle: any;
   selected: any;
 
   titlesClicked: boolean = false;
 
   constructor(private httpService: HttpService) { }
-
-  ngOnInit() {
+  getAvailData() {
     this.httpService.getAvailData().subscribe(data => {
       this.availsData = data;
-      this.availsList = [];
-      for (let i = 0; i < this.availsData.length; i++) {
-        let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
-        if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
-          this.availsList.push(this.availsData[i]);
-        }
-      }
-    });
-    this.httpService.currentMessage.subscribe(message => {
-      this.selected = message;
-      if (this.selected === 'New') {
-        this.availsList = [];
+      this.httpService.currentMessage.subscribe(message => {
+        this.selected = message;
+        if(this.selected === '' ||this.selected === null){
+          this.availsList = [];
           for (let i = 0; i < this.availsData.length; i++) {
+            this.pendingTitlesWidth = this.availsData[i].TitleData.PendingTitlesCount;
             let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
             if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
               this.availsList.push(this.availsData[i]);
             }
+          } 
+        }
+      if (this.selected === 'New') {
+        this.availsList = [];
+        for (let i = 0; i < this.availsData.length; i++) {
+          let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
+          if (filteredAvailName === 'FN' || filteredAvailName === 'FT') {
+            this.availsList.push(this.availsData[i]);
           }
+        }
       }
-        else if (this.selected === 'Catalog') {
+      else if (this.selected === 'Catalog') {
         this.availsList = [];
         for (let i = 0; i < this.availsData.length; i++) {
           let filteredAvailName = this.availsData[i].AvailName.substring(0, 2);
@@ -59,9 +64,18 @@ export class AvailDashboardComponent implements OnInit {
             this.availsList.push(this.availsData[i]);
           }
         }
-    }
+      }
+      })
     });
-
+   
+      
+      
+  }
+  ngOnInit() {
+    this.getAvailData();
+    this.httpService.refresh('avail').subscribe(dataof => {
+      this.getAvailData();
+    })
     this.title = "Avails"
     this.showDetails = -1;
     this.width = 75;
@@ -82,58 +96,5 @@ export class AvailDashboardComponent implements OnInit {
       'font-size': '12px'
     };
   }
-
-  showtitlesDiv(event, index) {
-    this.showDetails = index;
-    this.titlesClicked = true;
-
-
-  }
-  showcountriesDiv(event, index) {
-    this.showDetails = index;
-
-  }
-  showlanguagesDiv(event, index) {
-    this.showDetails = index;
-
-
-  }
-
-  showAvailStatus(index) {
-    this.showStatus = index;
-    this.showDetails = null;
-  }
-
-  rotate(title, clickedText) {
-    for (let i = 0; i < this.availsList.length; i++) {
-      let tName = this.availsList[i].AvailName;
-      if (title === tName) {
-        if (clickedText === "titles") {
-          this.showTitlesText = "Titles";
-          this.showCountriesText = null;
-          this.showLanguagesText = null;
-          this.completedWidth = this.availsList[i].TitleData.CompletedTitlesCount;
-          this.pendingWidth = this.availsList[i].TitleData.PendingTitlesCount;
-        }
-        else if (clickedText == "countries") {
-          this.showCountriesText = "Countries";
-          this.showTitlesText = null;
-          this.showLanguagesText = null;
-          this.completedWidth = this.availsList[i].TitleData.CountriesCompletedCount;
-          this.pendingWidth = this.availsList[i].TitleData.CountriesPendingCount;
-        }
-        else if (clickedText == "languages") {
-          this.showLanguagesText = "Languages";
-          this.showTitlesText = null;
-          this.showCountriesText = null;
-          this.completedWidth = this.availsList[i].TitleData.LanguagesCompletedCount;
-          this.pendingWidth = this.availsList[i].TitleData.LanguagesPendingCount;
-        }
-      }
-    }
-
-  }
-
-
 
 }

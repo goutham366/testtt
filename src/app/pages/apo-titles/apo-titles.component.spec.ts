@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
-fdescribe('ApoTitlesComponent', () => {
+describe('ApoTitlesComponent', () => {
   let component: ApoTitlesComponent;
   let fixture: ComponentFixture<ApoTitlesComponent>;
   let service: HttpService;

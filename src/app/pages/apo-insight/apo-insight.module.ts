@@ -7,6 +7,8 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ImageCropperComponent, ImageCropperModule } from 'ng2-img-cropper';
+//import { NgxImageEditorModule } from "ngx-image-editor";
+//import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     imports: [
@@ -37,6 +39,8 @@ import { ImageCropperComponent, ImageCropperModule } from 'ng2-img-cropper';
       MatCardModule,
       MatButtonModule,
       ImageCropperModule
+      //NgxImageEditorModule,
+      //FlexLayoutModule
       
     ],
     exports: [

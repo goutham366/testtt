@@ -1,135 +1,140 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2 align-spacer"></div>
-        <div class="col-md-10">
-            <div class="row">
-                <div class="ml-auto">
-                    <app-avail-filter></app-avail-filter>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 margin-b" *ngFor="let x of apoList; let i=index">
-                    <div class="card">
-                        <div class="card-main">
-                            <div class="card-img">
-                                <span class="addPre_upBtn btn btn-sm btn-bg1" (click)="triggerUpload();">
-                                    <img class="card-img-top" [src]="x.ImageURL==''?ImageUrl:x.ImageURL" (click)="imgClickTrack(x,i);">
-                                </span>
-                                <input type="file" (change)="handleFileInputForAdd($event.target.files)" id="fileUpload" accept="image/*" style="display:none;"
-                                    [disabled]="uploadStatus" />
-
-                            </div>
-                            <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
-                                <div class="card-content card-flex" *ngIf="showStatus!==i">
-                                    <ul>
-                                        <li>
-                                            <h6 class="title-text"> {{x.GlobalTitle}}</h6>
-                                        </li>
-                                        <li class="cust-text">
-                                            <img src="assets/images/Icons/PNG/calendar.png">{{x.StartDate | date:'dd/MM'}} -
-                                            <span [ngStyle]="{'background-color':getColor(x.DueDate)}">{{x.DueDate | date:'dd/MM'}}</span>
-                                        </li>
-                                    </ul>
-                                    <div class="circle" (click)="showTitleStatus(i)">
-                                        <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                            [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
-                                    </div>
-                                </div>
-                                <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
-                                    <ol class="wizard-progress">
-                                        <li [ngClass]="{'active-step': i<=getProgress(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
-                                            <span class="step-name">
-                                                <span *ngIf="stage.stageTitle==x.TitleStatus" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
-                                            </span>
-                                            <span class="visuallyhidden"></span>
-                                            <span class="step-num"></span>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                            <div class="cust-text status-text-padding" *ngIf="showStatus==i">
-                                <h6 class="status-text">Status</h6>
-                                <p class="status">
-                                    <b> 0</b> Pending Translations</p>
-                                <p class="status">
-                                    <b> 0</b> Pending Ratings</p>
-                                <p class="status">
-                                    <b>0</b> Pending Clarifications</p>
-                                <p class="status">
-                                    <b>0</b> Escalations</p>
-
-                            </div>
-                            <div class="flex" *ngIf="showStatus!=i">
-                                <span class="apo-color box" (click)="showAccounts(i);selectTab(x.GlobalTitle,'titles')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
-                                    <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{x.AccontsCount}}
-                                    <span class="text-space" *ngIf="accStatus && (titleName===x.GlobalTitle)">Accounts</span>
-                                </span>
-                                <span class="apo-color box1" (click)="showCountries(i);selectTab(x.GlobalTitle,'countries')" [ngClass]="(countriesClicked) ? 'box1clicked' : 'box1'">
-                                    <i class="material-icons md-18 md-grey v-align">language</i>{{x.CountriesCount}}
-                                    <span class="text-space" *ngIf="langStatus && (titleName===x.GlobalTitle)">Countries</span>
-                                </span>
-                                <span class="apo-color box2" (click)="showTranslations(i);selectTab(x.GlobalTitle,'languages')" [ngClass]="(translationsClicked) ? 'box2clicked' : 'box2'">
-                                    <i class="material-icons md-18 md-grey v-align">translate</i> {{x.LanguagesCount}}
-                                    <span class="text-space" *ngIf="transStatus && (titleName===x.GlobalTitle)">Languages</span>
-                                </span>
-                            </div>
-                            <div class="progressBar" *ngIf="titleName===x.GlobalTitle && accStatus">
-                                <div class="progress progress-main">
-                                    <div class="completeColor" [style.width.%]="width">
-                                        {{x.AccontsCompletedCount}}
-                                    </div>
-                                    <div class="pendingColor" [style.width.%]="remainingpercent">
-                                        {{x.AccontsPendingCount}}
-                                    </div>
-                                    
-                                  
-
-                                </div>
-
-                            </div>
-                            <div class="progressBar" *ngIf="titleName===x.GlobalTitle && langStatus">
-                                <div class="progress progress-main">
-                                    <div class="completeColor" [style.width.%]="width">
-                                        {{x.CountriesCompletedCount}}
-                                    </div>
-                                    <div class="pendingColor" [style.width.%]="remaining">
-                                        {{x.CountriesPendingCount}}
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="progressBar" *ngIf="titleName===x.GlobalTitle && transStatus">
-                                <div class="progress progress-main">
-                                    <div class="completeColor" [style.width.%]="width">
-                                        {{x.LanguagesCompletedCount}}
-                                    </div>
-                                    <div class="pendingColor" [style.width.%]="remaining">
-                                        {{x.LanguagesPendingCount}}
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="status_legend status-padding" *ngIf="titleName===x.GlobalTitle && (accStatus || langStatus || transStatus)">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <div class="complete-legend"></div>
-                                    </div>
-                                    <div class="col-md-6 legend-text">Completed</div>
-
-                                    <div class="col-md-1">
-                                        <div class="pending-legend"></div>
-                                    </div>
-                                    <div class="col-md-3 legend-pending-text">Pending</div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
+<div class="container-fluid" data-dismiss="modal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="ml-auto filter">
+                        <app-avail-filter [childMessage]="parentMessage"></app-avail-filter>
                     </div>
-
+                </div>
+                <div class="row">
+                    <div class="col-md-3 apo-margin" *ngFor="let x of apoList; let i=index">
+                        <div class="card">
+                            <div class="card-main">
+                                <div class="card-img">
+                                    <span class="addPre_upBtn btn btn-sm btn-bg1" (click)="triggerUpload();">
+                                        <img class="card-img-top" [src]="x.ImageURL==''?ImageUrl:x.ImageURL" (click)="imgClickTrack(x,i);">
+                                    </span>
+                                    <input type="file" class="file-display" (change)="handleFileInputForAdd($event.target.files)" id="fileUpload" accept="image/*"
+                                        [disabled]="uploadStatus" />
+    
+                                </div>
+                                <div>
+                                <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
+                                    <div class="card-content card-flex" *ngIf="showStatus!==i">
+                                        <ul>
+                                            <li>
+                                                <h6 class="title-text"> {{x.GlobalTitle}}</h6>
+                                            </li>
+                                            <li class="cust-text">
+                                                <img src="assets/images/Icons/PNG/calendar.png">{{x.StartDate | date:'dd/MM'}} -
+                                                <span [ngStyle]="{'background-color':getColor(x.DueDate)}">{{x.DueDate | date:'dd/MM'}}</span>
+                                            </li>
+                                        </ul>
+                                        <div class="circle" (click)="showTitleStatus(i)">
+                                            <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                                        </div>
+                                    </div>
+                                    <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
+                                        <ol class="wizard-progress">
+                                              
+                                            <li [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
+                                                <span class="step-name" >
+                                                  <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                </span>
+                                                <span class="visuallyhidden"></span>
+                                                <span class="step-num"></span>
+                                            </li>
+                                        </ol>
+                                    </div>
+    
+                                </div>
+                                <div class="cust-text status-text-padding" *ngIf="showStatus==i">
+                                    <h6 class="status-text">Status</h6>
+                                    <p class="status">
+                                        <b class="font-number"> 0</b> Pending Translations</p>
+                                    <p class="status">
+                                        <b class="font-number"> 0</b> Pending Ratings</p>
+                                    <p class="status">
+                                        <b class="font-number">0</b> Pending Clarifications</p>
+                                    <p class="status">
+                                        <b class="font-number">0</b> Escalations</p>
+    
+                                </div>
+                                <div class="display-block">
+                                <div class="flex" *ngIf="showStatus!=i">
+                                    <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.GlobalTitle,'titles')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
+                                        <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{x.AccontsCount}}
+                                        <span class="text-space" *ngIf="accStatus && (titleName===x.GlobalTitle)">Accounts</span>
+                                    </span>
+                                    <span class="apo-color countriesBox" (click)="showCountries(i);selectTab(x.GlobalTitle,'countries')" [ngClass]="(countriesClicked) ? 'box1clicked' : 'box1'">
+                                        <i class="material-icons md-18 md-grey v-align">language</i>{{x.CountriesCount}}
+                                        <span class="text-space" *ngIf="langStatus && (titleName===x.GlobalTitle)">Countries</span>
+                                    </span>
+                                    <span class="apo-color languagesBox" (click)="showTranslations(i);selectTab(x.GlobalTitle,'languages')" [ngClass]="(translationsClicked) ? 'box2clicked' : 'box2'">
+                                        <i class="material-icons md-18 md-grey v-align">translate</i> {{x.LanguagesCount}}
+                                        <span class="text-space" *ngIf="transStatus && (titleName===x.GlobalTitle)">Languages</span>
+                                    </span>
+                                </div>
+                                </div>
+                                <div class="progressBar" *ngIf="titleName===x.GlobalTitle && accStatus">
+                                    <div class="progress progress-main">
+                                        <div class="completeColor" [style.width.%]="width">
+                                            {{x.AccontsCompletedCount}}
+                                        </div>
+                                        <div class="pendingColor" [style.width.%]="remaining">
+                                            {{x.AccontsPendingCount}}
+                                        </div>
+                                        
+                                      
+    
+                                    </div>
+    
+                                </div>
+                                <div class="progressBar" *ngIf="titleName===x.GlobalTitle && langStatus">
+                                    <div class="progress progress-main">
+                                        <div class="completeColor" [style.width.%]="width">
+                                            {{x.CountriesCompletedCount}}
+                                        </div>
+                                        <div class="pendingColor" [style.width.%]="remaining">
+                                            {{x.CountriesPendingCount}}
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="progressBar" *ngIf="titleName===x.GlobalTitle && transStatus">
+                                    <div class="progress progress-main">
+                                        <div class="completeColor" [style.width.%]="width">
+                                            {{x.LanguagesCompletedCount}}
+                                        </div>
+                                        <div class="pendingColor" [style.width.%]="remaining">
+                                            {{x.LanguagesPendingCount}}
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="status_legend status-padding" *ngIf="titleName===x.GlobalTitle && (accStatus || langStatus || transStatus)">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <div class="complete-legend"></div>
+                                        </div>
+                                        <div class="col-md-6 legend-text">Completed</div>
+    
+                                        <div class="col-md-1">
+                                            <div class="pending-legend"></div>
+                                        </div>
+                                        <div class="col-md-3 legend-pending-text">Pending</div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+    
+    
+                        </div>
+    
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    

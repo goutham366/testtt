@@ -1,12 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { ActivatedRoute } from '@angular/router';
-import { CropperSettings, Bounds } from 'ng2-img-cropper';
+import { CropperSettings } from 'ng2-img-cropper';
+import { ImageCropperComponent } from 'ng2-img-cropper';
 
-
-interface Stages {
-  stageTitle: String;
-}
 @Component({
   selector: 'app-apo-insight',
   templateUrl: './apo-insight.component.html',
@@ -16,18 +12,15 @@ export class AvailInsightComponent implements OnInit {
   showDetails: any;
   showStatus: any;
   width: any;
-  posts: any;
   availsList: any = [];
   showTitlesText: any;
   showCountriesText: any;
   showLanguagesText: any;
   completedWidth: any;
   pendingWidth: any;
-  //showDetails: boolean;
   showDetails1: boolean;
   showDetails2: boolean;
   showDetails3: boolean;
-  //width: any;
   removeButton: boolean;
   removeAddButton: boolean;
   COMMENTS = 'COMMENTS';
@@ -35,23 +28,6 @@ export class AvailInsightComponent implements OnInit {
   multipleList: any = [];
   multipleArray: any = [];
   availDetailsViewList: any;
-  //showStatus: any;
-  availList: any;
-  titleStatus: boolean = false;
-  langStatus: boolean = false;
-  transStatus: boolean = false;
-  accStatus: boolean = false;
-  account: any;
-  titleName: any;
-  avail_title: any;
-  remaining: any;
-  public stages: Stages[];
-  status: any;
-  ImageUrl: string = " ";
-  fileToUpload: File;
-  files: any;
-  selectedRecord: any;
-  uploadStatus: boolean;
 
   ngOnInit() {
     this.showDetails = -1;
@@ -65,7 +41,6 @@ export class AvailInsightComponent implements OnInit {
       this.availDetailsViewList = data;
       console.log('Avails Details data', this.availDetailsViewList);
     })
-
 
     this.availsList = [
       {
@@ -168,9 +143,30 @@ export class AvailInsightComponent implements OnInit {
       },
     ]
   }
-  
-  cropImage(event: Event) {
-    console.log('Click!', event)
+
+  data: any;
+  cropperSettings: CropperSettings;
+
+  @ViewChild('cropper', undefined)
+  cropper: ImageCropperComponent;
+
+  cropImage(source) {
+    let img = document.getElementsByName("main_img")[0];
+    if (img != null) {
+      let main_img = img["src"];
+      var image: any = new Image();
+      image.src = main_img;
+      this.cropper.setImage(image);
+    }
+  }
+
+  saveCropImage(source) {
+    let img_final = document.getElementsByName("final_img")[0];
+    if (img_final) {
+      let final_img = document.getElementsByName("final_img")[0]["src"];
+      document.getElementsByName("main_img")[0]["src"] = final_img;
+      console.log('Click!', final_img);
+    }
   }
 
   addMultipleValue(point) {
@@ -179,7 +175,6 @@ export class AvailInsightComponent implements OnInit {
       this.multipleArray[point] = [];
       this.removeAddButton = false;
     }
-
     var val = ''
     switch (point) {
       case this.COMMENTS:
@@ -190,7 +185,6 @@ export class AvailInsightComponent implements OnInit {
         break;
     }
     if (val) {
-
       this.multipleList[point].push({ n: val });
       this.multipleArray[point].push(val);
     }
@@ -200,68 +194,13 @@ export class AvailInsightComponent implements OnInit {
       this.removeButton = false;
     }
   }
-  
-
-  //Cropper 1 data
-  data1: any;
-  cropperSettings1: CropperSettings;
-
-  //Cropper 2 data
-  data2: any;
-  cropperSettings2: CropperSettings;
-  @ViewChild('cropper', undefined) cropper: AvailInsightComponent;
-
   constructor(private httpService: HttpService) {
-    this.removeButton = false;
-    this.removeAddButton = true;
-
-    this.cropperSettings1 = new CropperSettings();
-    this.cropperSettings1.width = 100;
-    this.cropperSettings1.height = 100;
-
-    this.cropperSettings1.croppedWidth = 100;
-    this.cropperSettings1.croppedHeight = 100;
-
-    this.cropperSettings1.canvasWidth = 100;
-    this.cropperSettings1.canvasHeight = 100;
-
-    this.cropperSettings1.minWidth = 50;
-    this.cropperSettings1.minHeight = 50;
-
-    this.cropperSettings1.rounded = false;
-
-    this.cropperSettings1.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
-    this.cropperSettings1.cropperDrawSettings.strokeWidth = 2;
-
-    this.data1 = {};
-
+    this.cropperSettings = new CropperSettings();
+    this.cropperSettings.noFileInput = true;
+    this.data = {};
   }
 
-  cropped(bounds: Bounds) {
-    //console.log(bounds);
-  }
-
-  /**
-   * Used to send image to second cropper
-  //  * @param $event
-   */
-  fileChangeListener($event) {
-    var image: any = new Image();
-    var file: File = $event.target.files[0];
-    var myReader: FileReader = new FileReader();
-    var that = this;
-    myReader.onloadend = function (loadEvent: any) {
-      image.src = loadEvent.target.result;
-      //that.cropper.setImage(image);
-
-    };
-
-    myReader.readAsDataURL(file);
-  }
-
-
-
-  showtitlesDiv(event,index) {
+  showtitlesDiv(event, index) {
     this.showDetails = index;
     const hashClass = event.target.classList.contains("clicked");
     if (hashClass) {
@@ -271,7 +210,7 @@ export class AvailInsightComponent implements OnInit {
       event.srcElement.classList.add("clicked");
     }
   }
-  showcountriesDiv(event,index) {
+  showcountriesDiv(event, index) {
     this.showDetails = index;
     const hashClass = event.target.classList.contains("clicked");
     if (hashClass) {
@@ -281,7 +220,7 @@ export class AvailInsightComponent implements OnInit {
       event.srcElement.classList.add("clicked");
     }
   }
-  showlanguagesDiv(event,index) {
+  showlanguagesDiv(event, index) {
     this.showDetails = index;
     const hashClass = event.target.classList.contains("clicked");
     if (hashClass) {
@@ -298,7 +237,7 @@ export class AvailInsightComponent implements OnInit {
   }
   rotate(title, clickedText) {
     for (let i = 0; i < this.availsList.length; i++) {
-      for(let j = 0; j < this.availsList[i].avail_details.length; j++ ) {
+      for (let j = 0; j < this.availsList[i].avail_details.length; j++) {
         let tName = this.availsList[i].avail_name;
         if (title === tName) {
           if (clickedText === "titles") {
@@ -324,10 +263,11 @@ export class AvailInsightComponent implements OnInit {
           }
         }
       }
-      
 
     }
-
+  }
+  reload() {
+    location.reload();
   }
 
 }

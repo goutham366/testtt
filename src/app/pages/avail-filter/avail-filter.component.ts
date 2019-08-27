@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -7,6 +7,7 @@ import { HttpService } from '../../services/http.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'; import { ReactiveFormsModule } from '@angular/forms';
 import { formatDate } from '@angular/common';
+import { ApoTitlesComponent } from '../apo-titles/apo-titles.component';
 
 
 @Component({
@@ -15,6 +16,9 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./avail-filter.component.scss']
 })
 export class AvailFilterComponent implements OnInit {
+
+  @Input() childMessage: string;
+
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
@@ -46,15 +50,25 @@ export class AvailFilterComponent implements OnInit {
   showUpload:boolean=false;
   triggerDocName:any;
   relaseDocumentName: any;
+  itunesDocumentName: any;
   errorMessage:any;
   filename:any;
   filterShow:any;
   uploadreleaseData: any;
   triggerData: Object;
+  successCase: boolean;
+  errorCase: boolean;
+  successMessage: any;
+  s3Resp:any;
+  secndUrlResp: any;
+  //thirdUrlData: any;
+  apoObject:any;
   
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+    this.errorCase = false;
     this.highlight1 = false;
     this.highlight2 = false;
+    //this.apoObject=new ApoTitlesComponent(httpService,activatedRoute);
     this.httpService.getAvailsDetails().subscribe(data => {
       this.availList = data;
       this.availCount = this.availList.length;
@@ -73,6 +87,7 @@ export class AvailFilterComponent implements OnInit {
         this.myDate=""; 
     }   
     })
+   
   }
   clickDate(c,id){
     if(!c){
@@ -205,11 +220,13 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   ngOnInit() {
+    
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );
+      
 
   }
 
@@ -229,43 +246,119 @@ export class AvailFilterComponent implements OnInit {
   upload(files: File[]){
     var formData = new FormData();
     this.errorMessage=null;
+    this.successMessage=null;
+    this.successCase=false;
     this.filename=files[0].name;
     Array.from(files).forEach(f => formData.append('file', f))
     this.triggerDocName=this.filename.includes('Trigger');
     this.relaseDocumentName=this.filename.includes('Release');
-    if(this.relaseDocumentName===true){
-      this.httpService.uploadrelease(formData).subscribe(data => {  
-        this.uploadreleaseData=data;
+    this.itunesDocumentName=this.filename.includes('ITunes');
+  //   if(this.relaseDocumentName===true){
+  //     this.httpService.uploadrelease(formData).subscribe(data => {  
+  //       if(data['status']="success"){
+  //         this.successCase=true;
+  //         this.successMessage=data['successMessage'];
+  //       }
+  //       this.uploadreleaseData=data;
+  //     },
+  //      error => {
+  //         this.successCase=false;
+  //         this.successMessage=null;
+  //         this.errorMessage=error.error.message;
+  //         console.log('Release Doc Eror', error.error.message);
+  //       }
+  //     )
+  //   }
+
+  //   else if(this.triggerDocName===true){
+  //     this.httpService.uploadtrigger(formData).subscribe(data => {  
+  //       if(data['status']="success"){
+  //         this.successCase=true;
+  //         this.successMessage=data['successMessage'];
+  //       }
+  //       this.triggerData=data;
+
+  //     },
+  //     error => {
+  //       this.successCase=false;
+  //       this.successMessage=null;
+  //       this.errorMessage=error.error.message;
+  //       console.log('Trigger Doc Error', error.error.message);
+  //     }
+        
+  //     )
+  //   }
+  //  else if(this.relaseDocumentName===false ||this.triggerDocName===false){
+  //       this.errorMessage="Is not a valid file format";
+  //       this.successCase=false;
+  //       this.successMessage=null;
+  //   }
+
+
+
+    if(this.relaseDocumentName || this.triggerDocName || this.itunesDocumentName){
+      this.httpService.uploadToS3(formData).subscribe(data => {  
+        //this.uploadreleaseData=data;
+          this.s3Resp = data;
+          
+          this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {  
+            console.log("second call data : "+ data);
+              this.secndUrlResp = data;
+
+              // this.httpService.uploadApoToBack(this.secndUrlResp.aws_file_path, this.relaseDocumentName, this.triggerDocName).subscribe(data => {  
+              //   console.log("third call data : "+ data);
+
+                if(data['status']="success"){
+                  this.successCase=true;
+                  this.errorCase = false;
+                  this.successMessage=data['successMessage'];
+                 this.httpService.refreshcomp.next();
+                }
+                  
+              // },
+              // error => {
+              //   this.errorCase = true;
+              //   this.successCase=false;
+              //   this.successMessage=null;
+              //   this.errorMessage=error.error.message;
+              //   //this.httpService.refreshcomp.next();
+              //   console.log('third call Error', error.error.message);
+              // }
+              // )
+
+            },
+            error => {
+                this.errorCase = true;
+                this.successCase=false;
+                this.successMessage=null;
+                this.errorMessage=error.error.message;
+                this.httpService.refreshcomp.next();
+                console.log('second call Error', error.error.message);
+              }
+            )
       },
-       error => {
+        error => {
+          this.errorCase = true;
+          this.successCase=false;
+          this.successMessage=null;
           this.errorMessage=error.error.message;
-         // window.location.reload();
-          console.log('Release Doc Eror', error.error.message);
+          this.httpService.refreshcomp.next();
+          console.log('S3 Doc Error', error.error.message);
         }
       )
+    }else{
+      this.errorCase = true;
+      this.errorMessage="Is not a valid file format";
+      this.successCase=false;
+      this.successMessage=null;
     }
-
-    else if(this.triggerDocName===true){
-      this.httpService.uploadtrigger(formData).subscribe(data => {  
-        this.triggerData=data;
-
-      },
-      error => {
-        this.errorMessage=error.error.message;
-        //window.location.reload();
-        console.log('Trigger Doc Error', error.error.message);
-      }
-        
-      )
-    }
-   else if(this.relaseDocumentName===false ||this.triggerDocName===false){
-        this.errorMessage="Is not a valid file format";
-        
-    }
-    
   }
-  filter(){
-    this.filterShow=true;
+  openingModal(){
+    this.successCase=false;
+    this.errorCase = false;
+    this.filename='';
+    this.errorMessage="";
   }
 
 }
+

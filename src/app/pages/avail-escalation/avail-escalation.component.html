@@ -1,134 +1,126 @@
-<div class="ml-16">
-  <ul class="breadcrumb">
-  <li class="breadcrumb-item">
-      <a routerLink="/pages" style="color:grey">Avails</a>
-  </li>
-  <i class="fa fa-angle-right arrow"></i>
-  <li class="breadcrumb-item">
-      <a style="color:#007CC3">{{sidenav_title}}</a>
-  </li>
-</ul>
+<div class="p-2 cust-style d-flex">
+    <div class="d-flex cus-box">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a class="avail-breadcrumb" routerLink="/pages">Avails</a>
+            </li>
+            <i class="fa fa-angle-right arrow"></i>
+            <li class="breadcrumb-item">
+                <a class="avails-sidenav-color">{{sidenav_title}}</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
+<div class="container-fluid">
+    <div class="row avail-card">
+        <div class="col-sm-4 avail-box" *ngFor="let avail of availsList; let i = index">
+            <div class="card text-white mb-3 shadow-sm card-width">
+                <div class="c-pointer" (click)="showDetails = null">
+                    <div class="hidden-header" [attr.id]="'undoBtn'+i" *ngIf="showDetails == i">{{avail.avail_title}}</div>
+                </div>
 
-
-<div class="row avail-card">
-
-  <div class="col-sm-4" *ngFor="let avail of availsList; let i = index">
-      <div class="card text-white mb-3 shadow-sm card-width">
-          <div class="c-pointer" (click)="showDetails = null">
-              <div class="hidden-header" [attr.id]="'undoBtn'+i" *ngIf="showDetails == i">{{avail.avail_title}}</div>
-          </div>
-
-          <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
-              <span class="avail-status c-pointer" (click)="showAvailStatus(i)">
-                    <div class="current" [ngStyle]="getOverlayStyle()">60%</div>
-                    <round-progress
-                    [current]="60"
-                    [max]="100"
-                    [color]="'#008040'"
-                    [background]="'#006FAD'"
-                    [radius]="22"
-                    [stroke]="2.3"
-                    [semicircle]="false"
-                    [rounded]="true"
-                    [clockwise]="true"
-                    [responsive]="false"
-                    [duration]="800"
-                    [animation]="'easeInOutQuart'"
-                    [animationDelay]="0"></round-progress>
-                  <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
+                    <span class="avail-status c-pointer" (click)="showAvailStatus(i)">
+                        <div class="current" [ngStyle]="getOverlayStyle()">60%</div>
+                        <round-progress [current]="60" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22" [stroke]="2.3" [semicircle]="false"
+                            [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
+                            [animationDelay]="0"></round-progress>
+                        <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                       [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
-              </span>
-              <!-- <br> -->
-              <span>
-                  <p class="avail-title" routerLink="/pages/titles/titleview" [queryParams]="{ avail_title: avail.avail_title }">{{avail.avail_title}}</p>
-                  <p class="avail-date">
-                      <img src="assets/images/Icons/PNG/calendar.png"> {{avail.date_of_arrival}} - <span>{{avail.date_of_delivery}}</span></p>
-              </span>
+                    </span>
+                    <!-- <br> -->
+                    <span>
+                        <p class="avail-title" routerLink="/pages/titles/titleview" [queryParams]="{ avail_title: avail.avail_title }">{{avail.avail_title}}</p>
+                        <p class="avail-date">
+                            <img src="assets/images/Icons/PNG/calendar.png"> {{avail.date_of_arrival}} -
+                            <span>{{avail.date_of_delivery}}</span>
+                        </p>
+                    </span>
 
-          </div>
-          <div class="card-body" *ngFor="let detail of avail.avail_details">
-              <div class="equalHMWrap" *ngIf="showStatus !==i">
-                  <span (click)="showtitlesDiv($event,i);" id="titlesDiv">
-                      <span class="avail-details titlesBox" (click)="rotate(avail.avail_name, 'titles')">
-                          <img src="assets/images/Icons/PNG/titles.png"> {{detail.titlesCount}}
-                          <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
-                      </span>
-                  </span>
-                  <span (click)="showcountriesDiv($event,i)" id="countriesDiv">
-                      <span class="avail-details countriesBox" (click)="rotate(avail.avail_name, 'countries')">
-                          <i class="material-icons md-18 md-grey v-align">language</i> {{detail.countriesCount}}
-                          <span *ngIf="showDetails == i">{{showCountriesText}}</span>
-                      </span>
-                  </span>
-                  <span (click)="showlanguagesDiv($event,i)" id="languagesDiv">
-                      <span class="avail-details languagesBox" (click)="rotate(avail.avail_name, 'languages')">
-                          <i class="material-icons md-18 md-grey v-align">translate</i> {{detail.languagesCount}}
-                          <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
-                      </span>
-                  </span>
-              </div>
-              <!-- progress bar -->
-              <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
-                  <div class="progress">
-                      <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                          {{detail.titlesCompleted}}
-                      </div>
-                      <div [ngStyle]="{'width.%': pendingWidth}">
-                          {{detail.titlesPending}}
-                      </div>
-                  </div>
-              </div>
+                </div>
+                <div class="card-body" *ngFor="let detail of avail.avail_details">
+                    <div class="equalHMWrap" *ngIf="showStatus !==i">
+                        <span (click)="showtitlesDiv($event,i);" id="titlesDiv">
+                            <span class="avail-details titlesBox" (click)="rotate(avail.avail_name, 'titles')">
+                                <img src="assets/images/Icons/PNG/titles.png"> {{detail.titlesCount}}
+                                <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
+                            </span>
+                        </span>
+                        <span (click)="showcountriesDiv($event,i)" id="countriesDiv">
+                            <span class="avail-details countriesBox" (click)="rotate(avail.avail_name, 'countries')">
+                                <i class="material-icons md-18 md-grey v-align">language</i> {{detail.countriesCount}}
+                                <span *ngIf="showDetails == i">{{showCountriesText}}</span>
+                            </span>
+                        </span>
+                        <span (click)="showlanguagesDiv($event,i)" id="languagesDiv">
+                            <span class="avail-details languagesBox" (click)="rotate(avail.avail_name, 'languages')">
+                                <i class="material-icons md-18 md-grey v-align">translate</i> {{detail.languagesCount}}
+                                <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
+                            </span>
+                        </span>
+                    </div>
+                    <!-- progress bar -->
+                    <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
+                        <div class="progress">
+                            <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
+                                {{detail.titlesCompleted}}
+                            </div>
+                            <div [ngStyle]="{'width.%': pendingWidth}">
+                                {{detail.titlesPending}}
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="progressBar" *ngIf="showDetails===i && showCountriesText == 'Countries'">
-                  <div class="progress">
-                      <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                          {{detail.countriesCompleted}}
-                      </div>
-                      <div [ngStyle]="{'width.%': pendingWidth}">
-                          {{detail.countriesPending}}
-                      </div>
-                  </div>
-              </div>
+                    <div class="progressBar" *ngIf="showDetails===i && showCountriesText == 'Countries'">
+                        <div class="progress">
+                            <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
+                                {{detail.countriesCompleted}}
+                            </div>
+                            <div [ngStyle]="{'width.%': pendingWidth}">
+                                {{detail.countriesPending}}
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="progressBar" *ngIf="showDetails===i && showLanguagesText == 'Languages'">
-                  <div class="progress">
-                      <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                          {{detail.languagesCompleted}}
-                      </div>
-                      <div [ngStyle]="{'width.%': pendingWidth}">
-                          {{detail.languagesPending}}
-                      </div>
-                  </div>
-              </div>
+                    <div class="progressBar" *ngIf="showDetails===i && showLanguagesText == 'Languages'">
+                        <div class="progress">
+                            <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
+                                {{detail.languagesCompleted}}
+                            </div>
+                            <div [ngStyle]="{'width.%': pendingWidth}">
+                                {{detail.languagesPending}}
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="legend-margin" *ngIf="showDetails===i ">
-                  <div class="row">
-                      <div class="col-md-1 mt-1">
-                          <div class="complete-legend"></div>
-                      </div>
-                      <div class="col-md-5 legend-text">Completed</div>
+                    <div class="legend-margin" *ngIf="showDetails===i ">
+                        <div class="row">
+                            <div class="col-md-1 mt-1">
+                                <div class="complete-legend"></div>
+                            </div>
+                            <div class="col-md-5 legend-text">Completed</div>
 
-                      <div class="col-md-2 mt-1">
-                          <div class="pending-legend pending-legend-margin"></div>
-                      </div>
-                      <div class="col-md-2 legend-pending-text">Pending</div>
-                  </div>
-                  <!-- progress bar -->
-              </div>
-              <div class="cust-text" *ngIf="showStatus== i">
-                  <span class="status-text" (click)="showStatus = null">
-                      <strong class="status-font">Status</strong>
-                  </span>
-                  <p class="status">
-                      <b>{{detail.pending_avail_translations_count}}</b> Metadata Escalation</p>
-                  <p class="status">
-                      <b>{{detail.pending_avail_ratings_count}}</b> Ratings Escalation</p>
-                  <p class="status">
-                      <b>{{detail.escalations_avail_count}}</b> Translations Escalation</p>
-              </div>
-          </div>
-      </div>
-  </div>
+                            <div class="col-md-2 mt-1">
+                                <div class="pending-legend pending-legend-margin"></div>
+                            </div>
+                            <div class="col-md-2 legend-pending-text">Pending</div>
+                        </div>
+                        <!-- progress bar -->
+                    </div>
+                    <div class="cust-text" *ngIf="showStatus== i">
+                        <span class="status-text" (click)="showStatus = null">
+                            <strong class="status-font">Status</strong>
+                        </span>
+                        <p class="status">
+                            <b>{{detail.pending_avail_translations_count}}</b> Metadata Escalation</p>
+                        <p class="status">
+                            <b>{{detail.pending_avail_ratings_count}}</b> Ratings Escalation</p>
+                        <p class="status">
+                            <b>{{detail.escalations_avail_count}}</b> Translations Escalation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

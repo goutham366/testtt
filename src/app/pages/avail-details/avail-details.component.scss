@@ -263,7 +263,7 @@ $topnav-background-color: #007CC3;
 .card-body {
     flex: 1 1 auto;
     padding: 0.25rem;
-    width: 110%;
+    width: 108%;
 }
 .card-style {
     border-bottom: 1px solid lightgrey;
@@ -271,7 +271,7 @@ $topnav-background-color: #007CC3;
 
 
 .acc-style {
-    margin: 1% 0 0 16%;
+    margin: 1% 0 0 1%;
     color:rgba(0, 0, 0, 0.6);
     .card-body-style {
         width: 35%; 
@@ -397,17 +397,18 @@ $topnav-background-color: #007CC3;
 }
 .status-text{
     color: cornflowerblue;
+    font-size: 14px;
    }
 .status{
     margin:0 0 0 3px ;
     padding: 2px;
-    font-size: 10px;
+    font-size: 12px;
     color: black;
 }
 .timeline-status{
     margin: -6px 0 0 3px;
     padding: 0;
-    font-size: 10px;
+    font-size: 12px;
     color: black;
 }
 .legend-status{
@@ -461,9 +462,9 @@ body {
 }
 
 #rightContain .comments-list {
-	margin-top: 30px;
+	margin-top: -10px;
     position: relative;
-    width: 95%;
+    width: 100%;
 }
 #rightContain .comments-list li {
 	margin-bottom: 15px;
@@ -624,11 +625,11 @@ body {
 #rightContain .nav-tabs {
     border-bottom: none;
 }
-#rightContain ul.timeline {
+ul.timeline {
     list-style-type: none;
     position: relative;
 }
-#rightContain ul.timeline:before {
+ul.timeline:before {
     content: ' ';
     content: ' ';
     background: #d4d9df;
@@ -639,11 +640,11 @@ body {
     height: 70%;
     z-index: 400;
 }
-#rightContain ul.timeline > li {
+ul.timeline > li {
     margin: 0px 0;
     padding-left: 40px;
 }
-#rightContain ul.timeline > li:before {
+ul.timeline > li:before {
     content: ' ';
     background: white;
     display: inline-block;
@@ -795,11 +796,13 @@ body {
   }
   .box-swap {
     position: absolute;
-    text-align: center;
+    // text-align: center;
     width: 500px;
     height: 500px;
-    padding: 15px 35px;
     line-height: 30px;
+    //border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+    margin: -5px 0px 0px 0px;
     &.static-block {
       transition: all 0.3s ease-out;
     }
@@ -808,5 +811,111 @@ body {
 .containerFlex{
     display: flex;
 }
-      
-      
+
+.card{
+    .d-flex{
+        .flex-description{
+            &.box-1{
+                flex: 0 0 0%;
+            }
+            &.box-2{
+                flex: 0 0 73%;
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                .d-flex{
+                    justify-content: space-between;
+                    width: 100%;
+                }
+                .card-data{
+                    display: flex;
+                    flex-direction: row;
+                    .card-content{
+                        ul{
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+            &.box-3{
+                flex: 1 0 23%;
+                border-left: 1px solid wheat;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i{
+                    color: black;
+                    padding: 0px 5px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+.img-card{
+    height: 100px;
+    padding-right: 0;
+    width: 100%;
+}}
+.acc-style-top{
+    margin: 1% 0 0 1%;
+    color: rgba(0, 0, 0, 0.6);
+}    
+.top-bar{
+    background-color: whitesmoke
+}   
+.legend-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 30px 30px 0px 0px;
+} 
+// .block{
+//     border: 1px solid rgba(0, 0, 0, 0.125);
+//     border-radius: .25rem;
+//     margin: 0px 0px 0px 0px;
+//     width: 100%;
+//     padding: 6px 0px 9px 0px;
+// }
+.log_img{
+    position: relative;
+    display: flex;
+    width: 50%;
+    margin: 10px 0px 0px -85px;
+}
+.log-img-cmt{
+    position: relative;
+    display: flex;
+    padding: 5px 0px 0px 10px;
+}
+.log-img-status {
+    position: relative;
+    display: flex;
+    padding: 5px 0px 0px 10px;
+    top: 20px;
+    right: 62px;
+}
+// .st{
+//     position: relative;
+//     display: flex;
+//     margin: 0px 134px 0px 0px;
+// }
+// .cl{
+//     position: relative;
+//     display: flex;
+//     margin: -6px 0px 0px -50px;
+// }
+.cmn-row{
+    position: relative;
+    display: flex;
+    margin: 10px 44px 0px 0px;
+}
+.status-timeline-box{
+    display: flex;
+    position: relative;
+    right: 35%;
+}

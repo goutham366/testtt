@@ -3,7 +3,7 @@
       <nav class="navbar navbar-expand-lg p-0">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal2">
+            <button type="button" class="btn btn-light" (click)="openingModal();" data-toggle="modal" data-target="#myModal2">
               <i class="material-icons">filter_list</i>
               
             </button>
@@ -93,7 +93,7 @@
                           </div>
                         </div>
                   </div>
-                  <div id="upload" class="tab-pane fade">
+                  <!-- <div id="upload" class="tab-pane fade">
                       <div class="container">
                           <div class="modal-body upload">
                               <div class="form-group">
@@ -102,12 +102,29 @@
                                     <label for="files" class="btn  uploadcolor">Upload</label>
                                     <span class="filename">{{this.filename}}</span> 
                                     <span *ngIf="(!availDocName)" class="errorMessage">{{errorMessage}}</span>
-                                    <input id="files" style="visibility:hidden;" type="file" (change)="upload($event.target.files)">
+                                    <span *ngIf="successCase" class="successMessage">{{successMessage}}</span>
+                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file" (change)="upload($event.target.files)">
                                 </div>
                                 </div>
                           </div>
                       </div>
-                  </div>
+                  </div> -->
+                  <div id="upload" class="tab-pane fade">
+                    <div class="container">
+                        <div class="modal-body upload">
+                            <div class="form-group">
+                              <span class="upload-text">Upload Avail Docs</span><br>
+                              <div class="flex">
+                                  <label for="files" class="btn  uploadcolor">Upload</label>
+                                  <span class="filename">{{this.filename}}</span> 
+                                  <span *ngIf="errorCase" class="errorMessage">{{errorMessage}}</span>
+                                  <span *ngIf="successCase" class="successMessage">{{successMessage}}</span>
+                                  <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file" (change)="upload($event.target.files)">
+                              </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
               </div>
               </div>
             </div>

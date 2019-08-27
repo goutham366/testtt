@@ -1,0 +1,129 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <div class="col-md-1 p-0 m-0"></div> -->
+      <!-- <div class="col-md-10 p-0 m-0"> -->
+      <div class="bottomline">
+        <span>
+          <i class="material-icons v-align  md-18 md-grey">tune</i> Ratings Configuration</span>
+      </div>
+      <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+          <div class="row p-2">
+            <div class="col-md-3 pr-0 pl-0">
+              <table class="table table-hover  table-responsive-md table-responsive-lg table-responsive-sm ">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <i class="material-icons md-18 md-grey v-align">language</i> {{countryCount}} Countries</th>
+                    <!-- <th scope="col">                      <i class="material-icons md-18 md-grey v-align">local_activity</i>Ratings</th> -->
+                  </tr>
+                </thead>
+                <tr class="table-active row-align" *ngFor="let lang of countryData;let i=index">
+                  <td [ngStyle]="{'background-color':getColor(i)}" (click)="selectcont(lang.country_name)">{{lang.country_name}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-3 ratings p-0">
+              <span class="rating-head">
+                <th scope="col">
+                  <i class="material-icons md-18 md-grey v-align">local_activity</i> {{ratingscount}} Ratings</th>
+              </span>
+              <table class="table-bordered  table-hover table-align">
+                <tr *ngFor="let lang of countryData;let i=index">
+                  <div *ngIf="lang.country_name===cont_name">
+                    <div *ngFor="let x of lang.ratings |keyvalue">
+                      <div *ngFor="let y of x.value |keyvalue;let j=index">
+                        <td class="td-align" [ngStyle]="{'background-color':getColorlang2(j)}" (click)="showComments(y.key)">
+                          {{y.key}}</td>
+                      </div>
+                    </div>
+                  </div>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-4">
+              <div *ngFor="let lang of countryData">
+                <div *ngFor="let x of lang.ratings |keyvalue">
+                  <div *ngFor="let y of x.value |keyvalue">
+                    <div *ngIf="y.key===ratingkey">
+                      <div class="range">
+                        <div class="bottomlines">Comments</div>
+                      </div>
+                      <div class="new-align">{{y.value}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="t-none">
+                <div class="contact">Contacts</div>
+                <div *ngFor="let user of userData">
+                  <p class="user-email" (click)="showComment()"> {{user.user_email}} </p>
+                </div>
+              </div>
+              <div class="comments-log" *ngIf="displayComments">
+                <input #Comments (keyup.enter)="addComments(Comments.value)" (blur)="addComments(Comments.value); Comments.value='' "> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 log">
+          <span class="font-align">Log</span>
+          <div class="log-box">
+            <div class="timestamp">
+              <div class="name">John Paul </div>
+              <div class="dates">01/12 11:24
+                <br>
+              </div>
+            </div>
+            <div class="bold">Added</div>
+            <div class="comment">Ratings: C to Argentina</div>
+            <div class="log-box">
+              <div class="timestamp">
+                <div class="name">John Paul </div>
+                <div class="dates">01/12 11:24
+                  <br>
+                </div>
+              </div>
+              <div class="bold">Added</div>
+              <div class="comment">Ratings: C to Argentina</div>
+              <div class="log-box">
+                <div class="timestamp">
+                  <div class="name">John Paul </div>
+                  <div class="dates">01/12 11:24
+                    <br>
+                  </div>
+                </div>
+              <div class="bold">Added</div>
+              <div class="comment">Country: Belize
+              </div>
+              <div class="log-box">
+                <div class="timestamp">
+                  <div class="name">John Paul </div>
+                  <div class="dates">01/12 11:24
+                    <br>
+                  </div>
+                </div>
+                <div class="bold">Added</div>
+                <div class="comment">Country: Bolivia</div>
+                <div *ngFor="let comment of comments">
+                  <div class="log-box">
+                    <div class="timestamp">
+                      <div class="name">John Paul </div>
+                      <div class="dates">01/12 11:24
+                        <br>
+                      </div>
+                    </div>
+                    <div class="bold">Added</div>
+                    <div class="comment">{{comment}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

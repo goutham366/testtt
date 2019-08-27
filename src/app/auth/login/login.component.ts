@@ -97,23 +97,22 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   showError = false;
-  userDetails = [{ 'name': 'joe', 'password': 'joe1' }, { 'name': 'alle', 'password': 'alle1' }, { 'name': 'anu', 'password': 'anu1' }];
+  userDetails = [{ 'name': 'joe', 'password': 'joe1' }, { 'name': 'neha', 'password': 'neha1' }, { 'name': 'jayesh', 'password': 'jayesh1' }];
   type= "password";
-  show = false;
-  toggleClass:String;
   transComp:boolean;
   classAdd:boolean;
-  showEye:boolean;
+  userNotEmpty:boolean
+  passwordNotEmpty:boolean;
   textColor:boolean;
   constructor(private fb: FormBuilder, private router: Router, private service: HttpService,  changeDetectRef: ChangeDetectorRef) { 
     this.changeDetectRef = changeDetectRef;
     this.textColor = false;
    this.transComp = false;
     this.classAdd = false;
-    this.showEye = false;
+    this.userNotEmpty = false;
+    this.passwordNotEmpty = false;
         this.orientation = "none";
-        this.toggleClass = "fa fa-eye eyePos";
-       this.navs = [
+        this.navs = [
         {
             id: 1,
             sideTitle: "AD MONETIZATION",
@@ -157,19 +156,28 @@ export class LoginComponent implements OnInit {
   }
 
   passwordEntered(){
-    console.log("values entered"+ this.loginForm.value.password.length);
     if(this.loginForm.value.password.length >0){
-     this.showEye = true;
+     this.passwordNotEmpty = true;
      }else{
-      this.showEye = false;
+      this.passwordNotEmpty = false;
+    }
+  }
+
+  userEntered(){
+    if(this.loginForm.value.name.length >0){
+     this.userNotEmpty = true;
+     }else{
+      this.userNotEmpty = false;
     }
   }
 
   
   onSubmit() {
     this.classAdd = true;
-    for (var i = 0; i < this.userDetails.length; i++) {
-      if (this.userDetails[i].name == this.loginForm.value.name && this.userDetails[i].password == this.loginForm.value.password) {
+    //for (var i = 0; i < this.userDetails.length; i++) {
+      if (("joe" == this.loginForm.value.name && "joe1" == this.loginForm.value.password)
+       || ("neha" == this.loginForm.value.name && "neha1" == this.loginForm.value.password)
+       || ("jayesh" == this.loginForm.value.name && "jayesh1" == this.loginForm.value.password)) {
         console.log("welcome");
         this.showError = false;
         this.textColor = false;
@@ -180,7 +188,7 @@ export class LoginComponent implements OnInit {
           skipLocationChange: false } );
           })
         })
-        break;
+        //break;
       } else{
        
         this.delay(1000).then(any => {
@@ -190,7 +198,7 @@ export class LoginComponent implements OnInit {
           this.textColor = true;
         })
       }
-    }
+    //}
     console.log("login details......", this.loginForm.value);
     
   }

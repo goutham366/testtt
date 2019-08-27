@@ -1,110 +1,91 @@
-<div class="">
     <div class="p-2 cust-style d-flex">
         <div class="d-flex cus-box">
-        <h6 style="color:#007CC3">Avails</h6>
-        <div class="ml-auto">
-            <app-availfilter></app-availfilter>
-        </div>
+            <h6 class="avail-heading">Avails</h6>
+            <div>
+                <app-availfilter></app-availfilter>
+            </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row avail-card">
+            <div class="col-sm-4 avail-box" *ngFor="let avail of availsList; let i = index">
+                <div class="card mb-3 text-white shadow-sm card-width">
+                    <div class="c-pointer" (click)="showDetails = null">
+                    </div>
     
-    <div class="row avail-card">
-    
-        <div class="col-sm-4" *ngFor="let avail of availsList; let i = index">
-            <div class="card text-white mb-3 shadow-sm card-width">
-                <div class="c-pointer" (click)="showDetails = null">
-                    <div class="hidden-header" [attr.id]="'undoBtn'+i" *ngIf="showDetails == i"
-                    style="background-color: rgba(0,0,0,.03);">{{avail.AvailName}}</div>
-                </div>
-    
-                <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
-                    <span class="avail-status c-pointer" (click)="showAvailStatus(i)">
+                    <div class="card-header card-padding gray-bg" *ngIf="showDetails !== i && showStatus !== i">
+                        <span class="avail-status">
                             <div class="current" [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
-                            <round-progress
-                            [current]= "avail.TitleData.AvailPercentage"
-                            [max]="100"
-                            [color]="'#008040'"
-                            [background]="'#006FAD'"
-                            [radius]="22"
-                            [stroke]="2.3"
-                            [semicircle]="false"
-                            [rounded]="true"
-                            [clockwise]="true"
-                            [responsive]="false"
-                            [duration]="800"
-                            [animation]="'easeInOutQuart'"
-                            [animationDelay]="0"></round-progress>
-                        <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                            [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
-                    </span>
-                    <!-- <br> -->
-                    <span>
-                        <p class="avail-title" routerLink="/pages/titles/titleview" [queryParams]="{ avail_title: avail.AvailName }" routerLinkActive="tabSelected"
-                            [routerLinkActiveOptions]="{exact: true}">{{avail.AvailName}}</p>
-                        <p class="avail-date">
-                            <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'dd/MM' }} -
-                            <span>{{avail.DueDate | date:'dd/MM' }}</span>
-                        </p>
-                    </span>
-    
-                </div>
-                <div class="card-body">
-                    <div class="equalHMWrap" *ngIf="showStatus !==i">
-                        <span (click)="showtitlesDiv($event,i);" id="titlesDiv">
-                            <span class="avail-details titlesBox" (click)="rotate(avail.AvailName, 'titles')">
-                                <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitlesCount}}
-                                <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
-                            </span>
+                            <round-progress [current]="avail.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
+                                [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
+                                [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+                            <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
                         </span>
-                        <span (click)="showcountriesDiv($event,i)" id="countriesDiv">
-                            <span class="avail-details countriesBox" (click)="rotate(avail.AvailName, 'countries')">
-                                <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}}
-                                <span *ngIf="showDetails == i">{{showCountriesText}}</span>
-                            </span>
-                        </span>
-                        <span (click)="showlanguagesDiv($event,i)" id="languagesDiv">
-                            <span class="avail-details languagesBox" (click)="rotate(avail.AvailName, 'languages')">
-                                <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.TitleData.UniqueLanguagesCount}}
-                                <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
-                            </span>
+                        <span>
+                            <p class="avail-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}">{{avail.AvailName | uppercase }}</p>
+                            <p class="avail-date">
+                                <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'dd/MM' }} -
+                                <span>{{avail.DueDate | date:'dd/MM' }}</span>
+                            </p>
                         </span>
                     </div>
-                    <!-- progress bar -->
-                    <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
-                        <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                                <span *ngIf="completedWidth!=0">{{avail.TitleData.CompletedTitlesCount}}</span>
+    
+                    <div class="card-body">
+                        <div class="equalHMWrap">
+                            <span id="titlesDiv">
+                                <span class="avail-details titlesBox">
+                                    <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitlesCount}} Titles
+                                </span>
+                            </span>
+                        </div>
+                        <div class="progressBar">
+                            <div class="progress">
+                                <div class="bg-success" [style.width.%]="avail.TitleData.CompletedTitlesCount / avail.TitleData.TitlesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}}</span>
+                                </div>
+                                <div [style.width.%]="avail.TitleData.PendingTitlesCount / avail.TitleData.TitlesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.PendingTitlesCount!=0">{{avail.TitleData.PendingTitlesCount}}</span>
+                                </div>
                             </div>
-                            <div [ngStyle]="{'width.%': pendingWidth}">
-                                <span *ngIf="pendingWidth!=0">{{avail.TitleData.PendingTitlesCount}}</span>
+                        </div>
+                        <div class="equalHMWrap">
+                            <span id="countriesDiv">
+                                <span class="avail-details countriesBox">
+                                    <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}} Countries
+                                </span>
+                            </span>
+                        </div>
+                        <div class="progressBar">
+                            <div class="progress">
+                                <div class="bg-success" [style.width.%]="avail.TitleData.CountriesCompletedCount / avail.TitleData.UniqueCountriesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.CountriesCompletedCount!=0">{{avail.TitleData.CountriesCompletedCount}}</span>
+                                </div>
+                                <div [style.width.%]="avail.TitleData.CountriesPendingCount / avail.TitleData.UniqueCountriesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.CountriesPendingCount!=0">{{avail.TitleData.CountriesPendingCount}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="equalHMWrap">
+                            <span id="languagesDiv">
+                                <span class="avail-details languagesBox">
+                                    <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.TitleData.UniqueLanguagesCount}} Languages
+                                </span>
+                            </span>
+                        </div>
+                        <div class="progressBar">
+                            <div class="progress">
+                                <div class="bg-success" [style.width.%]="avail.TitleData.LanguagesCompletedCount / avail.TitleData.UniqueLanguagesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.LanguagesCompletedCount!=0">{{avail.TitleData.LanguagesCompletedCount}}</span>
+                                </div>
+                                <div [style.width.%]="avail.TitleData.LanguagesPendingCount / avail.TitleData.UniqueLanguagesCount * 100">
+                                    <span class="status-padding" *ngIf="avail.TitleData.LanguagesPendingCount!=0">{{avail.TitleData.LanguagesPendingCount}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
     
-                    <div class="progressBar" *ngIf="showDetails===i && showCountriesText == 'Countries'">
-                        <div class="progress">
-                            <div class="bg-success"  [ngStyle]="{'width.%': completedWidth}">
-                                <span *ngIf="completedWidth!=0">{{avail.TitleData.CountriesCompletedCount}}</span>
-                            </div>
-                            <div [ngStyle]="{'width.%': pendingWidth}">
-                                    <span *ngIf="pendingWidth!=0">{{avail.TitleData.CountriesPendingCount}}</span>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="progressBar" *ngIf="showDetails===i && showLanguagesText == 'Languages'">
-                        <div class="progress">
-                            <div class="bg-success"  [ngStyle]="{'width.%': completedWidth}">
-                                <span *ngIf="completedWidth!=0">{{avail.TitleData.LanguagesCompletedCount}}</span>
-                            </div>
-                            <div [ngStyle]="{'width.%': pendingWidth}">
-                                <span *ngIf="pendingWidth!=0">{{avail.TitleData.LanguagesPendingCount}}</span>
-                            </div>
-                        </div>
-                    </div>
-
-    
-                    <div class="legend-margin" *ngIf="showDetails===i ">
+                    <div class="legend-margin">
                         <div class="row">
                             <div class="col-md-1 mt-1">
                                 <div class="complete-legend"></div>
@@ -116,23 +97,21 @@
                             </div>
                             <div class="col-md-2 legend-pending-text">Pending</div>
                         </div>
-                        <!-- progress bar -->
                     </div>
-                    <div class="cust-text" *ngIf="showStatus== i">
-                        <span class="status-text" (click)="showStatus = null">
+                    <div class="cust-text">
+                        <span class="status-text">
                             <strong class="status-font">Status</strong>
                         </span>
                         <p class="status">
-                            <b> 0</b> Pending Translations</p>
+                            <b class="status-color"> 0</b> Pending Translations</p>
                         <p class="status">
-                            <b> 0</b> Pending Ratings</p>
+                            <b class="status-color"> 0</b> Pending Ratings</p>
                         <p class="status">
-                            <b>0</b> Pending Clarifications</p>
+                            <b class="status-color">0</b> Pending Clarifications</p>
                         <p class="status">
-                            <b>0</b> Escalations</p>
+                            <b class="status-color">0</b> Escalations</p>
                     </div>
                 </div>
             </div>
         </div>
-</div>
-    
+    </div>

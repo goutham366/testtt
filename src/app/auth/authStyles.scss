@@ -12,13 +12,14 @@
         justify-content: center;
 
         .nav-item{
-            background: #f3f3f3;
+            background: #f6f6f6;
             border-bottom: 1px solid #bdbdbd;
             margin: 10px;
             width: 88px;
             height: 74px;
             display: flex;
             justify-content: center;
+            box-shadow: 0px 1px #bfbfbf;
         }
         .nav-link{
             display: flex;
@@ -97,7 +98,7 @@ div.navigation {
     border-radius: 0;
     transition: none;
     padding-left: 0;
-    border-bottom: 1px solid rgba(255,255,255, 0.4);
+    //border-bottom: 1px solid rgba(255,255,255, 0.4);
     transition: 0.3s linear;
 }
 .form-control:focus {
@@ -106,7 +107,7 @@ div.navigation {
     outline: 0;
     box-shadow: none !important;
     padding-left: 0;
-    border-bottom: 2px solid #fff;
+    //border-bottom: 2px solid #fff;
 }
 .errorForm{
     color: red !important;
@@ -122,11 +123,17 @@ div.navigation {
     padding-top:5%;
 }
 .eyePos{
-   float: right;
-    cursor: pointer;
+    float: right;
     position: relative;
-    bottom: 30px;
+    bottom: 28px;
+    .material-icons {
+        font-size: 16px !important;
+    }
 }
+.pointer{
+    cursor: pointer;
+}
+
 
 .outer{
     transition: background-color 0.4s ease !important;
@@ -149,7 +156,7 @@ div.navigation {
     transition: opacity 0s ease !important;
     width: 100% !important;
     height: 60px !important;
-    background-color: rgba(4, 79, 122, 0.6) !important;
+    background-color: rgba(0, 145, 230, 0.6) !important;
     position: absolute !important;
     left: 0 !important;
     bottom: 0 !important;
@@ -208,6 +215,7 @@ div.navigation {
     cursor: pointer;
     a{
         text-decoration: none;
+        color: #535a5f
     }
 }
 #forgotId .OtpButton {
@@ -223,7 +231,8 @@ div.navigation {
 .login-footer span{
     opacity: 0.6;
     font-size: 12px;
-    color: #000000
+    color: rgba(0, 0, 0, 0.4);
+    
   }
   .login-footer h2{
     font-size: 24px;

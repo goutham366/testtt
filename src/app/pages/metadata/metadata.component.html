@@ -14,7 +14,7 @@
     </nav>
   </div>
 </div> -->
-<div class="container">
+<div class="container-fluid" [ngStyle]="{'font-size': sizeVar+'px'}">
   <div class="d-flex">
     <div class="flex-grow-1">
       <nav aria-label="breadcrumb">
@@ -64,10 +64,14 @@
             </div>
           </div>
           <div class="flex-description box-3">
-              <i class="material-icons">vertical_align_center</i>
-              <i class="material-icons">replay</i>
-              <i class="material-icons">title<sup>+</sup></i>
-              <i class="material-icons">title<sup>-</sup></i>
+            <i class="material-icons">vertical_align_center</i>
+            <i class="material-icons">replay</i>
+            <span (click)="sizePlus()"><i class="material-icons">title
+              <sup>+</sup>
+            </i></span>
+            <span (click)="sizeMinus()"><i class="material-icons">title
+              <sup>-</sup>
+            </i></span>
           </div>
         </div>
       </div>
@@ -81,38 +85,60 @@
           <div id="metaData" class="tab-pane fade">
             <div class="d-flex">
               <div class="tab-content">
-                  <div id="Global" class="tab-pane active">
-                    <div class="metaData-content">
-                        <div class="table-1">
-                          <ul>
-                            <li>Abstarct EIDR</li>
-                            <li>Account</li>
-                            <li>Activation Status</li>
-                            <li>Actors</li>
-                            <li>Aired End Date</li>
-                            <li>Aired From Date</li>
-                            <li>Announcement Date</li>
-                            <!-- <li>Announcement Name</li> -->
-                            <li>Atlas MCR Number</li>
-                            <li>Audio Language Description</li>
-                            <li>Broadcast Vehicle</li>
-                            <li>Bundle Video Version Number</li>
-                            <li>Bussiness Unit</li>
-                            <li>Change Status</li>
-                            <li>Change Fields</li>
-                            <li>Channel</li>
-                            <li>Cleared For sale</li>
-                            <li>Client End</li>
-                          </ul>
-        
-        
-                        </div>
-                        <div class="table-2">
-                          <ul *ngFor="let x of metaDataList">
+                <div id="Global" class="tab-pane active">
+                  <div class="metaData-content">
+                    <div class="table-1">
+                      <ul>
+                        <li>Abstarct EIDR</li>
+                        <li>Account</li>
+                        <li>Activation Status</li>
+                        <li>Actors</li>
+                        <li>Aired End Date</li>
+                        <li>Aired From Date</li>
+                        <li>Announcement Date</li>
+                        <!-- <li>Announcement Name</li> -->
+                        <li>Atlas MCR Number</li>
+                        <li>Audio Language Description</li>
+                        <li>Broadcast Vehicle</li>
+                        <li>Bundle Video Version Number</li>
+                        <li>Bussiness Unit</li>
+                        <li>Change Status</li>
+                        <li>Change Fields</li>
+                        <li>Channel</li>
+                        <li>Cleared For sale</li>
+                        <li>Client End</li>
+                      </ul>
+                    </div>
+                    <div class="table-2 d-flex" id="OriginalData">
+                      <ul *ngFor="let x of metaDataList">
+                        <li>{{x.abstractEIDR}}</li>
+                        <li>{{x.account}}</li>
+                        <li>{{x.activationStatus}}</li>
+                        <li>{{metaDataListUpdateVal}}</li>
+                        <li>{{x.airedEndDate}}</li>
+                        <li>{{x.AiredFromDate}}</li>
+                        <li>{{x.announcementDate}}</li>
+                        <li>{{x.atlasnumber}}</li>
+                        <li>{{x.audioLanguage}}</li>
+                        <li>{{x.broadcastVehicle}}</li>
+                        <li>{{x.bundleVersion}}</li>
+                        <li>{{x.businessUnit}}</li>
+                        <li>{{x.changeStatus}}</li>
+                        <li>{{x.changeFields}}</li>
+                        <li>{{x.channel}}</li>
+                        <li>{{x.ClearedForSale}}</li>
+                        <li>{{x.ClientEnd}}</li>
+                        <!-- <li>{{x.ClientEnd}}</li>
+                              <li>{{x.ClientEnd}}</li> -->
+                      </ul>
+                      <!-- <div class="" >
+                        <div class="table-3"> -->
+                          <div *ngIf="close">
+                          <ul *ngFor="let x of details" class="pl-2">
                             <li>{{x.abstractEIDR}}</li>
                             <li>{{x.account}}</li>
                             <li>{{x.activationStatus}}</li>
-                            <li>Actors</li>
+                            <li>{{metaDataListUpdateVal}}</li>
                             <li>{{x.airedEndDate}}</li>
                             <li>{{x.AiredFromDate}}</li>
                             <li>{{x.announcementDate}}</li>
@@ -127,51 +153,148 @@
                             <li>{{x.ClearedForSale}}</li>
                             <li>{{x.ClientEnd}}</li>
                             <!-- <li>{{x.ClientEnd}}</li>
-                              <li>{{x.ClientEnd}}</li> -->
+                                  <li>{{x.ClientEnd}}</li> -->
                           </ul>
+                          </div>
+                        <!-- </div>
+                      </div> -->
+                      
+                    </div>
+                    <div class="comparsion-box" *ngIf="show">
+                      <div class="d-flex">
+                        <div class="add-icon">
+                        <i class="material-icons" (click)="openBox()">add_box</i>
+                        <div id="mySidenav" class="searchBox d-flex" id="compareBox"  >
+                          <div class="compare-section">
+                            <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i class="material-icons"  (click)="openBox()">add_box</i></a>Compare</div>
+                              <input type="text" name="availId" [(ngModel)]="availId" (keyup.enter)="onEnter(metaDataShow(availId))">
+                            <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
+                          </div>
                         </div>
+                        </div> 
                       </div>
+                    </div>
+                    <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
+                      <i class="material-icons">add_box</i>
+                    </div>
+                    
                   </div>
-                  <div id="Language" class="container tab-pane fade"><br>
-                    <h3>Language</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <div class="update-box">
+                    <div class="btn-group">
+                      <ul class="nav nav-tabs">
+                        <li class="nav-item ">
+                          <a class="nav-link active" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM</a>
+                        </li>
+                        <li class="nav-item ">
+                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                        </li>
+                      </ul>
+                      <div class="text-area">
+                        <textarea cols="79" rows="2" #box>
+                                    
+                        </textarea>
+                      </div>
+                      <div class="btn btn-dark" (click)="update(box.value)">Update</div>
+                    </div>
+
                   </div>
-                  <div id="Territorial" class="container tab-pane fade"><br>
-                    <h3>Territorial</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+
+                </div>
+                <div id="Language" class="container tab-pane fade">
+                  <br>
+                  <h3>Language</h3>
+                  <div class="col-md-9 lang-info">
+                    <div class="metaData-content local-titles">
+                      <div class="table-1">
+                        <ul>
+                          <li>Local Titles</li>
+                          <li>English Short</li>
+                          <li>English Long</li>
+                        </ul>
+                      </div>
+                      <div class="table-2">
+                        <ul *ngFor="let x of metaDataList">
+                          <li>{{x.abstractEIDR}}</li>
+                          <li>{{x.account}}</li>
+                          <li>{{x.activationStatus}}</li>
+                        </ul>
+                      </div>
+                      <div><label class="plus-symbol" (click)="addShortSynopsis()"> +</label></div>
+                    </div>
                   </div>
                 </div>
-              
+                <div id="Territorial" class="container tab-pane fade">
+                  <br>
+                  <h3>Territorial</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                    rem aperiam.</p>
+                </div>
+              </div>
+
               <div class="comment-data">
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
-                  </li>
-                </ul>
+                <div class="comment-data-heading">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
+                    </li>
+                  </ul>
+                </div>
                 <ul class="comment-box">
-                  
-                  <li *ngFor="let comment of comments">
-                    <div class="d-flex user-details">
-                      <span>JohnPaul</span>
-                      <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#Comments">Comments</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#Log">Log</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="Comments">
+                      <li class="comment-style" *ngFor="let comment of comments">
+                        <div class="d-flex user-details">
+                          <span>JohnPaul</span>
+                          <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                        </div>
+                        {{comment.name}}</li>
+                        <div class="main-comment">
+                        <div id="mySidenav" class="sidenav">
+                          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">comments</a>
+                          hi
+                        </div>
+                        </div>
+                        <span (click)="openNav()">open</span>
+                      <button (click)="showInput()">Add</button>
                     </div>
-                    {{comment.name}}</li>
+                    <div class="tab-pane" id="Log">
+                      <li class="comment-style" *ngFor="let logD of logsDetails">
+                        <div class="d-flex user-details">
+                          <span>{{logD.name}}</span>
+                          <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
+                        </div>
+                        {{logD.val}}</li>
+                      <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
+                                <button (click)="addComment(newComment.value)">Add</button> -->
+                    </div>
+                  </div>
                 </ul>
-                <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
-                <button (click)="addComment(newComment.value)">Add</button>
-                
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
+
+
+
+

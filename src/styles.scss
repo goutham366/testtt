@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+/* @import "angular-vertical-timeline/dist/vertical-timeline.css"; */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+;
+
+/* global styles */
+$primary: rgba(0, 124, 195,1);
+$secondary:rgba(3, 169, 244,1);
+$black: rgba(0,0,0,1);
+$black-1: rgba(0,0,0,0.14);
+$black-3: rgba(0,0,0,0.3);
+$black-4: rgba(0,0,0,0.4);
+$black-6: rgba(0,0,0,0.6);
+$black-7: rgba(0,0,0,0.7);
+$white:rgba(255,255,255,1);
+$white-6:rgba(255,255,255,0.6);
+$blue: rgba(190, 227, 255,1);
+.secondary-bg{
+    background: rgba(3, 169, 244,1);
+}
+.violet{
+    background: rgb(70, 22, 92);
+}
+.green{
+    background: rgb(13, 26, 13);
+}
+.primary-clr{
+    color: $primary;
+}
+.secondary-clr{
+    color: $secondary;
+}
+.blue-clr{
+    color: $blue;
+}
+.black-clr{
+    color: $black;
+}
+.black-clr-1{
+    color: $black-1;
+}
+.black-clr-3{
+    color: $black-3;
+}
+.black-clr-4{
+    color: $black-4;
+}
+.black-clr-6{
+    color: $black-6;
+}
+.black-clr-7{
+    color: $black-7;
+}
+.gray-bg{
+    background: #f3f3f3 !important;
+}
+.avail-breadcrumb {
+    color:grey; 
+    margin: 16%;
+}
+.avails-sidenav-color {
+    color:#007CC3;
+}
