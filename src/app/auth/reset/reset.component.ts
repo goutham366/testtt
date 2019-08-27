@@ -18,7 +18,7 @@ interface Nav {
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.component.html',
-  styleUrls: ['/reset.component.scss','../authStyles.scss'],
+  styleUrls: ['./reset.component.scss','../authStyles.scss'],
   animations: [
     trigger('itemAnim', [
       transition(':enter', [
