@@ -134,11 +134,10 @@ export class AvailTitlesComponent implements OnInit {
     });
     console.log(' this.avail_title', this.avail_title);
     this.httpService.getAvailsDetails().subscribe(data => {
-      this.availList = data;
-      
-    this.availList=  this.availList.filter(data=>{
-        return data.avail_title == this.avail_title;
-      })
+      this.availList = data;  
+    // this.availList=  this.availList.filter(data=>{
+    //     return data.avail_title == this.avail_title;
+    //   })
        console.log('this.availList ',this.availList);
     })
     

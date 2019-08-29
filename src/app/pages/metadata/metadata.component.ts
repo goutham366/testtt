@@ -41,9 +41,9 @@ export class MetadataComponent implements OnInit {
     this.addClicked=false;
     this.sizeVar=15;
    }
-  comments = [{"name":'Windstorm', "date":"1/12"},
-              {"name":'Bombasto', "date":"1/12"},
-              {"name":'Magneta', "date":"1/12"},
+  comments = [{"name":'Sent for Transalation', "date":"1/12"},
+              {"name":'The citizens of Bricksburg face a dangerous new threat when LEGO DUPLO invaders from outer space start to wreck everything in their path.', "date":"1/12"},
+              {"name":'Hi, Translation received from @Jackson and updated for English short desctiption', "date":"1/12"},
               {"name":'Tornado', "date":"1/12"}];
    
               showInput(){

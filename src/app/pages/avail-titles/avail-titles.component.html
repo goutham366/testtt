@@ -8,8 +8,8 @@
                         <a routerLink="/pages">Avails</a>
                     </li>
                     <i class="fa fa-angle-right arrow"></i>
-                    <li class="breadcrumb-item" >
-                        <a #tref>{{avail_title}}</a>
+                    <li class="breadcrumb-item">
+                        <a #tref>FT FEB262019</a>
                     </li>
                 </ul>
                 <div class="ml-auto">
@@ -39,11 +39,12 @@
                                                     <img src="assets/images/Icons/PNG/calendar.png">{{z.announced_date}}-{{z.release_date}}</li>
                                             </ul>
                                             <div class="circle" (click)="showTitleStatus(i)">
-                                                <circle-progress [percent]="z.percentage_title" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                                                <circle-progress class="round-outline" [percent]="z.percentage_title" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
+                                                    [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [animation]="true"
+                                                    [animationDuration]="1000" routerLink="/pages/insight"></circle-progress>
                                             </div>
                                         </div>
-                                        <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i" >
+                                        <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
                                             <ol class="wizard-progress">
                                                 <li [ngClass]="{'active-step': i<=getProgress(z.status)}" *ngFor="let stage of stages, let i = index">
                                                     <span class="step-name"><span *ngIf="stage.stageTitle==z.status" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span></span>
@@ -92,7 +93,7 @@
                                     </div>
                                     <div class="progressBar" *ngIf="titleName===z.title_name && langStatus">
                                         <div class="progress progress-main">
-                                            <div  class="completeColor" [style.width.%]="width">
+                                            <div class="completeColor" [style.width.%]="width">
                                                 {{z.countries_completed}}
                                             </div>
                                             <div class="pendingColor" [style.width.%]="remaining">
@@ -103,7 +104,7 @@
                                     </div>
                                     <div class="progressBar" *ngIf="titleName===z.title_name && transStatus">
                                         <div class="progress progress-main">
-                                            <div  class="completeColor" [style.width.%]="width">
+                                            <div class="completeColor" [style.width.%]="width">
                                                 {{z.languages_completed}}
                                             </div>
                                             <div class="pendingColor" [style.width.%]="remaining">

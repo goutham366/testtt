@@ -1,0 +1,122 @@
+.avail-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+}
+.card-resize{
+    flex: 0 0 20%;
+    max-width: 19.8%;
+    padding-right: 0px;
+}
+.avail-heading{
+    padding: 10px;
+}
+.header-height{
+    line-height: 27px;
+}
+.television{
+    ul{
+        margin: 0;
+        padding: 0;
+    }
+    ul li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .card-header{
+        padding: 8px;
+        box-shadow: 0px 1px #dadada;
+        background:#F3F3F3;
+        outline:none;
+    }
+    .card-header-align{
+        display: flex !important;
+        justify-content: space-between;
+    .avail-title{
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        color: #007CC3;
+        margin-bottom: 0.5rem;
+    }
+    .avail-date{
+        font-size: 11px;
+        color: black;
+    }
+    }
+    .card-body{
+        padding: 0.25rem;
+        .progressBar{
+            margin: 3px 5px 13px 4px;
+            .progress {
+                height:23px;
+                background: #007CC3;
+                
+            }
+           
+        }
+           
+        }
+    }
+    .v-align {
+        vertical-align: text-bottom;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    .complete-legend {
+        height: 0.5em;
+        width: 0.5em;
+        background: #0AAD43;
+        border-radius: 0;
+        color: #0AAD43;
+      }
+      .pending-legend {
+        height: 0.5em;
+        width: 0.5em;
+        background: #007CC3;
+        border-radius: 0;
+        color: #007CC3;
+        margin: 0px 0px 0px 4px;
+      }
+      .legend{
+        margin-top: 11px;
+        margin-left: -11px;
+        margin-bottom: 10px;
+        .legend-text {
+             font-size: 10px; 
+             padding:0px;
+              margin: -3px; 
+        }
+        .legend-pending-text {
+             font-size: 10px; 
+             padding:0px;
+              margin: -3px; 
+              margin-left: initial;
+        }
+        .status_legend{
+            margin: -12px 21px 5px 5px; 
+        }
+      }
+      
+    .status-padding{
+        padding: 13.5px;
+    }
+    .status-text{
+        color: #007CC3;
+           }
+    .status{
+        margin:0 0 0 3px ;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 0;
+        color: rgba(0, 0, 0, 0.4);
+        font-size:12px;
+        span{
+            color: black !important;
+         }
+    }
+    .font-text{
+        font-size:12px;
+    }
+
+

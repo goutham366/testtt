@@ -13,6 +13,8 @@ export class TopNavComponent implements OnInit {
   selectedItem: string = 'New';
   message:string;
   filmList: any = [{ name: "New" }, { name: "Catalog" }]
+  tvCategories:any=[{name:"Day After"},{name:"Catalog"}]
+  selectedItemofTv: any;
   constructor(public router: Router, private data: HttpService) {
 
     this.router.events.subscribe(val => {
@@ -29,8 +31,11 @@ export class TopNavComponent implements OnInit {
    filmSelection(name) {
     this.selectedItem = name;
     this.data.changeMessage(this.selectedItem)
-    
-  }
+    }
+    televisonDrop(name){
+      this.selectedItemofTv = name; 
+      this.data.changeMessage(this.selectedItemofTv)
+    }
   toggle() {
     this.show = !this.show;
   }

@@ -1,0 +1,386 @@
+// .container{
+    //     overflow: hidden;
+    // }
+    .height-100{
+        height: 100%;
+    }
+    .filter{
+        position: relative;
+        top: 0.5em;
+        right: 0.5em;
+    
+    }
+    .apo-margin{
+        margin-bottom: 20px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .file-display {
+        display:none;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 0.5em;
+        .due-date{
+            color:white;
+            background :red;
+        }
+        .lessthan-todaydate{
+            color:black;
+        } 
+        .season-name{
+            font-size: 12px;
+            font-family: 'Roboto', sans-serif;
+        }
+    }
+    .card-img{
+        height: 88px;
+    .addPre_upBtn{
+        width: 100%;
+        padding: 0;
+    }  
+    .btn:focus{
+        box-shadow: none;
+    }
+    .card-img-top {
+        width: 100%;
+        border-top-left-radius: calc(.25rem - 1px);
+        border-top-right-radius: calc(.25rem - 1px);
+        height: 88px;
+        border-radius: 4px;
+        cursor: pointer;
+    }}
+    
+    // input[type="file"] {     //can't leave blank tags
+     //     //display: none;
+    //   }
+    .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        padding: .75rem 1rem;
+        margin-bottom: 1rem;
+        list-style: none;
+        background: none;
+        margin: inherit;
+        border-radius: .25rem;
+        .breadcrumb-item{
+            a{
+                margin-right: 20px;
+            }
+        }
+    }
+    .arrow{
+        display: flex;
+       // margin: auto 0;
+        letter-spacing: 11px;
+        margin-left: -13px;//negative values
+        margin-top: 5px;
+    }
+    .card-main{
+        width: 100%;
+        height: 100%;
+    }
+    .card-content{
+        display: -webkit-inline-box;//webkit will effect
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            padding-right: 3px;
+            display: flex;
+        }
+       
+    }
+    .circle{
+        
+        cursor: pointer;
+    }
+    
+    .avail-details {
+         padding: 10px;    
+     }
+    .status-text{
+         color: cornflowerblue;
+        }
+    .status{
+        margin:0 0 0 3px ;
+         padding: 0;
+         color: #9a9797;
+         
+    }
+    .font-number{
+        color: black;
+    }
+    .progressBar{
+        margin: 20px 21px 24px 10px;
+        margin-left: 18px;
+        .progress {
+            height:23px;
+            width:100%;
+            .completeColor{
+                background: rgba(10, 173, 67, 1);
+                color: #fff;
+                display: flex;
+                align-items: center;
+            }
+            .pendingColor{
+                background:rgba(0, 124, 195, 1);
+                color: #fff;
+                padding-left: 5px;
+                display: flex;
+                align-items: center;
+            }  
+        }
+       
+    }
+    .complete-legend {
+        height: 0.5em;
+        width: 0.5em;
+        background: #0AAD43;
+        border-radius: 0;
+        color: #0AAD43;
+      }
+      .pending-legend {
+        height: 0.5em;
+        width: 0.5em;
+        background: #007CC3;
+        border-radius: 0;
+        color: #007CC3;
+        margin: 0px 0px 0px 4px;
+      }
+      .legend-text {
+        color: #0AAD43;
+         font-size: 10px; 
+         padding:0px;
+          margin: -3px; // negative values
+    }
+    .legend-pending-text {
+        color: #007CC3;
+         font-size: 10px; 
+         padding:0px;
+          margin: -3px; // negative values
+          margin-left: initial;
+    }
+    .status_legend{
+        margin: -12px 21px 5px 5px; // negative values
+    }
+    .status-padding{
+        padding: 13.5px;
+    }
+    .status-text-padding{
+        padding: 17px 7px !important;
+    }
+    .spacer{
+        margin-left: -3%; // negative values
+    }
+    .v-align {
+        vertical-align: text-bottom;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    @media (min-width: 768px){
+    .col-md-3 {
+        flex: 0 0 25%;
+        max-width: 20%;
+    }
+    }
+    .bottom-left {
+        border-radius: 4px;
+        background: #f8f9fa;
+        position: relative;
+        bottom: 21px;
+        font-size: 11px;
+        padding: 0 10px;
+        color: #007CC3;
+    }
+    
+    .title-text{
+        font-size: 12px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            line-height: 0.5;
+    }
+    .cust-text{
+        font-size: 12px;
+            font-family: 'Roboto', sans-serif;
+           // font-weight: 600;
+    }
+    .text-col{
+        color: rgba(0,0,0,0.4);
+        font-size: 12px;
+    }
+    @media (max-width: 767px){
+        .circle{
+            width: 100%;
+            margin: auto;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        }
+    
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        font-family: 'Roboto', sans-serif;
+        padding: 0.5em;
+        cursor: pointer;
+        .apo-color{
+            color:black !important;
+        }
+        .text-space{
+            padding-left: 5px;
+        }
+        .accountsBox{
+            transition: width 0.15s; 
+            padding: 3px;
+            display: flex;
+       }
+       .accountsBoxclicked{
+           display: flex;
+           justify-content: space-between;
+           padding: 3px;
+       }
+       .countriesBox{
+        transition: width 0.15s; 
+        padding: 3px;
+        display: flex;
+    }
+    .countriesBoxclicked{
+       display: flex;
+       justify-content: space-between;
+       padding: 3px;
+    }
+    .languagesBox{
+        transition: width 0.15s; 
+        padding: 3px;
+        display: flex;
+    }
+    .languagesBoxclicked{
+       display: flex;
+       justify-content: space-between;
+       padding: 3px;
+    }
+    i{
+        color: rgba(0, 0, 0, 0.4);
+        padding-right: 3px;
+    }
+    }
+    .progress-main{
+        width: 100%;
+    }
+    // .progress {
+    //  height:23px;
+    //  width:100%;
+    //  background: #007CC3;
+    //  .inner-progress {
+    //      height:23px;
+    //      background: #0AAD43;
+    //  }
+    // }
+    
+    .visuallyhidden {
+        display: none;
+    }
+    
+    .wizard-progress {
+        list-style: none;
+        list-style-image: none;
+        margin: 0;
+        padding: 0;
+        //margin-top: 20px;
+        float: left;
+        white-space: nowrap;
+        width: 240px;
+    }
+    @media (max-width: 1200px){
+        .wizard-progress {
+            width: 100%;
+        }
+    
+    }
+    .wizard-progress li {
+        float: left;
+        position: relative;
+        width: 60px;
+        padding-left: 2px;
+    }
+    
+    .wizard-progress .step-name {
+        display: table-cell;
+        height: 32px;
+        vertical-align: bottom;
+        text-align: center;
+        width: 100px;
+        font-size: 12px;
+    }
+    
+    .wizard-progress .step-name-wrapper {
+        display: table-cell;
+        height: 100%;
+        vertical-align: bottom;
+    }
+    
+    .wizard-progress .step-num {
+        font-size: 6px;
+        font-weight: bold;
+        border: 4px solid #92D1FF;
+        border-radius: 50%;
+        width: 0px;
+        height: 1px;
+        display: inline-block;
+        margin-top: 0px;
+    }
+    
+    .wizard-progress .step-num:after {
+        content: "";
+        display: block;
+        background: #92D1FF;
+        height: 1px;
+        width: 52px;
+        position: absolute;
+        bottom: 7px;
+        left: 10px;
+    }
+    
+    .wizard-progress li:last-of-type .step-num:after {
+        display: none;
+    }
+    
+    .wizard-progress .active-step .step-num {
+        border: 4px solid #007CC3;
+    }
+    .mid{
+        position: relative;
+        right: 32px;
+    }
+    .last{
+        position: relative;
+        right:64px;
+    }
+    .marginProgress{
+        margin-top: -10%; // negative values
+    }
+    .align-spacer{
+        flex: 0 0 14.5%;
+    }
+    .current {
+        position: absolute;
+        color: green;
+      }
+    .zerocolor{
+        background-color:red
+    }
+    .card-flex{
+        display: flex !important;
+        justify-content: space-between;
+     }

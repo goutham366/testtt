@@ -43,17 +43,17 @@ export class AvailfilterComponent implements OnInit {
   avail_title: any;
   availCount: number;
   filteredOptions: Observable<string[]>;
-  showUpload:boolean=false;
-  triggerDocName:any;
+  showUpload: boolean = false;
+  triggerDocName: any;
   relaseDocumentName: any;
-  errorMessage:any;
-  filename:any;
-  filterShow:any;
-  availDocName:any;
+  errorMessage: any;
+  filename: any;
+  filterShow: any;
+  availDocName: any;
   availuploadData: Object;
   successCase: boolean;
   successMessage: any;
-  s3Resp:any;
+  s3Resp: any;
   secndUrlResp: any;
   errorCase: boolean;
 
@@ -66,44 +66,44 @@ export class AvailfilterComponent implements OnInit {
       this.availCount = this.availList.length;
       this.activatedRoute.queryParams.subscribe(params => {
         this.avail_title = params['avail_title'];
-        console.log('this.avail_title filter',this.avail_title);
+        console.log('this.avail_title filter', this.avail_title);
       });
-      if(this.avail_title){
+      if (this.avail_title) {
         this.startYear = this.avail_title.substring(8);
-        this.startDate ="";
-        this.myDate="";
+        this.startDate = "";
+        this.myDate = "";
       }
-    else{
-      this.startYear = "2019";
-        this.startDate ="";
-        this.myDate=""; 
-    }   
+      else {
+        this.startYear = "2019";
+        this.startDate = "";
+        this.myDate = "";
+      }
     })
   }
-  clickDate(c,id){
-    if(!c){
-      this.startDate = `01/01/`+this.startYear;
-      console.log('this.startDate',this.startDate);
-      
-    }else{
-      this.myDate=formatDate(new Date(), 'dd/MM/yyyy', 'en');
-      console.log('this.myDate',this.myDate);
+  clickDate(c) {
+    if (!c) {
+      this.startDate = `01/01/` + this.startYear;
+      console.log('this.startDate', this.startDate);
+
+    } else {
+      this.myDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
+      console.log('this.myDate', this.myDate);
     }
   }
 
-  call(id){
-    switch(id) { 
-      case 1: { 
-        if(this.highlight1){
-          this.highlight1= false;
-        }else{
+  call(id) {
+    switch (id) {
+      case 1: {
+        if (this.highlight1) {
+          this.highlight1 = false;
+        } else {
           this.highlight1 = true;
         }
-        console.log("","654545");
-         break; 
-      } 
-      case 2: { 
-        if(this.highlight2){
+        console.log("", "654545");
+        break;
+      }
+      case 2: {
+        if (this.highlight2) {
           this.highlight2 = false;
         } else {
           this.highlight2 = true;
@@ -126,71 +126,71 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight4 = true;
         }
-         break; 
-      } 
-      case 5: { 
-        if(this.highlight5){
+        break;
+      }
+      case 5: {
+        if (this.highlight5) {
           this.highlight5 = false;
         } else {
           this.highlight5 = true;
         }
-         break; 
-      } 
-      case 6: { 
-        if(this.highlight6){
+        break;
+      }
+      case 6: {
+        if (this.highlight6) {
           this.highlight6 = false;
         } else {
           this.highlight6 = true;
         }
-         break; 
-      } 
-      case 7: { 
-        if(this.highlight7){
+        break;
+      }
+      case 7: {
+        if (this.highlight7) {
           this.highlight7 = false;
         } else {
           this.highlight7 = true;
         }
-         break; 
-      } 
-      case 8: { 
-        if(this.highlight8){
+        break;
+      }
+      case 8: {
+        if (this.highlight8) {
           this.highlight8 = false;
         } else {
           this.highlight8 = true;
         }
-         break; 
-      } 
-      case 9: { 
-        if(this.highlight9){
+        break;
+      }
+      case 9: {
+        if (this.highlight9) {
           this.highlight9 = false;
         } else {
           this.highlight9 = true;
         }
-         break; 
-      } 
-      case 10: { 
-        if(this.highlight10){
+        break;
+      }
+      case 10: {
+        if (this.highlight10) {
           this.highlight10 = false;
         } else {
           this.highlight10 = true;
         }
-         break; 
-      } 
-      case 11: { 
-        if(this.highlight11){
+        break;
+      }
+      case 11: {
+        if (this.highlight11) {
           this.highlight11 = false;
         } else {
           this.highlight11 = true;
         }
-         break; 
-      } 
-      case 12: { 
-        if(this.highlight12){
+        break;
+      }
+      case 12: {
+        if (this.highlight12) {
           this.highlight12 = false;
         } else {
           this.highlight12 = true;
         }
-         break; 
+        break;
       }
       case 13: {
         if (this.highlight13) {
@@ -198,7 +198,7 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight13 = true;
         }
-         break; 
+        break;
       }
       case 14: {
         if (this.highlight14) {
@@ -206,7 +206,7 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight14 = true;
         }
-         break; 
+        break;
       }
     }
   }
@@ -228,100 +228,118 @@ export class AvailfilterComponent implements OnInit {
     this.backgroundColor = '#000000';
   }
 
-  uploadDoc(){
+  uploadDoc() {
     console.log('uploadDoc')
-    this.showUpload=true;
+    this.showUpload = true;
   }
-  upload(files: File[]){
+  upload(files: File[]) {
     var formData = new FormData();
-    this.errorMessage=null;
-    this.successMessage=null;
-    this.successCase=false;
-    this.filename=files[0].name;
+    this.errorMessage = null;
+    this.successMessage = null;
+    this.successCase = false;
+    this.filename = files[0].name;
     Array.from(files).forEach(f => formData.append('file', f))
-    this.availDocName=this.filename.includes('Feature');
-    
-    if(this.availDocName===true){
-    //   this.httpService.uploadAvail(formData).subscribe(data => {  
-    //     if(data['status']="success"){
-    //       this.successCase=true;
-    //       this.successMessage=data['successMessage'];
-    //     }
-    //     this.availuploadData=event;
-    //     //  window.location.reload();
-    //     console.log('Avail upload done')
-    //   },
-    //   error => {
-    //     this.successCase=false;
-    //     this.successMessage=null;
-    //     this.availDocName=false;
-    //     this.errorMessage=error.error.message;
-    //     console.log('Avail Doc Error', error.error.message);
-    //   }
-    // )
+    this.availDocName = this.filename.includes('Feature');
+    var extension = this.filename.substr(this.filename.lastIndexOf('.'));
+    console.log('31457280', files[0].size);
+    if ((extension.toLowerCase() === ".xlsx")) {
+      if (files[0].size <=31457280) {
+        if (this.availDocName === true) {
+          //   this.httpService.uploadAvail(formData).subscribe(data => {  
+          //     if(data['status']="success"){
+          //       this.successCase=true;
+          //       this.successMessage=data['successMessage'];
+          //     }
+          //     this.availuploadData=event;
+          //     //  window.location.reload();
+          //     console.log('Avail upload done')
+          //   },
+          //   error => {
+          //     this.successCase=false;
+          //     this.successMessage=null;
+          //     this.availDocName=false;
+          //     this.errorMessage=error.error.message;
+          //     console.log('Avail Doc Error', error.error.message);
+          //   }
+          // )
 
-    this.httpService.uploadToS3(formData).subscribe(data => {  
-      //this.uploadreleaseData=data;
-        this.s3Resp = data;
-        
-        this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {  
-          console.log("second call data : "+ data);
-            this.secndUrlResp = data;
+          this.httpService.uploadToS3(formData).subscribe(data => {
+            //this.uploadreleaseData=data;
+            this.s3Resp = data;
+            console.log(this.s3Resp, "s3 response")
+            this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
+              console.log("second call data : " + data);
+              this.secndUrlResp = data;
 
-            // this.httpService.uploadAvailToBack(this.secndUrlResp.aws_file_path).subscribe(data => {  
-            //   console.log("third call data : "+ data);
-              if(data['status']="success"){
-                this.successCase=true;
+              // this.httpService.uploadAvailToBack(this.secndUrlResp.aws_file_path).subscribe(data => {  
+              //   console.log("third call data : "+ data);
+              if (data['status'] = "success") {
+                this.successCase = true;
                 this.errorCase = false;
-                this.successMessage=data['successMessage'];
+                this.successMessage = data['successMessage'];
                 this.httpService.availrefreshcomp.next();
-              // this.thirdUrlData = data;
+                // this.thirdUrlData = data;
               }
-                
-            // },
-            // error => {
-            //   this.successCase=false;
-            //   this.successMessage=null;
-            //   this.errorMessage=error.error.message;
-            //   console.log('third call Error', error.error.message);
-            // }
-            // )
 
+              // },
+              // error => {
+              //   this.successCase=false;
+              //   this.successMessage=null;
+              //   this.errorMessage=error.error.message;
+              //   console.log('third call Error', error.error.message);
+              // }
+              // )
+
+            },
+              error => {
+                this.successCase = false;
+                this.successMessage = null;
+                this.errorCase = true;
+                this.errorMessage = error.error.message;
+                console.log('second call Error', error.error.message);
+              }
+            )
           },
-          error => {
-              this.successCase=false;
-              this.successMessage=null;
+            error => {
+              this.successCase = false;
+              this.successMessage = null;
               this.errorCase = true;
-              this.errorMessage=error.error.message;
-              console.log('second call Error', error.error.message);
+              this.errorMessage = error.error.message;
+              console.log('S3 Doc Error', error);
             }
           )
-    },
-      error => {
-        this.successCase=false;
-        this.successMessage=null;
-        this.errorCase = true;
-        this.errorMessage=error.error.message;
-        console.log('S3 Doc Error', error.error.message);
+        }
+        else {
+          this.errorMessage = "Not a Feature Document";
+          this.errorCase = true;
+          this.successCase = false;
+          this.successMessage = null;
+        }
       }
-    )
+      else{
+      this.errorMessage = "Maximum file size exceeded";
+      this.errorCase = true;
+      this.successCase = false;
+      this.successMessage = null;
+      }
     }
-   else if(this.availDocName===false){
-      this.errorMessage="Is not a valid file format";
-       // window.location.reload();
-       this.errorCase = true;
-       this.successCase=false;
-       this.successMessage=null;
+    else {
+      this.errorMessage = "Is not a valid file format";
+      this.errorCase = true;
+      this.successCase = false;
+      this.successMessage = null;
     }
-    
+
   }
-  filter(){
-    this.filterShow=true;
+  filter() {
+    this.filterShow = true;
   }
-  openingModal(){
-    this.successCase=false;
+  openingModal() {
+    this.successCase = false;
     this.errorCase = false;
-    this.filename='';
-    this.errorMessage="";
+    this.filename = '';
+    this.errorMessage = "";
   }
 }
+
+

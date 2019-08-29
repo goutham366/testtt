@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages-component';
-
 const routes: Routes = [
   {
     path: '',
@@ -65,16 +64,32 @@ const routes: Routes = [
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
       },
       {
-        path:'calendar',
+        path: 'calendar',
         loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
       },
       {
-        path:'profile',
+        path: 'profile',
         loadChildren: 'src/app/pages/profile-page/profile-page.module#ProfilePageModule'
       },
       {
-        path:'user',
+        path: 'user',
         loadChildren: 'src/app/pages/userconfig/userconfig.module#UserConfiguartionModule'
+      },
+      {
+        path: 'television',
+        loadChildren: 'src/app/pages/television-avail/television-avail.module#TelevisionAvailModule'
+      },
+      {
+        path: 'tvseries',
+        loadChildren: 'src/app/pages/tv-series/tv-series.module#TelevisionSeriesModule'
+      },
+      {
+        path: 'tvseason',
+        loadChildren: 'src/app/pages/tv-season/tv-season.module#TelevisionSeasonModule'
+      },
+      {
+        path: 'tvepisode',
+        loadChildren: 'src/app/pages/tv-episodes/tv-episodes.module#TelevisionEpisodeModule'
       },
       {
         path: 'itunes',

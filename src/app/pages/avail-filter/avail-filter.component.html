@@ -28,7 +28,7 @@
                 </div>
                 <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
                 <ul class="nav nav-tabs">
-                    <li class="nav-item" (click)="removingText('filter')">
+                    <li class="nav-item">
                       <a class="nav-link active btn-fun" data-toggle="tab" href="#filter">
                         <i class="material-icons">filter_list</i>
                         <p>Filter</p> </a>
@@ -139,7 +139,7 @@
                                     <span class="filename">{{this.filename}}</span> 
                                     <span *ngIf="errorCase" class="errorMessage">{{errorMessage}}</span>
                                     <span *ngIf="successCase" class="successMessage">{{successMessage}}</span>
-                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file" (change)="upload($event.target.files)">
+                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file"  (change)="upload($event.target.files)">
                                 </div>
                                 </div>
                           </div>

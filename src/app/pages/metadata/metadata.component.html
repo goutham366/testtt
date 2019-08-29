@@ -1,5 +1,3 @@
-
-
 <!-- <div class="flex-box">
   <div class="flex-description">
 
@@ -44,7 +42,7 @@
                       <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
                   </ul>
                 </div>
-                <div class="circle" (click)="showTitleStatus(i)">
+                <div class="circle">
                   <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                     [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
                 </div>
@@ -53,10 +51,10 @@
                 <div class="container mt-3">
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
+                      <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight">Insight</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#metaData">Metadata</a>
+                      <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>
                     </li>
                   </ul>
                 </div>
@@ -67,22 +65,18 @@
             <i class="material-icons">vertical_align_center</i>
             <i class="material-icons">replay</i>
             <span (click)="sizePlus()"><i class="material-icons">title
-              <sup>+</sup>
-            </i></span>
+                <sup>+</sup>
+              </i></span>
             <span (click)="sizeMinus()"><i class="material-icons">title
-              <sup>-</sup>
-            </i></span>
+                <sup>-</sup>
+              </i></span>
           </div>
         </div>
       </div>
       <div class="container-fluid padding-side">
         <div class="tab-content">
-          <div id="insight" class="container tab-pane active">
-            <h3>Insight</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.</p>
-          </div>
-          <div id="metaData" class="tab-pane fade">
+          <div id="metaData" class="container tab-pane active">
+            <!-- <div id="metaData" class="container tab-pane fade"> -->
             <div class="d-flex">
               <div class="tab-content">
                 <div id="Global" class="tab-pane active">
@@ -129,55 +123,56 @@
                         <li>{{x.ClearedForSale}}</li>
                         <li>{{x.ClientEnd}}</li>
                         <!-- <li>{{x.ClientEnd}}</li>
-                              <li>{{x.ClientEnd}}</li> -->
+                                <li>{{x.ClientEnd}}</li> -->
                       </ul>
                       <!-- <div class="" >
-                        <div class="table-3"> -->
-                          <div *ngIf="close">
-                          <ul *ngFor="let x of details" class="pl-2">
-                            <li>{{x.abstractEIDR}}</li>
-                            <li>{{x.account}}</li>
-                            <li>{{x.activationStatus}}</li>
-                            <li>{{metaDataListUpdateVal}}</li>
-                            <li>{{x.airedEndDate}}</li>
-                            <li>{{x.AiredFromDate}}</li>
-                            <li>{{x.announcementDate}}</li>
-                            <li>{{x.atlasnumber}}</li>
-                            <li>{{x.audioLanguage}}</li>
-                            <li>{{x.broadcastVehicle}}</li>
-                            <li>{{x.bundleVersion}}</li>
-                            <li>{{x.businessUnit}}</li>
-                            <li>{{x.changeStatus}}</li>
-                            <li>{{x.changeFields}}</li>
-                            <li>{{x.channel}}</li>
-                            <li>{{x.ClearedForSale}}</li>
-                            <li>{{x.ClientEnd}}</li>
-                            <!-- <li>{{x.ClientEnd}}</li>
-                                  <li>{{x.ClientEnd}}</li> -->
-                          </ul>
-                          </div>
-                        <!-- </div>
-                      </div> -->
-                      
+                          <div class="table-3"> -->
+                      <div *ngIf="close">
+                        <ul *ngFor="let x of details" class="pl-2">
+                          <li>{{x.abstractEIDR}}</li>
+                          <li>{{x.account}}</li>
+                          <li>{{x.activationStatus}}</li>
+                          <li>{{metaDataListUpdateVal}}</li>
+                          <li>{{x.airedEndDate}}</li>
+                          <li>{{x.AiredFromDate}}</li>
+                          <li>{{x.announcementDate}}</li>
+                          <li>{{x.atlasnumber}}</li>
+                          <li>{{x.audioLanguage}}</li>
+                          <li>{{x.broadcastVehicle}}</li>
+                          <li>{{x.bundleVersion}}</li>
+                          <li>{{x.businessUnit}}</li>
+                          <li>{{x.changeStatus}}</li>
+                          <li>{{x.changeFields}}</li>
+                          <li>{{x.channel}}</li>
+                          <li>{{x.ClearedForSale}}</li>
+                          <li>{{x.ClientEnd}}</li>
+                          <!-- <li>{{x.ClientEnd}}</li>
+                                    <li>{{x.ClientEnd}}</li> -->
+                        </ul>
+                      </div>
+                      <!-- </div>
+                        </div> -->
+
                     </div>
                     <div class="comparsion-box" *ngIf="show">
                       <div class="d-flex">
                         <div class="add-icon">
-                        <i class="material-icons" (click)="openBox()">add_box</i>
-                        <div id="mySidenav" class="searchBox d-flex" id="compareBox"  >
-                          <div class="compare-section">
-                            <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i class="material-icons"  (click)="openBox()">add_box</i></a>Compare</div>
+                          <i class="material-icons" (click)="openBox()">add_box</i>
+                          <div id="mySidenav" class="searchBox d-flex" id="compareBox">
+                            <div class="compare-section">
+                              <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i
+                                    class="material-icons" (click)="openBox()">add_box</i></a>Compare</div>
                               <input type="text" name="availId" [(ngModel)]="availId" (keyup.enter)="onEnter(metaDataShow(availId))">
-                            <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
+                              <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
+                            </div>
                           </div>
                         </div>
-                        </div> 
                       </div>
                     </div>
                     <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
                       <i class="material-icons">add_box</i>
                     </div>
-                    
+
                   </div>
                   <div class="update-box">
                     <div class="btn-group">
@@ -194,8 +189,8 @@
                       </ul>
                       <div class="text-area">
                         <textarea cols="79" rows="2" #box>
-                                    
-                        </textarea>
+                                      
+                          </textarea>
                       </div>
                       <div class="btn btn-dark" (click)="update(box.value)">Update</div>
                     </div>
@@ -222,7 +217,7 @@
                           <li>{{x.activationStatus}}</li>
                         </ul>
                       </div>
-                      <div><label class="plus-symbol" (click)="addShortSynopsis()"> +</label></div>
+                      <div><label class="plus-symbol"> +</label></div>
                     </div>
                   </div>
                 </div>
@@ -264,15 +259,18 @@
                           <span>JohnPaul</span>
                           <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
                         </div>
-                        {{comment.name}}</li>
-                        <div class="main-comment">
+                        {{comment.name}}
+                      </li>
+                      <div class="main-comment">
                         <div id="mySidenav" class="sidenav">
+                          <div class="custom-comment">
                           <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">comments</a>
                           hi
                         </div>
                         </div>
-                        <span (click)="openNav()">open</span>
-                      <button (click)="showInput()">Add</button>
+                        </div>
+                        <span class="float-right" (click)="openNav()"><i class="material-icons">add_box</i></span>
+                      <!-- <button (click)="showInput()">Add</button> -->
                     </div>
                     <div class="tab-pane" id="Log">
                       <li class="comment-style" *ngFor="let logD of logsDetails">
@@ -280,9 +278,10 @@
                           <span>{{logD.name}}</span>
                           <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
                         </div>
-                        {{logD.val}}</li>
+                        {{logD.val}}
+                      </li>
                       <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
-                                <button (click)="addComment(newComment.value)">Add</button> -->
+                                  <button (click)="addComment(newComment.value)">Add</button> -->
                     </div>
                   </div>
                 </ul>
@@ -294,7 +293,3 @@
     </div>
   </div>
 </div>
-
-
-
-

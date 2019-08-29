@@ -51,7 +51,8 @@
                     <div class="equalHMWrap">
                         <span id="countriesDiv">
                             <span class="itune-details titlesBox">
-                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">language</i></span><span class="titleFont"> {{itune.TitleData.CountriesCount}}</span>
+                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">language</i></span>
+                                <span class="titleFont"> {{itune.TitleData.UniqueCountriesCount}}</span>
                                 <span class="titleFont"> Countries</span>
                             </span>
                         </span>
@@ -69,14 +70,14 @@
                     <div class="equalHMWrap">
                         <span id="langDiv">
                             <span class="itune-details titlesBox">
-                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">translate</i></span><span class="titleFont"> {{itune.TitleData.LanguagesCount}}</span>
+                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">translate</i></span><span class="titleFont"> {{itune.TitleData.UniqueLanguagesCount}}</span>
                                 <span class="titleFont"> Languages</span>
                             </span>
                         </span>
                     </div>   
                      <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted('L')}">
                                 <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
                             </div>
                             <div [ngStyle]="{'width.%': getPending(i,'L')}">

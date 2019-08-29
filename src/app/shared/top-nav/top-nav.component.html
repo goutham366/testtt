@@ -15,13 +15,20 @@
             </span>
             <ul class="dropdown-menu shadow-sm">
               <div *ngFor="let film of filmList">
-                <li style="cursor: pointer; font-size: 12px;" (click)="filmSelection(film.name)">{{film.name}}</li>
+                <li class="dropdown-selection" (click)="filmSelection(film.name)">{{film.name}}</li>
               </div>
             </ul>
           </li>
-          <li class="nav-item" routerLink="/television">
+          <li class="nav-item" routerLink="/pages/television" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}" >
             <i class="material-icons icon-television">tv</i>
-            <span class="v-align"> Television</span>
+            <span class="v-align" data-toggle="dropdown"> Television</span>
+            <!-- <span class="">{{selectedItemofTv}}
+            </span>
+            <ul class="dropdown-menu dropdown-align shadow-sm">
+              <div *ngFor="let category of tvCategories">
+                <li class="television"  (click)="televisonDrop(category.name)">{{category.name}}</li>
+              </div>
+            </ul> -->
           </li>
           <li class="nav-item dropdown cursorPoint" routerLink="/pages/itunes" (click)="selectedItem = null" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}">
             <i class="fa fa-music icon-music" aria-hidden="true"></i> iTunes

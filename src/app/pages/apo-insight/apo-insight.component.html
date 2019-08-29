@@ -1,21 +1,46 @@
-<!-- <div class="acc-style-top">
+<div class="acc-style-top">
+  <div class="row">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/pages">Avails</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a #tref>FN JAN152019</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a routerLink="/pages/titles" #tref>Titles</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item breadcrumb-title">
+        <a #tref>The Lego Movie 2</a>
+      </li>
+    </ul>
+  </div>
   <div class="card">
     <div class="d-flex top-bar">
       <div class="flex-description box-1">
+        <!-- <img class="img-card" src="../../../assets/images/lego.jpg"> -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage(src)">
+          <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage()">
         </button>
       </div>
       <div class="flex-description box-2">
         <div class="d-flex">
           <div class="card-data">
             <div class="card-content">
-              <h6 class="main-title">The Lego Movie</h6>
+              <h6 class="main-title">The Lego Movie 2</h6>
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</h6>
+              <!-- <ul>
+                <li>The Lego Movie 2</li>
+                <li class="cust-text">
+                  <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
+              </ul> -->
             </div>
-            <div class="circle" (click)="showTitleStatus(i)">
+            <div class="circle circle-percentage">
               <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
             </div>
           </div>
           <div class="card-menu">
@@ -25,7 +50,7 @@
                   <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#metaData">Metadata</a>
+                  <a class="nav-link" data-toggle="tab" href="#metaData" routerLink="/pages/metadata">Metadata</a>
                 </li>
               </ul>
             </div>
@@ -42,7 +67,7 @@
   </div>
 </div>
 
-<div class=""  *ngIf="account == i">
+<div class="" >
   <div class="row legend">
     <div class="legend-status">
       <div class="complete-legend"></div>
@@ -61,8 +86,9 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-4">
-            <a class="avail-details" (click)="showDetails3 = !showDetails3">
-              <img src="assets/images/Icons/PNG/titles.png">&nbsp;100 Titles</a>
+            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
+              <img src="assets/images/Icons/SVG/baseline-add_shopping_cart-24px.svg">&nbsp;59 Accounts</a>
+            <!-- <strong [hidden]="showDetails">Titles</strong> -->
             <div class="progress progress-main">
               <div class="progress-bar bg-success" style="width: 70%">
                 70
@@ -88,7 +114,7 @@
 
           </div>
           <div class="col-md-4">
-            <a class="avail-details" (click)="showDetails3 = !showDetails3">
+            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
               <i class="material-icons md-18 md-grey v-align">language</i>&nbsp; 32 Countries</a>
             <div class="progress progress-main">
               <div class="progress-bar bg-success" style="width: 50%">
@@ -113,7 +139,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <a class="avail-details" (click)="showDetails3 = !showDetails3">
+            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
               <i class="material-icons md-18 md-grey v-align">translate</i>&nbsp; 28 Languages</a>
             <div class="progress progress-main">
               <div class="progress-bar bg-success" style="width: 20%">
@@ -141,11 +167,13 @@
         </div>
         <div>&nbsp;</div>
 
+        <!-- progress bar -->
         <div style="margin: 20px 21px 24px 5px;" [hidden]="showDetails3">
           <div class="progress">
             <div [ngStyle]="{'width.%': width}" class="inner-progress">100</div>
           </div>
         </div>
+        <!-- progress bar -->
       </div>
 
     </div>
@@ -154,15 +182,21 @@
     <div class="col-md-6 line-last">
       <div class="row comman-row">
         <div class="col-md-12 block">
+          <!-- <div *ngIf="showStatus">-->
           <h6 class="status-text">Status</h6>
           <p class="status">
-            <b>123</b> Pending Translations</p>
+            <b>123</b></p>
+          <p class="status-count">Pending Translations</p>
           <p class="status">
-            <b>112</b> Pending Ratings</p>
+            <b>112</b></p>
+          <p class="status-count">Pending Ratings</p>
           <p class="status">
-            <b>15</b>Pending Clarifications</p>
+            <b>15</b></p>
+          <p class="status-count">Pending Clarifications</p>
           <p class="status">
-            <b>2</b> Escalations</p>
+            <b>2</b> </p>
+          <p class="status-count">Escalations</p>
+          <!-- </div>  -->
         </div>
       </div>
       <br>
@@ -185,8 +219,10 @@
                     <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
                     <i class="fa fa-check fa-stack-1x custom-fa"></i>
                   </span>
-  
+                  <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                    [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
                 </span>
+                <!-- <br> -->
                 <span>
                   <p class="avail-title">{{avail.avail_title}}</p>
                   <p class="avail-date">
@@ -217,7 +253,7 @@
                     </span>
                   </span>
                 </div>
-  
+                <!-- progress bar -->
                 <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
                   <div class="progress">
                     <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
@@ -263,7 +299,7 @@
                     </div>
                     <div class="col-md-2 legend-pending-text">Pending</div>
                   </div>
-  
+                  <!-- progress bar -->
                 </div>
                 <div class="cust-text" *ngIf="showStatus== i">
                   <span class="status-text" (click)="showStatus = null">
@@ -293,19 +329,19 @@
                 <br>
                 <ul class="timeline">
                   <li>
-                    <a href="#" class="timeline-status">2/22/2019</a>
+                    <a href="#" class="timeline-date">2/22/2019</a>
                     <p class="timeline-status"> Announced</p>
                   </li>
                   <li>
-                    <a href="#" class="timeline-status">03/03/2019</a>
+                    <a href="#" class="timeline-date">03/03/2019</a>
                     <p class="timeline-status">Data Collation</p>
                   </li>
                   <li>
-                    <a href="#" class="timeline-status">03/08/2019</a>
+                    <a href="#" class="timeline-date">03/08/2019</a>
                     <p class="timeline-status">Quality Audit</p>
                   </li>
                   <li>
-                    <a href="#" class="timeline-status">03/19/2019</a>
+                    <a href="#" class="timeline-date">03/19/2019</a>
                     <p class="timeline-status">Data Delivery</p>
                   </li>
                 </ul>
@@ -325,7 +361,7 @@
               </li>
             </ul>
 
-  
+            <!-- Tab panes -->
             <div class="tab-content cmnt-list-scroll">
               <div id="comment" class="container tab-pane active">
                 <ul id="comments-list" class="comments-list">
@@ -336,7 +372,7 @@
                           <h6 class="comment-name">
                             <a href="http://creaticode.com/blog">{{z.name}}</a>
                           </h6>
-                          <span class="date">{{z.comment_dateAndTime}}</span>
+                          <span class="date">{{z.comment_dateAndTime}}</span><br>
                           <span class="comment-content">{{z.comment_text}}</span>
                         </div>
                       </div>
@@ -369,9 +405,9 @@
                             <img class="log_img" src="assets/images/a_star_is_born_big.jpg" alt="events">
                             <span class="log-img-cmt">
                               <p>{{z.status}}</p>
-  
+                              <!-- <p>{{z.image_url/fileName}}</p> -->
                             </span>
-                            <span class="log-img-status"> <p>Thumbnail Image</p></span>
+                            <span class="log-img-status">Thumbnail Image</span>
                           </div>
                         </div>
                       </div>
@@ -390,10 +426,11 @@
 </div>
 
 <div class="container  acc-style">
-  
+  <!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-view">
+        <!-- <img class="img-card img-crop" src="assets/images/lego.jpg" (click)="cropImage(src);"> -->
         <div>
           <img-cropper name="crop_img" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
           <br>
@@ -402,11 +439,11 @@
               style="visibility: hidden;">
           </span>
           <div class="crop-save-btn">
-            <button (click)="saveCropImage(src)" data-dismiss="modal" style="font-size:35px ; color: #007CC3 ; background-color: transparent; border: aliceblue;"
+            <button (click)="saveCropImage()" data-dismiss="modal" style="font-size:35px ; color: #007CC3 ; background-color: transparent; border: aliceblue;"
               class="fa">&#xf058;</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>

@@ -16,14 +16,14 @@
                     <div class="card-header card-padding gray-bg" *ngIf="showDetails !== i && showStatus !== i">
                         <span class="avail-status">
                             <div class="current" [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
-                            <round-progress [current]="avail.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
+                            <round-progress class="round-outline" [current]="avail.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
                                 [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
-                                [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+                                [animation]="'easeInOutQuart'" [animationDelay]="0" routerLink="/pages/details"></round-progress>
                             <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                 [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
                         </span>
                         <span>
-                            <p class="avail-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}">{{avail.AvailName | uppercase }}</p>
+                            <p class="avail-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}" routerLink="/pages/titles">{{avail.AvailName | uppercase }}</p>
                             <p class="avail-date">
                                 <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'dd/MM' }} -
                                 <span>{{avail.DueDate | date:'dd/MM' }}</span>

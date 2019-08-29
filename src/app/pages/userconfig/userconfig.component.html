@@ -1,7 +1,7 @@
 <div class="user-tab">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#insight">john Paul</a>
+      <a class="nav-link active" data-toggle="tab" href="#insight">John Paul</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#metaData">Configure</a>
@@ -279,8 +279,9 @@
                 <label class="version-content" *ngFor="let val of multipleList.versionS">{{val.n}} </label>
               </div>
               <div class="version-content">
-                <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="versions"></textarea>
-                <label class="right_btn ml-auto" (click)="addMultipleValue(versionS)">+</label>
+                <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="versions">
+                <label class="right_btn ml-auto" >+ Add</label>
+              </textarea>
               </div>
             </div>
             <div class="table-responsive">

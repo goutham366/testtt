@@ -419,6 +419,14 @@
             {
                 "StatusDate": "2019-07-19 12:01:51.571",
                 "StatusMessage": "Announced"
+            },
+            {
+                "StatusDate": "2019-07-19 12:01:51.572",
+                "StatusMessage": "Data Collation"
+            },
+            {
+                "StatusDate": "2019-07-19 12:01:51.572",
+                "StatusMessage": "Quality Audit"
             }
         ],
         "Regions": "",
@@ -635,7 +643,7 @@
         "AnnouncementDate": "07/29/2019",
         "GlobalTitle": "Aladdin 2019",
         "ImageURL": "",
-        "TitleStatus": "Announced",
+        "TitleStatus": [{}],
         "Regions": "[\"Germany\",\"United Kingdom\",\"USA\",\"Brazil\",\"EMEA Licensee Group\",\"France\",\"Italy\",\"Mexico\",\"Nordic\",\"Spain\"]",
         "DueDate": "06/05/2019",
         "TitleId": "60001264672081284",

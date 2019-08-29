@@ -31,28 +31,34 @@ export class ItunesComponent implements OnInit {
     switch(data){
       case 'T': result= (this.iTunesData[n].TitleData.PendingTitlesCount*100)/this.iTunesData[n].TitleData.TitlesCount;
                 break;
-      case 'C': result= (this.iTunesData[n].TitleData.CountriesPendingCount*100)/this.iTunesData[n].TitleData.CountriesCount;
+      case 'C': result= (this.iTunesData[n].TitleData.CountriesPendingCount*100)/this.iTunesData[n].TitleData.UniqueCountriesCount;
                 break;
-      case 'L': result= (this.iTunesData[n].TitleData.LanguagesPendingCount*100)/this.iTunesData[n].TitleData.LanguagesCount;
+      case 'L': result= (this.iTunesData[n].TitleData.LanguagesPendingCount*100)/this.iTunesData[n].TitleData.UniqueLanguagesCount;
                 break;
               
     }
     return result;
   }
+  
+
   getCompleted(n,data){
     var result;
     switch(data){
 
       case 'T': result= (this.iTunesData[n].TitleData.CompletedTitlesCount*100)/this.iTunesData[n].TitleData.TitlesCount;
                 break;
-      case 'C': result= (this.iTunesData[n].TitleData.CountriesCompletedCount*100)/this.iTunesData[n].TitleData.CountriesCount;
+      case 'C': result= (this.iTunesData[n].TitleData.CountriesCompletedCount*100)/this.iTunesData[n].TitleData.UniqueCountriesCount;
                 break;
-      case 'L': result= (this.iTunesData[n].TitleData.LanguagesCompletedCount*100)/this.iTunesData[n].TitleData.LanguagesCount;
+      case 'L': result= (this.iTunesData[n].TitleData.LanguagesCompletedCount*100)/this.iTunesData[n].TitleData.UniqueLanguagesCount;
                 break;
     }
     return result;
   }
+
   
+
+  
+
 
   showAvailStatus(index) {
     this.showStatus = index;

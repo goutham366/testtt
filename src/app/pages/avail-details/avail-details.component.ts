@@ -78,7 +78,7 @@ export class AvailDetailsComponent implements OnInit {
   }
 
   positionA = { x: 0, y: -150 };
-  positionB = { x: 550, y: -20 };
+  positionB = { x: 550, y: 0 };
 
   onMoving(event) {
     const boxWidth = 200;

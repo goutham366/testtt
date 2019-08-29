@@ -150,7 +150,7 @@ export class AvailInsightComponent implements OnInit {
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
 
-  cropImage(source) {
+  cropImage() {
     let img = document.getElementsByName("main_img")[0];
     if (img != null) {
       let main_img = img["src"];
@@ -160,7 +160,7 @@ export class AvailInsightComponent implements OnInit {
     }
   }
 
-  saveCropImage(source) {
+  saveCropImage() {
     let img_final = document.getElementsByName("final_img")[0];
     if (img_final) {
       let final_img = document.getElementsByName("final_img")[0]["src"];

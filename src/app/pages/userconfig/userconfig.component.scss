@@ -158,43 +158,49 @@ $blue: rgba(190, 227, 255,1);
                 &.version{
                     position: relative;
                     display: inline-block;
-                    font-size: 14px;
+                    font-size: 12px;
                     color: #03A9F4;
-                    font-weight: bold;
+                    font-family: Roboto;
+                    margin: 2px 0px 5px -30px;
                 }
                 &.notification{
                     position: relative;
                     display: flex;
-                    font-size: 14px;
+                    font-size: 12px;
                     color: rgba(0, 0, 0, 0.5);
+                    font-family: Roboto;
+                    margin: 2px 0px 5px -30px;
                 }
                 &.name{
                     position: relative;
                     display: flex;
-                    font-size: 14px;
+                    font-size: 12px;
                     color: rgba(0, 0, 0, 0.5);
-                    font-weight: bold;
-                    padding: 7px 0px 0px 10px;
+                    font-family: Roboto;
+                    /* font-weight: bold; */
+                    padding: 5px 0px 0px 10px;
+                    margin: 0px 0px 12px 2px;
                 }
                 &.log_dateAndTime{
                     position: relative;
-                    font-size: 14px;
+                    font-size: 12px;
                     color: rgba(0, 0, 0, 0.5);
                     font-weight: bold;
-                    margin: -35px 0px 10px 180px !important;
+                    margin: -31px 0px 6px 200px !important;
                 }
                 &.status{
                     position: relative;
                     display: flex;
-                    font-size: 14px;
-                    color: rgba(0, 0, 0, 1.5);
+                    font-size: 12px;
+                    color: black;
+                    font-family: Roboto;
                     font-weight: bold;
-                    padding: 0px 0px 0px 10px;
+                    margin: 0px 0px 6px -27px;
                 }
                 &.log_version{
                     position: relative;
                     display: flex;
-                    font-size: 14px;
+                    font-size: 12px;
                     color: rgba(0, 0, 0, 0.5);
                     font-weight: bold;
                     padding: 0px 0px 0px 10px;
@@ -361,7 +367,7 @@ $blue: rgba(190, 227, 255,1);
     display: flex;
     position: relative;
     color:#03A9F4;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     padding: 0px 0px 10px 0px;
 } 
@@ -390,6 +396,8 @@ $blue: rgba(190, 227, 255,1);
     margin: -54px -100px 0px 0px;
     border-radius: .25rem;
     height: calc(1.5em + .75rem + 2px);
+    font-size: 14px;
+    font-weight: bold;
 }
   
  

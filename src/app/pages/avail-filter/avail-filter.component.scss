@@ -301,7 +301,8 @@ span{
 
 
 .nav-tabs{
-border-bottom: none;
+border-bottom: none !important;
+border: none;
 
 .nav-item{
 .nav-link{

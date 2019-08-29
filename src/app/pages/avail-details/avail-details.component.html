@@ -1,4 +1,15 @@
 <div class="acc-style-top">
+  <div class="row">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/pages">Avails</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item breadcrumb-title">
+        <a #tref>FN JAN152019</a>
+      </li>
+    </ul>
+  </div>
   <div class="card">
     <div class="d-flex top-bar">
       <div class="flex-description box-1">
@@ -11,7 +22,7 @@
         <div class="d-flex">
           <div class="card-data">
             <div class="card-content">
-              <h6 class="main-title">The Lego Movie</h6>
+              <h6 class="main-title">FN JAN152019</h6>
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</h6>
               <!-- <ul>
                 <li>The Lego Movie 2</li>
@@ -19,9 +30,9 @@
                   <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
               </ul> -->
             </div>
-            <div class="circle" (click)="showTitleStatus(i)">
-              <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
+            <div class="circle circle-percentage" >
+              <circle-progress class="round-outline" [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
             </div>
           </div>
           <div class="card-menu">
@@ -52,23 +63,25 @@
   <div class="col-md-3">
     <div class="row comman-row status-timeline-box">
       <div class="col-md-12">
-        <!-- <div *ngIf="showStatus">-->
-        <h6 class="status-text">Status</h6>
-        <p class="status">
-          <b>123</b> Pending Translations</p>
-        <p class="status">
-          <b>112</b> Pending Ratings</p>
-        <p class="status">
-          <b>15</b>Pending Clarifications</p>
-        <p class="status">
-          <b>2</b> Escalations</p>
-        <!-- </div>  -->
+          <h6 class="status-text">Status</h6>
+          <p class="status">
+            <b>123</b></p>
+          <p class="status-count">Pending Translations</p>
+          <p class="status">
+            <b>112</b></p>
+          <p class="status-count">Pending Ratings</p>
+          <p class="status">
+            <b>15</b></p>
+          <p class="status-count">Pending Clarifications</p>
+          <p class="status">
+            <b>2</b> </p>
+          <p class="status-count">Escalations</p>
       </div>
     </div>
   </div>
   <div class="col-md-3" style="margin-right: -10%;">
     <h6 class="status-text">Timeline</h6>
-    <ul class="timeline">
+    <!-- <ul class="timeline">
       <li>
         <a href="#" class="timeline-status">2/22/2019</a>
         <p class="timeline-status">Announced</p>
@@ -81,7 +94,21 @@
         <a href="#" class="timeline-status">03/19/2019</a>
         <p class="timeline-status">Acknowledged</p>
       </li>
-    </ul>
+    </ul> -->
+    <ul class="timeline">
+        <li>
+          <a href="#" class="timeline-date">2/22/2019</a>
+          <p class="timeline-status"> Announced</p>
+        </li>
+        <li>
+          <a href="#" class="timeline-date">03/03/2019</a>
+          <p class="timeline-status">Completed</p>
+        </li>
+        <li>
+          <a href="#" class="timeline-date">03/08/2019</a>
+          <p class="timeline-status">Acknowledged</p>
+        </li>
+              </ul>
   </div>
 </div>
 <div class="acc-style">
@@ -91,7 +118,7 @@
         <div class="box-swap" ngDraggable [preventDefaultEvent]="true" [zIndexMoving]="9999" [trackPosition]="false" [position]="positionA"
           (movingOffset)="onMoving($event)">
 
-          <div class=""  *ngIf="account == i">
+          <div class="">
             <div class="row legend-bar">
               <div class="legend-status" style="margin-left: 100%;">
                 <div class="complete-legend"></div>

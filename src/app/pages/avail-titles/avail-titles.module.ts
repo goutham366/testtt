@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvailTitlesComponent } from './avail-titles.component';
-import { AvailTitleStatusComponent } from './avail-title-status/avail-title-status.component';
-
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 const routes: Routes = [
   {
-    path: 'titleview', component: AvailTitlesComponent
+    path: '', component: AvailTitlesComponent
 }
 ];
 @NgModule({
@@ -40,7 +38,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   
-  declarations: [AvailTitlesComponent, AvailTitleStatusComponent],
+  declarations: [AvailTitlesComponent],
   exports: [RouterModule]
 })
 export class AvailTitlesModule { }

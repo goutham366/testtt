@@ -10,7 +10,7 @@ export class HttpService {
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
   lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   awsS3Url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
-
+  localurl:string='http://10.219.20.213:8082/AWSS3';
   refreshcomp: Subject<any>;
   availrefreshcomp: Subject<any>;
   private messageSource = new BehaviorSubject('New');
@@ -25,7 +25,7 @@ export class HttpService {
   }
 
   changeMessage(message: string) {
-    this.messageSource.next(message)
+    this.messageSource.next(message);
   }
   getlanguagesData() {
     return this.http.get(`./assets/json/languages.json`);
@@ -37,7 +37,7 @@ export class HttpService {
     return  this.http.get(`./assets/json/countries.json`);
   }
   getUsersData() {
-    return  this.http.get(`./assets/json/users.json`);
+    return  this.http.get(`./assets/json/user.json`);
   }
   getUserData(){
     return  this.http.get(`./assets/json/user.json`);
@@ -51,6 +51,15 @@ export class HttpService {
   }
   getMetaData() {
     return this.http.get(`./assets/json/metaData.json`);
+  }
+  getItunesData() {
+    return  this.http.get(`./assets/json/avails_api.json`);
+ }
+//  getItunesData() {
+//   return  this.http.get(`http://172.21.129.57:8084/WBPlatform/avails/ITUNES`);
+// }
+  getTelevisionAvailData(){
+    return  this.http.get(`./assets/json/television-avail.json`);
   }
   // getAvailData() {
   //   return  this.http.get(`./assets/json/avails_api.json`);
@@ -86,12 +95,15 @@ export class HttpService {
   getAvailData() {
     return this.http.get(this.url + '/avails/FILMS');
   }
+  
   uploadToS3(formData) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Accept', 'application/json');
     headers = headers.append("Access-Control-Allow-Origin", "*");
+    // let headers: HttpHeaders = new HttpHeaders();
+    // headers = headers.append("Content-Type", "multipart/form-data");
     var url = this.awsS3Url + '/uploads/uploadFile';
-    return this.http.post(url , formData, { headers: headers });
+    return this.http.post(url , formData,{ headers: headers });
   }
 
   uploadS3toAWS(fileName) {
@@ -125,9 +137,7 @@ export class HttpService {
       return this.availrefreshcomp;
     }
   }
-  getItunesData() {
-    return  this.http.get(`./assets/json/avails_api.json`);
- }
+  
 }
 
   

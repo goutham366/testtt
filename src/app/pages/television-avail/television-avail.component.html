@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="avail-header">
+        <h6 class="avail-heading">Avails</h6>
+        <div>
+            <app-availfilter></app-availfilter>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 card-resize" *ngFor="let tv of tvData ;let i=index">
+            <div class="card television">
+                <div class="card-header" routerLink="/pages/tvseries">
+                    <div class="card-header-align">
+                        <ul class="header-height">
+                            <li>
+                                <span class="avail-title">{{tv.AvailName}}</span>
+                            </li>
+                            <li class="avail-date">
+                                <img src="assets/images/Icons/PNG/calendar.png">{{tv.StartDate | date:'dd/MM'}} -
+                                <span>{{tv.DueDate | date:'dd/MM'}}</span>
+                            </li>
+                        </ul>
+                        <div>
+                            <circle-progress [percent]="tv.AvailPercentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-content">
+                        <div>
+                            <span>
+                                <img src="assets/images/Icons/PNG/titles.png">
+                                <span class="font-text"> {{tv.TitleData.EpisodesCount}} Episodes</span>
+                            </span>
+
+                            <div class="progressBar">
+                                <div class="progress">
+                                    <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'E')}">
+                                        <span class="status-padding" *ngIf="getCompleted(i,'E')!==0">{{tv.TitleData.EpisodesCompletedCount}}</span>
+                                    </div>
+                                    <div [ngStyle]="{'width.%': getPending(i,'E')}">
+                                        <span class="status-padding" *ngIf="getPending(i,'E')!==0">{{tv.TitleData.EpisodesPendingCount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="material-icons md-18 md-grey v-align">language</i>
+                            <span class="font-text"> {{tv.TitleData.UniqueCountriesCount}} Countries</span>
+                            <div class="progressBar">
+                                <div class="progress">
+                                    <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
+                                        <span class="status-padding" *ngIf="getCompleted(i,'C')!=0">{{tv.TitleData.CountriesCompletedCount}}</span>
+                                    </div>
+                                    <div [ngStyle]="{'width.%': getPending(i,'C')}">
+                                        <span class="status-padding" *ngIf="getPending(i,'C')!=0">{{tv.TitleData.CountriesPendingCount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="material-icons md-18 md-grey v-align">translate</i>
+                            <span class="font-text"> {{tv.TitleData.UniqueLanguagesCount}} Languages</span>
+                            <div class="progressBar">
+                                <div class="progress">
+                                    <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                                        <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{tv.TitleData.LanguagesCompletedCount}}</span>
+                                    </div>
+                                    <div [ngStyle]="{'width.%': getPending(i,'L')}">
+                                        <span class="status-padding" *ngIf="getPending(i,'L')!=0">{{tv.TitleData.LanguagesPendingCount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row legend">
+                                <div class="col-md-1">
+                                    <div class="complete-legend"></div>
+                                </div>
+                                <div class="col-md-6 legend-text">Completed</div>
+
+                                <div class="col-md-1">
+                                    <div class="pending-legend"></div>
+                                </div>
+                                <div class="col-md-3 legend-pending-text">Pending</div>
+                            </div>
+
+                        </div>
+                        <h6 class="status-text">Status</h6>
+                        <p class="status">
+                            <span> 0</span> Pending Translations</p>
+                        <p class="status">
+                            <span> 0</span> Pending Ratings</p>
+                        <p class="status">
+                            <span>0</span> Pending Clarifications</p>
+                        <p class="status">
+                            <span>0</span> Escalations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
