@@ -41,6 +41,7 @@ import {
 
 import { ResizableDirective } from './directives/resizable';
 import { ResizerDirective } from './directives/resizer.directive';
+import { AvailTitleStatusComponent } from 'src/app/pages/avail-titles/avail-title-status/avail-title-status.component';
 //import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
