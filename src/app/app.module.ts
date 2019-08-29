@@ -50,7 +50,8 @@ import { ResizerDirective } from './directives/resizer.directive';
     ResetComponent,
     //ImageCropperComponent
     ResizableDirective,
-    ResizerDirective
+    ResizerDirective,
+	AvailTitleStatusComponent
   ],
   imports: [
     BrowserModule,
