@@ -1,0 +1,105 @@
+[
+    {
+        "country_name": "Argentina",
+        "ratings": [
+            {
+                "A": "comment of A",
+                "12": "comment of 12",
+                "13": "Comment of 13"
+            }
+        ]
+    },
+    {
+        "country_name": "India",
+        "ratings": [
+            {
+                "B": "comment of A",
+                "16": "comment of 12"
+            }
+        ]
+    },
+    {
+        "country_name": "Australia",
+        "ratings": [
+            {
+                "E": "comment of c",
+                "18": "comment of 12"
+            }
+        ]
+    },
+    {
+        "country_name": "South Africa",
+        "ratings": [
+            {
+                "D": "comment of A",
+                "10": "comment of 12"
+            }
+        ]
+    },
+    {
+        "country_name": "Albania",
+        "ratings": [
+            {
+                "18+": "comment of 18+",
+                "12+": "comment of 12+"
+            }
+        ]
+    },
+    {
+        "country_name": "Brazil",
+        "ratings": [
+            {
+                "ATP": "comment of 18+",
+                "+13": "comment of 12+",
+                "+16": "comment of 16",
+                "+18": "comment of 18",
+                "C": "Suitable for 18-years-old and over.Restricted to specially licensed venues"
+            }
+        ]
+    },
+    {
+        "country_name": "Benin",
+        "ratings": [
+            {
+                "+11": "comment of 18+",
+                "+12": "comment of 12+"
+            }
+        ]
+    },
+    {
+        "country_name": "Bolivia",
+        "ratings": [
+            {
+                "+10": "comment of 18+",
+                "+A": "comment of 12+"
+            }
+        ]
+    },
+    {
+        "country_name": "Bosnia &",
+        "ratings": [
+            {
+                "A++": "comment of 18+",
+                "+19": "comment of 12+"
+            }
+        ]
+    },
+    {
+        "country_name": "Botswana",
+        "ratings": [
+            {
+                "+22": "comment of 18+",
+                "+17": "comment of 12+"
+            }
+        ]
+    },
+    {
+        "country_name": "Herzegovina",
+        "ratings": [
+            {
+                "+21": "comment of 18+",
+                "+B": "comment of 12+"
+            }
+        ]
+    }
+]

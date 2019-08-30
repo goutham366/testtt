@@ -1,0 +1,144 @@
+[
+    {
+        "id": "1",
+        "avail_title": "CA JAN152015",
+        "date_of_arrival": "01/15",
+        "date_of_delivery": "21/03",
+        "avail_details": [
+            {
+                "titlesDetails": [
+                    {
+                        "id": "1",
+                        "title_name": "Aquaman",
+                        "announced_date": "12/09",
+                        "release_date": "12/12",
+                        "percentage_title": "30",
+                        "status": "Data Delivery",
+                        "image_url":"assets/images/aquaman_big.jpg",
+                        "accounts_count": "114",
+                        "countries_count": "32",
+                        "languages_count": "28",
+                        "accounts_completed": "100",
+                        "accounts_pending": "14",
+                        "countries_completed": "30",
+                        "countries_pending": "2",
+                        "languages_completed": "20",
+                        "langauges_pending": "8",
+                        "pending_title_translations_count": "112",
+                        "pending_title_ratings_count": "115",
+                        "pending_title_clarifications_count": "38",
+                        "escalations_title_count": "2"
+                    }
+                ],
+                "titlesCount": "114",
+                "titlesCompleted": "100",
+                "titlesPending": "14",
+                "countriesCount": "150",
+                "countriesCompleted": "190",
+                "countriesPending": "60",
+                "languagesCount": "120",
+                "languagesCompleted": "70",
+                "languagesPending": "50",
+                "pending_avail_translations_count": "",
+                "pending_avail_ratings_count": "",
+                "pending_avail_clarifications_count": "",
+                "escalations_avail_count": ""
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "avail_title": "CA JAN152015",
+        "date_of_arrival": "01/15",
+        "date_of_delivery": "21/03",
+        "avail_details": [
+            {
+                "titlesDetails": [
+                    {
+                        "id": "2",
+                        "title_name": "A Star is Born",
+                        "announced_date": "12/09",
+                        "release_date": "12/12",
+                        "percentage_title": "60",
+                        "status": "Announced",
+                        "image_url":"assets/images/a_star_is_born_big.jpg",
+                        "accounts_count": "100",
+                        "countries_count": "32",
+                        "languages_count": "28",
+                        "accounts_completed": "50",
+                        "accounts_pending": "50",
+                        "countries_completed": "30",
+                        "countries_pending": "2",
+                        "languages_completed": "20",
+                        "langauges_pending": "8",
+                        "pending_title_translations_count": "112",
+                        "pending_title_ratings_count": "115",
+                        "pending_title_clarifications_count": "38",
+                        "escalations_title_count": "2"
+                    }
+                ],
+                "titlesCount": "114",
+                "titlesCompleted": "100",
+                "titlesPending": "14",
+                "countriesCount": "150",
+                "countriesCompleted": "90",
+                "countriesPending": "60",
+                "languagesCount": "120",
+                "languagesCompleted": "70",
+                "languagesPending": "50",
+                "pending_avail_translations_count": "",
+                "pending_avail_ratings_count": "",
+                "pending_avail_clarifications_count": "",
+                "escalations_avail_count": ""
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "avail_title": "CA JAN152015",
+        "date_of_arrival": "01/15",
+        "date_of_delivery": "21/03",
+        "avail_details": [
+            {
+                "titlesDetails": [
+                    {
+                        "id": "3",
+                        "title_name": "12 Strong",
+                        "announced_date": "12/09",
+                        "release_date": "12/12",
+                        "percentage_title": "70",
+                        "status": "Quality Audit",
+                        "image_url":"assets/images/12strong_big.jpg",
+                        "accounts_count": "114",
+                        "countries_count": "32",
+                        "languages_count": "28",
+                        "accounts_completed": "100",
+                        "accounts_pending": "14",
+                        "countries_completed": "30",
+                        "countries_pending": "2",
+                        "languages_completed": "20",
+                        "langauges_pending": "8",
+                        "pending_title_translations_count": "112",
+                        "pending_title_ratings_count": "115",
+                        "pending_title_clarifications_count": "38",
+                        "escalations_title_count": "2"
+                    }
+                ],
+                "titlesCount": "114",
+                "titlesCompleted": "100",
+                "titlesPending": "14",
+                "countriesCount": "150",
+                "countriesCompleted": "90",
+                "countriesPending": "60",
+                "languagesCount": "120",
+                "languagesCompleted": "70",
+                "languagesPending": "50",
+                "pending_avail_translations_count": "",
+                "pending_avail_ratings_count": "",
+                "pending_avail_clarifications_count": "",
+                "escalations_avail_count": ""
+            }
+        ]
+    }
+    
+]
