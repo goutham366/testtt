@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /src
+  - source: /src/**
     destination: ./home/ec2-user/AngularProject-WBUI
   - source: /e2e
     destination: /home/ec2-user/AngularProject-WBUI  
