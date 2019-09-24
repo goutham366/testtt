@@ -5,23 +5,23 @@ files:
     destination: ./home/ec2-user/AngularProject-WBUI
   - source: /e2e
     destination: /home/ec2-user/AngularProject-WBUI  
- - source: ./.editorconfig
+  - source: ./.editorconfig
     destination: /home/ec2-user/AngularProject-WBUI  
-    - source: ./angular.json
+  - source: ./angular.json
     destination: /home/ec2-user/AngularProject-WBUI  
-    - source: ./package-lock.json   
+  - source: ./package-lock.json   
     destination: /home/ec2-user/AngularProject-WBUI  
-    - source: ./README.md
+  - source: ./README.md
     destination: /home/ec2-user/AngularProject-WBUI  
-    - source: ./package.json
+  - source: ./package.json
     destination: /home/ec2-user/AngularProject-WBUI 
- - source: ./appspec.yml
+  - source: ./appspec.yml
     destination: /home/ec2-user/AngularProject-WBUI 
- - source: ./tsconfig.json
+  - source: ./tsconfig.json
     destination: /home/ec2-user/AngularProject-WBUI 
- - source: ./tslint.json
+  - source: ./tslint.json
     destination: /home/ec2-user/AngularProject-WBUI 
- - source: ./RunAppFile.sh
+  - source: ./RunAppFile.sh
     destination: /home/ec2-user/AngularProject-WBUI         
     
 hooks:   
