@@ -1,28 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - - source: /src
-    destination: ./home/ec2-user/AngularProject-WBUI
-  - source: /e2e
-    destination: /home/ec2-user/AngularProject-WBUI  
-  - source: ./.editorconfig
-    destination: /home/ec2-user/AngularProject-WBUI  
-  - source: ./angular.json
-    destination: /home/ec2-user/AngularProject-WBUI  
-  - source: ./package-lock.json   
-    destination: /home/ec2-user/AngularProject-WBUI  
+  
   - source: ./README.md
     destination: /home/ec2-user/AngularProject-WBUI  
-  - source: ./package.json
-    destination: /home/ec2-user/AngularProject-WBUI 
-  - source: ./appspec.yml
-    destination: /home/ec2-user/AngularProject-WBUI 
-  - source: ./tsconfig.json
-    destination: /home/ec2-user/AngularProject-WBUI 
-  - source: ./tslint.json
-    destination: /home/ec2-user/AngularProject-WBUI 
-  - source: ./RunAppFile.sh
-    destination: /home/ec2-user/AngularProject-WBUI  
+ 
  
     
 hooks:   
