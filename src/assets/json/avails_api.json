@@ -1,25 +1,888 @@
-[
-    {"StartDate":"08/20/2019",
-    "AvailName":"IN May212019",
-    "AnnouncementDate":["05/21/2019"],
-    "DueDate":"09/09/2019",
-    
-    "TitleData":
-    {"PendingTitlesCount":37,
-    "AccontsCompletedCount":0,
-    "UniqueLanguagesCount":31,
-    "AvailPercentage":0,
-    "UniqueCountriesCount":99,
-    "AccontsPendingCount":1,
-    "CountriesPendingCount":99,
-    "LanguagesPendingCount":31,
-    "CountriesCompletedCount":0,
-    "CompletedTitlesCount":0,
-    "TitlesCount":37,
-    "LanguagesCompletedCount":0,
-    "PendingRatings":337,
-    "PendingTranslations":337,
-    "UniqueAccontsCount":1}
-    },
-    {"StartDate":"08/21/2019","AvailName":"IN May292019","AnnouncementDate":["05/29/2019"],"DueDate":"09/10/2019","TitleData":{"PendingTitlesCount":30,"AccontsCompletedCount":0,"UniqueLanguagesCount":31,"AvailPercentage":0,"UniqueCountriesCount":103,"AccontsPendingCount":1,"CountriesPendingCount":103,"LanguagesPendingCount":31,"CountriesCompletedCount":0,"CompletedTitlesCount":0,"TitlesCount":30,"LanguagesCompletedCount":0,"PendingRatings":355,"PendingTranslations":355,"UniqueAccontsCount":1}},
-    {"StartDate":"08/21/2019","AvailName":"IN Jun042019","AnnouncementDate":["06/04/2019"],"DueDate":"09/10/2019","TitleData":{"PendingTitlesCount":35,"AccontsCompletedCount":0,"UniqueLanguagesCount":30,"AvailPercentage":0,"UniqueCountriesCount":105,"AccontsPendingCount":1,"CountriesPendingCount":105,"LanguagesPendingCount":30,"CountriesCompletedCount":0,"CompletedTitlesCount":0,"TitlesCount":35,"LanguagesCompletedCount":0,"PendingRatings":293,"PendingTranslations":293,"UniqueAccontsCount":1}}]
+{
+    "resultData": [
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jan232019",
+            "AnnouncementDate": [
+                "01/23/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 30,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 7,
+                "TitleCountriesCount": 35,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 9,
+                "AccontsPendingCount": 27,
+                "CountriesPendingCount": 9,
+                "LanguagesPendingCount": 7,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 5,
+                "TitlesCount": 30,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 36,
+                "PendingTranslations": 36,
+                "UniqueAccontsCount": 27
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jan232019",
+            "AnnouncementDate": [
+                "01/23/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 429,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 10,
+                "TitleCountriesCount": 503,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 16,
+                "AccontsPendingCount": 52,
+                "CountriesPendingCount": 16,
+                "LanguagesPendingCount": 10,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 429,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 525,
+                "PendingTranslations": 525,
+                "UniqueAccontsCount": 52
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jan232019",
+            "AnnouncementDate": [
+                "01/23/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 47,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 25,
+                "TitleCountriesCount": 101,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 39,
+                "AccontsPendingCount": 69,
+                "CountriesPendingCount": 39,
+                "LanguagesPendingCount": 25,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 47,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 113,
+                "PendingTranslations": 113,
+                "UniqueAccontsCount": 69
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Nov062018",
+            "AnnouncementDate": [
+                "11/06/2018"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 1130,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 26,
+                "TitleCountriesCount": 1723,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 105,
+                "AccontsPendingCount": 51,
+                "CountriesPendingCount": 105,
+                "LanguagesPendingCount": 26,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 1130,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 1750,
+                "PendingTranslations": 1750,
+                "UniqueAccontsCount": 51
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Nov062018",
+            "AnnouncementDate": [
+                "11/06/2018"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 32,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 10,
+                "TitleCountriesCount": 132,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 50,
+                "AccontsPendingCount": 31,
+                "CountriesPendingCount": 50,
+                "LanguagesPendingCount": 10,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 32,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 140,
+                "PendingTranslations": 140,
+                "UniqueAccontsCount": 31
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Nov062018",
+            "AnnouncementDate": [
+                "11/06/2018"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 102,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 37,
+                "TitleCountriesCount": 462,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 125,
+                "AccontsPendingCount": 62,
+                "CountriesPendingCount": 125,
+                "LanguagesPendingCount": 37,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 102,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 531,
+                "PendingTranslations": 531,
+                "UniqueAccontsCount": 62
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Nov132018",
+            "AnnouncementDate": [
+                "11/13/2018"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 793,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 21,
+                "TitleCountriesCount": 1494,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 42,
+                "AccontsPendingCount": 47,
+                "CountriesPendingCount": 42,
+                "LanguagesPendingCount": 21,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 793,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 1910,
+                "PendingTranslations": 1910,
+                "UniqueAccontsCount": 47
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Nov132018",
+            "AnnouncementDate": [
+                "11/13/2018"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 58,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 34,
+                "TitleCountriesCount": 217,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 98,
+                "AccontsPendingCount": 62,
+                "CountriesPendingCount": 98,
+                "LanguagesPendingCount": 34,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 58,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 232,
+                "PendingTranslations": 232,
+                "UniqueAccontsCount": 62
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Nov132018",
+            "AnnouncementDate": [
+                "11/13/2018"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 27,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 10,
+                "TitleCountriesCount": 105,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 46,
+                "AccontsPendingCount": 41,
+                "CountriesPendingCount": 46,
+                "LanguagesPendingCount": 10,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 27,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 105,
+                "PendingTranslations": 105,
+                "UniqueAccontsCount": 41
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Nov202018",
+            "AnnouncementDate": [
+                "11/20/2018"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 85,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 21,
+                "TitleCountriesCount": 254,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 76,
+                "AccontsPendingCount": 56,
+                "CountriesPendingCount": 76,
+                "LanguagesPendingCount": 21,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 85,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 266,
+                "PendingTranslations": 266,
+                "UniqueAccontsCount": 56
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Nov202018",
+            "AnnouncementDate": [
+                "11/20/2018"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 1162,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 39,
+                "TitleCountriesCount": 6555,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 122,
+                "AccontsPendingCount": 64,
+                "CountriesPendingCount": 122,
+                "LanguagesPendingCount": 39,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 1162,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 6802,
+                "PendingTranslations": 6802,
+                "UniqueAccontsCount": 64
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Nov202018",
+            "AnnouncementDate": [
+                "11/20/2018"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 23,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 8,
+                "TitleCountriesCount": 107,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 46,
+                "AccontsPendingCount": 37,
+                "CountriesPendingCount": 46,
+                "LanguagesPendingCount": 8,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 23,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 107,
+                "PendingTranslations": 107,
+                "UniqueAccontsCount": 37
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Nov272018",
+            "AnnouncementDate": [
+                "11/27/2018"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 3608,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 30,
+                "TitleCountriesCount": 4628,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 119,
+                "AccontsPendingCount": 39,
+                "CountriesPendingCount": 119,
+                "LanguagesPendingCount": 30,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 3608,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 4663,
+                "PendingTranslations": 4663,
+                "UniqueAccontsCount": 39
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Nov272018",
+            "AnnouncementDate": [
+                "11/27/2018"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 56,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 12,
+                "TitleCountriesCount": 220,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 63,
+                "AccontsPendingCount": 35,
+                "CountriesPendingCount": 63,
+                "LanguagesPendingCount": 12,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 56,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 223,
+                "PendingTranslations": 223,
+                "UniqueAccontsCount": 35
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Nov272018",
+            "AnnouncementDate": [
+                "11/27/2018"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 65,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 16,
+                "TitleCountriesCount": 158,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 66,
+                "AccontsPendingCount": 46,
+                "CountriesPendingCount": 66,
+                "LanguagesPendingCount": 16,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 65,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 160,
+                "PendingTranslations": 160,
+                "UniqueAccontsCount": 46
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Nov272018",
+            "AnnouncementDate": [
+                "11/27/2018"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 65,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 16,
+                "TitleCountriesCount": 158,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 66,
+                "AccontsPendingCount": 46,
+                "CountriesPendingCount": 66,
+                "LanguagesPendingCount": 16,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 65,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 160,
+                "PendingTranslations": 160,
+                "UniqueAccontsCount": 46
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jan092019",
+            "AnnouncementDate": [
+                "01/09/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 702,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 11,
+                "TitleCountriesCount": 838,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 16,
+                "AccontsPendingCount": 27,
+                "CountriesPendingCount": 16,
+                "LanguagesPendingCount": 11,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 702,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 914,
+                "PendingTranslations": 914,
+                "UniqueAccontsCount": 27
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jan092019",
+            "AnnouncementDate": [
+                "01/09/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 29,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 9,
+                "TitleCountriesCount": 71,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 35,
+                "AccontsPendingCount": 37,
+                "CountriesPendingCount": 35,
+                "LanguagesPendingCount": 9,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 29,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 74,
+                "PendingTranslations": 74,
+                "UniqueAccontsCount": 37
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jan092019",
+            "AnnouncementDate": [
+                "01/09/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 5,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 2,
+                "TitleCountriesCount": 5,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 2,
+                "AccontsPendingCount": 2,
+                "CountriesPendingCount": 2,
+                "LanguagesPendingCount": 2,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 5,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 5,
+                "PendingTranslations": 5,
+                "UniqueAccontsCount": 2
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jan292019",
+            "AnnouncementDate": [
+                "01/29/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 921,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 15,
+                "TitleCountriesCount": 2427,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 52,
+                "AccontsPendingCount": 54,
+                "CountriesPendingCount": 52,
+                "LanguagesPendingCount": 15,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 921,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 3178,
+                "PendingTranslations": 3178,
+                "UniqueAccontsCount": 54
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jan292019",
+            "AnnouncementDate": [
+                "01/29/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 93,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 30,
+                "TitleCountriesCount": 353,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 99,
+                "AccontsPendingCount": 60,
+                "CountriesPendingCount": 99,
+                "LanguagesPendingCount": 30,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 93,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 437,
+                "PendingTranslations": 437,
+                "UniqueAccontsCount": 60
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jan292019",
+            "AnnouncementDate": [
+                "01/29/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 30,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 7,
+                "TitleCountriesCount": 169,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 62,
+                "AccontsPendingCount": 25,
+                "CountriesPendingCount": 62,
+                "LanguagesPendingCount": 7,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 30,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 205,
+                "PendingTranslations": 205,
+                "UniqueAccontsCount": 25
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Feb262019",
+            "AnnouncementDate": [
+                "02/26/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 1463,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 23,
+                "TitleCountriesCount": 4168,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 52,
+                "AccontsPendingCount": 50,
+                "CountriesPendingCount": 52,
+                "LanguagesPendingCount": 23,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 1463,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 5928,
+                "PendingTranslations": 5928,
+                "UniqueAccontsCount": 50
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Feb262019",
+            "AnnouncementDate": [
+                "02/26/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 50,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 11,
+                "TitleCountriesCount": 127,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 17,
+                "AccontsPendingCount": 20,
+                "CountriesPendingCount": 17,
+                "LanguagesPendingCount": 11,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 50,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 164,
+                "PendingTranslations": 164,
+                "UniqueAccontsCount": 20
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Feb262019",
+            "AnnouncementDate": [
+                "02/26/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 67,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 12,
+                "TitleCountriesCount": 144,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 24,
+                "AccontsPendingCount": 34,
+                "CountriesPendingCount": 24,
+                "LanguagesPendingCount": 12,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 67,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 162,
+                "PendingTranslations": 162,
+                "UniqueAccontsCount": 34
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jun042019",
+            "AnnouncementDate": [
+                "06/04/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 3006,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 13,
+                "TitleCountriesCount": 7530,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 15,
+                "AccontsPendingCount": 61,
+                "CountriesPendingCount": 15,
+                "LanguagesPendingCount": 13,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 3006,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 9001,
+                "PendingTranslations": 9001,
+                "UniqueAccontsCount": 61
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jun042019",
+            "AnnouncementDate": [
+                "06/04/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 77,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 21,
+                "TitleCountriesCount": 211,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 31,
+                "AccontsPendingCount": 69,
+                "CountriesPendingCount": 31,
+                "LanguagesPendingCount": 21,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 77,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 289,
+                "PendingTranslations": 289,
+                "UniqueAccontsCount": 69
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jun042019",
+            "AnnouncementDate": [
+                "06/04/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 26,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 9,
+                "TitleCountriesCount": 64,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 11,
+                "AccontsPendingCount": 36,
+                "CountriesPendingCount": 11,
+                "LanguagesPendingCount": 9,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 26,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 74,
+                "PendingTranslations": 74,
+                "UniqueAccontsCount": 36
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jun112019",
+            "AnnouncementDate": [
+                "06/11/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 1380,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 13,
+                "TitleCountriesCount": 1713,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 40,
+                "AccontsPendingCount": 56,
+                "CountriesPendingCount": 40,
+                "LanguagesPendingCount": 13,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 1380,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 1744,
+                "PendingTranslations": 1744,
+                "UniqueAccontsCount": 56
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jun112019",
+            "AnnouncementDate": [
+                "06/11/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 45,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 19,
+                "TitleCountriesCount": 89,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 32,
+                "AccontsPendingCount": 48,
+                "CountriesPendingCount": 32,
+                "LanguagesPendingCount": 19,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 45,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 114,
+                "PendingTranslations": 114,
+                "UniqueAccontsCount": 48
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jun112019",
+            "AnnouncementDate": [
+                "06/11/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 10,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 7,
+                "TitleCountriesCount": 48,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 44,
+                "AccontsPendingCount": 32,
+                "CountriesPendingCount": 44,
+                "LanguagesPendingCount": 7,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 10,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 49,
+                "PendingTranslations": 49,
+                "UniqueAccontsCount": 32
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FC Jun182019",
+            "AnnouncementDate": [
+                "06/18/2019"
+            ],
+            "DueDate": "09/25/2019",
+            "TitleData": {
+                "PendingTitlesCount": 2282,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 37,
+                "TitleCountriesCount": 5387,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 120,
+                "AccontsPendingCount": 69,
+                "CountriesPendingCount": 120,
+                "LanguagesPendingCount": 37,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 2282,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 5504,
+                "PendingTranslations": 5504,
+                "UniqueAccontsCount": 69
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FT Jun182019",
+            "AnnouncementDate": [
+                "06/18/2019"
+            ],
+            "DueDate": "09/06/2019",
+            "TitleData": {
+                "PendingTitlesCount": 70,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 21,
+                "TitleCountriesCount": 191,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 44,
+                "AccontsPendingCount": 65,
+                "CountriesPendingCount": 44,
+                "LanguagesPendingCount": 21,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 70,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 203,
+                "PendingTranslations": 203,
+                "UniqueAccontsCount": 65
+            }
+        },
+        {
+            "StartDate": "09/04/2019",
+            "AvailName": "FN Jun182019",
+            "AnnouncementDate": [
+                "06/18/2019"
+            ],
+            "DueDate": "09/09/2019",
+            "TitleData": {
+                "PendingTitlesCount": 44,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 13,
+                "TitleCountriesCount": 126,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 56,
+                "AccontsPendingCount": 34,
+                "CountriesPendingCount": 56,
+                "LanguagesPendingCount": 13,
+                "CountriesCompletedCount": 0,
+                "CompletedTitlesCount": 0,
+                "TitlesCount": 44,
+                "LanguagesCompletedCount": 0,
+                "PendingRatings": 130,
+                "PendingTranslations": 130,
+                "UniqueAccontsCount": 34
+            }
+        }
+    ]
+}

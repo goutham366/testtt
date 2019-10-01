@@ -64,7 +64,7 @@ const routes: Routes = [
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
       },
       {
-        path: 'calendar',
+        path:'calendar',
         loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
       },
       {

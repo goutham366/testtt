@@ -29,22 +29,30 @@
                 <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link active btn-fun" data-toggle="tab" href="#filter">
+                      <a class="nav-link active btn-fun border-0" data-toggle="tab" href="#filter">
                         <i class="material-icons">filter_list</i>
                         <p>Filter</p> </a>
                     </li>
-                    <li class="nav-item" >
-                      <a class="nav-link btn-fun" data-toggle="tab" href="#upload"><i class="material-icons">
-                          create_new_folder
+                    <li class="nav-item" *ngIf="!hideExport">
+                      <a class="nav-link btn-fun border-0" data-toggle="tab" href="#upload"><i class="material-icons">
+                          <!-- create_new_folder -->arrow_upward
                         </i>
-                        <p>Upload</p></a>
+                        <p>Import</p></a>
+                    </li>
+                    <li class="nav-item" *ngIf="!hideExport">
+                      <a class="nav-link btn-fun border-0" data-toggle="tab" href="#import"><i class="material-icons">
+                        arrow_downward
+                        </i>
+                        <p>Export</p></a>
                     </li>
                     <!-- <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
                   </ul>
+                  <button *ngIf="successCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
+                  <button *ngIf="errorCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
               </div>
               <div class="modal-body p-0">
               <div class="tab-content">
-                  <div id="filter" class="container tab-pane active">
+                  <div id="filter" class="tab-pane active">
                       <div class="modal-body">
                           <div class="">
                             <div class="row">
@@ -129,22 +137,50 @@
                           </div>
                         </div>
                   </div>
+
                   <div id="upload" class="tab-pane fade">
-                      <div class="container">
-                          <div class="modal-body upload">
+                      <div class="modal-body upload">
+                          <div class="container">
                               <div class="form-group">
-                                <span class="upload-text">Upload {{childMessage}} Docs</span><br>
-                                <div class="flex">
-                                    <label for="files" class="btn  uploadcolor">Upload</label>
-                                    <span class="filename">{{this.filename}}</span> 
+                                <span class="upload-text"><b>Import {{childMessage}} Docs</b></span><br>
+                                <div class="flex mb-2">
+                                    <label for="files" class="badge badge-primary p-2 uploadcolor m-0">Import</label>
+                                    <span class="filename pl-2 pr-2">{{this.filename}}</span> 
                                     <span *ngIf="errorCase" class="errorMessage">{{errorMessage}}</span>
                                     <span *ngIf="successCase" class="successMessage">{{successMessage}}</span>
-                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file"  (change)="upload($event.target.files)">
+                                    <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file"  (change)="upload($event.target.files,childMessage)">
                                 </div>
+                                <mat-progress-bar class="blue-progress" *ngIf="showProgress" mode="indeterminate"></mat-progress-bar>
+                                <span *ngIf="showProgress" class="progress-font">Upload is in progress</span>
                                 </div>
                           </div>
                       </div>
                   </div>
+                  <div id="import" class="tab-pane fade">
+                    <div class="container">
+                        <div class="modal-body upload pl-0 pr-0">
+                            <div class="form-group">
+                              <span class="export-text"><b>Export {{childMessage}} Docs</b></span><br>
+                              <div class="flex-export">
+                                  <label class="badge badge-primary p-2" *ngIf="!enableSaveFlag">
+                                      <a class="text-decoration-none" (click)="export(childMessage)"  class="text-light">Initiate Export</a></label>
+                                    <!-- <label class="badge badge-primary"><a *ngFor="let button of buttons" [ngClass]="{'active': button.isClicked}" (click)="button.isClicked = !button.isClicked" class="text-decoration-none" href="https://mediaplat1.s3.ap-south-1.amazonaws.com/UploadExcels/ITUNES.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190903T113558Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIAQP3E3VWUOCQESQ6S%2F20190903%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=f528dc00be2133f8fd317351dca2e486b6536b2ba5328f15a979259765022e9e"  class="text-light">{{ button.text }}</a></label> -->
+                                    <label class="badge badge-primary p-2" *ngIf="enableSaveFlag">
+                                        <a class="text-decoration-none" href="{{this.apiURL}}"  class="text-light">Download File</a></label>
+                              <!-- <a  [ngClass]="(highlight15) ? 'setColor' : 'removeColor'" href="{{this.errorURl}}">hello</a> -->
+                                </div>
+                              
+                                    <mat-progress-bar class="blue-progress" *ngIf="showExportProgress" mode="indeterminate"></mat-progress-bar>
+                                    <span *ngIf="showExportProgress" class="progress-font">Request is in progress</span>
+                                    <div class="error-message" *ngIf="errorMessageDownload">
+                                      {{errorMessageDownload}}
+                                    </div>
+                               
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
               </div>
               </div>
             </div>

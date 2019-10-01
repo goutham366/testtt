@@ -1,0 +1,32 @@
+[{
+    "_id": "5d31b12f73468f43aec5467c",
+    "StartDate": "07/06/2019",
+    "AvailName": "TC Nov302018",
+    "AnnouncementDate": "",
+    "SeriesName": "Bachelorette, The",
+    "ImageURL": "",
+    "TitleStatus": [
+        {
+            "StatusDate": "2019-07-19 12:01:51.572",
+            "StatusMessage": "Announced"
+        },
+        {
+            "StatusDate": "2019-07-19 12:01:51.570",
+            "StatusMessage": "Data Collation"
+        }
+    ],
+   "SeasonsCount":"20",
+    "SeasonsCompletedCount":"10",
+    "SeasonsPendingCount":"10",
+    "LanguagesCount":"50",
+    "LanguagesCompletedCount":"20",
+    "LanguagesPendingCount":"30",
+    "CountriesCount":"40",
+    "CountriesCompletedCount":"20",
+    "CountriesPendingCount":"20",
+    "PercentageCompletion-Series":"0",
+    "PendingTranslations":"0",
+    "PendingRatings":"0",
+    "PendingClarifications":"0",
+    "PendingEscalations":"0"
+}]

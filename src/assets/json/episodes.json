@@ -1,0 +1,69 @@
+[{
+    "_id": "5d31b12f73468f43aec5467c",
+    "StartDate": "07/06/2019",
+    "AvailName": "TC Nov302018",
+    "AnnouncementDate": "",
+    "SeriesName" :"Bachelorette, The",
+    "SeasonNumber":"Season 1",
+    "EpisodeNumber":"Episode 1",
+    "ImageURL": "",
+    "TitleStatus": [
+        {
+            "StatusDate": "2019-07-19 12:01:51.572",
+            "StatusMessage": "Announced"
+        },
+        {
+            "StatusDate": "2019-07-19 12:01:51.570",
+            "StatusMessage": "Data Collation"
+        }
+    ],
+  "AccountsCount":0,
+"AccountsCompletedCount":"",
+"AccountsPendingCount":"",
+"LanguagesCount":"0",
+"LanguagesCompletedCount":"0",
+"LanguagesPendingCount":"0",
+"CountriesCount":"0",
+"CountriesCompletedCount":"0",
+"CountriesPendingCount":"0",
+"PercentageCompletion-Series":"0",
+"PendingTranslations":"0",
+"PendingRatings":"0",
+"PendingClarifications":"0",
+"PendingEscalations":"0"
+},
+{
+    "_id": "5d31b12f73468f43aec5467c",
+    "StartDate": "07/06/2019",
+    "AvailName": "TC Nov302018",
+    "AnnouncementDate": "",
+    "SeriesName" :"Bachelorette, The",
+    "SeasonNumber":"Season 1",
+    "EpisodeNumber":"Episode 2",
+    "ImageURL": "",
+    "TitleStatus": [
+        {
+            "StatusDate": "2019-07-19 12:01:51.572",
+            "StatusMessage": "Announced"
+        },
+        {
+            "StatusDate": "2019-07-19 12:01:51.570",
+            "StatusMessage": "Data Collation"
+        }
+    ],
+  "AccountsCount":"20",
+"AccountsCompletedCount":"10",
+"AccountsPendingCount":"10",
+"LanguagesCount":"30",
+"LanguagesCompletedCount":"10",
+"LanguagesPendingCount":"20",
+"CountriesCount":"30",
+"CountriesCompletedCount":"10",
+"CountriesPendingCount":"20",
+"PercentageCompletion-Series":"0",
+"PendingTranslations":"0",
+"PendingRatings":"0",
+"PendingClarifications":"0",
+"PendingEscalations":"0"
+}
+]

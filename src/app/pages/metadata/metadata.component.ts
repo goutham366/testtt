@@ -35,11 +35,13 @@ export class MetadataComponent implements OnInit {
   sizeVar: any;
   close: boolean;
   avail: boolean;
+  changedWidth:boolean;
   constructor(private httpservice: HttpService) {
     this.show=true;
     this.close=false;
     this.addClicked=false;
     this.sizeVar=15;
+    this.changedWidth = false;
    }
   comments = [{"name":'Sent for Transalation', "date":"1/12"},
               {"name":'The citizens of Bricksburg face a dangerous new threat when LEGO DUPLO invaders from outer space start to wreck everything in their path.', "date":"1/12"},
@@ -59,14 +61,17 @@ export class MetadataComponent implements OnInit {
   metaDataShow(avail) {
    this.show=false;
    this.close=true;
-   this.details= this.availDetail.filter(availdata=>{
+   this.changedWidth = true;
+ 
+  //  document.getElementById("OriginalData").style.width = "100%";
+   this.details= this.metaDataList.filter(availdata=>{
       return availdata.account==avail;
     }) 
   }
   showComment(){
     this.close= false;
     this.show=true;
-    // document.getElementById("OriginalData").style.width = "28%";
+    this.changedWidth = false;
     
   }
   metaDataListUpdateVal:String="-";
@@ -87,6 +92,14 @@ else if(database==='sap'){
   return 'rgb(13, 26, 13)';
 }
   }
+  changewidth(){
+   return true;
+  }
+  getWidth() {
+    return '100%';
+  }
+
+
  sizePlus(){
   this.sizeVar=this.sizeVar+1;
  }
@@ -121,6 +134,12 @@ closeBox(){
     // })
 
    
+  }
+
+  onEnterKeyMeta(trig, availId){
+    if(trig.keyCode==13){
+      this.metaDataShow(availId);
+    }
   }
 
 }

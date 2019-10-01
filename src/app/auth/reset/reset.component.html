@@ -10,14 +10,14 @@
 
 <div class="text-overflow">
 
-  <div class="container navAlign" align="center">
+  <!-- <div class="container navAlign" align="center">
     <ul class="nav nav-tabs marginL">
       <li class="nav-item"><a (click)="checkId(1)" class="nav-link active" data-toggle="tab" href="#home"><img class="imgSiz" src="assets/images/Icons/SVG/demostration.svg"></a></li>
       <li class="nav-item"><a (click)="checkId(2)" class="nav-link" data-toggle="tab" href="#menu1"><img class="imgSiz" src="assets/images/Icons/SVG/baseline-confirmation_number-24px.svg" ></a></li>
       <li class="nav-item"><a (click)="checkId(3)" class="nav-link" data-toggle="tab" href="#menu2"><img class="imgSiz" src="assets/images/Icons/SVG/analysis-chart.svg"></a></li>
       <li class="nav-item"><a (click)="checkId(4)" class="nav-link" data-toggle="tab" href="#menu3"><img class="imgSiz" src="assets/images/Icons/SVG/click.svg" ></a></li>
     </ul>
-  </div>
+  </div> -->
   <br>
   <div class="login-main">
   <div class="row boxAlign p-6">
@@ -35,7 +35,7 @@
     <div id="resetPassword" class="col-md-6 col-lg-6 col-sm-6 col-xs-12 secondaryColor p-3">
       <div [@itemAnim]> 
       <h2 class="text-center alignP">Reset Password</h2> 
-      <form [formGroup]="resetForm" class="text-center p-4">
+      <form [formGroup]="resetForm" class="text-center p-4" (keydown)="onEnterKeyR($event)">
           
             
             
@@ -96,9 +96,8 @@
   <div class="login-footer text-left">
       <div class="container">
         <h2>Infosys Media Platform</h2>
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        <span>Infosys’s Proprietary platform designed to transform a media supply chain using technology. Our solutions are
+          designed to continuously adapt to new business needs while relying on a core underlying principle of data management.
         </span>
       </div>
     </div>

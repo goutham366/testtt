@@ -1,0 +1,18 @@
+<div class="container">
+    <div style="display: flex; justify-content: space-between;">
+        <h2 mat-dialog-title>Logout</h2>
+        <button mat-button [mat-dialog-close] style="position: relative; left: 32px;">
+           <i class="material-icons logout-close">
+                close
+                </i>
+        </button>
+    </div>
+    </div>
+    <div mat-dialog-content>
+      <p>Are you sure you want to Logout ?</p>
+    </div>
+    <div class="flex" mat-dialog-actions>
+      <button mat-button (click)="onNoClick()" style="margin: 0 0px 0px -15px;">No Thanks</button>
+      <button mat-button style="margin: 0 -13px 0px 0px;" [mat-dialog-close] cdkFocusInitial 
+      routerLink="/auth">Ok</button>
+    </div>    

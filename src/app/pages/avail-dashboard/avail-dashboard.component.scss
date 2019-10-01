@@ -236,6 +236,7 @@ $topnav-background-color: #007CC3;
 // card css 
 .avail-heading {
     padding: 10px;
+    color: #007CC3;
 }
 .cust-style {
     justify-content: space-between;
@@ -282,6 +283,11 @@ $topnav-background-color: #007CC3;
         cursor: pointer;
         font-family: Roboto, Regular;
         margin-bottom: 0.5rem;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        width: 100px;
+        outline: none;
+        white-space: nowrap;
     }
     .avail-date {
         font-size: 11px;
@@ -310,12 +316,19 @@ $topnav-background-color: #007CC3;
       .legend-margin {
         margin: 7px 0px 7px 5px;
       }
+      .legend-flex{
+          justify-content: space-between;
+      }
       .complete-legend {
         height: 0.5em;
         width: 0.5em;
         background: #0AAD43;
         border-radius: 0;
         color: #0AAD43;
+      }
+      .status-bar{
+          display: flex;
+          align-items: center;
       }
       .pending-legend {
         height: 0.5em;
@@ -520,4 +533,46 @@ button:focus{
 }
 .round-outline{
     outline: none;
+}
+.export-align{
+    width:100%;
+    background: #007CC3;
+    outline: none;
+}
+.export-text{
+    font-weight: 500;
+    font-size: 15px;
+    }
+    .export-yesRno{
+        font-weight: 500;
+        font-size: 12px;  
+    }
+    .initiate-export{
+        margin-top: 20px;
+        margin-left: 66px;
+    }
+
+.modal-align {
+    // top:  85px !important;
+    // left: 40% !important;
+    // left:31% !important;
+    color:black;
+}
+.modal-width{
+    top: 31%!important;
+    left: 0% !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 181px !important;
+    max-width: 250px !important;
+  
+}
+.modal-body-align{
+    padding: 5px 14px 0px !important;
+}
+.modal-close{
+padding:0px;
+}
+.font-12{
+    font-size:12px !important;
 }

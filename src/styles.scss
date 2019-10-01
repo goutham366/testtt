@@ -3,10 +3,12 @@
 // @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 /* @import "angular-vertical-timeline/dist/vertical-timeline.css"; */
 
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ;
-
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 /* global styles */
 $primary: rgba(0, 124, 195,1);
 $secondary:rgba(3, 169, 244,1);
@@ -65,3 +67,20 @@ $blue: rgba(190, 227, 255,1);
 .avails-sidenav-color {
     color:#007CC3;
 }
+
+mat-progress-bar .mat-progress-bar-buffer {
+    background: lightgrey;
+  }
+
+.blue-progress .mat-progress-bar-fill::after {
+    background-color: #BEE3FF !important;
+}
+.setColor{
+    
+    font-size:15px;
+    color:black;
+  }
+  .c-pointer {
+      cursor: pointer;
+  }
+ 
