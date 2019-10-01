@@ -16,18 +16,14 @@
   <div class="d-flex">
     <div class="flex-grow-1">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb m-0 pt-2 pb-2">
-          <li class="">
-            <a href="#">Avails</a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Home</a>
           </li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="">
-            <a href="#">FN JAN152019</a>
+          <li class="breadcrumb-item">
+            <a href="#">Library</a>
           </li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page">Titles</li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page">The Lego Movie 2</li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
         </ol>
       </nav>
 
@@ -79,7 +75,7 @@
       </div>
       <div class="container-fluid padding-side">
         <div class="tab-content">
-          <div id="metaData" class="container-fluid tab-pane active">
+          <div id="metaData" class="container tab-pane active">
             <!-- <div id="metaData" class="container tab-pane fade"> -->
             <div class="d-flex">
               <div class="tab-content">
@@ -107,8 +103,8 @@
                         <li>Client End</li>
                       </ul>
                     </div>
-                    <div class="table-2 d-flex" >
-                      <ul *ngFor="let x of metaDataList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
+                    <div class="table-2 d-flex" id="OriginalData">
+                      <ul *ngFor="let x of metaDataList">
                         <li>{{x.abstractEIDR}}</li>
                         <li>{{x.account}}</li>
                         <li>{{x.activationStatus}}</li>
@@ -131,8 +127,8 @@
                       </ul>
                       <!-- <div class="" >
                           <div class="table-3"> -->
-                      <div *ngIf="close" id="dataShow">
-                        <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
+                      <div *ngIf="close">
+                        <ul *ngFor="let x of details" class="pl-2">
                           <li>{{x.abstractEIDR}}</li>
                           <li>{{x.account}}</li>
                           <li>{{x.activationStatus}}</li>
@@ -166,7 +162,7 @@
                             <div class="compare-section">
                               <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i
                                     class="material-icons" (click)="openBox()">add_box</i></a>Compare</div>
-                              <input type="text" name="availId" [(ngModel)]="availId" (keydown)="onEnterKeyMeta($event,availId)">
+                              <input type="text" name="availId" [(ngModel)]="availId" (keyup.enter)="onEnter(metaDataShow(availId))">
                               <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
                             </div>
                           </div>

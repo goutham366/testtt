@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { TelevisionAvailComponent } from './television-avail.component';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
-import { MatNativeDateModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { RoundProgressModule } from '../../../../node_modules/angular-svg-round-progressbar';
+import { MatNativeDateModule, MatCardModule, MatButtonModule } from '../../../../node_modules/@angular/material';
 import { FilterModuleNew } from '../availfilter/availfilter.module';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { MatProgressBarModule } from '@angular/material';
+import { NgCircleProgressModule } from '../../../../node_modules/ng-circle-progress';
+
 
 const routes: Routes = [
     {
@@ -20,7 +20,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
       FilterModuleNew,
-      MatProgressBarModule,
       NgCircleProgressModule.forRoot({
         "backgroundPadding": 7,
         "radius": 28,

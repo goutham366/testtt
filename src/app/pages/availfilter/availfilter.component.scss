@@ -12,16 +12,6 @@
     justify-content: center;
     margin: auto;
 }
-.nav-tabs .nav-link.active {
-    color: #000000 !important;
-    background: rgba($color: #000000, $alpha: 0.2);
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    padding: 0px 6px;
-    margin: 0px 6px;
-    border-radius: 4px;
-    transition: 0.5s;
-}
 .modal.right .modal-dialog {
     position: fixed;
     margin: auto;
@@ -78,7 +68,7 @@
     justify-content: center;
     flex-direction: row;
     color:gray;
-    cursor: pointer;
+    cursor: inherit;
 }
 button:focus{
     outline: none;
@@ -210,11 +200,6 @@ span{
     width: 0;
     height: 0;
   }
-  .close-button {
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-  }
   
   .slider {
     position: absolute;
@@ -276,39 +261,29 @@ span{
     .upload-text{
         font-size: 14px;
     }
-    .export-text{
-        font-size: 14px;
-        margin-left: 0px;
-    }
     .filename{
         position: fixed;
-        font-size: 10px;
-        left: 95px;
-        text-overflow: ellipsis;
+        font-size: 12px;
+        left: 110px;
     }
     .errorMessage{
         position: fixed;
         color: red;
         top: 24%;
-        left: 26%;
-        font-size: 12px;
-        text-overflow: ellipsis;
-        padding-top: 10px;
+        left: 28%;
+        font-size: 15px;
     }
     .successMessage{
         position: fixed;
         color: green;
         top: 24%;
-        left: 26%;
-        font-size: 12px;
-        text-overflow: ellipsis;
-        padding-top: 10px;
+        left: 28%;
     }
     .uploadcolor{
-        // border: 1px outset #007CC3;
-        // background-color: #007CC3;
-        // height: 38px;
-        // width: 93px;
+        border: 1px outset #007CC3;
+        background-color: #007CC3;
+        height: 38px;
+        width: 93px;
         cursor: pointer;
         color: white;
     }
@@ -318,10 +293,6 @@ span{
 }
 #upload{
     height: 100%;
-}
-
-.progress-font {
-    font-size: 11px;
 }
 
 
@@ -358,14 +329,9 @@ color: #000000;
 } 
 }
 }
- .flex-export{
-     display: flex;
-     justify-content: space-between;
- }
-.error-message{
-    color:red;
-    font-size:12px;
-}
+ 
+
+
 
 
 

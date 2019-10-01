@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import { NgCircleProgressModule } from 'ng-circle-progress';
+import { NgCircleProgressModule } from '../../../../node_modules/ng-circle-progress';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 import { TvEpisodesComponent } from './tv-episodes.component';
 const routes: Routes = [

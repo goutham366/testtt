@@ -113,26 +113,26 @@ export class LoginComponent implements OnInit {
     this.passwordNotEmpty = false;
         this.orientation = "none";
         this.navs = [
-        // {
-        //     id: 1,
-        //     sideTitle: "AD MONETIZATION",
-        //     sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-        // },
+        {
+            id: 1,
+            sideTitle: "AD MONETIZATION",
+            sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        },
         {
             id: 2,
             sideTitle: "METADATA ORCHESTRATION",
-            sideData: "This module creates an orchestration layer to transform the metadata management workflow. Salient features are complete automation, transparency and proactive risk management. This provides end to end transformation of the current processes, including emails, work requests and escalations. Your feedback is always welcome."
-         }
-        // {
-        //     id: 3,
-        //     sideTitle: "MEDIA INSIGHTS",
-        //     sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-        // },
-        // {
-        //     id: 4,
-        //     sideTitle: "EXPERIENCE FACTORY",
-        //     sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-        // }
+            sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        },
+        {
+            id: 3,
+            sideTitle: "MEDIA INSIGHTS",
+            sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        },
+        {
+            id: 4,
+            sideTitle: "EXPERIENCE FACTORY",
+            sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        }
         ];
         this.selectedNav = this.navs[0];
   }
@@ -155,25 +155,19 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  passwordEntered(myEvent){
+  passwordEntered(){
     if(this.loginForm.value.password.length >0){
      this.passwordNotEmpty = true;
      }else{
       this.passwordNotEmpty = false;
     }
-    if(myEvent.keyCode==8){
-      this.textColor = false;
-    }
   }
 
-  userEntered(myEvent){
+  userEntered(){
     if(this.loginForm.value.name.length >0){
-      this.userNotEmpty = true;
+     this.userNotEmpty = true;
      }else{
       this.userNotEmpty = false;
-    }
-    if(myEvent.keyCode==8){
-      this.textColor = false;
     }
   }
 
@@ -210,11 +204,6 @@ export class LoginComponent implements OnInit {
   }
 
   sideTitle:any 
-  onEnterKey(trig){
-    if(trig.keyCode==13){
-      this.onSubmit();
-    }
-  }
 
 public navSelect(id, orient){
   this.orientation = orient;

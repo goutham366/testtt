@@ -7,24 +7,11 @@
 .margin-l{
     margin: 0px 5px 0px 0px !important;
 }
-
 .responsive{
     display: flex;
     justify-content: center;
     margin: auto;
 }
-
-.nav-tabs .nav-link.active {
-    color: #000000 !important;
-    background: rgba($color: #000000, $alpha: 0.2);
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    padding: 0px 6px;
-    margin: 0px 6px;
-    border-radius: 4px;
-    transition: 0.5s;
-}
-
 .modal.right .modal-dialog {
     position: fixed;
     margin: auto;
@@ -81,7 +68,7 @@
     justify-content: center;
     flex-direction: row;
     color:gray;
-    cursor: pointer;
+    cursor: inherit;
 }
 button:focus{
     outline: none;
@@ -173,6 +160,7 @@ span{
 .filter-content{
     .nav-tabs{
         border-bottom: none;
+        
         .nav-link{
             padding: 0;
             border-radius: 4px;
@@ -180,12 +168,9 @@ span{
             border-top-left-radius: none !important;
             border-top-right-radius: none !important;
             background-color: #FAFAFA;
-            
         }
         .nav-link.active{
             background: #92D1FF;
-            background-color: red !important;
-            cursor: pointer !important;
         }
     }
     
@@ -195,11 +180,9 @@ span{
 
 .setColor{
     background: #92D1FF !important;
-   // opacity: 0.1;
 }
 .removeColor{
     background: #DADADA !important;
-   // opacity: 1;
 }
 
 
@@ -216,11 +199,6 @@ span{
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  .close-button {
-    position: relative;
-    bottom: 10px;
-    right: 10px;
   }
   
   .slider {
@@ -284,65 +262,43 @@ span{
     cursor: pointer;
     .upload-text{
         font-size: 14px;
-        margin-left: -15px;
-    }
-
-    .export-text{
-        font-size: 14px;
-        margin-left: 0px;
     }
     .filename{
         position: fixed;
-        font-size: 10px;
-        left: 92px;
-        text-overflow: ellipsis;
-        width: 300px;
-        overflow: hidden;
+        font-size: 12px;
+        left: 110px;
     }
     .errorMessage{
         position: fixed;
         color: red;
-        top: 24%;
-        left: 25%;
-        font-size: 12px;
-        text-overflow: ellipsis;
-        padding-top: 10px;
+        top: 26%;
+        left: 28%;
     }
     .successMessage{
         position: fixed;
         color: green;
         top: 24%;
-        left: 25%;
-        font-size: 12px;
-        text-overflow: ellipsis;
-        padding-top: 10px;
+        left: 28%;
         // top: 119px;
         // left: 110px;
     }
     .uploadcolor{
-        // border: 1px outset #007CC3;
-        // background-color: #007CC3;
-        // height: 38px;
-        // width: 93px;
+        border: 1px outset #007CC3;
+        background-color: #007CC3;
+        height: 38px;
+        width: 93px;
         cursor: pointer;
         color: white;
     }
 }
 .flex{
     display: flex;
-    // justify-content: space-around;
-    a{
-        text-decoration: none;
-        padding: 6px 15px;
-    }
 }
 #upload{
     height: 100%;
 }
 
-.progress-font {
-    font-size: 11px;
-}
+
 
 .nav-tabs{
 border-bottom: none !important;
@@ -357,7 +313,7 @@ margin: 0;
 color: #000000;
 &.active{
 // border: 1px solid;
-color: black !important;
+color: black;
 }
 }.nav-tabs{
 border-bottom: none;
@@ -370,19 +326,17 @@ margin: 0;
 color: #000000;
 &.active{
 // border: 1px solid;
-color: #000000 !important;
-border-color: none;
+color: #000000;
 }
 }
 }
 } 
 }
 }
-.error-message{
-    color:red;
-    font-size:12px;
-}
-.flex-export{
-    display: flex;
-    justify-content: space-between;
-}
+ 
+
+
+
+
+
+

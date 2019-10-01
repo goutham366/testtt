@@ -1,8 +1,7 @@
-<div class="p-2 cust-style d-flex">
+
+  <div class="p-2 cust-style d-flex">
     <div class="d-flex cus-box">
-        <div>
-            <h6 class="itune-heading">Avails</h6>
-        </div>
+        <div><h6 class="itune-heading">Itunes</h6></div>
         <div class="ml-auto filter">
             <app-avail-filter [childMessage]="parentMessage"></app-avail-filter>
         </div>
@@ -10,23 +9,22 @@
 </div>
 <div class="container-fluid">
     <div class="row itune-card">
-        <div class="col-sm-4 itune-box" *ngFor="let itune of accountList; let i = index">
+        <div class="col-sm-4 itune-box" *ngFor="let itune of iTunesData; let i = index">
             <div class="card text-white mb-3 shadow-sm ">
-                <div class="card-header card-padding gray-bg">
-                    <span class="itune-status">
+               <div class="card-header card-padding gray-bg">
+                    <span class="itune-status" >
                         <div class="current" [ngStyle]="getOverlayStyle()">{{itune.TitleData.AvailPercentage}}%</div>
                         <round-progress [current]="itune.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
                             [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
                             [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
-
+                        
                     </span>
-
+                    
                     <span>
-                        <p class="itune-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}">{{itune.AvailName
-| uppercase }}</p>
+                        <p class="itune-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}">{{itune.AvailName | uppercase }}</p>
                         <p class="itune-date">
-                            <img src="assets/images/Icons/PNG/calendar.png"> {{itune.StartDate | date:'MM/dd' }} -
-                            <span>{{itune.DueDate | date:'MM/dd' }}</span>
+                            <img src="assets/images/Icons/PNG/calendar.png"> {{itune.StartDate | date:'dd/MM' }} -
+                            <span>{{itune.DueDate | date:'dd/MM' }}</span>
                         </p>
                     </span>
 
@@ -35,33 +33,31 @@
                     <div class="equalHMWrap">
                         <span id="titlesDiv">
                             <span class="itune-details titlesBox">
-                                <img src="assets/images/Icons/PNG/titles.png"><span class="titleFont"> {{itune.TitleData.TitleCountriesCount}} Total (Titles + Countries)
-
-                                </span>
-                                <!-- <span class="titleFont"> Titles</span> -->
+                                <img src="assets/images/Icons/PNG/titles.png"><span class="titleFont"> {{itune.TitleData.TitlesCount}}</span>
+                                <span class="titleFont"> Titles</span>
                             </span>
                         </span>
-                    </div>
+                    </div>   
                     <div class="progressBar">
                         <div class="progress">
                             <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'T')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}} (Unique Titles)</span>
+                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}</span>
                             </div>
                             <div [ngStyle]="{'width.%': getPending(i,'T')}">
-                                <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}} (Unique Titles)</span>
+                                <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="equalHMWrap">
                         <span id="countriesDiv">
                             <span class="itune-details titlesBox">
-                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">language</i></span><span
-                                    class="titleFont"> {{itune.TitleData.UniqueCountriesCount}}</span>
+                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">language</i></span>
+                                <span class="titleFont"> {{itune.TitleData.UniqueCountriesCount}}</span>
                                 <span class="titleFont"> Countries</span>
                             </span>
                         </span>
-                    </div>
-                    <div class="progressBar">
+                    </div>   
+                   <div class="progressBar">
                         <div class="progress">
                             <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
                                 <span class="status-padding" *ngIf="getCompleted(i,'C')!=0">{{itune.TitleData.CountriesCompletedCount}}</span>
@@ -74,15 +70,14 @@
                     <div class="equalHMWrap">
                         <span id="langDiv">
                             <span class="itune-details titlesBox">
-                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">translate</i></span><span
-                                    class="titleFont"> {{itune.TitleData.UniqueLanguagesCount}}</span>
+                                <span class="iconPos"><i class="material-icons md-18 md-grey v-align">translate</i></span><span class="titleFont"> {{itune.TitleData.UniqueLanguagesCount}}</span>
                                 <span class="titleFont"> Languages</span>
                             </span>
                         </span>
-                    </div>
-                    <div class="progressBar">
+                    </div>   
+                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted('L')}">
                                 <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
                             </div>
                             <div [ngStyle]="{'width.%': getPending(i,'L')}">
@@ -92,72 +87,31 @@
                     </div>
 
                 </div>
-                <div class="legend-margin m-0">
-                        <div class="d-flex legend-flex p-1">
-                          <div class="mt-1 status-bar">
-                              <div class="complete-legend"></div>
-                              <div class="legend-text ml-1 mr-1">Completed</div>
-                          </div>
-                          <div class="mt-1 status-bar">
-                                  <div class="pending-legend"></div>
-                                  <div class="legend-pending-text ml-1 mr-1">Pending</div>
-                          </div>
-                      </div>
-                  </div>
-                <div class="cust-text gray-bg">
+                <div class="legend-margin">
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <div class="complete-legend"></div>
+                        </div>
+                        <div class="col-md-5 legend-text">Completed</div>
+
+                        <div class="col-md-2 mt-1">
+                            <div class="pending-legend pending-legend-margin"></div>
+                        </div>
+                        <div class="col-md-2 legend-pending-text">Pending</div>
+                    </div>
+                </div>
+                <div class="cust-text">
                     <span class="status-text">
                         <strong class="status-font">Status</strong>
                     </span>
                     <p class="status">
-                        <span class="bold"> -</span></p>
-                    <p class="status-count">Pending Translations</p>
+                        <span class="bold"> 0</span> Pending Translations</p>
                     <p class="status">
-                        <span class="bold"> -</span></p>
-                    <p class="status-count">Pending Ratings</p>
+                        <span class="bold"> 0</span> Pending Ratings</p>
                     <p class="status">
-                        <span class="bold"> -</span></p>
-                    <p class="status-count">Pending Clarifications</p>
+                        <span class="bold"> 0</span> Pending Clarifications</p>
                     <p class="status">
-                        <span class="bold"> -</span> </p>
-                    <p class="status-count">Escalations</p>
-                </div>
-                    <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(itune.AvailName)">Export</button>
-                    <div class="modal fade modal-align" id="myModal" role="dialog">
-                        <div class="modal-dialog modal-width">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <span class="export-text">Export the Avail</span>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body modal-body-align">
-                                        <span class="export-yesRno">Click below to Export ({{selectedAvailNew}})</span>
-                                    <div class="form-group">
-                                        <div class="flex-export">
-                                            <label class="badge badge-primary initiate-export" (click)="export(parentMessage,selectedAvailNew)">
-                                                <a class="text-decoration-none" class="text-light" *ngIf="!enableSaveFlag ">Initiate Export</a>
-                                            </label>
-                                            <!-- <label class="badge badge-primary"><a *ngFor="let button of buttons" [ngClass]="{'active': button.isClicked}" (click)="button.isClicked = !button.isClicked" class="text-decoration-none" href="https://mediaplat1.s3.ap-south-1.amazonaws.com/UploadExcels/ITUNES.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190903T113558Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIAQP3E3VWUOCQESQ6S%2F20190903%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=f528dc00be2133f8fd317351dca2e486b6536b2ba5328f15a979259765022e9e"  class="text-light">{{ button.text }}</a></label> -->
-                                            <label class="badge badge-primary initiate-export" *ngIf="enableSaveFlag">
-                                                <a class="text-decoration-none" href="{{this.apiURL}}" class="text-light">Download File</a>
-                                            </label>
-                                            <!-- <a  [ngClass]="(highlight15) ? 'setColor' : 'removeColor'" href="{{this.errorURl}}">hello</a> -->
-                                        </div>
-
-                                        <mat-progress-bar class="blue-progress" *ngIf="showExportProgress" mode="indeterminate"></mat-progress-bar>
-                                        <span *ngIf="showExportProgress" class="progress-font font-12">Request is in progress</span>
-                                        <div class="error-message" *ngIf="errorMessageDownload">
-                                            {{errorMessageDownload}}
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- <div class="modal-footer modal-close">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div> -->
-                           
-
-                        </div>
-                    </div>
+                        <span class="bold"> 0</span> Escalations</p>
                 </div>
             </div>
         </div>

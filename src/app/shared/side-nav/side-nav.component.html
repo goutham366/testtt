@@ -33,20 +33,17 @@
             </a>
             <a routerLink="/pages/overdue" [queryParams]="{ sidenav: 'Overdue' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
                 <i class="material-icons v-align">timer</i>&nbsp;
-                <span>Overdue</span>
+                <span>OverDue</span>
             </a>
             <a routerLink="/pages/escalation" [queryParams]="{ sidenav: 'Escalation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="material-icons md-18">new_releases</i>&nbsp;
                 <span>Escalation</span>
             </a>
-            <a routerLink="/pages/calendar" [queryParams]="{ sidenav: 'Calendar' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <a class="list-group-item">
                 <i class="material-icons v-align">today</i>&nbsp;
                 <span>Calendar</span>
             </a>
-            <a [routerLinkActive]="['router-link-active']" (click)="openDialog()" class="list-group-item">
-                <i class="material-icons v-align">power_settings_new</i>&nbsp;
-                <span>Logout</span>
-            </a>
+    
         </div>
     </nav>
     </div>

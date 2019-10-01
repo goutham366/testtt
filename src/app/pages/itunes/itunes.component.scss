@@ -1,17 +1,11 @@
 .itune-heading{
     padding: 10px;
-    color: #007CC3;
 }
 .itune-title {
     font-size: 14px;
     outline: none;
     font-family: Roboto, Regular;
     margin-bottom: 0.5rem;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    width: 100px;
-    outline: none;
-    white-space: nowrap;
 }
 .itune-date {
     font-size: 11px;
@@ -70,8 +64,8 @@
 .progressBar{
     margin: 2px 6px;
     .progress {
-        height:23px;
-        // height: auto;
+        // height:23px;
+        height: auto;
         background: #007CC3;
         padding: 1px;
         
@@ -99,15 +93,8 @@
     }
   }
   .legend-margin {
-    margin: 7px 0px 7px 5px;
+    padding: 4px 0px 5px 5px; 
   }
-  .legend-flex{
-    justify-content: space-between;
-}
-.status-bar{
-    display: flex;
-    align-items: center;
-}
   .complete-legend {
     height: 0.5em;
     width: 0.5em;
@@ -121,6 +108,9 @@
     background: #007CC3;
     border-radius: 0;
     color:#007CC3;
+  }
+  .pending-legend-margin {
+    margin: 0px 0px 0px 8px;
   }
   .legend-text {
     color: #0AAD43;
@@ -136,6 +126,7 @@
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
     padding: 7px;
+    background: rgba(0,0,0,.03);
     .status-text {
         color: #007CC3;
        
@@ -151,62 +142,8 @@
     .status-font {
      font-size: 15px
     }
-    .status-margin {
-        margin: 0px 0px 0px 15px;
-    }
 }
 .cus-box{
     justify-content: space-between;
     width: 100%;
-}
-
-.status-count{
-    position: relative;
-    display: flex;
-    font-size: 12px;
-    font-family: Roboto;
-    margin: -18px 0px 0px 10px;
-    color: darkgray;
-}
-.export-align{
-    width:100%;
-    background: #007CC3;
-    outline: none;
-}
-.export-text{
-    font-weight: 500;
-    font-size: 15px;
-    }
-    .export-yesRno{
-        font-weight: 500;
-        font-size: 12px;  
-    }
-    .initiate-export{
-        margin-top: 20px;
-        margin-left: 66px;
-    }
-
-.modal-align {
-    // top:  85px !important;
-    // left: 40% !important;
-    // left:31% !important;
-    color:black;
-}
-.modal-width{
-    top: 31%!important;
-    left: 0% !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 181px !important;
-    max-width: 250px !important;
-  
-}
-.modal-body-align{
-    padding: 5px 14px 0px !important;
-}
-.modal-close{
-padding:0px;
-}
-.font-12{
-    font-size:12px !important;
 }

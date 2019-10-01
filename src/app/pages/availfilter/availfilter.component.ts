@@ -1,14 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-// import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { HttpService } from '../../services/http.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'; import { ReactiveFormsModule } from '@angular/forms';
 import { formatDate } from '@angular/common';
-import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-availfilter',
@@ -16,12 +14,7 @@ import { timeout } from 'rxjs/operators';
   styleUrls: ['./availfilter.component.scss']
 })
 export class AvailfilterComponent implements OnInit {
-  apiResp: any;
-  errorURl: any;
-  expS3: any;
-  expRep: any;
-  showProgress: boolean;
-  showExportProgress: boolean;
+
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
@@ -63,41 +56,29 @@ export class AvailfilterComponent implements OnInit {
   s3Resp: any;
   secndUrlResp: any;
   errorCase: boolean;
-  url: any;
-  apiURL: any;
-  status: any;
-  @Input() childMessage: string;
-  featureName: any;
-  errorMessageDownload: string;
-  enableSaveFlag: boolean = false;
-  tvName: any;
-  hideFilter: boolean;
-  hideExport: boolean;
+
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.highlight1 = false;
     this.highlight2 = false;
     this.errorCase = false;
-    this.startYear = "2019";
-    this.startDate = "";
-    this.myDate = "";
-    // this.httpService.getAvailsDetails().subscribe(data => {
-    //   this.availList = data;
-    //   this.availCount = this.availList.length;
-    //   this.activatedRoute.queryParams.subscribe(params => {
-    //     this.avail_title = params['avail_title'];
-    //     console.log('this.avail_title filter', this.avail_title);
-    //   });
-    //   if (this.avail_title) {
-    //     this.startYear = this.avail_title.substring(8);
-    //     this.startDate = "";
-    //     this.myDate = "";
-    //   }
-    //   else {
-    //     this.startYear = "2019";
-    //     this.startDate = "";
-    //     this.myDate = "";
-    //   }
-    // })
+    this.httpService.getAvailsDetails().subscribe(data => {
+      this.availList = data;
+      this.availCount = this.availList.length;
+      this.activatedRoute.queryParams.subscribe(params => {
+        this.avail_title = params['avail_title'];
+        console.log('this.avail_title filter', this.avail_title);
+      });
+      if (this.avail_title) {
+        this.startYear = this.avail_title.substring(8);
+        this.startDate = "";
+        this.myDate = "";
+      }
+      else {
+        this.startYear = "2019";
+        this.startDate = "";
+        this.myDate = "";
+      }
+    })
   }
   clickDate(c) {
     if (!c) {
@@ -230,9 +211,6 @@ export class AvailfilterComponent implements OnInit {
     }
   }
   ngOnInit() {
-    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON') {
-      this.hideExport = true;
-    }
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -254,8 +232,7 @@ export class AvailfilterComponent implements OnInit {
     console.log('uploadDoc')
     this.showUpload = true;
   }
-  upload(files: File[], childMessage) {
-    console.log('childMessage', childMessage);
+  upload(files: File[]) {
     var formData = new FormData();
     this.errorMessage = null;
     this.successMessage = null;
@@ -263,45 +240,63 @@ export class AvailfilterComponent implements OnInit {
     this.filename = files[0].name;
     Array.from(files).forEach(f => formData.append('file', f))
     this.availDocName = this.filename.includes('Feature');
-    this.featureName = this.filename.includes('iTunes');
-    this.tvName = this.filename.includes('TV');
     var extension = this.filename.substr(this.filename.lastIndexOf('.'));
     console.log('31457280', files[0].size);
     if ((extension.toLowerCase() === ".xlsx")) {
-      if (files[0].size <= 31457280) {
-        if ((this.availDocName === true && this.featureName === false && childMessage === 'Films') ||(this.tvName===true && childMessage === 'TV')) {
-          this.showProgress = true;
+      if (files[0].size <=31457280) {
+        if (this.availDocName === true) {
+          //   this.httpService.uploadAvail(formData).subscribe(data => {  
+          //     if(data['status']="success"){
+          //       this.successCase=true;
+          //       this.successMessage=data['successMessage'];
+          //     }
+          //     this.availuploadData=event;
+          //     //  window.location.reload();
+          //     console.log('Avail upload done')
+          //   },
+          //   error => {
+          //     this.successCase=false;
+          //     this.successMessage=null;
+          //     this.availDocName=false;
+          //     this.errorMessage=error.error.message;
+          //     console.log('Avail Doc Error', error.error.message);
+          //   }
+          // )
+
           this.httpService.uploadToS3(formData).subscribe(data => {
-            this.showProgress = true;
+            //this.uploadreleaseData=data;
             this.s3Resp = data;
             console.log(this.s3Resp, "s3 response")
             this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
               console.log("second call data : " + data);
               this.secndUrlResp = data;
+
+              // this.httpService.uploadAvailToBack(this.secndUrlResp.aws_file_path).subscribe(data => {  
+              //   console.log("third call data : "+ data);
               if (data['status'] = "success") {
                 this.successCase = true;
                 this.errorCase = false;
-                this.showProgress = false;
                 this.successMessage = data['successMessage'];
-                if (this.availDocName) {
-                  this.httpService.availrefreshcomp.next();
-                }
-                else if (this.tvName) {
-                  this.httpService.tvRefreshComp.next();
-                }
+                this.httpService.availrefreshcomp.next();
+                // this.thirdUrlData = data;
               }
+
+              // },
+              // error => {
+              //   this.successCase=false;
+              //   this.successMessage=null;
+              //   this.errorMessage=error.error.message;
+              //   console.log('third call Error', error.error.message);
+              // }
+              // )
+
             },
               error => {
                 this.successCase = false;
                 this.successMessage = null;
                 this.errorCase = true;
-                this.showProgress = false;
-                if(error.error.message==undefined || error.error.message==null){
-                  this.errorMessage = "Upload is running in background, Please visit later";
-                }else{
-                  this.errorMessage = error.error.message;
-                } 
-
+                this.errorMessage = error.error.message;
+                console.log('second call Error', error.error.message);
               }
             )
           },
@@ -309,41 +304,28 @@ export class AvailfilterComponent implements OnInit {
               this.successCase = false;
               this.successMessage = null;
               this.errorCase = true;
-              this.showProgress = false;
               this.errorMessage = error.error.message;
-
+              console.log('S3 Doc Error', error);
             }
           )
         }
         else {
-          if(childMessage === 'Films'){
-            this.errorMessage = "Not a Feature Document";
+          this.errorMessage = "Not a Feature Document";
           this.errorCase = true;
           this.successCase = false;
-          this.showProgress = false;
           this.successMessage = null;
-          }else if(childMessage === 'TV'){
-            this.errorMessage = "Not a TV Document";
-            this.errorCase = true;
-            this.successCase = false;
-            this.showProgress = false;
-            this.successMessage = null;
-          }
-         
         }
       }
-      else {
-        this.errorMessage = "Maximum file size exceeded";
-        this.errorCase = true;
-        this.showProgress = false;
-        this.successCase = false;
-        this.successMessage = null;
+      else{
+      this.errorMessage = "Maximum file size exceeded";
+      this.errorCase = true;
+      this.successCase = false;
+      this.successMessage = null;
       }
     }
     else {
       this.errorMessage = "Is not a valid file format";
       this.errorCase = true;
-      this.showProgress = false;
       this.successCase = false;
       this.successMessage = null;
     }
@@ -357,79 +339,6 @@ export class AvailfilterComponent implements OnInit {
     this.errorCase = false;
     this.filename = '';
     this.errorMessage = "";
-    this.enableSaveFlag = false;
-    this.errorMessageDownload = '';
-  }
-  export(page) {
-    this.showExportProgress = true;
-    if (page === 'Films') {
-      this.httpService.exportToS3('FILMS').subscribe(data => {
-        this.showExportProgress = true;
-        this.expRep = data;
-        if (data['status'] = "Success") {
-          this.successCase = true;
-          this.errorCase = false;
-          this.showExportProgress = false;
-          console.log('entered');
-          this.httpService.exporS3ToLcal('FILMS').subscribe(data => {
-            this.apiResp = data;
-            this.apiURL = this.apiResp.url;
-            this.enableSaveFlag = true;
-          }, error => {
-            this.errorCase = true;
-            this.successCase = false;
-            this.showExportProgress = false;
-            this.errorURl = error.error.text;
-            this.errorMessageDownload = error.error.message;
-
-          }
-          )
-        }
-      }, error => {
-        this.errorCase = true;
-        this.successCase = false;
-        this.showExportProgress = false;
-        this.errorMessageDownload = error.error.message;
-        this.showExportProgress = false;
-      }
-      )
-
-    }
-    else if (page === 'TV') {
-      this.httpService.exportToS3('TV').subscribe(data => {
-        this.showExportProgress = true;
-        this.expRep = data;
-        if (data['status'] = "Success") {
-          this.successCase = true;
-          this.errorCase = false;
-          this.showExportProgress = false;
-          console.log('entered');
-          this.httpService.exporS3ToLcal('TV').subscribe(data => {
-            this.apiResp = data;
-            this.apiURL = this.apiResp.url;
-            this.enableSaveFlag = true;
-          }, error => {
-            this.errorCase = true;
-            this.successCase = false;
-            this.showExportProgress = false;
-            this.errorURl = error.error.text;
-            this.errorMessageDownload = error.error.message;
-
-          }
-          )
-        }
-      }, error => {
-        this.errorCase = true;
-        this.successCase = false;
-        this.showExportProgress = false;
-        this.errorMessageDownload = error.error.message;
-        this.showExportProgress = false;
-      }
-      )
-
-    }
-
-
   }
 }
 
