@@ -26,10 +26,10 @@ Resources:
             AssignPublicIp: "ENABLED" # Specify "ENABLED" or "DISABLED"             
 # (Optional) In the Hooks section, specify a validation Lambda function to run during 
 # a lifecycle event. 
-Hooks:
+#Hooks:
 # Hooks for Amazon ECS deployments are:
-    - BeforeInstall: "" # Specify a Lambda function name or ARN
-    - AfterInstall: "" # Specify a Lambda function name or ARN
-    - AfterAllowTestTraffic: "" # Specify a Lambda function name or ARN
-    - BeforeAllowTraffic: "" # Specify a Lambda function name or ARN
-    - AfterAllowTraffic: "" # Specify a Lambda function name or ARN
+#    - BeforeInstall: "" # Specify a Lambda function name or ARN
+#    - AfterInstall: "" # Specify a Lambda function name or ARN
+#    - AfterAllowTestTraffic: "" # Specify a Lambda function name or ARN
+#    - BeforeAllowTraffic: "" # Specify a Lambda function name or ARN
+#    - AfterAllowTraffic: "" # Specify a Lambda function name or ARN
