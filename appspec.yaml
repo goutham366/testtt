@@ -16,7 +16,7 @@ Resources:
         TaskDefinition: "arn:aws:ecs:us-west-2:034034396584:task-definition/wb-web-task:1" # Specify the ARN of your task definition (arn:aws:ecs:region:account-id:task-definition/task-definition-family-name:task-definition-revision-number)
         LoadBalancerInfo: 
           ContainerName: "wb-web-container" # Specify the name of your Amazon ECS application's container
-          ContainerPort: "8080" # Specify the port for your container where traffic reroutes 
+          ContainerPort: 8080 # Specify the port for your container where traffic reroutes 
 # Optional properties
         PlatformVersion: "LATEST" # Specify the version of your Amazon ECS Service
         NetworkConfiguration:
