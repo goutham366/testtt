@@ -23,7 +23,7 @@
                                     <div class="card-content card-flex" *ngIf="showStatus!==i">
                                         <ul>
                                             <li>
-                                                <h6 class="title-text" routerLink="/pages/insight"> {{x.GlobalTitle}}</h6>
+                                                <h6 class="title-text" routerLink="/pages/metadata"> {{x.GlobalTitle}}</h6>
                                             </li>
                                             <li class="cust-text">
                                                 <img src="assets/images/Icons/PNG/calendar.png">{{x.StartDate | date:'MM/dd'}}
@@ -33,7 +33,7 @@
                                             </li>
                                         </ul>
                                         <div class="circle" (click)="showTitleStatus(i)">
-                                            <circle-progress class="round-outline" [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                            <circle-progress class="round-outline" routerLink="/pages/insight" [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                                 [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
                                         </div>
                                     </div>

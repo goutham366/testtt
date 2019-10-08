@@ -22,8 +22,10 @@
                     </span>
 
                     <span>
-                        <p class="itune-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}">{{itune.AvailName
-| uppercase }}</p>
+                        <p class="itune-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}" routerLink="/pages/itunestitles"
+                            [queryParams]="{ avail_name: itune.AvailName }">{{itune.AvailName | uppercase
+                            }}
+                        </p>
                         <p class="itune-date">
                             <img src="assets/images/Icons/PNG/calendar.png"> {{itune.StartDate | date:'MM/dd' }} -
                             <span>{{itune.DueDate | date:'MM/dd' }}</span>
@@ -35,7 +37,8 @@
                     <div class="equalHMWrap">
                         <span id="titlesDiv">
                             <span class="itune-details titlesBox">
-                                <img src="assets/images/Icons/PNG/titles.png"><span class="titleFont"> {{itune.TitleData.TitleCountriesCount}} Total (Titles + Countries)
+                                <img src="assets/images/Icons/PNG/titles.png"><span class="titleFont"> {{itune.TitleData.TitleCountriesCount}}
+                                    Total (Titles + Countries)
 
                                 </span>
                                 <!-- <span class="titleFont"> Titles</span> -->
@@ -45,10 +48,12 @@
                     <div class="progressBar">
                         <div class="progress">
                             <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'T')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}} (Unique Titles)</span>
+                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
+                                    (Unique Titles)</span>
                             </div>
                             <div [ngStyle]="{'width.%': getPending(i,'T')}">
-                                <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}} (Unique Titles)</span>
+                                <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}}
+                                    (Unique Titles)</span>
                             </div>
                         </div>
                     </div>
@@ -93,17 +98,17 @@
 
                 </div>
                 <div class="legend-margin m-0">
-                        <div class="d-flex legend-flex p-1">
-                          <div class="mt-1 status-bar">
-                              <div class="complete-legend"></div>
-                              <div class="legend-text ml-1 mr-1">Completed</div>
-                          </div>
-                          <div class="mt-1 status-bar">
-                                  <div class="pending-legend"></div>
-                                  <div class="legend-pending-text ml-1 mr-1">Pending</div>
-                          </div>
-                      </div>
-                  </div>
+                    <div class="d-flex legend-flex p-1">
+                        <div class="mt-1 status-bar">
+                            <div class="complete-legend"></div>
+                            <div class="legend-text ml-1 mr-1">Completed</div>
+                        </div>
+                        <div class="mt-1 status-bar">
+                            <div class="pending-legend"></div>
+                            <div class="legend-pending-text ml-1 mr-1">Pending</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="cust-text gray-bg">
                     <span class="status-text">
                         <strong class="status-font">Status</strong>
@@ -121,16 +126,20 @@
                         <span class="bold"> -</span> </p>
                     <p class="status-count">Escalations</p>
                 </div>
-                    <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(itune.AvailName)">Export</button>
+                <div class="download-image" (click)="openModal(itune.AvailName)" data-toggle="modal" data-target="#myModal">
+                    <div class="download-text border text-dark">Export Data</div>
+                    <div class="download-btn btn-default"><i class="material-icons">keyboard_tab</i></div>
+                </div>
+                    <!-- <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(itune.AvailName)">Export</button> -->
                     <div class="modal fade modal-align" id="myModal" role="dialog">
                         <div class="modal-dialog modal-width">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <span class="export-text">Export the Avail</span>
+                                <div class="modal-header export-header">
+                                    <span class="export-text">Export ({{selectedAvailNew}})</span>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body modal-body-align">
-                                        <span class="export-yesRno">Click below to Export ({{selectedAvailNew}})</span>
+                                        <!-- <span class="export-yesRno">Click below to Export ({{selectedAvailNew}})</span> -->
                                     <div class="form-group">
                                         <div class="flex-export">
                                             <label class="badge badge-primary initiate-export" (click)="export(parentMessage,selectedAvailNew)">

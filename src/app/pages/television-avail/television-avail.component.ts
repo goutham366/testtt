@@ -27,6 +27,7 @@ export class TelevisionAvailComponent implements OnInit {
   selectedAvailNew: any;
   tvDataList:any;
   selected:any;
+  pendingResult:any;
  constructor(private httpService:HttpService){
   this.parentMessage = "TV";
  }
@@ -76,20 +77,19 @@ export class TelevisionAvailComponent implements OnInit {
    })
  }
  getPending(n,data){
-  var result;
   switch(data){
-    case 'E': result= (this.tvData[n].TitleData.EpisodesPendingCount*100)/this.tvData[n].TitleData.EpisodesCount;
+    case 'E': this.pendingResult= (this.tvData[n].TitleData.EpisodesPendingCount*100)/this.tvData[n].TitleData.EpisodesCount;
               break;
-    case 'C': result= (this.tvData[n].TitleData.CountriesPendingCount*100)/this.tvData[n].TitleData.UniqueCountriesCount;
+    case 'C': this.pendingResult= (this.tvData[n].TitleData.CountriesPendingCount*100)/this.tvData[n].TitleData.UniqueCountriesCount;
               break;
-    case 'L': result= (this.tvData[n].TitleData.LanguagesPendingCount*100)/this.tvData[n].TitleData.UniqueLanguagesCount;
+    case 'L': this.pendingResult= (this.tvData[n].TitleData.LanguagesPendingCount*100)/this.tvData[n].TitleData.UniqueLanguagesCount;
               break;
             
   }
-  return result;
+   return this.pendingResult;
 }
 getCompleted(n,data){
-  var result;
+  let result;
   switch(data){
 
     case 'E': result= (this.tvData[n].TitleData.EpisodesCompletedCount*100)/this.tvData[n].TitleData.EpisodesCount;

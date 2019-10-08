@@ -48,7 +48,7 @@ import {
               this.lang_name = this.languageData[i].language_name;
           }
       })
-       this.httpService.getUsersData().subscribe(data => {
+       this.httpService.getUser().subscribe(data => {
           this.userData = data;
           for (let i = 0; i < this.userData; i++) {
               this.email = this.userData[i].user_email;

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
-import { ActivatedRoute } from '@angular/router';
-//import { ActivatedRoute } from '@angular/router';
+
+
 interface Stages {
   stageTitle: String;
 }
@@ -43,7 +42,7 @@ export class ApoTitlesComponent implements OnInit {
   duedate: any;
   parentMessage:any;
 
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService) {
     this.getApoData();
     this.parentMessage = "APO";
     this.stages = [

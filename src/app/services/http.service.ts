@@ -13,23 +13,23 @@ export class HttpService {
   localurl: string = 'http://10.219.20.213:8082/AWSS3';
   refreshcomp: Subject<any>;
   availrefreshcomp: Subject<any>;
-  itunesRefreshComp:Subject<any>;
-  tvRefreshComp:Subject<any>;
+  itunesRefreshComp: Subject<any>;
+  tvRefreshComp: Subject<any>;
   private messageSource = new BehaviorSubject('New');
   private messageiTunesSource = new BehaviorSubject('iTunes');
-  private tvmessageSource=new BehaviorSubject('Catalog');
+  private tvmessageSource = new BehaviorSubject('Catalog');
 
   currentMessage = this.messageSource.asObservable();
   iTunesMessage = this.messageiTunesSource.asObservable();
-  tvMessage=this.tvmessageSource.asObservable();
+  tvMessage = this.tvmessageSource.asObservable();
   relaseuploadURL: string;
   triggerUploadUrl: string;
 
   constructor(private http: HttpClient) {
     this.refreshcomp = new Subject<any>();
     this.availrefreshcomp = new Subject<any>();
-    this.itunesRefreshComp=new Subject<any>();
-    this.tvRefreshComp=new Subject<any>();
+    this.itunesRefreshComp = new Subject<any>();
+    this.tvRefreshComp = new Subject<any>();
   }
 
   changeMessage(message: string) {
@@ -53,14 +53,21 @@ export class HttpService {
   getUsersData() {
     return this.http.get(`./assets/json/user.json`);
   }
+  getUser() {
+    return this.http.get(`./assets/json/users.json`);
+  }
   getUserData() {
     return this.http.get(`./assets/json/user.json`);
   }
   getratingData() {
     return this.http.get(`./assets/json/ratings.json`);
   }
-
+  getLangMetadata() {
+    return this.http.get(`./assets/json/metadata-language.json`);
+  }
   getAvailDetailsView() {
+    // return this.http.get('http://172.21.129.183:8085/WBPlatform/avails/titles/FILMS/FC Jan232019/60000232362017124');
+    // return this.http.get(this.url + `/avails/FILMS/` + availName + '/' + titleId);
     return this.http.get(`./assets/json/avails-details.json`);
   }
   getMetaData() {
@@ -70,11 +77,11 @@ export class HttpService {
   //    return  this.http.get(`./assets/json/avails_api.json`);
   // }
   getItunesData() {
-    return  this.http.get(this.lambda+'/avails/ITUNES');
+    return this.http.get(this.lambda + '/avails/ITUNES');
     // return  this.http.get(this.lambda + '/avails/ITUNES');
   }
   getTelevisionAvailData() {
-    return this.http.get(this.lambda+`/avails/TV`);
+    return this.http.get(this.lambda + `/avails/TV`);
   }
   // getAvailData() {
   //   return  this.http.get(`./assets/json/avails_api.json`);
@@ -84,13 +91,13 @@ export class HttpService {
   // }
   getSeriesDetails(availName) {
     console.log(availName);
-    return this.http.get(this.lambda+`/avails/TV/` + availName);
+    return this.http.get(this.lambda + `/avails/TV/` + availName);
   }
-  getSeasonDetails(availName,series) {
-    return this.http.get(this.lambda+'/avails/TV/'+ availName + '/' + series);
+  getSeasonDetails(availName, series) {
+    return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + series);
   }
-  getEpisodeDetails(availName,series,seasonNumber) {
-    return this.http.get(this.lambda+`/avails/TV/`+ availName + '/' + series + '/'+ seasonNumber);
+  getEpisodeDetails(availName, series, seasonNumber) {
+    return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + series + '/' + seasonNumber);
   }
   // uploadrelease(formData){
   //   let headers: HttpHeaders = new HttpHeaders();
@@ -116,48 +123,48 @@ export class HttpService {
   // }
   getAPODetails() {
     return this.http.get(this.lambda + '/apo/APO');
+ 
+  }
+  getAPODetail() {
+    
+    return this.http.get(`./assets/json/apo_api.json`);
+  }
+  getWorkOrderDetails() {
+    return  this.http.get(`./assets/json/metaData.json`);
   }
   getAvailData() {
     return this.http.get(this.lambda + '/avails/FILMS');
   }
 
-  uploadToS3(formData) { 
+  uploadToS3(formData) {
     //let headers: HttpHeaders = new HttpHeaders();
-   // headers = headers.append('Accept', 'application/json');
-   // headers = headers.append("Access-Control-Allow-Origin", "*");
+    // headers = headers.append('Accept', 'application/json');
+    // headers = headers.append("Access-Control-Allow-Origin", "*");
     // let headers: HttpHeaders = new HttpHeaders();
     // headers = headers.append("Content-Type", "multipart/form-data");
     var url = this.awsS3Url + '/uploads/uploadFile'
-    return this.http.post(url , formData, {
-      headers: { ignoreLoadingBar: '' }
-    });
+    return this.http.post(url , formData);
   }
 
   uploadS3toAWS(fileName) {
     //let headers: HttpHeaders = new HttpHeaders();
-   // headers = headers.append('Accept', 'application/json');
-   // headers = headers.append("Access-Control-Allow-Origin", "*");
+    // headers = headers.append('Accept', 'application/json');
+    // headers = headers.append("Access-Control-Allow-Origin", "*");
     var url = this.lambda + '/data/process/' + fileName;
-    return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
-    });
+    return this.http.get(url);
   }
   exportToS3(message) {
     console.log('mesaage', message);
     //let headers: HttpHeaders = new HttpHeaders();
-   // headers = headers.append('Accept', 'application/json');
+    // headers = headers.append('Accept', 'application/json');
     //headers = headers.append("Access-Control-Allow-Origin", "*");
-    var url = this.lambda+`/export/${message}`;
-    return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
-    });
+    var url = this.lambda + `/export/${message}`;
+    return this.http.get(url);
   }
   exporS3ToLcal(message) {
 
-    var url = this.lambda+`/export/excel/${message}`
-    return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
-    });
+    var url = this.lambda + `/export/excel/${message}`
+    return this.http.get(url);
   }
   // uploadApoToBack(path, relDoc, trigDoc){
   //   var url;
@@ -181,29 +188,33 @@ export class HttpService {
     else if (message === 'avail') {
       return this.availrefreshcomp;
     }
-    else if(message === 'iTunes'){
+    else if (message === 'iTunes') {
       return this.itunesRefreshComp;
     }
-    else if(message === 'tv'){
+    else if (message === 'tv') {
       return this.tvRefreshComp;
     }
   }
-  
-  getAvailTittlesData() {
-    return this.http.get(`./assets/json/avail_titles_api.json`);
+
+  getAvailTittlesData(availName) {
+    console.log("avail titles name ....", availName);
+    //return this.http.get(`./assets/json/avail_titles_api.json`);
+    // return this.http.get(this.url + `/avails/FILMS/` + availName);
+    return this.http.get(this.lambda + `/avails/FILMS/` + availName);
   }
-  exportToSingleAvailS3(message,availname){
-console.log('avail name in service',availname);
-    var url = this.lambda+`/export/${availname}`;
-    return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
-    });
+  getAccountTittlesData(accountName) {
+    //console.log("itunes avails name ....",accountName);
+    //return this.http.get(this.url + `/avails/ITUNES/` + accountName);
+    return this.http.get(this.lambda + `/avails/ITUNES/` + accountName);
   }
-  exporS3ToLcalToSingle(message,availname){
-    var url = this.lambda+`/export/excel/${availname}`;
-    return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
-    });
+  exportToSingleAvailS3(message, availname) {
+    console.log('avail name in service', availname);
+    var url = this.lambda + `/export/${availname}`;
+    return this.http.get(url);
+  }
+  exporS3ToLcalToSingle(message, availname) {
+    var url = this.lambda + `/export/excel/${availname}`;
+    return this.http.get(url);
   }
 }
 

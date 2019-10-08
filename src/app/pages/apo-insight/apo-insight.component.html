@@ -6,19 +6,19 @@
       </li>
       <i class="fa fa-angle-right arrow"></i>
       <li class="breadcrumb-item">
-        <a #tref>FN JAN152019</a>
+        <a #tref>{{availName}}</a>
       </li>
       <i class="fa fa-angle-right arrow"></i>
       <li class="breadcrumb-item">
-        <a routerLink="/pages/titles" #tref>Titles</a>
+        <a routerLink="/pages/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a>
       </li>
       <i class="fa fa-angle-right arrow"></i>
       <li class="breadcrumb-item breadcrumb-title">
-        <a #tref>The Lego Movie 2</a>
+        <a #tref>{{titleName}}</a>
       </li>
     </ul>
   </div>
-  <div class="card">
+  <div class="card  top-main">
     <div class="d-flex top-bar">
       <div class="flex-description box-1">
         <!-- <img class="img-card" src="../../../assets/images/lego.jpg"> -->
@@ -30,7 +30,7 @@
         <div class="d-flex">
           <div class="card-data">
             <div class="card-content">
-              <h6 class="main-title">The Lego Movie 2</h6>
+              <h6 class="main-title">{{titleName}}</h6>
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">02/22 - 03/19</h6>
               <!-- <ul>
                 <li>The Lego Movie 2</li>
@@ -46,11 +46,12 @@
           <div class="card-menu">
             <div class="container mt-3">
               <ul class="nav nav-tabs">
-                <li class="nav-item">
+                <li class="nav-item mr-2">
                   <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#metaData" routerLink="/pages/metadata">Metadata</a>
+                  <a class="nav-link text-dark" data-toggle="tab" href="#metaData" routerLink="/pages/metadata"
+                  [queryParams]="{avail_name: availName, title_name: titleName}">Metadata</a>
                 </li>
               </ul>
             </div>
@@ -58,9 +59,9 @@
         </div>
       </div>
       <div class="flex-description box-3">
-        <i class="material-icons">vertical_align_center</i>
-        <i class="material-icons" (click)="reload()">replay</i>
-        <i class="material-icons">title<sup>+</sup></i>
+        <i class="material-icons">vertical_align_center</i>&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="material-icons" (click)="reload()">replay</i>&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="material-icons">title<sup>+</sup></i>&nbsp;&nbsp;&nbsp;&nbsp;
         <i class="material-icons">title<sup>-</sup></i>
       </div>
     </div>
@@ -93,7 +94,7 @@
               <div class="progress-bar bg-success" style="width: 70%">
                 70
               </div>
-              <div class="progress-bar" style="width: 30%">
+              <div class="progress-bar bg-pending" style="width: 30%">
                 30
               </div>
             </div>&nbsp;&nbsp;
@@ -120,7 +121,7 @@
               <div class="progress-bar bg-success" style="width: 50%">
                 16
               </div>
-              <div class="progress-bar" style="width: 50%">
+              <div class="progress-bar bg-pending" style="width: 50%">
                 16
               </div>
             </div>&nbsp;&nbsp;
@@ -145,7 +146,7 @@
               <div class="progress-bar bg-success" style="width: 20%">
                 8
               </div>
-              <div class="progress-bar" style="width: 80%">
+              <div class="progress-bar bg-pending" style="width: 80%">
                 20
               </div>
             </div>&nbsp;&nbsp;
@@ -186,15 +187,19 @@
           <h6 class="status-text">Status</h6>
           <p class="status">
             <b>-</b></p>
+           
           <p class="status-count">Pending Translations</p>
           <p class="status">
             <b>-</b></p>
+            
           <p class="status-count">Pending Ratings</p>
           <p class="status">
-            <b>-</b></p>
+            <b>-</b></p> 
+           
           <p class="status-count">Pending Clarifications</p>
           <p class="status">
             <b>-</b> </p>
+         
           <p class="status-count">Escalations</p>
           <!-- </div>  -->
         </div>
@@ -224,8 +229,8 @@
                 </span>
                 <!-- <br> -->
                 <span>
-                  <p class="avail-title">{{avail.avail_title}}</p>
-                  <p class="avail-date">
+                  <p class="avail-title history-card">{{avail.avail_title}}</p>
+                  <p class="avail-date history-card">
                     <img src="assets/images/Icons/PNG/calendar.png"> {{avail.date_of_arrival}} -
                     <span>{{avail.date_of_delivery}}</span>
                   </p>
@@ -353,11 +358,11 @@
         <div class="col-md-9 block-timeline">
           <div class="container">
             <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#comment">Comments</a>
+              <li class="nav-item text-log">
+                <a class="nav-link active mr-2" data-toggle="tab" href="#comment">Comments</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#log">Log</a>
+              <li class="nav-item text-log">
+                <a class="nav-link text-dark" data-toggle="tab" href="#log">Log</a>
               </li>
             </ul>
 
@@ -366,7 +371,7 @@
               <div id="comment" class="container tab-pane active">
                 <ul id="comments-list" class="comments-list">
                   <li>
-                    <div class="comment-main-level" *ngFor="let x of availDetailsViewList">
+                    <div class="comment-main-level comment-box" *ngFor="let x of availDetailsViewList">
                       <div class="comment-box" *ngFor="let y of x.avail_details">
                         <div class="comment-head" *ngFor="let z of y.commentDetails">
                           <h6 class="comment-name">
@@ -380,9 +385,9 @@
 
                   </li>
                   <div class="col-md-12">
-                    <label class="comment-content" *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
+                    <label class="comment-content add-cmnt"  *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
                   </div>
-                  <div class="comment-content">
+                  <div class="comment-content add-cmnt">
                     <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
                     <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
                   </div>
@@ -402,7 +407,7 @@
                           <span class="date">{{z.log_dateAndTime}}</span>
 
                           <div class="comment-content">
-                            <img class="log_img" src="assets/images/a_star_is_born_big.jpg" alt="events">
+                            <img class="log_img" src="assets/images/lego.jpg" alt="events">
                             <span class="log-img-cmt">
                               <p>{{z.status}}</p>
                               <!-- <p>{{z.image_url/fileName}}</p> -->
@@ -428,21 +433,55 @@
 <div class="container  acc-style">
   <!-- The Modal -->
   <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style=" display: flex;justify-content: center;
+    width: 28%;">
       <div class="modal-content modal-view">
         <!-- <img class="img-card img-crop" src="assets/images/lego.jpg" (click)="cropImage(src);"> -->
+        <div class="flex">
         <div>
           <img-cropper name="crop_img" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
           <br>
-          <span class="result rounded" *ngIf="data.image">
+          <div data-dismiss="modal" style="font-size:35px ; color: rgb(195, 0, 26) ; background-color: transparent; border: aliceblue;
+              position: relative;bottom: 78px;left: 160px;">
+              <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
+          <span  style="display: none;" class="result rounded" *ngIf="data.image">
             <img name="final_img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight"
-              style="visibility: hidden;">
+             >
           </span>
+        </div>
+        <div style="display: flex;justify-content: center;width:340px;margin-top:-58px;">
+        <div class="crop-cardBody"> 
+            <div class="cus-text text-col" style="padding-left: 8px;">
+                <ol class="wizard-progress d-flex">
+
+                    <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(cropTitle)}" *ngFor="let stage of stages, let i = index">
+                        <span class="step-name">
+                            <span *ngIf="stage.stageTitle==cropTitle" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                        </span>
+                        <span class="visuallyhidden"></span>
+                        <span class="step-num"></span>
+                    </li>
+                </ol>
+            </div>
+            <div class="flex" style="display: flex;justify-content: space-between;padding: 0px 10px;" >
+                <span class="apo-color accountsBox"  >
+                    <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{cropAccounts}}
+                </span>
+                <span class="apo-color countriesBox"  >
+                    <i class="material-icons md-18 md-grey v-align">language</i>{{cropCountries}}
+                </span>
+                <span class="apo-color languagesBox" >
+                    <i class="material-icons md-18 md-grey v-align">translate</i> {{cropLanguages}}
+               </span>
+            </div>
+        </div>
+      </div>
           <div class="crop-save-btn">
             <button (click)="saveCropImage()" data-dismiss="modal" style="font-size:35px ; color: #007CC3 ; background-color: transparent; border: aliceblue;"
               class="fa">&#xf058;</button>
           </div>
-        </div>
+        </div>  
       </div>
     </div>
   </div>
