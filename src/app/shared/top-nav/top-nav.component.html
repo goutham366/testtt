@@ -1,58 +1,48 @@
 <div class="cust-nav">
-  <nav class="navbar navbar-expand-lg navbar-light bottomline color">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- <mat-progress-bar class="blue-progress" mode="indeterminate" color="#BEE3FF"></mat-progress-bar> -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown" [ngClass]="(filmColor) ? 'setColor' : 'removerColor'" (click)="clicked('pages')" routerLink="/pages" >
-          <i class="material-icons  icon-music">theaters</i>
-          <span data-toggle="dropdown" class="v-align"> Film</span>
-          <br>
-          <span class="new-design">{{selectedItem}}
-          </span>
-          <ul class="dropdown-menu shadow-sm">
-            <div *ngFor="let film of filmList">
-              <li class="dropdown-selection" routerLink="/pages" (click)="filmSelection(film.name)">{{film.name}}</li>
-            </div>
-          </ul>
-        </li>
-        <li class="nav-item dropdown" [ngClass]="(tvColor) ? 'setColor' : 'removerColor'" (click)="clicked('television')" routerLink="/pages/television"  >
-          <i class="material-icons icon-television">tv</i>
-          <span data-toggle="dropdown" class="v-align"> Television</span>
-          <br>
-          <span class="tv-design">{{selectedItemofTv}}
-          </span>
-          <ul class="dropdown-menu shadow-sm tv-drop">
-            <div *ngFor="let category of tvCategories">
-              <li class="dropdown-selection" routerLink="/pages/television" (click)="televisonDrop(category.name)">{{category.name}}</li>
-            </div>
-          </ul>
-                </li>
-        <li class="nav-item dropdown cursorPoint" [ngClass]="(ituneColor) ? 'setColor' : 'removerColor'" (click)="clicked('itunes')" routerLink="/pages/itunes"  
-          >
-          <i class="fa fa-music icon-music"></i>
-          <span data-toggle="dropdown" class="v-align account"> Accounts</span>
-          <br>
-          <span class="account-design">{{selectedItemofAccount}}
-          </span>
-          <ul class="dropdown-menu shadow-sm">
-            <div *ngFor="let account of accountList">
-              <li class="dropdown-selection" routerLink="/pages/itunes" (click)="accountSelection(account.name)">{{account.name}}</li>
-            </div>
-          </ul>
-        </li>
-        <li class="nav-item" [ngClass]="(apoColor) ? 'setColor' : 'removerColor'" (click)="clicked('apo')" routerLink="/pages/apo/titles"  >
-          <i class="material-icons">fast_forward</i>
-          <span class="v-align"> APO</span>
-        </li>
-        <li class="nav-item" routerLink="/login">
-          <i class="material-icons v-align">folder_special</i>
-          <span class="res">Adhoc</span>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-light bottomline color">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown " routerLink="/pages" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}">
+            <i class="material-icons  icon-music">theaters</i>
+            <span data-toggle="dropdown" class="v-align"> Film</span>
+            <br>
+            <span class="new-design">{{selectedItem}}
+            </span>
+            <ul class="dropdown-menu shadow-sm">
+              <div *ngFor="let film of filmList">
+                <li class="dropdown-selection" (click)="filmSelection(film.name)">{{film.name}}</li>
+              </div>
+            </ul>
+          </li>
+          <li class="nav-item" routerLink="/pages/television" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}" >
+            <i class="material-icons icon-television">tv</i>
+            <span class="v-align" data-toggle="dropdown"> Television</span>
+            <!-- <span class="">{{selectedItemofTv}}
+            </span>
+            <ul class="dropdown-menu dropdown-align shadow-sm">
+              <div *ngFor="let category of tvCategories">
+                <li class="television"  (click)="televisonDrop(category.name)">{{category.name}}</li>
+              </div>
+            </ul> -->
+          </li>
+          <li class="nav-item dropdown cursorPoint" routerLink="/pages/itunes" (click)="selectedItem = null" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}">
+            <i class="fa fa-music icon-music" aria-hidden="true"></i> iTunes
+          </li>
+          <li class="nav-item" routerLink="/pages/apo/titles" (click)="selectedItem = null" routerLinkActive="setColor" [routerLinkActiveOptions]="{exact:true}">
+            <i class="material-icons">fast_forward</i>
+            <span class="v-align"> APO</span>
+          </li>
+          <li class="nav-item" routerLink="/login">
+            <i class="material-icons v-align">folder_special</i>
+            <span class="res"> Adhoc</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  

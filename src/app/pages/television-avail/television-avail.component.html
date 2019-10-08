@@ -1,22 +1,22 @@
-<div class="container-fluid">
-    <div class="avail-header pl-0 pr-0">
+<div class="container">
+    <div class="avail-header">
         <h6 class="avail-heading">Avails</h6>
         <div>
-            <app-availfilter [childMessage]="parentMessage"> </app-availfilter>
+            <app-availfilter></app-availfilter>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 card-resize" *ngFor="let tv of tvData ;let i=index">
             <div class="card television">
-                <div class="card-header" routerLink="/pages/tvseries" [queryParams]="{ avail_name: tv.AvailName }">
+                <div class="card-header" routerLink="/pages/tvseries">
                     <div class="card-header-align">
                         <ul class="header-height">
                             <li>
-                                <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="left" title="{{tv.AvailName}}">{{tv.AvailName | uppercase}} </span>
+                                <span class="avail-title">{{tv.AvailName}}</span>
                             </li>
                             <li class="avail-date">
-                                <img src="assets/images/Icons/PNG/calendar.png">{{tv.StartDate | date:'MM/dd'}} -
-                                <span>{{tv.DueDate | date:'MM/dd'}}</span>
+                                <img src="assets/images/Icons/PNG/calendar.png">{{tv.StartDate | date:'dd/MM'}} -
+                                <span>{{tv.DueDate | date:'dd/MM'}}</span>
                             </li>
                         </ul>
                         <div>
@@ -25,33 +25,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body">
                     <div class="card-content">
-                        <div class="p-2">
-                        <div class="pb-2">
-                            <div class="pb-2">
-                                <span>
-                                    <img src="assets/images/Icons/PNG/titles.png">
-                                    <span class="font-text"> {{tv.TitleData.EpisodeCountriesCount}} Total (Titles + Countries)</span>
-                                </span>
-                            </div>
+                        <div>
+                            <span>
+                                <img src="assets/images/Icons/PNG/titles.png">
+                                <span class="font-text"> {{tv.TitleData.EpisodesCount}} Episodes</span>
+                            </span>
+
                             <div class="progressBar">
                                 <div class="progress">
                                     <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'E')}">
-                                        <span class="status-padding" *ngIf="getCompleted(i,'E')!==0">{{tv.TitleData.EpisodesCompletedCount}} (Unique Titles)</span>
+                                        <span class="status-padding" *ngIf="getCompleted(i,'E')!==0">{{tv.TitleData.EpisodesCompletedCount}}</span>
                                     </div>
                                     <div [ngStyle]="{'width.%': getPending(i,'E')}">
-                                        <span class="status-padding" *ngIf="getPending(i,'E')!==0">{{tv.TitleData.EpisodesPendingCount}} (Unique Titles)</span>
+                                        <span class="status-padding" *ngIf="getPending(i,'E')!==0">{{tv.TitleData.EpisodesPendingCount}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="pb-2">
-                            <div class="pb-2">
-                                <i class="material-icons md-18 md-grey v-align">language</i>
-                                <span class="font-text"> {{tv.TitleData.UniqueCountriesCount}} Countries</span>
-                            </div>
-
+                        <div>
+                            <i class="material-icons md-18 md-grey v-align">language</i>
+                            <span class="font-text"> {{tv.TitleData.UniqueCountriesCount}} Countries</span>
                             <div class="progressBar">
                                 <div class="progress">
                                     <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
@@ -63,11 +58,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pb-2">
-                            <div class="pb-2">
-                                <i class="material-icons md-18 md-grey v-align">translate</i>
-                                <span class="font-text"> {{tv.TitleData.UniqueLanguagesCount}} Languages</span>
-                            </div>
+                        <div>
+                            <i class="material-icons md-18 md-grey v-align">translate</i>
+                            <span class="font-text"> {{tv.TitleData.UniqueLanguagesCount}} Languages</span>
                             <div class="progressBar">
                                 <div class="progress">
                                     <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
@@ -79,20 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="legend-margin m-0">
-                            <div class="d-flex legend-flex p-1">
-                                <div class="mt-1 status-bar">
-                                    <div class="complete-legend"></div>
-                                    <div class="legend-text ml-1 mr-1">Completed</div>
-                                </div>
-                                <div class="mt-1 status-bar">
-                                    <div class="pending-legend"></div>
-                                    <div class="legend-pending-text ml-1 mr-1">Pending</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- <div>
+                        <div>
                             <div class="row legend">
                                 <div class="col-md-1">
                                     <div class="complete-legend"></div>
@@ -105,55 +85,16 @@
                                 <div class="col-md-3 legend-pending-text">Pending</div>
                             </div>
 
-                        </div> -->
-                        <div class="cus-status p-2">
-                            <h6 class="status-text">Status</h6>
-                            <p class="status">
-                                <span> -</span> Pending Translations</p>
-                            <p class="status">
-                                <span> -</span> Pending Ratings</p>
-                            <p class="status">
-                                <span>-</span> Pending Clarifications</p>
-                            <p class="status">
-                                <span>-</span> Escalations</p>
                         </div>
-                        <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(tv.AvailName)">Export</button>
-                        <div class="modal fade modal-align" id="myModal" role="dialog">
-                            <div class="modal-dialog modal-width">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <span class="export-text">Export the Avail</span>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body modal-body-align">
-                                            <span class="export-yesRno">Click below to Export ({{selectedAvailNew}})</span>
-                                        <div class="form-group">
-                                            <div class="flex-export">
-                                                <label class="badge badge-primary initiate-export" (click)="export(parentMessage,selectedAvailNew)">
-                                                    <a class="text-decoration-none" class="text-light" *ngIf="!enableSaveFlag ">Initiate Export</a>
-                                                </label>
-                                                <!-- <label class="badge badge-primary"><a *ngFor="let button of buttons" [ngClass]="{'active': button.isClicked}" (click)="button.isClicked = !button.isClicked" class="text-decoration-none" href="https://mediaplat1.s3.ap-south-1.amazonaws.com/UploadExcels/ITUNES.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190903T113558Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIAQP3E3VWUOCQESQ6S%2F20190903%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=f528dc00be2133f8fd317351dca2e486b6536b2ba5328f15a979259765022e9e"  class="text-light">{{ button.text }}</a></label> -->
-                                                <label class="badge badge-primary initiate-export" *ngIf="enableSaveFlag">
-                                                    <a class="text-decoration-none" href="{{this.apiURL}}" class="text-light">Download File</a>
-                                                </label>
-                                                <!-- <a  [ngClass]="(highlight15) ? 'setColor' : 'removeColor'" href="{{this.errorURl}}">hello</a> -->
-                                            </div>
-
-                                            <mat-progress-bar class="blue-progress" *ngIf="showExportProgress" mode="indeterminate"></mat-progress-bar>
-                                            <span *ngIf="showExportProgress" class="progress-font font-12">Request is in progress</span>
-                                            <div class="error-message" *ngIf="errorMessageDownload">
-                                                {{errorMessageDownload}}
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- <div class="modal-footer modal-close">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div> -->
-                                </div>
-
-                            </div>
-                        </div>
+                        <h6 class="status-text">Status</h6>
+                        <p class="status">
+                            <span> 0</span> Pending Translations</p>
+                        <p class="status">
+                            <span> 0</span> Pending Ratings</p>
+                        <p class="status">
+                            <span>0</span> Pending Clarifications</p>
+                        <p class="status">
+                            <span>0</span> Escalations</p>
                     </div>
                 </div>
             </div>
