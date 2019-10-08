@@ -10,7 +10,7 @@ interface Stages {
   styleUrls: ['./avail-titles.component.scss']
 })
 export class AvailTitlesComponent implements OnInit {
-
+ 
   showStatus: any;
   apoList: any;
   titleStatus: boolean = false;
@@ -25,7 +25,7 @@ export class AvailTitlesComponent implements OnInit {
   remaining: any;
   public stages: Stages[];
   status: any;
-  ImageURL: string = " ";
+  ImageUrl: string = " ";
   fileToUpload: File;
   removeButton: boolean;
   files: any;
@@ -39,8 +39,6 @@ export class AvailTitlesComponent implements OnInit {
   todaydate: any;
   duedate: any;
   parentMessage: any;
-  availName: any;
-  filmstitlesresp: any;
 
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.parentMessage = "TV";
@@ -51,7 +49,7 @@ export class AvailTitlesComponent implements OnInit {
       { stageTitle: "Data Delivery" }
     ];
 
-    this.ImageURL = 'assets/images/dummy.png';
+    this.ImageUrl = 'assets/images/dummy.png';
     this.removeButton = false;
 
   }
@@ -110,20 +108,17 @@ export class AvailTitlesComponent implements OnInit {
     }
   }
   getApoData() {
-    this.httpService.getAvailTittlesData(this.availName).subscribe(data => {
-      this.filmstitlesresp = data;
-      this.apoList = this.filmstitlesresp.resultData;
+    this.httpService.getAvailTittlesData().subscribe(data => {
+      this.apoList = data;
     })
   }
   ngOnInit() {
     this.account = -1;
     this.showStatus = -1;
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.availName = params['avail_name'];
-    });
-
     this.getApoData();
-
+    this.httpService.refresh('apo').subscribe(dataof => {
+      this.getApoData();
+    })
 
   }
   imgClickTrack(record, index) {
@@ -150,7 +145,7 @@ export class AvailTitlesComponent implements OnInit {
   }
   triggerUpload() {
     this.files = [];
-    if (this.ImageURL == "assets/images/dummy.png") {
+    if (this.ImageUrl == "assets/images/dummy.png") {
       const fileUpload = document.getElementById('fileUpload') as HTMLInputElement;
       fileUpload.click();
     }

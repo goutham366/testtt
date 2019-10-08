@@ -12,52 +12,50 @@
     </nav>
   </div>
 </div> -->
-<div class="over-flow">
-<div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
+<div class="container-fluid" [ngStyle]="{'font-size': sizeVar+'px'}">
   <div class="d-flex">
     <div class="flex-grow-1">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb m-0 pt-2 pb-2">
           <li class="">
-            <a routerLink="/pages">Avails</a>
+            <a href="#">Avails</a>
           </li>
           <i class="material-icons">keyboard_arrow_right</i>
           <li class="">
-            <a #tref>{{availName}}</a>
+            <a href="#">FN JAN152019</a>
           </li>
           <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page"><a routerLink="/pages/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+          <li class="" aria-current="page">Titles</li>
           <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+          <li class="" aria-current="page">The Lego Movie 2</li>
         </ol>
       </nav>
 
       <div class="card">
         <div class="d-flex">
           <div class="flex-description box-1">
-            <img class="img-card" src="assets/images/lego.jpg">
+            <img class="img-card" src="../../../assets/images/lego.jpg">
           </div>
           <div class="flex-description box-2">
             <div class="d-flex">
               <div class="card-data">
                 <div class="card-content">
                   <ul>
-                    <li>{{titleName}}</li>
+                    <li>The Lego Movie 2</li>
                     <li class="cust-text">
                       <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
                   </ul>
                 </div>
                 <div class="circle">
                   <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                    [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
                 </div>
               </div>
               <div class="card-menu">
                 <div class="container mt-3">
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight" 
-                      [queryParams]="{avail_name: availName, title_name: titleName}">Insight</a>
+                      <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight">Insight</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>
@@ -69,26 +67,22 @@
           </div>
           <div class="flex-description box-3">
             <i class="material-icons">vertical_align_center</i>
-            <i class="material-icons" (click)="reload()">replay</i>
-            <span (click)="sizePlus()">
-              <i class="material-icons">title
+            <i class="material-icons">replay</i>
+            <span (click)="sizePlus()"><i class="material-icons">title
                 <sup>+</sup>
-              </i>
-            </span>
-            <span (click)="sizeMinus()">
-              <i class="material-icons">title
+              </i></span>
+            <span (click)="sizeMinus()"><i class="material-icons">title
                 <sup>-</sup>
-              </i>
-            </span>
+              </i></span>
           </div>
         </div>
       </div>
       <div class="container-fluid padding-side">
         <div class="tab-content">
-          <div id="metaData" class="tab-pane active content-bg">
+          <div id="metaData" class="container-fluid tab-pane active">
             <!-- <div id="metaData" class="container tab-pane fade"> -->
             <div class="d-flex">
-              <div class="tab-content content-bg">
+              <div class="tab-content">
                 <div id="Global" class="tab-pane active">
                   <div class="metaData-content">
                     <div class="table-1">
@@ -96,7 +90,7 @@
                         <li>Abstarct EIDR</li>
                         <li>Account</li>
                         <li>Activation Status</li>
-                        <li class="title-padding">Cast & Crew</li>
+                        <li>Actors</li>
                         <li>Aired End Date</li>
                         <li>Aired From Date</li>
                         <li>Announcement Date</li>
@@ -113,12 +107,12 @@
                         <li>Client End</li>
                       </ul>
                     </div>
-                    <div class="table-2 d-flex">
+                    <div class="table-2 d-flex" >
                       <ul *ngFor="let x of metaDataList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
                         <li>{{x.abstractEIDR}}</li>
                         <li>{{x.account}}</li>
                         <li>{{x.activationStatus}}</li>
-                        <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="metaDataListUpdateVal" (click)="dataShow(metaDataListUpdateVal)">{{metaDataListUpdateVal}}</li>
+                        <li>{{metaDataListUpdateVal}}</li>
                         <li>{{x.airedEndDate}}</li>
                         <li>{{x.AiredFromDate}}</li>
                         <li>{{x.announcementDate}}</li>
@@ -142,7 +136,7 @@
                           <li>{{x.abstractEIDR}}</li>
                           <li>{{x.account}}</li>
                           <li>{{x.activationStatus}}</li>
-                          <li class="border">{{metaDataListUpdateVal}}</li>
+                          <li>{{metaDataListUpdateVal}}</li>
                           <li>{{x.airedEndDate}}</li>
                           <li>{{x.AiredFromDate}}</li>
                           <li>{{x.announcementDate}}</li>
@@ -170,10 +164,8 @@
                           <i class="material-icons" (click)="openBox()">add_box</i>
                           <div id="mySidenav" class="searchBox d-flex" id="compareBox">
                             <div class="compare-section">
-                              <div class="add-btn">
-                                <a href="javascript:void(0)" class="closebtn" (click)="closeBox()">
-                                  <i class="material-icons cursor-pointer" (click)="openBox()">add_box</i>
-                                </a>Compare</div>
+                              <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i
+                                    class="material-icons" (click)="openBox()">add_box</i></a>Compare</div>
                               <input type="text" name="availId" [(ngModel)]="availId" (keydown)="onEnterKeyMeta($event,availId)">
                               <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
                             </div>
@@ -182,106 +174,79 @@
                       </div>
                     </div>
                     <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
-                      <i class="material-icons cursor-pointer">add_box</i>
+                      <i class="material-icons">add_box</i>
                     </div>
 
                   </div>
-                  <!-- <div class="update-box mt-2">
+                  <div class="update-box">
                     <div class="btn-group">
-                      <div cla>
                       <ul class="nav nav-tabs">
                         <li class="nav-item ">
-                          <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                          <a class="nav-link active" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                           <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
                         </li>
                       </ul>
-                      </div>
                       <div class="text-area">
-                        <textarea cols="79" rows="2" #box [(ngModel)]="user">
+                        <textarea cols="79" rows="2" #box>
                                       
                           </textarea>
                       </div>
-                      <div class="btn btn-dark" (click)="update(box.value,user)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                      <div class="btn btn-dark" (click)="update(box.value)">Update</div>
                     </div>
-                   
 
-                  </div> -->
+                  </div>
 
-                  <div class="update-box mt-2">
-                    <div class="btn-group">
-                      <div cla>
-                      <ul class="nav nav-tabs">
-                        <li class="nav-item ">
-                          <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
-                        </li>
-                      </ul>
+                </div>
+                <div id="Language" class="container tab-pane fade">
+                  <br>
+                  <h3>Language</h3>
+                  <div class="col-md-9 lang-info">
+                    <div class="metaData-content local-titles">
+                      <div class="table-1">
+                        <ul>
+                          <li>Local Titles</li>
+                          <li>English Short</li>
+                          <li>English Long</li>
+                        </ul>
                       </div>
-                      <div class="text-area">
-                        <textarea cols="79" rows="2" #box [(ngModel)]="user">
-                                      
-                          </textarea>
+                      <div class="table-2">
+                        <ul *ngFor="let x of metaDataList">
+                          <li>{{x.abstractEIDR}}</li>
+                          <li>{{x.account}}</li>
+                          <li>{{x.activationStatus}}</li>
+                        </ul>
                       </div>
-                      <div class="btn gray-3 text-white" [(ngModel)]="user" name="fieldName" ngDefaultControl (click)="update(user)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                      <div><label class="plus-symbol"> +</label></div>
                     </div>
-                   
-              
                   </div>
                 </div>
-                <div id="Language" class="tab-pane fade">
-                  <app-metadata-language></app-metadata-language>
-                </div>
-                <div id="Territorial" class="tab-pane fade">
-                 <app-metadata-terrtorial></app-metadata-terrtorial>
+                <div id="Territorial" class="container tab-pane fade">
+                  <br>
+                  <h3>Territorial</h3>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                    rem aperiam.</p>
                 </div>
               </div>
 
-              <div class="comment-data content-bg">
-                <div class="comment-data-heading d-flex" *ngIf="!showStatus">
-                  <div>
-                    <ul class="nav nav-tabs">
-                      <li class="nav-item mb-2">
-                        <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
-                      </li>
-                      <li class="nav-item mt-1 mb-1">
-                        <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
-                      </li>
-                      <li class="nav-item mt-2">
-                        <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
-                      </li>
-                    </ul>
+              <div class="comment-data">
+                <div class="comment-data-heading">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
+                    </li>
+                  </ul>
                 </div>
-                  <div class="circle-class d-flex justify-content-center width-100">
-                    <div class="circle" (click)="showTitleStatus()">
-                      <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                        [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
-                    </div>
-                  </div>
-                  
-                </div>
-                <div class="cust-text status-text-padding p-2 " *ngIf="showStatus===true">
-                  <h6 class="status-text text-primary">Status</h6>
-                  <p class="status mb-1">
-                      <b class="font-number"> -</b> Pending Translations</p>
-                  <p class="status mb-1">
-                      <b class="font-number"> -</b> Pending Ratings</p>
-                  <p class="status mb-1">
-                      <b class="font-number">-</b> Pending Clarifications</p>
-                  <p class="status mb-1">
-                      <b class="font-number">-</b> Escalations</p>
-
-              </div>
-                
                 <ul class="comment-box">
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -293,7 +258,6 @@
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane active" id="Comments">
-                      <div class="comment-scroll">
                       <li class="comment-style" *ngFor="let comment of comments">
                         <div class="d-flex user-details">
                           <span>JohnPaul</span>
@@ -301,35 +265,24 @@
                         </div>
                         {{comment.name}}
                       </li>
-                      </div>
                       <div class="main-comment">
                         <div id="mySidenav" class="sidenav">
-                          <div class="custom-comment" [ngClass]="(changeColor) ? 'border-red' : 'border-blue'">
-                            <div><a class="closebtn" (click)="closeNav()">{{changeText}}</a></div>
-                            <label class="switch" >
-                              <input type="checkbox" id="commentSwitch" [(ngModel)]="switchvalue"  checked  (click)="valuechange($event, switchvalue)">
-                              <span class="slider round"></span>
-                            </label>
-                            <div class="f-12">
-                              <input type="text" id="comment" [(ngModel)]="commentValue" (keydown)="addComment($event,commentValue)" name="textBox" class="textBox width-100" placeholder="Type a comment">
-                            </div>
-                          </div>
+                          <div class="custom-comment">
+                          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">comments</a>
+                          hi
                         </div>
-                        <span class="float-right" (click)="openNav()">
-                          <i class="material-icons cursor-pointer">add_box</i>
-                        </span>
-                      </div>
-                      
+                        </div>
+                        </div>
+                        <span class="float-right" (click)="openNav()"><i class="material-icons">add_box</i></span>
                       <!-- <button (click)="showInput()">Add</button> -->
                     </div>
                     <div class="tab-pane" id="Log">
-                      <li class="" *ngFor="let logD of logsDetails">
+                      <li class="comment-style" *ngFor="let logD of logsDetails">
                         <div class="d-flex user-details">
                           <span>{{logD.name}}</span>
                           <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
                         </div>
-                        <span>{{logD.val}}</span>
-                        
+                        {{logD.val}}
                       </li>
                       <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
                                   <button (click)="addComment(newComment.value)">Add</button> -->
@@ -339,15 +292,8 @@
               </div>
             </div>
           </div>
-          
-            <!-- <div class="tab-pane" id="insight">
-              <app-apo-insight></app-apo-insight>
-            </div> -->
-          
         </div>
-        
       </div>
     </div>
   </div>
-</div>
 </div>

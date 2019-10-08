@@ -1,4 +1,4 @@
-.container{
+.container-fluid{
     background:rgba(242, 249, 252, 1);
 }
 .table td, .table th {
@@ -16,7 +16,6 @@
 }
 .row-align{
     line-height: 1px;
-    font-size: 12px;
     .country-hover{
         .table td:hover{
             border: 0.6px solid rgba(0, 0, 0, 0.6);
@@ -35,7 +34,7 @@
     color:rgba(0, 124, 195, 1);
     line-height: 3;
     background: rgba(243, 243, 243, 1);
-    margin-right: -6%;
+    margin-right: -6%
 }
 .t-border{
     border-bottom: 1px solid #00000024;
@@ -68,8 +67,7 @@
    }
 }
 .log{
-    background:rgba(242, 249, 252, 1);
-    
+    background: rgba(255, 255, 255, 1);
     border-left: 1px solid #d6d4d4;
     .font-align{
         font-size: 12px;
@@ -79,11 +77,9 @@
         top: 6%;
    }
     .log-box{
-        background: rgba(255, 255, 255, 1);
         list-style: none;
         line-height: 2rem;
         border: 1px solid white;
-        margin-bottom:12px;
         .timestamp{
             display: flex;
             justify-content: space-between;
@@ -96,7 +92,7 @@
             font-weight: 500 
        }
         .comment{
-            font-size: 12px;
+            font-size: 15px;
             color: #8c8a8a;
        }
    }

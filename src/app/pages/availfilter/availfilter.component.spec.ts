@@ -9,7 +9,7 @@ import { AvailfilterComponent } from './availfilter.component';
 import { HttpService } from '../../services/http.service';
 import { FILE } from 'dns';
 
-describe('AvailfilterComponent', () => {
+fdescribe('AvailfilterComponent', () => {
   let component: AvailfilterComponent;
   let fixture: ComponentFixture<AvailfilterComponent>;
   let httpMock: HttpTestingController;

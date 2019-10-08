@@ -12,15 +12,28 @@ export class AvailDashboardComponent implements OnInit {
   parentMessage:any;
   title: any;
   showDetails: any;
+  showStatus: any;
   width: any;
+  posts: any;
+  AvailAPIservice: any;
   availsList: any;
   availsData: any = [];
   availsResponse: any = [];
+  showTitlesText: any;
+  showCountriesText: any;
+  showLanguagesText: any;
+  completedTitlesWidth: any;
   pendingTitlesWidth: any;
+  completedCountriesWidth: any;
+  pendingCountriesWidth: any;
+  completedLanguagesWidth: any;
+  pendingLanguagesWidth: any;
   semicircle: any;
   selected: any;
+  titlesClicked: boolean = false;
   successCase: boolean;
   errorCase: boolean;
+  successMessage: any;
   exporturl: string;
   apiResp: any;
   errorURl: any;
@@ -149,7 +162,9 @@ export class AvailDashboardComponent implements OnInit {
       )
 
     }
- 
+  
+
+
   }
   openModal(AvailName){
     this.selectedAvailNew=AvailName;

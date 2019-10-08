@@ -16,27 +16,19 @@ $blue: rgba(190, 227, 255,1);
     font-size: 12px;
     .nav-tabs{
         border-bottom: none;
-        margin-left: 12px;
         .nav-item{
                margin-bottom: 0px !important;
-                
             .nav-link{
                 color: $black-3;
                 border: none; 
-                background-color: rgba(204, 199, 199, 0.2);
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
-                // margin-left: 12px;
-                margin-top: 8px;
                 &.active{
                     color: $black;
                     background-color: rgba(161, 161, 161, 0.2);
                     border-color: #ffffff;
                     border: none;
                     border-bottom: none;
-                    
-                   
-                   
 
                 }
             }
@@ -45,14 +37,9 @@ $blue: rgba(190, 227, 255,1);
 }
 .main{
     background: rgba(161, 161, 161, 0.2);
-    // width: 90%;
-    width: auto;
-    margin-right: 12px;
-    margin-left: 12px;
-    height: 650px;
-    padding: 8px;
-    
-    
+    width: 100%;
+    height: 750px;
+    padding: 10px;
 }
 
 .heading{
@@ -72,8 +59,6 @@ $blue: rgba(190, 227, 255,1);
                 line-height: 36px;
                 color: $black-3;
                 padding: 0;
-           
-              
                 :hover{
                     border: none;
                     border-color: none;
@@ -94,7 +79,7 @@ $blue: rgba(190, 227, 255,1);
     }
 }
 .search-button{
-    width: 40%;
+    width: 35%;
     .input-group{
         background: none;
         
@@ -119,19 +104,7 @@ $blue: rgba(190, 227, 255,1);
                 box-shadow: none;
             }
         }
-     
     }
-   
-}
-.new-add{
-    background-color: rgb(87, 84, 84);
-    margin-left: 300px;
-    margin-top: -40px;
-    width: 380px;
-    align-content: left;
-    color: white;
-    display: flex;
-   
 }
 .table-responsive{
   tbody {
@@ -193,7 +166,7 @@ $blue: rgba(190, 227, 255,1);
                 &.notification{
                     position: relative;
                     display: flex;
-                    font-size: 11px;
+                    font-size: 12px;
                     color: rgba(0, 0, 0, 0.5);
                     font-family: Roboto;
                     margin: 2px 0px 5px -30px;
@@ -298,17 +271,16 @@ $blue: rgba(190, 227, 255,1);
   }
 .boxed{
     margin: 16px;
-    width: 230px;
-    height:290px;
+    width: 270px;
+    height:330px;
     border-radius: 5px 5px 5px 5px;
     background-color: white;
     box-shadow: 0 8px 6px -9px gray;
-   
 }  
 .boxed-new{
     margin: 16px;
-    width: 250px;
-    height:200px;
+    width: 270px;
+    height:240px;
     border-radius: 5px 5px 5px 5px;
     background-color: white;
     box-shadow: 0 8px 6px -9px gray;
@@ -331,19 +303,14 @@ $blue: rgba(190, 227, 255,1);
    
     height: 100%;
     color: rgb(11, 140, 190);
-    text-indent: 8px;
-    margin-top: 8px;
-    font-size: 14px;
+    text-indent: 6px;
     .head{
         font-weight: bold;
-       
     }
    
     .new-text{
         color: gray;
-        margin-top: 1px;
         text-indent: 6px;
-        font-size: 12px;
         .new-switch{
             display: flex;
             justify-content: flex-end;
@@ -360,8 +327,6 @@ $blue: rgba(190, 227, 255,1);
     height: 100%;
     color: rgb(11, 140, 190);
     text-indent: 6px;
-    margin-top: 8px;
-    font-size: 14px;
     .head{
         font-weight: bold;
     }
@@ -369,9 +334,7 @@ $blue: rgba(190, 227, 255,1);
   
     .new-text{
         color: gray;
-        margin-top: 1px;
         text-indent: 6px;
-        font-size: 12px;
         .new-switch{
             display: flex;
             justify-content: flex-end;
@@ -384,8 +347,6 @@ $blue: rgba(190, 227, 255,1);
     height: 100%;
     color: rgb(11, 140, 190);
     text-indent: 6px;
-    margin-top: 8px;
-    font-size: 14px;
     .head{
         font-weight: bold;
     }
@@ -393,9 +354,7 @@ $blue: rgba(190, 227, 255,1);
   
     .new-text{
         color: gray;
-        margin-top: 1px;
         text-indent: 6px;
-        font-size: 12px;
         .new-switch{
             display: flex;
             justify-content: flex-end;
