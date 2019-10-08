@@ -44,11 +44,11 @@
                 "notificationDetails": [
                     {
                         "version": "API - GMRSlure V2.1",
-                        "notification": "GMRSlue captures data from GMRS database and updates in Infosys metadata management system.captures data from GMRS database and updates in Infosys metadata management system captures data from GMRS database and updates in Infosys metadata management system   V2.1 Update : Data sync in every 1hr"
+                        "notification": "GMRSlue captures data from GMRS database and updates in Infosys metadata management system V2.1 Update : Data sync in every 1hr"
                     },
                     {
                         "version": "API - CASlure V2.1",
-                        "notification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor, diam nec finibus varius, enim metus eleifend arcu, eget hendrerit tellus magna vehicula lorem. Etiam sit amet sapien leo. Vestibulum mollis ullamcorper sollicitudin. Nulla facilisi. Praesent non mauris id urna euismod suscipit sit amet vel diam."
+                        "notification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempor, diam nec finibus varius, enim metus eleifend arcu, eget hendrerit tellus magna vehicula lorem. Etiam sit"
                     },
                     {
                         "version": "Package - Countries V4",

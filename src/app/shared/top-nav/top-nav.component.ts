@@ -12,9 +12,9 @@ export class TopNavComponent implements OnInit {
   public show: boolean = false;
   selectedItem: string = 'New';
   message: string;
-  filmList: any = [{ name: "New" }, { name: "Catalog" },{name:"TBD"}]
-  accountList: any = [{ name: "iTunes" }, { name: "Amazon" },{name:"TBD"}]
-  tvCategories: any = [{ name: "Day After" }, { name: "Catalog" },{name:"TBD"}]
+  filmList: any = [{ name: "New" }, { name: "Catalog" }]
+  accountList: any = [{ name: "iTunes" }, { name: "Amazon" }]
+  tvCategories: any = [{ name: "Day After" }, { name: "Catalog" }]
   selectedItemofTv: string = 'Catalog';
   selectedItemofAccount: string = 'iTunes';
   tvColor: boolean;

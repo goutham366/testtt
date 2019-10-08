@@ -1,8 +1,4 @@
 $topnav-background-color: #007CC3;
-a{
-    color: #000000 !important;
-}
-
 :host {
     .navbar {
         background-color: $topnav-background-color;
@@ -252,7 +248,7 @@ $topnav-background-color: #007CC3;
     .avail-title {
         margin-bottom: 0.75rem;
         color: #000000;
-        font-size: 14px;
+        font-size: 12px;
         font-family: 'Roboto', sans-serif;
     }
 
@@ -275,7 +271,6 @@ $topnav-background-color: #007CC3;
 .acc-style {
    // margin: 1% 0 0 16%;
     color:rgba(0, 0, 0, 0.6);
-    background-color: snow;
         // width: 51%;
     .card-body-style {
         width: 35%; 
@@ -304,7 +299,6 @@ $topnav-background-color: #007CC3;
     content: "";
     display: table;
     clear: both;
-    
   }
   .avail-date {
     font-size: 13px;
@@ -417,7 +411,7 @@ $topnav-background-color: #007CC3;
     font-size: 12px;
     /* color: black; */
     padding: 5px 0px 0px 9px;
-    color:aliceblue;
+    color: #000000;
 }
 .timeline-date{
     position: relative;
@@ -433,19 +427,19 @@ $topnav-background-color: #007CC3;
     font-size: 12px;
     font-family: Roboto, Regular;
     color: darkgray;
-    margin: -10px 0px 0px 0px;
+    margin: -7px 0px 0px 2px;
 }
 .legend-status{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 5px 54px 0px -30px;
+    margin: 4px 67px 0px -30px;
 }
 .progress-main{
-    width: 90%;
+        width: 77%;
   }
   .row-list{
-    width: 95%; 
+    width: 80%; 
     color: white;
   }
   .timeLine{
@@ -455,7 +449,7 @@ $topnav-background-color: #007CC3;
     margin-left: 1%;
   }
   .line-middle{
-    max-width: 60px;
+    max-width: 36px;
     margin-left: 0%;
     border-right: 1px solid #dadada;
   }
@@ -550,8 +544,6 @@ body {
     padding: 10px 12px;
     overflow: hidden;
     border-radius: 4px 4px 0 0;
-    background-color: #FCFCFC;
-    display:inline-block;
 }
 .comment-box .comment-log-head {
 	background: #FCFCFC;
@@ -559,19 +551,7 @@ body {
 	overflow: hidden;
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
-    border-radius: 4px 4px 0 0;
-    display:inline-block;
-}
-.comment-box  .comment-head:nth-of-type(odd) {
-    
-    border-left:rgb(172, 173, 172);
-    border-style: none none none solid;
-
-}
-.comment-box .comment-head:nth-of-type(even) {
-    margin-left:80px;
-    border-right:rgb(172, 173, 172);
-    border-style: none solid none  none ;
+	border-radius: 4px 4px 0 0;
 }
 
 .comment-box .comment-head i {
@@ -606,7 +586,7 @@ body {
 
 .comment-box .comment-head span {
 	float: left;
-	// color: #999;
+	color: #999;
 	font-size: 12px;
 	position: relative;
 	font-family: Roboto, Regular;
@@ -656,30 +636,16 @@ body {
 	}
 }
 .nav-tabs .nav-link.active{
-    
     font-size: 12px;
-    // color: #007CC3;
-    //text-decoration: underline;
-    border-radius: 0;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
-    font-family: Roboto;
     color: #007CC3;
-    &:hover{
-        border: none !important;
-    }
-}
-.nav-tabs .nav-link.active.new{
-    
-    font-size: 12px;
+    // border-color: none !important;
     border-radius: 0;
     font-weight: bold;
-    background-color: aliceblue;
     border: none;
     font-family: Roboto;
+    padding: 0px 15px 0px 0px;
     &:hover{
-        border: none !important;
+        border: none;
     }
 }
 .nav-tabs {
@@ -696,15 +662,13 @@ ul.timeline {
 ul.timeline:before {
     content: ' ';
     content: ' ';
-    content: ' ';
-    background:#BEE3FF;
+    background: #d4d9df;
     display: inline-block;
     position: absolute;
     left: 28px;
-    width: 1px;
+    width: 2px;
     height: 80%;
     z-index: 400;
-    //color: #92D1FF;
 }
 ul.timeline > li {
     margin: 15px 0;
@@ -712,7 +676,7 @@ ul.timeline > li {
 }
 ul.timeline > li:before {
     content: ' ';
-    //background: white;
+    background: white;
     display: inline-block;
     position: absolute;
     border-radius: 50%;
@@ -759,10 +723,7 @@ ul.timeline > li:before {
 .cmnt-list-scroll{
     overflow: scroll;
     height: 330px;
-
-
 }
-
 .nav-tabs .nav-item {
     margin-bottom: 0px;
     font-size: 12px;
@@ -1053,18 +1014,17 @@ $topnav-background-color: #007CC3;
     .card-padding {
         padding: 16px 9px;
         box-shadow: 0 0 3px #eaeaea;
-        background-color: whitesmoke;
     }
     .avail-status {
         float: right; 
         margin-top: -1%;
     }
     .avail-title {
-        font-size: 14px;
+        font-size: 12px;
         outline: none;
-        //cursor: pointer;
+        cursor: pointer;
         font-family: Roboto, Regular;
-        //font-weight: bold;
+        font-weight: bold;
         margin-bottom: 0.5rem;
         color: #007CC3;
     }
@@ -1072,7 +1032,7 @@ $topnav-background-color: #007CC3;
         font-size: 12px;
         font-family: Roboto;
         color: #000000;
-        //font-weight: bold;
+        font-weight: bold;
       }
       .progressBar{
         margin: 9px 20px 8px 4px;
@@ -1198,7 +1158,7 @@ $topnav-background-color: #007CC3;
    .status {
        margin:0 0 0 3px ;
         padding: 0;
-        // color:aliceblue;
+        color: rgba(0, 0, 0, 0.4);
    }
    .status-font {
     font-size: 15px
@@ -1219,12 +1179,12 @@ $topnav-background-color: #007CC3;
     line-height: 2em;
     vertical-align: middle;
     .fa-stack-2x {
-        font-size: 3.5em;
+        font-size: 2.5em;
 }
 .custom-fa {
     color: green;
-    margin-top: 11px;
-    font-size: 20px;
+    margin-top: 5px;
+    font-size: 15px;
 }
 }
 
@@ -1242,7 +1202,8 @@ $topnav-background-color: #007CC3;
 
 .complete-card{
     display: flex;
-    margin: 10px 49px 0px 10px;
+    margin: 5px 30px;
+    left: -20px;
 }
  
 .modal-view{
@@ -1278,25 +1239,25 @@ p {
 .block{
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
-    margin: -11px 0px -13px -24px;
-    width: 100%;
+    margin: -12px 0px 1px -24px;
+    width: 108%;
 }
 .block-timeline{
     border-radius: .25rem;
-    //margin: -26px 0px 1px -23px;
-    width: 100%;  
+    margin: -26px 0px 1px -23px;
+    width: 108%;  
 }
-// .crop-save-btn
-// {
-//     position: relative;
-//     display: flex;
-//     margin: -25px 0px 0px 115px;
-// }
+.crop-save-btn
+{
+    position: relative;
+    display: flex;
+    margin: -25px 0px 0px 115px;
+}
 .log_img{
     position: relative;
     display: flex;
     width: 50%;
-    margin: 10px 0px 0px -95px;
+    margin: 10px 0px 0px -85px;
 }
 .log-img-cmt{
     position: relative;
@@ -1305,7 +1266,6 @@ p {
     font-size: 12px;
     font-family: Roboto, Regular;
     color: black;
-
 }
 .log-img-status {
     position: relative;
@@ -1318,7 +1278,7 @@ p {
     color: black;
 }
 .circle{
-       padding: 5px 0px 0px 10px;
+       padding: 15px 0px 0px 0px;
 }
 .circle-percentage{
     font-size: 8px;
@@ -1329,7 +1289,7 @@ p {
 .main-title{
     position: relative;
     display: flex;
-    margin: 15px 0px 0px 15px;
+    margin: 22px 0px 4px 15px;
     font-size: 12px;
     font-family: Roboto;
     color: #000000;
@@ -1343,9 +1303,7 @@ p {
     color: #000000;
 }
 .top-bar{
-    background-color: whitesmoke;
-    width: 100%;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1);
+    background-color: whitesmoke
 }
 
 
@@ -1406,22 +1364,14 @@ p {
 .acc-style-top{
     margin: 1% 0 0 1%;
     color: rgba(0, 0, 0, 0.6);
-    .row{
-        background-color: white !important;
-    }
-  
 }
-.row{
-    background-color: aliceblue;
-}
-
 .comman-row{
-    width: 100%;
+    width: 108%;
 }
 .legend{
     display: flex;
     position: relative;
-    left: 38%;
+    left: 35%;
 }
 .breadcrumb {
     display: flex;
@@ -1460,142 +1410,8 @@ p {
 .status-count{
     position: relative;
     display: flex;
-    font-size: 12px;    
+    font-size: 12px;
     font-family: Roboto;
     margin: -18px 0px 0px 40px;
     color: darkgray;
 }
-
-.bg-pending {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    background-color: #007CC3;
-    transition: width .6s ease;
-}
-.top-main{
-    width: 98%;
-}
-.history-card {
-    display: flex;
-    position: relative;
-    margin: 0px 0px 5px 0px;
-}
-.add-cmnt {
-    display: flex;
-    position: relative;
-    font-size: 12px;
-    padding: 0px 0px 0px 25px;
-    font-family: roboto, regular;
-    font-style: roboto,regular;
-}
-.crop-save-btn{
-    display: flex;
-    width: 340px;
-    justify-content: center;
-    position: relative;
-    top: 25px;
-}
-
-//uday
-.crop-cardBody{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-
-}
-.visuallyhidden {
-    display: none;
-}
-
-.wizard-progress {
-    list-style: none;
-    list-style-image: none;
-    margin: 0;
-    padding: 0;
-    //margin-top: 20px;
-    float: left;
-    white-space: nowrap;
-    width: 100%;
-}
-@media (max-width: 1200px){
-    .wizard-progress {
-        width: 100%;
-    }
-
-}
-.wizard-progress li {
-    float: left;
-    position: relative;
-    width: 30%;
-    padding-left: 2px;
-}
-
-.wizard-progress .step-name {
-    display: table-cell;
-    height: 32px;
-    vertical-align: bottom;
-    text-align: center;
-    width: 100px;
-    font-size: 12px;
-}
-
-.wizard-progress .step-name-wrapper {
-    display: table-cell;
-    height: 100%;
-    vertical-align: bottom;
-}
-
-.wizard-progress .step-num {
-    font-size: 6px;
-    font-weight: bold;
-    border: 4px solid #92D1FF;
-    border-radius: 50%;
-    width: 0px;
-    height: 1px;
-    display: inline-block;
-    margin-top: 0px;
-}
-
-.wizard-progress .step-num:after {
-    content: "";
-    display: block;
-    background: #92D1FF;
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    bottom: 9px;
-    left: 10px;
-}
-
-.wizard-progress li:last-of-type .step-num:after {
-    display: none;
-}
-
-.wizard-progress .active-step .step-num {
-    border: 4px solid #007CC3;
-}
-.mid{
-    position: relative;
-    right: 32px;
-}
-.last{
-    position: relative;
-    right:64px;
-}
-
-.modal-dialog{
-    max-width: none;
-}
-// .text-log{
-//     text-decoration: none;
-// }

@@ -12,15 +12,28 @@ export class AvailDashboardComponent implements OnInit {
   parentMessage:any;
   title: any;
   showDetails: any;
+  showStatus: any;
   width: any;
+  posts: any;
+  AvailAPIservice: any;
   availsList: any;
   availsData: any = [];
   availsResponse: any = [];
+  showTitlesText: any;
+  showCountriesText: any;
+  showLanguagesText: any;
+  completedTitlesWidth: any;
   pendingTitlesWidth: any;
+  completedCountriesWidth: any;
+  pendingCountriesWidth: any;
+  completedLanguagesWidth: any;
+  pendingLanguagesWidth: any;
   semicircle: any;
   selected: any;
+  titlesClicked: boolean = false;
   successCase: boolean;
   errorCase: boolean;
+  successMessage: any;
   exporturl: string;
   apiResp: any;
   errorURl: any;
@@ -110,51 +123,53 @@ export class AvailDashboardComponent implements OnInit {
       'font-size': '12px'
     };
   }
-  exportClick(AvailName){
-  this.export(this.parentMessage,AvailName);
-  }
-  export(page,AvailName) {
-    this.showExportProgress = true;
-    this.selectedAvail=AvailName;
-    if (page === 'Films') {
-      this.httpService.exportToSingleAvailS3(page,AvailName).subscribe(data => {
-        this.showExportProgress = true;
-        this.expRep = data;
-        if (data['status'] = "Success") {
-          this.successCase = true;
-          this.errorCase = false;
-          this.showExportProgress = false;
-          console.log('entered');
-          this.httpService.exporS3ToLcalToSingle(page,AvailName).subscribe(data => {
-            this.apiResp = data;
-            this.apiURL = this.apiResp.url;
-            this.enableSaveFlag = true;
-          }, error => {
-            this.errorCase = true;
-            this.successCase = false;
-            this.showExportProgress = false;
-            this.errorURl = error.error.text;
-            this.errorMessageDownload = error.error.message;
+  // exportClick(AvailName){
+  // this.export(this.parentMessage,AvailName);
+  // }
+  // export(page,AvailName) {
+  //   this.showExportProgress = true;
+  //   this.selectedAvail=AvailName;
+  //   if (page === 'Films') {
+  //     this.httpService.exportToSingleAvailS3(page,AvailName).subscribe(data => {
+  //       this.showExportProgress = true;
+  //       this.expRep = data;
+  //       if (data['status'] = "Success") {
+  //         this.successCase = true;
+  //         this.errorCase = false;
+  //         this.showExportProgress = false;
+  //         console.log('entered');
+  //         this.httpService.exporS3ToLcalToSingle(page,AvailName).subscribe(data => {
+  //           this.apiResp = data;
+  //           this.apiURL = this.apiResp.url;
+  //           this.enableSaveFlag = true;
+  //         }, error => {
+  //           this.errorCase = true;
+  //           this.successCase = false;
+  //           this.showExportProgress = false;
+  //           this.errorURl = error.error.text;
+  //           this.errorMessageDownload = error.error.message;
 
-          }
-          )
-        }
-      }, error => {
-        this.errorCase = true;
-        this.successCase = false;
-        this.showExportProgress = false;
-        this.errorMessageDownload = error.error.message;
-        this.showExportProgress = false;
-      }
-      )
+  //         }
+  //         )
+  //       }
+  //     }, error => {
+  //       this.errorCase = true;
+  //       this.successCase = false;
+  //       this.showExportProgress = false;
+  //       this.errorMessageDownload = error.error.message;
+  //       this.showExportProgress = false;
+  //     }
+  //     )
 
-    }
- 
-  }
-  openModal(AvailName){
-    this.selectedAvailNew=AvailName;
-    this.errorMessage = "";
-    this.enableSaveFlag=false;
-    this.errorMessageDownload='';
-  }
+  //   }
+  
+
+
+  // }
+  // openModal(AvailName){
+  //   this.selectedAvailNew=AvailName;
+  //   this.errorMessage = "";
+  //   this.enableSaveFlag=false;
+  //   this.errorMessageDownload='';
+  // }
 }

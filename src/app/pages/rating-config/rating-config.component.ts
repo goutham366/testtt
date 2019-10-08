@@ -66,7 +66,7 @@ import { HttpService } from '../../services/http.service';
         //console.log('this.keydata',this.ratingData[key]);  
       }
     })
-    this.httpService.getUser().subscribe(data => {
+    this.httpService.getUsersData().subscribe(data => {
       this.userData = data;
       for (let i = 0; i < this.userData; i++) {
         this.email = this.userData[i].user_email;

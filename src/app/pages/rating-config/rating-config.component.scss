@@ -1,4 +1,4 @@
-.container{
+.container-fluid{
     background:rgba(242, 249, 252, 1);
 }
 .table td, .table th {
@@ -20,7 +20,6 @@
     color:black;
 }
 .row-align{
-    font-size: 12px;
     line-height: 1px;
     color: rgb(253, 254, 255);
 }
@@ -63,7 +62,6 @@
        }
         width: 170px;
         text-indent: 8px;
-        font-size: 12px;
    }
 }
 .font-align{
@@ -83,7 +81,7 @@
    }
 }
 .log{
-   
+    background: rgba(255, 255, 255, 1);
     border-left: 1px solid #d6d4d4;
     .font-align{
         font-size: 12px;
@@ -93,11 +91,9 @@
         top: 6%;
    }
     .log-box{
-        background: rgba(255, 255, 255, 1);
         list-style: none;
         line-height: 2rem;
         border: 1px solid white;
-        margin-bottom:12px;
         .timestamp{
             display: flex;
             justify-content: space-between;
@@ -116,7 +112,7 @@
             font-weight: 500;
        }
         .comment{
-            font-size: 12px;
+            font-size: 15px;
             color: #8c8a8a;
        }
    }

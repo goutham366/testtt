@@ -23,9 +23,7 @@
                                 [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
                     </span>
                     <span>
-                        <p class="avail-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}" routerLink="/pages/titles"
-                            [queryParams]="{ avail_name: avail.AvailName }" data-toggle="tooltip" data-placement="left" title="{{avail.AvailName}}">{{avail.AvailName
-                            | uppercase }}</p>
+                        <p class="avail-title" routerLinkActive="tabSelected" [routerLinkActiveOptions]="{exact: true}" routerLink="/pages/titles" data-toggle="tooltip" data-placement="left" title="{{avail.AvailName}}">{{avail.AvailName | uppercase }}</p>
                         <p class="avail-date">
                             <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'MM/dd' }} -
                             <span>{{avail.DueDate | date:'MM/dd' }}</span>
@@ -38,21 +36,17 @@
                         <div class="equalHMWrap">
                             <span id="titlesDiv">
                                 <span class="avail-details titlesBox">
-                                    <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitleCountriesCount}}
-                                    Total (Titles + Countries)
+                                    <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitleCountriesCount}} Total (Titles + Countries)
                                 </span>
                             </span>
-
                         </div>
                         <div class="progressBar">
                             <div class="progress">
                                 <div class="bg-success" [style.width.%]="avail.TitleData.CompletedTitlesCount / avail.TitleData.TitlesCount * 100">
-                                    <span class="status-padding" *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}}
-                                        (Unique Titles)</span>
+                                    <span class="status-padding" *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}} (Unique Titles)</span>
                                 </div>
                                 <div [style.width.%]="avail.TitleData.PendingTitlesCount / avail.TitleData.TitlesCount * 100">
-                                    <span class="status-padding" *ngIf="avail.TitleData.PendingTitlesCount!=0">{{avail.TitleData.PendingTitlesCount}}
-                                        (Unique Titles)</span>
+                                    <span class="status-padding" *ngIf="avail.TitleData.PendingTitlesCount!=0">{{avail.TitleData.PendingTitlesCount}} (Unique Titles)</span>
                                 </div>
                             </div>
                         </div>
@@ -61,8 +55,7 @@
                         <div class="equalHMWrap">
                             <span id="countriesDiv">
                                 <span class="avail-details countriesBox">
-                                    <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}}
-                                    Countries
+                                    <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}} Countries
                                 </span>
                             </span>
                         </div>
@@ -81,8 +74,7 @@
                         <div class="equalHMWrap">
                             <span id="languagesDiv">
                                 <span class="avail-details languagesBox">
-                                    <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.TitleData.UniqueLanguagesCount}}
-                                    Languages
+                                    <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.TitleData.UniqueLanguagesCount}} Languages
                                 </span>
                             </span>
                         </div>
@@ -122,52 +114,8 @@
                         <p class="status">
                             <b class="status-color">-</b> Escalations</p>
                     </div>
-                    <div class="">
-                        <div class="download-image ml-auto" (click)="openModal(avail.AvailName)" data-toggle="modal" data-target="#myModal">
-                            <div class="download-text border text-dark">Export Data</div>
-                            <div class="download-btn btn-default"><i class="material-icons">keyboard_tab</i></div>
-                        </div>
                     <div>
-                        <!-- <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(avail.AvailName)">Export</button> -->
-                        <div class="modal fade modal-align" id="myModal" role="dialog">
-                            <div class="modal-dialog modal-width">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <span class="export-text">Export ({{selectedAvailNew}})</span>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body modal-body-align">
-                                        <!-- <span class="export-yesRno">Click below to Export ({{selectedAvailNew}})</span> -->
-                                        <div class="form-group">
-                                            <div class="flex-export">
-                                                <label class="badge badge-primary initiate-export" (click)="export(parentMessage,selectedAvailNew)">
-                                                    <a class="text-decoration-none" class="text-light" *ngIf="!enableSaveFlag ">Initiate
-                                                        Export</a>
-                                                </label>
-                                                <!-- <label class="badge badge-primary"><a *ngFor="let button of buttons" [ngClass]="{'active': button.isClicked}" (click)="button.isClicked = !button.isClicked" class="text-decoration-none" href="https://mediaplat1.s3.ap-south-1.amazonaws.com/UploadExcels/ITUNES.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190903T113558Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=AKIAQP3E3VWUOCQESQ6S%2F20190903%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=f528dc00be2133f8fd317351dca2e486b6536b2ba5328f15a979259765022e9e"  class="text-light">{{ button.text }}</a></label> -->
-                                                <label class="badge badge-primary initiate-export" *ngIf="enableSaveFlag">
-                                                    <a class="text-decoration-none" href="{{this.apiURL}}" class="text-light">Download
-                                                        File</a>
-                                                </label>
-                                                <!-- <a  [ngClass]="(highlight15) ? 'setColor' : 'removeColor'" href="{{this.errorURl}}">hello</a> -->
-                                            </div>
-
-                                            <mat-progress-bar class="blue-progress" *ngIf="showExportProgress" mode="indeterminate"></mat-progress-bar>
-                                            <span *ngIf="showExportProgress" class="progress-font font-12">Request is in
-                                                progress</span>
-                                            <div class="error-message" *ngIf="errorMessageDownload">
-                                                {{errorMessageDownload}}
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- <div class="modal-footer modal-close">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div> -->
-                                </div>
-
-                            </div>
-                        </div>
+                    
 
                     </div>
                 </div>

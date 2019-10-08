@@ -5,9 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { MetadataComponent } from './metadata.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FormsModule } from '@angular/forms';
-import { MetadataLanguageComponent } from '../metadata-language/metadata-language.component';
-import { MetadataTerrtorialComponent } from '../metadata-terrtorial/metadata-terrtorial.component';
-import { ImageCropperModule } from 'ng2-img-cropper';
 const routes: Routes = [
   {
     path: '', component: MetadataComponent
@@ -40,11 +37,10 @@ const routes: Routes = [
     }),
     MatCardModule,
     MatButtonModule,
-    ImageCropperModule,
     RouterModule.forChild(routes)
     
   ],
-  declarations: [MetadataComponent, MetadataLanguageComponent,MetadataTerrtorialComponent],
+  declarations: [MetadataComponent],
   exports:[
     MatCardModule,
     MatButtonModule,

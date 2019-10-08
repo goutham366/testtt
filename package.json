@@ -28,6 +28,7 @@
     "ag-grid-angular": "^21.2.1",
     "ag-grid-community": "^21.2.1",
     "angular-bootstrap-md": "^7.5.4",
+    "angular-calendar": "^0.27.18",
     "angular-draggable-droppable": "^4.3.2",
     "angular-resizable-element": "^3.2.4",
     "angular-svg-round-progressbar": "^3.0.1",

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -75,7 +76,7 @@ export class AvailFilterComponent implements OnInit {
   enableSaveFlag: boolean = false;
   hideExport: boolean;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.errorCase = false;
     this.highlight1 = false;
     this.highlight2 = false;
@@ -234,7 +235,7 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   ngOnInit() {
-    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' || this.childMessage === 'Episodes' || this.childMessage === 'TV' || this.childMessage === 'Account-Titles') {
+    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' ||this.childMessage ==='Episodes') {
       this.hideExport = true;
     }
     this.filteredOptions = this.myControl.valueChanges

@@ -94,16 +94,7 @@ const routes: Routes = [
       {
         path:'ratingconfig',
         loadChildren: 'src/app/pages/rating-config/rating-config.module#RatingConfigModule'
-      },
-      {
-        path: 'itunestitles',
-        loadChildren: 'src/app/pages/itunes-titles/itunes-titles.module#ItunesTitlesModule'
-      },
-      {
-        path: 'workorder',
-        loadChildren: 'src/app/pages/workorder/workorder.module#WorkorderModule'
-      },
-
+        }
     ]
   }
 ]

@@ -12,29 +12,31 @@
                     </li>
                     <i class="fa fa-angle-right arrow"></i>
                     <li class="breadcrumb-item black-clr-3">
-                        <a class="black-clr-3" #tref>{{availName}}</a>
+                        <a class="black-clr-3" #tref>FT FEB262019</a>
                     </li>
                     <i class="fa fa-angle-right arrow"></i>
                     <li class="breadcrumb-item">
                         <a class="breadcrumb-title" routerLink="/pages/titles" #tref>Titles</a>
                     </li>
                 </ul>
-                <div class="ml-auto filter">
-                    <app-avail-filter [childMessage]="parentMessage"></app-avail-filter>
-                </div>
-                <!-- <div class="ml-auto">
+                <div class="ml-auto">
                     <app-avail-filter></app-avail-filter>
-                </div> -->
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <!-- <div class="row">
+                        <div class="ml-auto filter">
+                            <app-avail-filter [childMessage]="parentMessage"></app-avail-filter>
+                        </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-md-3 apo-margin" *ngFor="let x of apoList; let i=index">
                             <div class="card">
                                 <div class="card-main">
                                     <div class="card-img">
                                         <span class="addPre_upBtn btn btn-sm btn-bg1" (click)="triggerUpload();">
-                                            <img class="card-img-top" [src]="x.ImageURL==''?ImageURL:x.ImageURL" (click)="imgClickTrack(x,i);">
+                                            <img class="card-img-top" [src]="x.ImageURL==''?ImageUrl:x.ImageURL" (click)="imgClickTrack(x,i);">
                                         </span>
                                         <input type="file" class="file-display" (change)="handleFileInputForAdd($event.target.files)" id="fileUpload" accept="image/*"
                                             [disabled]="uploadStatus" />
@@ -45,10 +47,10 @@
                                             <div class="card-content card-flex" *ngIf="showStatus!==i">
                                                 <ul>
                                                     <li>
-                                                        <h6 class="title-text" routerLink="/pages/metadata" [queryParams]="{title_name: x.GlobalTitle, avail_name: availName}" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}"> {{x.GlobalTitle}}</h6>
+                                                        <h6 class="title-text" routerLink="/pages/insight"> {{x.GlobalTitle}}</h6>
                                                     </li>
                                                     <li class="cust-text">
-                                                        <!-- <img src="assets/images/Icons/PNG/calendar.png">
+                                                       <!-- <img src="assets/images/Icons/PNG/calendar.png">
                                                          {{x.StartDate | date:'dd/MM'}}
                                                         -
                                                         <span [ngStyle]="{'background-color':getColor(x.DueDate)}">{{x.DueDate
@@ -59,12 +61,12 @@
                                                 <div class="circle" (click)="showTitleStatus(i)">
                                                     <circle-progress class="round-outline" [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                                                         [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [animation]="true"
-                                                        [animationDuration]="1000" [queryParams]="{ title: x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage, accounts: x.AccontsCount, countries: x.CountriesCount, languages: x.LanguagesCount, title_name: x.GlobalTitle, avail_name: availName}" routerLink="/pages/insight"></circle-progress>
+                                                        [animationDuration]="1000"></circle-progress>
                                                 </div>
                                             </div>
                                             <div class="cus-text text-col" *ngIf="showStatus!==i">
                                                 <ol class="wizard-progress d-flex">
-
+        
                                                     <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
                                                         <span class="step-name">
                                                             <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
@@ -142,16 +144,16 @@
                                         </div>
                                         <div class="legend-margin m-0" *ngIf="titleName===x.GlobalTitle && (accStatus || langStatus || transStatus)">
                                             <div class="d-flex legend-flex p-1">
-                                                <div class="mt-1 status-bar">
-                                                    <div class="complete-legend"></div>
-                                                    <div class="legend-text ml-1 mr-1">Completed</div>
-                                                </div>
-                                                <div class="mt-1 status-bar">
-                                                    <div class="pending-legend"></div>
-                                                    <div class="legend-pending-text ml-1 mr-1">Pending</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                              <div class="mt-1 status-bar">
+                                                  <div class="complete-legend"></div>
+                                                  <div class="legend-text ml-1 mr-1">Completed</div>
+                                              </div>
+                                              <div class="mt-1 status-bar">
+                                                      <div class="pending-legend"></div>
+                                                      <div class="legend-pending-text ml-1 mr-1">Pending</div>
+                                              </div>
+                                          </div>
+                                      </div>
                                     </div>
                                 </div>
 
