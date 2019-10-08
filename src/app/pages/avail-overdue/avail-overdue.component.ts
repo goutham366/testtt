@@ -39,7 +39,7 @@ export class AvailOverdueComponent implements OnInit {
       {
         "id": "1",
         "avail_name": "availOne",
-        "avail_title": "CAN JAN2015",
+        "avail_title": "FN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
         "total_avail_percentage": "60",
@@ -88,7 +88,7 @@ export class AvailOverdueComponent implements OnInit {
       {
         "id": "2",
         "avail_name": "availTwo",
-        "avail_title": "CAN JAN2015",
+        "avail_title": "FN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
         "total_avail_percentage": "40",
@@ -137,7 +137,7 @@ export class AvailOverdueComponent implements OnInit {
       {
         "id": "3",
         "avail_name": "availThree",
-        "avail_title": "CAN JAN2015",
+        "avail_title": "FN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
         "total_avail_percentage": "65",
@@ -186,7 +186,7 @@ export class AvailOverdueComponent implements OnInit {
       {
         "id": "4",
         "avail_name": "availFour",
-        "avail_title": "CAN JAN2015",
+        "avail_title": "FN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
         "total_avail_percentage": "20",
@@ -235,7 +235,7 @@ export class AvailOverdueComponent implements OnInit {
            {
         "id": "5",
         "avail_name": "availFive",
-        "avail_title": "CAN JAN2015",
+        "avail_title": "FN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
         "total_avail_percentage": "70",

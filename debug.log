@@ -1,9 +1,7 @@
-[0826/123800.568:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0827/123801.650:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0828/123802.465:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0829/123803.251:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0830/123804.132:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0831/123804.975:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0901/123805.816:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0902/123806.631:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
-[0903/123807.394:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[1001/115714.343:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1b6f8677e20 of 6656 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1001/115714.353:ERROR:process_snapshot_win.cc(322)] failed to read unloaded module data
+[1001/115714.354:ERROR:file_io_win.cc(161)] CreateFile C:\Users\anusha.sanaboyina\AppData\Local\Temp\karma-97569962\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
+[1001/115714.354:ERROR:file_io_win.cc(170)] CreateFile C:\Users\anusha.sanaboyina\AppData\Local\Temp\karma-97569962\Crashpad\reports\5f17b0d5-8339-4bfa-bd87-993219ff42d6.dmp: The system cannot find the path specified. (0x3)
+[1001/115714.354:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[1001/115714.356:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[1007/094737.032:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports

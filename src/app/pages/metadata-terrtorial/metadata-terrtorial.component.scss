@@ -1,0 +1,265 @@
+$primary: rgba(0, 124, 195,1);
+$secondary:rgba(3, 169, 244,1);
+$black: rgba(0,0,0,1);
+$black-1: rgba(0,0,0,0.14);
+$black-3: rgba(0,0,0,0.3);
+$black-4: rgba(0,0,0,0.4);
+$black-6: rgba(0,0,0,0.6);
+$black-7: rgba(0,0,0,0.7);
+$white:rgba(255,255,255,1);
+$white-6:rgba(255,255,255,0.6);
+$blue: rgba(190, 227, 255,1);
+.p-12{
+    padding: 8px 12px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.width-px{
+    width: 500px;
+}
+.secondary-bg{
+    background: rgba(3, 169, 244,1);
+}
+.violet{
+    background: rgb(70, 22, 92);
+}
+.green{
+    background: rgb(13, 26, 13);
+}
+.list-style{
+    list-style: none;
+}
+.border-custom{
+    border: 1px solid $black-3;
+}
+.top-heading{
+    //font-size: 12px;
+    display: flex;
+    flex-direction: row;
+  .language-data{
+      flex: 0 0 15%;
+      width: 20%;
+      .avail-list{
+          .list-description{
+            list-style: none;
+            padding: 0;
+            margin: auto;
+            width: 100%;
+            text-align: center;
+          }
+      }
+  }
+  .language-metadata{
+      flex: 0 0 80%;
+      padding: 0px 20px;
+      padding-top: 24px;
+  }
+}
+.progress {
+    height:23px;
+    width:100%;
+    background: #007CC3;
+    .inner-progress {
+        height:23px;
+        background: #0AAD43;
+    }
+    .progress-bar{
+        background: #007CC3;
+    }
+}
+
+
+.metaData-content{
+    display: flex;
+    flex-direction: row;
+    //font-size: 12px;
+    // box-shadow: 0 0 2px rgba(0,0,0,0.4);
+    .cust-input{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        background: none;
+        border: 1px solid;
+    }
+    
+    .table-1{
+         width: 40%;
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: $white-6;
+            width: 100%;
+            li{
+                border-radius: 2px;
+                padding: 1px 8px;
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: $black-4;
+        }
+        ul li:nth-of-type(even){
+            background: $black-3;
+        }
+    }
+    .table-2{
+        width: 73%;
+        padding-right: 10px;
+        color: $black-6;
+        ul{
+            list-style: none;
+            width: 460px;
+            padding: 0;
+            margin: 0;
+            li{
+               // border-radius: 2px;
+                padding: 1px 8px;
+                overflow: ellipsis;
+            }
+            .datahide{
+                text-overflow: ellipsis;
+                overflow: hidden; 
+                //width: 160px;
+                white-space: nowrap;
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: rgba(0, 0, 0, 0.2);
+            
+        }
+        ul li:nth-of-type(even){
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+   
+    .table-3{
+        width: 100%;
+        padding-right: 10px;
+        color: $black-6;
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li{
+                border-radius: 2px;
+                padding: 0px 8px;
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: $black-1;
+        }
+        ul li:nth-of-type(even){
+            background: #E8E8E8;
+        }
+    }
+    .comparsion-box{
+        .d-flex{
+            align-items: center;
+            height: 100%;
+            border-radius: 4px;
+            .add-icon{
+                .material-icons{
+                    cursor: pointer;
+                    color: $black-6;
+                }
+                .compare-section{
+                    justify-content: center;
+                    padding: 15px;
+                    .add-btn{
+                        display: flex;
+                    }
+                    input{
+                        border: transparent;
+                        &:focus{
+                            outline: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .update-field{
+//     flex: 0 0 100%;
+//     max-width: 100%;
+//     margin-top: 10px;
+//     input{
+//         outline: none;
+//         box-shadow: none;
+//         height: 88px;
+//         width: 100%;
+//         background: $black-1;
+//     }
+// }
+
+.update-box{
+    //border: 1px solid #dadada;
+    width: 85%;
+    .btn{
+        flex: none;
+    }
+    .btn-group{
+        display: flex;
+        height: 78px;
+        .nav-tabs{
+            border-bottom: none;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            background: #f3f3f3;
+                .nav-item{
+                    width: 100px;
+                    
+                .nav-link{
+                    // border: 1px solid;
+                    border-radius: 0;
+                    width: 80px;
+                    transition: all .2s ease-in-out;
+                    padding: 0px;
+                    margin: 0px;
+                    font-size: 13px;
+                    color: $white;
+                   // transform: scale(1);
+                    margin-bottom: 0px;
+                    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
+                    transition: width 1s;
+                    // height: 33.3%;
+                    &.active{
+                        color: $white;
+                        width: 95px;
+                        // transform-origin: 0;
+                        transition: 0.3s;
+                        font-size: 13px;
+                        padding: 0px;
+                        margin: 0px;
+                        animation: main 1s;
+                        transform-origin: 0;
+                        z-index: 99999;
+                    }
+                }
+                a{
+                    padding: 4px 12px !important
+                }
+            }
+        }
+     .textarea{
+        height: 100%;
+        padding: 0px 10px;
+     }
+        textarea{
+            resize: none;
+            height: 100%;
+            width: 100%;
+            border: none;
+            background: #f3f3f3;
+            &:focus{
+                outline: none !important;
+            }
+        }
+    }
+}

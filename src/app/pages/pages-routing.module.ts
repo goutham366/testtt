@@ -64,10 +64,6 @@ const routes: Routes = [
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
       },
       {
-        path: 'calendar',
-        loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
-      },
-      {
         path: 'profile',
         loadChildren: 'src/app/pages/profile-page/profile-page.module#ProfilePageModule'
       },
@@ -98,7 +94,16 @@ const routes: Routes = [
       {
         path:'ratingconfig',
         loadChildren: 'src/app/pages/rating-config/rating-config.module#RatingConfigModule'
-        }
+      },
+      {
+        path: 'itunestitles',
+        loadChildren: 'src/app/pages/itunes-titles/itunes-titles.module#ItunesTitlesModule'
+      },
+      {
+        path: 'workorder',
+        loadChildren: 'src/app/pages/workorder/workorder.module#WorkorderModule'
+      },
+
     ]
   }
 ]

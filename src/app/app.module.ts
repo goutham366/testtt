@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { LoadingBarModule } from '@ngx-loading-bar/core';
+// import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { HttpService } from './services/http.service';
 // import { SearchPipePipe } from './directives/search.pipes';
 
@@ -21,7 +23,7 @@ import {
   MatMenuModule,
   MatButtonModule,
   MatGridListModule,
-  MatTabsModule
+  MatTabsModule,
 } from '@angular/material';
 //import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ForgotComponent } from './auth/forgot/forgot.component';
@@ -41,7 +43,6 @@ import {
 
 import { ResizableDirective } from './directives/resizable';
 import { ResizerDirective } from './directives/resizer.directive';
-import { AvailTitleStatusComponent } from 'src/app/pages/avail-titles/avail-title-status/avail-title-status.component';
 //import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
@@ -51,13 +52,14 @@ import { AvailTitleStatusComponent } from 'src/app/pages/avail-titles/avail-titl
     ResetComponent,
     //ImageCropperComponent
     ResizableDirective,
-    ResizerDirective,
-	AvailTitleStatusComponent
+    ResizerDirective
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    // LoadingBarModule,
+    // LoadingBarHttpClientModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,

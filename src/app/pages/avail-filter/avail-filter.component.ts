@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -8,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'; import { ReactiveFormsModule } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { ApoTitlesComponent } from '../apo-titles/apo-titles.component';
+import { timeout } from 'rxjs/operators';
 
 
 @Component({
@@ -16,12 +16,16 @@ import { ApoTitlesComponent } from '../apo-titles/apo-titles.component';
   styleUrls: ['./avail-filter.component.scss']
 })
 export class AvailFilterComponent implements OnInit {
+  expS3: any;
+  expRep: any;
 
   @Input() childMessage: string;
-
+  @Input() childUrl: string;
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
+  showProgress: boolean;
+  showExportProgress: boolean;
   highlight1: boolean;
   highlight2: boolean;
   highlight3: boolean;
@@ -63,30 +67,40 @@ export class AvailFilterComponent implements OnInit {
   secndUrlResp: any;
   //thirdUrlData: any;
   apoObject: any;
+  exporturl: string;
+  apiResp: any;
+  errorURl: any;
+  apiURL: any;
+  errorMessageDownload: any;
+  enableSaveFlag: boolean = false;
+  hideExport: boolean;
 
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService) {
     this.errorCase = false;
     this.highlight1 = false;
     this.highlight2 = false;
+    this.startYear = "2019";
+    this.startDate = "";
+    this.myDate = "";
     //this.apoObject=new ApoTitlesComponent(httpService,activatedRoute);
-    this.httpService.getAvailsDetails().subscribe(data => {
-      this.availList = data;
-      this.availCount = this.availList.length;
-      this.activatedRoute.queryParams.subscribe(params => {
-        this.avail_title = params['avail_title'];
-        console.log('this.avail_title filter', this.avail_title);
-      });
-      if (this.avail_title) {
-        this.startYear = this.avail_title.substring(8);
-        this.startDate = "";
-        this.myDate = "";
-      }
-      else {
-        this.startYear = "2019";
-        this.startDate = "";
-        this.myDate = "";
-      }
-    })
+    // this.httpService.getAvailsDetails().subscribe(data => {
+    //   this.availList = data;
+    //   this.availCount = this.availList.length;
+    //   this.activatedRoute.queryParams.subscribe(params => {
+    //     this.avail_title = params['avail_title'];
+    //     console.log('this.avail_title filter', this.avail_title);
+    //   });
+    //   if (this.avail_title) {
+    //     this.startYear = this.avail_title.substring(8);
+    //     this.startDate = "";
+    //     this.myDate = "";
+    //   }
+    //   else {
+    //     this.startYear = "2019";
+    //     this.startDate = "";
+    //     this.myDate = "";
+    //   }
+    // })
 
   }
   clickDate(c) {
@@ -220,7 +234,9 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   ngOnInit() {
-
+    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' || this.childMessage === 'Episodes' || this.childMessage === 'TV' || this.childMessage === 'Account-Titles') {
+      this.hideExport = true;
+    }
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -243,7 +259,7 @@ export class AvailFilterComponent implements OnInit {
     console.log('uploadDoc')
     this.showUpload = true;
   }
-  upload(files: File[]) {
+  upload(files: File[], childMessage) {
     var formData = new FormData();
     this.errorMessage = null;
     this.successMessage = null;
@@ -252,118 +268,79 @@ export class AvailFilterComponent implements OnInit {
     Array.from(files).forEach(f => formData.append('file', f))
     this.triggerDocName = this.filename.includes('Trigger');
     this.relaseDocumentName = this.filename.includes('Release');
-    this.itunesDocumentName = this.filename.includes('ITunes');
+    this.itunesDocumentName = this.filename.includes('iTunes');
+    this.showProgress = true;
     console.log(files[0].name, 'filename')
-    //   if(this.relaseDocumentName===true){
-    //     this.httpService.uploadrelease(formData).subscribe(data => {  
-    //       if(data['status']="success"){
-    //         this.successCase=true;
-    //         this.successMessage=data['successMessage'];
-    //       }
-    //       this.uploadreleaseData=data;
-    //     },
-    //      error => {
-    //         this.successCase=false;
-    //         this.successMessage=null;
-    //         this.errorMessage=error.error.message;
-    //         console.log('Release Doc Eror', error.error.message);
-    //       }
-    //     )
-    //   }
-
-    //   else if(this.triggerDocName===true){
-    //     this.httpService.uploadtrigger(formData).subscribe(data => {  
-    //       if(data['status']="success"){
-    //         this.successCase=true;
-    //         this.successMessage=data['successMessage'];
-    //       }
-    //       this.triggerData=data;
-
-    //     },
-    //     error => {
-    //       this.successCase=false;
-    //       this.successMessage=null;
-    //       this.errorMessage=error.error.message;
-    //       console.log('Trigger Doc Error', error.error.message);
-    //     }
-
-    //     )
-    //   }
-    //  else if(this.relaseDocumentName===false ||this.triggerDocName===false){
-    //       this.errorMessage="Is not a valid file format";
-    //       this.successCase=false;
-    //       this.successMessage=null;
-    //   }
-
-    // var regexp;
-    // var extension = fileName.substr(fileName.lastIndexOf('.'));
-    // if ((extension.toLowerCase() == ".exe") ||
-    // (extension.toLowerCase() == ".twbx"))
-    // {
-    // alert("Could not allow to upload .exe and .twbx files");
-    // }
     var extension = this.filename.substr(this.filename.lastIndexOf('.'));
     if ((extension.toLowerCase() === ".xlsx")) {
       if (files[0].size <= 31457280) {
-        if (this.relaseDocumentName || this.triggerDocName || this.itunesDocumentName) {
+        if (((this.relaseDocumentName || this.triggerDocName) && childMessage === 'APO') || (childMessage === 'iTunes' && this.itunesDocumentName)) {
           this.httpService.uploadToS3(formData).subscribe(data => {
-            //this.uploadreleaseData=data;
+            this.showProgress = true;
             this.s3Resp = data;
 
             this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
+              this.showProgress = true;
               console.log("second call data : " + data);
               this.secndUrlResp = data;
-
-              // this.httpService.uploadApoToBack(this.secndUrlResp.aws_file_path, this.relaseDocumentName, this.triggerDocName).subscribe(data => {  
-              //   console.log("third call data : "+ data);
-
               if (data['status'] = "success") {
+                this.showProgress = false;
                 this.successCase = true;
                 this.errorCase = false;
                 this.successMessage = data['successMessage'];
-                this.httpService.refreshcomp.next();
+                if (this.itunesDocumentName) {
+                  this.httpService.itunesRefreshComp.next();
+                }
+                else if (this.relaseDocumentName || this.triggerDocName) {
+                  this.httpService.refreshcomp.next();
+                }
               }
-
-              // },
-              // error => {
-              //   this.errorCase = true;
-              //   this.successCase=false;
-              //   this.successMessage=null;
-              //   this.errorMessage=error.error.message;
-              //   //this.httpService.refreshcomp.next();
-              //   console.log('third call Error', error.error.message);
-              // }
-              // )
-
             },
               error => {
+                this.showProgress = false;
                 this.errorCase = true;
                 this.successCase = false;
                 this.successMessage = null;
-                this.errorMessage = error.error.message;
-                //this.httpService.refreshcomp.next();
-                console.log('second call Error', error.error.message);
+                if (error.error.message == undefined || error.error.message == null) {
+                  this.errorMessage = "Upload is running in background, Please visit later";
+                } else {
+                  this.errorMessage = error.error.message;
+                }
+
               }
             )
           },
             error => {
+              this.showProgress = false;
               this.errorCase = true;
               this.successCase = false;
               this.successMessage = null;
               this.errorMessage = error.error.message;
-             // this.httpService.refreshcomp.next();
-              console.log('S3 Doc Error', error.error.message);
+              console.log('S3 Doc Error', error);
             }
           )
         }
         else {
-          this.errorMessage = "Not a Trigger/Release Document";
-          this.errorCase = true;
-          this.successCase = false;
-          this.successMessage = null;
+          if (this.childMessage === "APO") {
+            this.showProgress = false;
+            this.errorMessage = "Not a Release/Trigger Document";
+            this.errorCase = true;
+            this.successCase = false;
+            this.successMessage = null;
+          }
+          else if (this.childMessage === "iTunes") {
+            this.showProgress = false;
+            this.errorMessage = "Not an iTunes Document";
+            this.errorCase = true;
+            this.successCase = false;
+            this.successMessage = null;
+          }
+
+
         }
       }
       else {
+        this.showProgress = false;
         this.errorMessage = "Maximum file size exceeded";
         this.errorCase = true;
         this.successCase = false;
@@ -371,6 +348,7 @@ export class AvailFilterComponent implements OnInit {
       }
     }
     else {
+      this.showProgress = false;
       this.errorCase = true;
       this.errorMessage = "Is not a valid file format";
       this.successCase = false;
@@ -378,11 +356,89 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   openingModal() {
+    this.showProgress = false;
     this.successCase = false;
     this.errorCase = false;
     this.filename = '';
     this.errorMessage = "";
+    this.enableSaveFlag = false;
+    this.errorMessageDownload = '';
   }
+  export(page) {
+    this.showExportProgress = true;
+    if (page === 'APO') {
+      this.httpService.exportToS3('APO').subscribe(data => {
+        this.showExportProgress = true;
+        this.expRep = data;
+        if (data['status'] = "Success") {
+          this.successCase = true;
+          this.errorCase = false;
+          this.showExportProgress = false;
+          console.log('entered');
+          this.httpService.exporS3ToLcal('APO').subscribe(data => {
+            this.apiResp = data;
+            this.apiURL = this.apiResp.url;
+            this.enableSaveFlag = true;
+          }, error => {
+            this.errorCase = true;
+            this.successCase = false;
+            this.showExportProgress = false;
+            this.errorURl = error.error.text;
+            this.errorMessageDownload = error.error.message;
+          }
+          )
+        }
+      }, error => {
+        this.errorCase = true;
+        this.successCase = false;
+        this.showExportProgress = false;
+        this.errorURl = error.error.text;
+        this.errorMessageDownload = error.error.message;
 
+      }
+      )
+
+    }
+    else if (page === 'iTunes') {
+      this.showExportProgress = true;
+      this.httpService.exportToS3('ITUNES').subscribe(data => {
+        this.showExportProgress = true;
+        this.expRep = data;
+        if (data['status'] = "Success") {
+          this.successCase = true;
+          this.errorCase = false;
+          this.showExportProgress = false;
+          this.httpService.exporS3ToLcal('ITUNES').subscribe(data => {
+            this.apiResp = data;
+            this.apiURL = this.apiResp.url;
+            this.enableSaveFlag = true;
+          }, error => {
+            this.errorCase = true;
+            this.successCase = false;
+            this.showExportProgress = false;
+            this.errorURl = error.error.text;
+            this.errorMessageDownload = error.error.message;
+
+          }
+          )
+        }
+      }, error => {
+        this.errorCase = true;
+        this.successCase = false;
+        this.showExportProgress = false;
+        this.errorURl = error.error.text;
+        this.errorMessageDownload = error.error.message;
+      }
+
+      )
+    }
+    else if (page === 'tv') {
+      var url = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform/download/TV';
+      return url;
+    }
+  }
+  buttons = [
+    { text: 'Download', isClicked: true }
+  ]
 }
 

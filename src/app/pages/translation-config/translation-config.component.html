@@ -10,16 +10,17 @@
               <table class="table table-hover  table-responsive-md table-responsive-lg table-responsive-sm ">
                 <thead>
                   <tr>
+                    <th class="table-heading pl-0" scope="col">
+                      <i class="material-icons md-18  v-align">language</i> {{countryCount}} Countries</th>
                     <th class="table-heading" scope="col">
-                      <i class="material-icons md-18  v-align">language</i>{{countryCount}} Countries</th>
-                    <th class="table-heading" scope="col">
-                      <i class="material-icons md-18  v-align">translate</i>{{languageCount}} Languages</th>
+                      <i class="material-icons md-18  v-align">translate</i> {{languageCount}} Languages</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="row-align" *ngFor="let lang of languageData;let i=index">
                     <td class="country-hover" [ngStyle]="{'background-color':getColor(i),color:'white'}">{{lang.country_name}}</td>
-                    <td class="height-fix" [ngStyle]="{'background-color':getColorlang2(i)}" (click)="selectLang(lang.language_name)">{{lang.language_name}}</td>
+                    <!-- <td class="height-fix" [ngStyle]="{'background-color':getColorlang2(i)}" (click)="selectLang(lang.language_name)">{{lang.language_name}}</td> -->
+                      <td class="height-fix" [ngStyle]="{'background-color':getColorlang2(i)}" >{{lang.language_name}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -30,13 +31,16 @@
                 <span>6 Days</span>
               </div>
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              <div class="t-none" *ngIf="lang_name">
+              <!-- <div class="t-none" *ngIf="lang_name"> -->
+                  <div class="t-none" >
                 <span class="contact">Contacts</span>
                 <div *ngFor="let user of userData">
-                  <p class="user-email" (click)="showComments()"> {{user.user_email}} </p>
+                  <!-- <p class="user-email" (click)="showComments()"> {{user.user_email}} </p> -->
+                  <p class="user-email" > {{user.user_email}} </p>
                 </div>
               </div>
-              <div class="comments-log" *ngIf="displayComments">
+              <!-- <div class="comments-log" *ngIf="displayComments"> -->
+                  <div class="comments-log">
                 <input #Comments (keyup.enter)="addComments(Comments.value)" (blur)="addComments(Comments.value); Comments.value='' "> </div>
             </div>
           </div>

@@ -9,7 +9,8 @@
                 <a style="background: #006FAD" class="list-group-item">DATA ANAYLST</a>
                 
             <a style="background: #006FAD"  class="list-group-item">
-                <img src="assets/images/dummy1.jpg" routerLink="/pages/user"> John Paul &nbsp;
+                <img class="image" src="assets/images/dummy1.jpg" routerLink="/pages/user">
+                <span class="user" routerLink="/pages/profile/profilePage" > &nbsp; John Paul &nbsp;</span> 
             </a>
             <a routerLink="/pages" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact: true}" class="list-group-item" style="margin-top: 12px;">
                 <i class="material-icons v-align">equalizer</i>&nbsp;
@@ -33,17 +34,20 @@
             </a>
             <a routerLink="/pages/overdue" [queryParams]="{ sidenav: 'Overdue' }" [routerLinkActive]="['router-link-active']"  class="list-group-item">
                 <i class="material-icons v-align">timer</i>&nbsp;
-                <span>OverDue</span>
+                <span>Overdue</span>
             </a>
             <a routerLink="/pages/escalation" [queryParams]="{ sidenav: 'Escalation' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="material-icons md-18">new_releases</i>&nbsp;
                 <span>Escalation</span>
             </a>
-            <a class="list-group-item">
+            <a routerLink="/pages/calendar" [queryParams]="{ sidenav: 'Calendar' }" [routerLinkActive]="['router-link-active']" class="list-group-item">
                 <i class="material-icons v-align">today</i>&nbsp;
                 <span>Calendar</span>
             </a>
-    
+            <a [routerLinkActive]="['router-link-active']" (click)="openDialog()" class="list-group-item">
+                <i class="material-icons v-align">power_settings_new</i>&nbsp;
+                <span>Logout</span>
+            </a>
         </div>
     </nav>
     </div>

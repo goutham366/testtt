@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvailCalendarComponent } from './avail-calendar.component';
+import { MetadataLanguageComponent } from './metadata-language.component';
 
-describe('AvailCalendarComponent', () => {
-  let component: AvailCalendarComponent;
-  let fixture: ComponentFixture<AvailCalendarComponent>;
+describe('MetadataLanguageComponent', () => {
+  let component: MetadataLanguageComponent;
+  let fixture: ComponentFixture<MetadataLanguageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AvailCalendarComponent ]
+      declarations: [ MetadataLanguageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AvailCalendarComponent);
+    fixture = TestBed.createComponent(MetadataLanguageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

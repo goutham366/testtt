@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvailTitleStatusComponent } from './avail-title-status.component';
+import { AvailClarificationComponent } from './avail-clarification.component';
 
-describe('AvailTitleStatusComponent', () => {
-  let component: AvailTitleStatusComponent;
-  let fixture: ComponentFixture<AvailTitleStatusComponent>;
+describe('AvailClarificationComponent', () => {
+  let component: AvailClarificationComponent;
+  let fixture: ComponentFixture<AvailClarificationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AvailTitleStatusComponent ]
+      declarations: [ AvailClarificationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AvailTitleStatusComponent);
+    fixture = TestBed.createComponent(AvailClarificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

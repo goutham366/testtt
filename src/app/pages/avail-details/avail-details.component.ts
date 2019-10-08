@@ -27,7 +27,7 @@ export class AvailDetailsComponent implements OnInit {
   clickedOnLanguage: boolean;
   // positionA = { x: 0, y: 0 };
   // positionB = { x: 530, y: 0 };
-  constructor(private httpService: HttpService,private location: Location) {
+  constructor(private httpService: HttpService, private location: Location) {
     this.removeButton = false;
     this.removeAddButton = true;
     this.clickedOnTitle = false;
@@ -77,30 +77,30 @@ export class AvailDetailsComponent implements OnInit {
     }
   }
 
-  positionA = { x: 0, y: -150 };
-  positionB = { x: 550, y: 0 };
+  // positionA = { x: 0, y: -150 };
+  // positionB = { x: 550, y: 0 };
 
-  onMoving(event) {
-    const boxWidth = 200;
-    const boxHeight = 500;
-    if (this.positionA.x < this.positionB.x &&
-      event.x + boxWidth >= this.positionB.x + boxWidth / 2 &&
-      event.x <= this.positionB.x + boxWidth &&
-      event.y + boxHeight >= this.positionA.y &&
-      event.y <= this.positionA.y + boxHeight) {
-      let tmp = this.positionB;
-      this.positionB = this.positionA;
-      this.positionA = tmp;
-    } else if (this.positionA.x >= this.positionB.x &&
-      event.x <= this.positionB.x + boxWidth / 2 &&
-      event.x + boxWidth >= this.positionB.x &&
-      event.y + boxHeight >= this.positionA.y &&
-      event.y <= this.positionA.y + boxHeight) {
-      let tmp = this.positionB;
-      this.positionB = this.positionA;
-      this.positionA = tmp;
-    }
-  }
+  // onMoving(event) {
+  //   const boxWidth = 200;
+  //   const boxHeight = 500;
+  //   if (this.positionA.x < this.positionB.x &&
+  //     event.x + boxWidth >= this.positionB.x + boxWidth / 2 &&
+  //     event.x <= this.positionB.x + boxWidth &&
+  //     event.y + boxHeight >= this.positionA.y &&
+  //     event.y <= this.positionA.y + boxHeight) {
+  //     let tmp = this.positionB;
+  //     this.positionB = this.positionA;
+  //     this.positionA = tmp;
+  //   } else if (this.positionA.x >= this.positionB.x &&
+  //     event.x <= this.positionB.x + boxWidth / 2 &&
+  //     event.x + boxWidth >= this.positionB.x &&
+  //     event.y + boxHeight >= this.positionA.y &&
+  //     event.y <= this.positionA.y + boxHeight) {
+  //     let tmp = this.positionB;
+  //     this.positionB = this.positionA;
+  //     this.positionA = tmp;
+  //   }
+  // }
 
 
   filteredTitle: any;

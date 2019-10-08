@@ -8,7 +8,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ;
 
 /* global styles */
-
+body{
+  overflow: hidden;
+}
 .ng-progress-bar {
     top: calc(100% - 3px) !important;
   }

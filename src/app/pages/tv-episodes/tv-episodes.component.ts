@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { ActivatedRoute } from '@angular/router';
 interface Stages {
   stageTitle: String;
 }
@@ -11,11 +12,11 @@ interface Stages {
 export class TvEpisodesComponent implements OnInit {
 
   showStatus: any;
-  apoList: any;
+  orderedEpisodeList: any;
   titleStatus: boolean = false;
   langStatus: boolean = false;
   transStatus: boolean = false;
-  accStatus: boolean = false;
+  episodeStatus: boolean = false;
   emptyMsg:boolean;
   width: any;
   account: any;
@@ -38,10 +39,16 @@ export class TvEpisodesComponent implements OnInit {
   todaydate: any;
   duedate: any;
   parentMessage:any;
+  orderedEpisodeListResp: any;
+  unorderedEpisodeList: any;
+  seriesName: any;
+  availName: any;
+  seasonNumber: any;
+  episodeNum: any;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,private activatedRoute:ActivatedRoute) {
 
-   // this.parentMessage = "APO";
+   this.parentMessage = "Episodes";
     this.stages = [
       { stageTitle: "Announced" },
       { stageTitle: "Data Collation" },
@@ -56,7 +63,7 @@ export class TvEpisodesComponent implements OnInit {
 
   showTitleStatus(index) {
     this.showStatus = index;
-    this.accStatus = false;
+    this.episodeStatus = false;
     this.langStatus = false;
     this.transStatus = false;
     this.account = index;
@@ -76,54 +83,63 @@ export class TvEpisodesComponent implements OnInit {
     this.showStatus = -1;
     this.translationsClicked = true;
   }
-  selectTab(title, tabselected) {
-    for (let i = 0; i < this.apoList.length; i++) {
-      if (title === this.apoList[i].GlobalTitle) {
-        if (tabselected == "titles") {
-          this.accStatus = true;
+  selectTab(episode, tabselected) {
+    for (let i = 0; i < this.orderedEpisodeList.length; i++) {
+      if (episode === this.orderedEpisodeList[i].EpisodeNumber) {
+        if (tabselected == "episodes") {
+          this.episodeStatus = true;
           this.langStatus = false;
           this.transStatus = false;
-          this.titleName = title;
-          this.width = (this.apoList[i].AccontsCompletedCount / this.apoList[i].AccontsCount) * 100;
-          this.remaining = (this.apoList[i].AccontsPendingCount / this.apoList[i].AccontsCount) * 100;
+          this.episodeNum = episode;
+          this.width = (this.orderedEpisodeList[i].AccontsCompletedCount / this.orderedEpisodeList[i].AccontsCount) * 100;
+          this.remaining = (this.orderedEpisodeList[i].AccontsPendingCount / this.orderedEpisodeList[i].AccontsCount) * 100;
         }
         else if (tabselected == "countries") {
-          this.accStatus = false;
+          this.episodeStatus = false;
           this.langStatus = true;
           this.transStatus = false;
-          this.titleName = title;
-          this.width = (this.apoList[i].CountriesCompletedCount / this.apoList[i].CountriesCount) * 100;
-          this.remaining = (this.apoList[i].CountriesPendingCount / this.apoList[i].CountriesCount) * 100;
+          this.episodeNum = episode;
+          this.width = (this.orderedEpisodeList[i].CountriesCompletedCount / this.orderedEpisodeList[i].UniqueCountriesCount) * 100;
+          this.remaining = (this.orderedEpisodeList[i].CountriesPendingCount / this.orderedEpisodeList[i].UniqueCountriesCount) * 100;
         }
         else if (tabselected == "languages") {
-          this.accStatus = false;
+          this.episodeStatus = false;
           this.langStatus = false;
           this.transStatus = true;
-          this.titleName = title;
-          this.width = (this.apoList[i].LanguagesCompletedCount / this.apoList[i].LanguagesCount) * 100;
-          this.remaining = (this.apoList[i].LanguagesPendingCount / this.apoList[i].LanguagesCount) * 100;
+          this.episodeNum = episode;
+          this.width = (this.orderedEpisodeList[i].LanguagesCompletedCount / this.orderedEpisodeList[i].UniqueLanguagesCount) * 100;
+          this.remaining = (this.orderedEpisodeList[i].LanguagesPendingCount / this.orderedEpisodeList[i].UniqueLanguagesCount) * 100;
 
         }
       }
     }
   }
-  getApoData() {
-    this.httpService.getAPODetails().subscribe(data => {
-      this.apoList = data;
+  getEpisodeDetails() {
+
+    this.httpService.getEpisodeDetails(this.availName,this.seriesName,this.seasonNumber).subscribe(data => {
+      this.orderedEpisodeListResp = data;
+      this.unorderedEpisodeList=this.orderedEpisodeListResp.resultData;
+      this.sortBy('EpisodeNumber');  
+      //console.log('episodes list data',this.orderedEpisodeList);
+     
+    },error=>{
+      console.log("error message",error,error.message)
     })
   }
   ngOnInit() {
     this.account = -1;
     this.showStatus = -1;
-    this.getApoData();
-    this.httpService.refresh('apo').subscribe(dataof => {
-      this.getApoData();
-    })
-
-  }
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.seriesName = params['seriesName'];
+      this.availName = params['availName'];
+      this.seasonNumber = params['seasonNumber'];
+      console.log('avail name',this.availName,'series name',this.seriesName,'this.seasonNumber',this.seasonNumber);
+    });
+     this.getEpisodeDetails();
+      }
   imgClickTrack(record, index) {
     this.showStatus = -1;
-    this.accStatus = false;
+    this.episodeStatus = false;
     this.langStatus = false;
     this.transStatus = false;
     this.account = -1;
@@ -166,6 +182,7 @@ export class TvEpisodesComponent implements OnInit {
     }
   }
   getProgressSwitch(title,l){
+    console.log('progress',title,l)
     switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
@@ -181,20 +198,18 @@ export class TvEpisodesComponent implements OnInit {
     }
     return this.progress;
   }
-
-
-  getColor(duedate) {
-    var todaydate = new Date();
-    duedate = new Date(duedate);
-    var duedat = duedate.getMonth() + 1 + '/' + duedate.getDate() + '/' + duedate.getFullYear();
-    var date = todaydate.getMonth() + 1 + '/' + todaydate.getDate() + '/' + todaydate.getFullYear();
-    //console.log(duedat, date, '&&&&&')
-    if (date<duedat) {
-      return "lessthan-todaydate";
-    }
-    else {
-      return "due-date";
-    }
+  
+  sortBy(field: string) {
+      this.unorderedEpisodeList.sort((a: any, b: any) => {
+              if (a[field] < b[field]) {
+                  return -1;
+              } else if (a[field] > b[field]) {
+                  return 1;
+              } else {
+                  return 0;
+              }
+          });
+          this.orderedEpisodeList = this.unorderedEpisodeList;
   }
 
 }

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
 import { TopNavModule } from '../shared/top-nav/top-nav.module';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
+
+import { DialogOverviewExampleDialog } from './side-nav/side-nav.component';
 
 
 @NgModule({
@@ -10,10 +13,12 @@ import { TopNavModule } from '../shared/top-nav/top-nav.module';
     CommonModule,
     RouterModule,
     SharedRoutingModule,
-    TopNavModule
-   
+    TopNavModule,
+    MatDialogModule,
+    MatButtonModule
   ],
-  declarations: [],
+  declarations: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog],
   exports: [ ]
 })
 export class SharedModule { }
