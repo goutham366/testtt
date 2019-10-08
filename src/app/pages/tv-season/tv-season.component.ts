@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { ActivatedRoute } from '@angular/router';
 interface Stages {
   stageTitle: String;
 }
@@ -9,17 +10,17 @@ interface Stages {
   styleUrls: ['./tv-season.component.scss']
 })
 export class TvSeasonComponent implements OnInit {
-
+  
   showStatus: any;
-  apoList: any;
+  seasonList: any;
   titleStatus: boolean = false;
   langStatus: boolean = false;
   transStatus: boolean = false;
-  accStatus: boolean = false;
+  seasonStatus: boolean = false;
   emptyMsg:boolean;
   width: any;
   account: any;
-  titleName: any;
+  seasonName: any;
   avail_title: any;
   remaining: any;
   public stages: Stages[];
@@ -38,10 +39,16 @@ export class TvSeasonComponent implements OnInit {
   todaydate: any;
   duedate: any;
   parentMessage:any;
+  seriesName: string;
+  availName: string;
+  response: any;
+  orderedSeasonListResp: any;
+  unorderedSeasonList: any;
+  orderedSeasonList: any;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private activatedRoute:ActivatedRoute) {
 
-   // this.parentMessage = "APO";
+    this.parentMessage = "SEASON";
     this.stages = [
       { stageTitle: "Announced" },
       { stageTitle: "Data Collation" },
@@ -56,7 +63,7 @@ export class TvSeasonComponent implements OnInit {
 
   showTitleStatus(index) {
     this.showStatus = index;
-    this.accStatus = false;
+    this.seasonStatus = false;
     this.langStatus = false;
     this.transStatus = false;
     this.account = index;
@@ -76,54 +83,59 @@ export class TvSeasonComponent implements OnInit {
     this.showStatus = -1;
     this.translationsClicked = true;
   }
-  selectTab(title, tabselected) {
-    for (let i = 0; i < this.apoList.length; i++) {
-      if (title === this.apoList[i].GlobalTitle) {
-        if (tabselected == "titles") {
-          this.accStatus = true;
+  selectTab(seasonNum, tabselected) {
+    for (let i = 0; i < this.orderedSeasonList.length; i++) {
+      if (seasonNum === this.orderedSeasonList[i].SeasonNumber) {
+        if (tabselected == "seasons") {
+          this.seasonStatus = true;
           this.langStatus = false;
           this.transStatus = false;
-          this.titleName = title;
-          this.width = (this.apoList[i].AccontsCompletedCount / this.apoList[i].AccontsCount) * 100;
-          this.remaining = (this.apoList[i].AccontsPendingCount / this.apoList[i].AccontsCount) * 100;
+          this.seasonName = seasonNum;
+          this.width = (this.orderedSeasonList[i].EpisodesCompletedCount / this.orderedSeasonList[i].EpisodesCount) * 100;
+          this.remaining = (this.orderedSeasonList[i].EpisodesPendingCount / this.orderedSeasonList[i].EpisodesCount) * 100;
         }
         else if (tabselected == "countries") {
-          this.accStatus = false;
+          this.seasonStatus = false;
           this.langStatus = true;
           this.transStatus = false;
-          this.titleName = title;
-          this.width = (this.apoList[i].CountriesCompletedCount / this.apoList[i].CountriesCount) * 100;
-          this.remaining = (this.apoList[i].CountriesPendingCount / this.apoList[i].CountriesCount) * 100;
+          this.seasonName = seasonNum;
+          this.width = (this.orderedSeasonList[i].CountriesCompletedCount / this.orderedSeasonList[i].UniqueCountriesCount) * 100;
+          this.remaining = (this.orderedSeasonList[i].CountriesPendingCount / this.orderedSeasonList[i].UniqueCountriesCount) * 100;
         }
         else if (tabselected == "languages") {
-          this.accStatus = false;
+          this.seasonStatus = false;
           this.langStatus = false;
           this.transStatus = true;
-          this.titleName = title;
-          this.width = (this.apoList[i].LanguagesCompletedCount / this.apoList[i].LanguagesCount) * 100;
-          this.remaining = (this.apoList[i].LanguagesPendingCount / this.apoList[i].LanguagesCount) * 100;
+          this.seasonName = seasonNum;
+          this.width = (this.orderedSeasonList[i].LanguagesCompletedCount / this.orderedSeasonList[i].UniqueLanguagesCount) * 100;
+          this.remaining = (this.orderedSeasonList[i].LanguagesPendingCount / this.orderedSeasonList[i].UniqueLanguagesCount) * 100;
 
         }
       }
     }
   }
-  getApoData() {
-    this.httpService.getAPODetails().subscribe(data => {
-      this.apoList = data;
-    })
-  }
+
   ngOnInit() {
     this.account = -1;
     this.showStatus = -1;
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.seriesName = params['series'];
+      this.availName = params['avail'];
+    });
     this.getApoData();
-    this.httpService.refresh('apo').subscribe(dataof => {
-      this.getApoData();
+  }
+  getApoData() {
+    this.httpService.getSeasonDetails(this.availName, this.seriesName).subscribe(data => {
+      this.orderedSeasonListResp = data;
+      this.unorderedSeasonList=this.orderedSeasonListResp.resultData;
+      this.sortBy('SeasonNumber');  
+    },error=>{
+      console.log("error message",error,error.message)
     })
-
   }
   imgClickTrack(record, index) {
     this.showStatus = -1;
-    this.accStatus = false;
+    this.seasonStatus = false;
     this.langStatus = false;
     this.transStatus = false;
     this.account = -1;
@@ -181,20 +193,17 @@ export class TvSeasonComponent implements OnInit {
     }
     return this.progress;
   }
-
-
-  getColor(duedate) {
-    var todaydate = new Date();
-    duedate = new Date(duedate);
-    var duedat = duedate.getMonth() + 1 + '/' + duedate.getDate() + '/' + duedate.getFullYear();
-    var date = todaydate.getMonth() + 1 + '/' + todaydate.getDate() + '/' + todaydate.getFullYear();
-    //console.log(duedat, date, '&&&&&')
-    if (date<duedat) {
-      return "lessthan-todaydate";
-    }
-    else {
-      return "due-date";
-    }
-  }
+  sortBy(field: string) {
+    this.unorderedSeasonList.sort((a: any, b: any) => {
+            if (a[field] < b[field]) {
+                return -1;
+            } else if (a[field] > b[field]) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        this.orderedSeasonList = this.unorderedSeasonList;
+}
 
 }

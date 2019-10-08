@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
 
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatProgressBarModule } from '@angular/material';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { AvailDashboardRoutingModule } from './avail-dashboard-routing.module';
 import { AvailDashboardComponent } from './avail-dashboard.component';
@@ -17,8 +17,8 @@ import { FilterModuleNew } from '../availfilter/availfilter.module';
     MatNativeDateModule,
     MatCardModule,
     MatButtonModule,
-  
-    FilterModuleNew
+    FilterModuleNew,
+    MatProgressBarModule
   ],
   exports: [
     MatCardModule,

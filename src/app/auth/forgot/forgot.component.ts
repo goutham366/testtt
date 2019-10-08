@@ -108,26 +108,26 @@ export class ForgotComponent {
     this.changeDetectRef = changeDetectRef;
     this.orientation = "none";
     this.navs = [
-      {
-        id: 1,
-        sideTitle: "AD MONETIZATION",
-        sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-      },
+      // {
+      //   id: 1,
+      //   sideTitle: "AD MONETIZATION",
+      //   sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      // },
       {
         id: 2,
         sideTitle: "METADATA ORCHESTRATION",
-        sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-      },
-      {
-        id: 3,
-        sideTitle: "MEDIA INSIGHTS",
-        sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-      },
-      {
-        id: 4,
-        sideTitle: "EXPERIENCE FACTORY",
-        sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-      }
+        sideData: "This module creates an orchestration layer to transform the metadata management workflow. Salient features are complete automation, transparency and proactive risk management. This provides end to end transformation of the current processes, including emails, work requests and escalations. Your feedback is always welcome."
+       }
+      // {
+      //   id: 3,
+      //   sideTitle: "MEDIA INSIGHTS",
+      //   sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      // },
+      // {
+      //   id: 4,
+      //   sideTitle: "EXPERIENCE FACTORY",
+      //   sideData: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+      // }
     ];
     this.selectedNav = this.navs[0];
 
@@ -141,10 +141,16 @@ export class ForgotComponent {
  
 
 
-  onSubmit(datae) {
-   if(datae.value != "" && this.emailFormControl.valid){
-        this.router.navigate(['forgotOTPpage'], { queryParams: { emailFormControl: datae.value },  
+  onSubmit(data) {
+   if(data.value != "" && this.emailFormControl.valid){
+        this.router.navigate(['forgotOTPpage'], { queryParams: { emailFormControl: data.value },  
         skipLocationChange: true } );
+    }
+  }
+
+  onEnterKeyF(trig, data){
+    if(trig.keyCode==13){
+      this.onSubmit(data);
     }
   }
 

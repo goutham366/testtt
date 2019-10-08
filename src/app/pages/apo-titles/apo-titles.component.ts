@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 //import { ActivatedRoute } from '@angular/router';
 interface Stages {
   stageTitle: String;
@@ -15,6 +15,7 @@ export class ApoTitlesComponent implements OnInit {
   
   showStatus: any;
   apoList: any;
+  apoResponse: any;
   titleStatus: boolean = false;
   langStatus: boolean = false;
   transStatus: boolean = false;
@@ -43,7 +44,7 @@ export class ApoTitlesComponent implements OnInit {
   parentMessage:any;
 
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
-
+    this.getApoData();
     this.parentMessage = "APO";
     this.stages = [
       { stageTitle: "Announced" },
@@ -112,13 +113,14 @@ export class ApoTitlesComponent implements OnInit {
   }
   getApoData() {
     this.httpService.getAPODetails().subscribe(data => {
-      this.apoList = data;
+      this.apoResponse = data;
+      this.apoList = this.apoResponse.resultData;
     })
   }
   ngOnInit() {
     this.account = -1;
     this.showStatus = -1;
-    this.getApoData();
+   
     this.httpService.refresh('apo').subscribe(dataof => {
       this.getApoData();
     })

@@ -1,15 +1,69 @@
 .container{
     overflow: hidden;
 }
-.margin-b{
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem 1.4rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background: none;
+    margin: inherit;
+    border-radius: .25rem;
+    font-size: 10px;
+    font-family: roboto;
+    color: #000000;
+    // margin: 0 0 0 -1.8%;
+    .breadcrumb-item{
+        a{
+            margin-right: 20px;
+
+        }
+    }
+}
+.arrow{
+    display: flex;
+    letter-spacing: 5px;
+    margin-left: -15px;
+    margin-top: 2px;
+    font-size: 10px;
+}
+.breadcrumb-title{
+    color: #007CC3;  
+}
+// .container{
+//     overflow: hidden;
+// }
+.height-100{
+    height: 100%;
+}
+.filter{
+    position: relative;
+    top: 0.5em;
+    right: 0.5em;
+
+}
+.paddingtb-10{
+    padding: 14px 0px;
+}
+.apo-margin{
     margin-bottom: 20px !important;
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
+.file-display {
+    display:none;
+}
 .card-body {
     flex: 1 1 auto;
     padding: 0.5em;
-
+    .due-date{
+        color:white;
+        background :red;
+    }
+    .lessthan-todaydate{
+        color:black;
+    } 
 }
 .card-img{
     height: 88px;
@@ -29,37 +83,16 @@
     cursor: pointer;
 }}
 
-input[type="file"] {
-    display: none;
-  }
-.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    padding: .75rem 1.4rem;
-    margin-bottom: 1rem;
-    list-style: none;
-    background: none;
-    margin: inherit;
-    border-radius: .25rem;
-    .breadcrumb-item{
-        a{
-            margin-right: 20px;
-        }
-    }
-}
-.arrow{
-    display: flex;
-   // margin: auto 0;
-    letter-spacing: 11px;
-    margin-left: -13px;
-    margin-top: 5px;
-}
+// input[type="file"] {     //can't leave blank tags
+ //     //display: none;
+//   }
+
 .card-main{
     width: 100%;
     height: 100%;
 }
 .card-content{
-    display: -webkit-inline-box;
+    display: -webkit-inline-box;//webkit will effect
     ul{
         margin: 0;
         padding: 0;
@@ -74,7 +107,7 @@ input[type="file"] {
    
 }
 .circle{
-    margin: auto;
+    
     cursor: pointer;
 }
 
@@ -87,10 +120,11 @@ input[type="file"] {
 .status{
     margin:0 0 0 3px ;
      padding: 0;
+     color: #9a9797;
      
 }
-.text-color{
-   
+.font-number{
+    color: black;
 }
 .progressBar{
     margin: 20px 21px 24px 10px;
@@ -100,15 +134,26 @@ input[type="file"] {
         width:100%;
         .completeColor{
             background: rgba(10, 173, 67, 1);
-            color: white;
+            color: #fff;
+            display: flex;
+            align-items: center;
         }
         .pendingColor{
             background:rgba(0, 124, 195, 1);
-            color: white;
-        }
-       
+            color: #fff;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+        }  
     }
    
+}
+.legend-flex{
+    justify-content: space-between;
+}
+.status-bar{
+  display: flex;
+  align-items: center;
 }
 .complete-legend {
     height: 0.5em;
@@ -129,27 +174,26 @@ input[type="file"] {
     color: #0AAD43;
      font-size: 10px; 
      padding:0px;
-      margin: -3px;
+      margin: -3px; // negative values
 }
 .legend-pending-text {
     color: #007CC3;
      font-size: 10px; 
      padding:0px;
-      margin: -3px;
+      margin: -3px; // negative values
       margin-left: initial;
 }
 .status_legend{
-    margin: -12px 21px 5px 5px;
+    margin: -12px 21px 5px 5px; // negative values
 }
 .status-padding{
     padding: 13.5px;
-    
 }
 .status-text-padding{
-    padding: 17px 8px !important;
+    padding: 17px 7px !important;
 }
 .spacer{
-    margin-left: -3%;
+    margin-left: -3%; // negative values
 }
 .v-align {
     vertical-align: text-bottom;
@@ -173,10 +217,12 @@ input[type="file"] {
 
 .title-text{
     font-size: 12px;
+    cursor: pointer;
         font-family: 'Roboto', sans-serif;
         font-weight: 600;
         display: flex;
         flex-direction: column;
+        outline: none;
 }
 .cust-text{
     font-size: 12px;
@@ -207,43 +253,41 @@ input[type="file"] {
     font-family: 'Roboto', sans-serif;
     padding: 0.5em;
     cursor: pointer;
+    .apo-color{
+        color:black !important;
+    }
     .text-space{
         padding-left: 5px;
     }
-    .box{
+    .accountsBox{
         transition: width 0.15s; 
         padding: 3px;
         display: flex;
-       
    }
-   .box.clicked{
+   .accountsBoxclicked{
        display: flex;
        justify-content: space-between;
        padding: 3px;
-      
    }
-   .box1{
-    transition: width 0.15s; 
-    padding: 3px;
-    display: flex;
-    
-}
-.box1.clicked{
-   display: flex;
-   justify-content: space-between;
-   padding: 3px;
-   
-}
-.box2{
+   .countriesBox{
     transition: width 0.15s; 
     padding: 3px;
     display: flex;
 }
-.box2.clicked{
+.countriesBoxclicked{
    display: flex;
    justify-content: space-between;
    padding: 3px;
-
+}
+.languagesBox{
+    transition: width 0.15s; 
+    padding: 3px;
+    display: flex;
+}
+.languagesBoxclicked{
+   display: flex;
+   justify-content: space-between;
+   padding: 3px;
 }
 i{
     color: rgba(0, 0, 0, 0.4);
@@ -275,13 +319,18 @@ i{
     //margin-top: 20px;
     float: left;
     white-space: nowrap;
-    width: 240px;
+    width: 100%;
 }
+@media (max-width: 1200px){
+    .wizard-progress {
+        width: 100%;
+    }
 
+}
 .wizard-progress li {
     float: left;
     position: relative;
-    width: 60px;
+    width: 30%;
     padding-left: 2px;
 }
 
@@ -316,7 +365,7 @@ i{
     display: block;
     background: #92D1FF;
     height: 2px;
-    width: 52px;
+    width: 100%;
     position: absolute;
     bottom: 7px;
     left: 10px;
@@ -338,11 +387,22 @@ i{
     right:64px;
 }
 .marginProgress{
-    margin-top: -10%;
+    margin-top: -10%; // negative values
 }
 .align-spacer{
     flex: 0 0 14.5%;
 }
-.round-outline{
+.current {
+    position: absolute;
+    color: green;
+  }
+.zerocolor{
+    background-color:red
+}
+.card-flex{
+    display: flex !important;
+    justify-content: space-between;
+ }
+ .round-outline{
     outline: none;
 }
