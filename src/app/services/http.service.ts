@@ -11,9 +11,8 @@ export class HttpService {
   //lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
   //awsS3Url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
-  awsS3Url: string = 'http://10.176.146.45:8082/AWSS3';
-  localurl: string = 'http://10.219.20.213:8082/AWSS3';
-  
+  awsS3Url: string = 'http://100.21.16.208:8082/AWSS3';
+   
   refreshcomp: Subject<any>;
   availrefreshcomp: Subject<any>;
   itunesRefreshComp:Subject<any>;
