@@ -12,10 +12,10 @@ export class TopNavComponent implements OnInit {
   public show: boolean = false;
   selectedItem: string = 'New';
   message: string;
-  filmList: any = [{ name: "New" }, { name: "Catalog" }]
-  accountList: any = [{ name: "iTunes" }, { name: "Amazon" }]
-  tvCategories: any = [{ name: "Day After" }, { name: "Catalog" }]
-  selectedItemofTv: string = 'Catalog';
+  filmList: any = [{ name: "New" }, { name: "Catalog" }, { name: "TBD" }]
+  accountList: any = [{ name: "iTunes" }, { name: "Amazon" }, { name: "TBD" }]
+  tvCategories: any = [{ name: "New" }, { name: "Day After" }, { name: "Catalog" }, { name: "TBD" }]
+  selectedItemofTv: string = 'New';
   selectedItemofAccount: string = 'iTunes';
   tvColor: boolean;
   filmColor: boolean;
@@ -36,16 +36,16 @@ export class TopNavComponent implements OnInit {
     var res = str.split("/");
     var l = res.length;
     var fineResult;
-    if(res[l-1].includes('?')){
-      fineResult = res[l-1].split("?");
-      if(fineResult[0]=="tvseries"||fineResult[0]=="tvseason"||fineResult[0]=="tvepisode"){
+    if (res[l - 1].includes('?')) {
+      fineResult = res[l - 1].split("?");
+      if (fineResult[0] == "tvseries" || fineResult[0] == "tvseason" || fineResult[0] == "tvepisode") {
         this.clicked("television");
-      }  
-    }else{
-      this.clicked(res[l-1]);
+      }
+    } else {
+      this.clicked(res[l - 1]);
     }
-   
-    
+
+
   }
   filmSelection(name) {
     this.selectedItem = name;
@@ -81,7 +81,7 @@ export class TopNavComponent implements OnInit {
     const dom: any = document.querySelector('body');
     dom.classList.toggle(this.pushRightClass);
   }
-  clicked(router){
+  clicked(router) {
     switch (router) {
       case "television": {
         this.tvColor = true;

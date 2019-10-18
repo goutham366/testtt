@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { LoadingBarModule } from '@ngx-loading-bar/core';
-// import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { HttpService } from './services/http.service';
 // import { SearchPipePipe } from './directives/search.pipes';
 
@@ -43,6 +43,7 @@ import {
 
 import { ResizableDirective } from './directives/resizable';
 import { ResizerDirective } from './directives/resizer.directive';
+import { AuthorizationGuard } from './guards/auth-guard';
 //import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
@@ -58,8 +59,8 @@ import { ResizerDirective } from './directives/resizer.directive';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    // LoadingBarModule,
-    // LoadingBarHttpClientModule,
+    LoadingBarModule,
+    LoadingBarHttpClientModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
@@ -78,7 +79,7 @@ import { ResizerDirective } from './directives/resizer.directive';
     // MDBBootstrapModule.forRoot()
     //MDBBootstrapModule.forRoot()
   ],
-  providers: [
+  providers: [AuthorizationGuard,
     HttpService,
     {
       provide: LocationStrategy,

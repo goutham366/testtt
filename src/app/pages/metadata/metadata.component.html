@@ -12,131 +12,113 @@
     </nav>
   </div>
 </div> -->
-<div class="container-fluid" [ngStyle]="{'font-size': sizeVar+'px'}">
-  <div class="d-flex">
-    <div class="flex-grow-1">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb m-0 pt-2 pb-2">
-          <li class="">
-            <a href="#">Avails</a>
-          </li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="">
-            <a href="#">FN JAN152019</a>
-          </li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page">Titles</li>
-          <i class="material-icons">keyboard_arrow_right</i>
-          <li class="" aria-current="page">The Lego Movie 2</li>
-        </ol>
-      </nav>
-
-      <div class="card">
-        <div class="d-flex">
-          <div class="flex-description box-1">
-            <img class="img-card" src="../../../assets/images/lego.jpg">
-          </div>
-          <div class="flex-description box-2">
-            <div class="d-flex">
-              <div class="card-data">
-                <div class="card-content">
-                  <ul>
-                    <li>The Lego Movie 2</li>
-                    <li class="cust-text">
-                      <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
-                  </ul>
+<div class="over-flow height-100">
+  <div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
+    <div class="d-flex">
+      <div class="flex-grow-1">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb m-0 pt-2 pb-2">
+            <li class="">
+              <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
+            </li>
+            <i class="material-icons">keyboard_arrow_right</i>
+            <li class="">
+              <a #tref>{{availName}}</a>
+            </li>
+            <i class="material-icons">keyboard_arrow_right</i>
+            <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+            <i class="material-icons">keyboard_arrow_right</i>
+            <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+          </ol>
+        </nav>
+  
+        <div class="card">
+          <div class="d-flex">
+            <div class="flex-description box-1">
+              <img class="img-card" src="assets/images//Minions.png">
+            </div>
+            <div class="flex-description box-2">
+              <div class="d-flex">
+                <div class="card-data">
+                  <div class="card-content">
+                    <ul>
+                      <li>{{titleName}}</li>
+                      <li class="cust-text">
+                        <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
+                    </ul>
+                  </div>
+                  <div class="circle">
+                    <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                      [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                  </div>
                 </div>
-                <div class="circle">
-                  <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                    [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"></circle-progress>
-                </div>
-              </div>
-              <div class="card-menu">
-                <div class="container mt-3">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight">Insight</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>
-                    </li>
-                  </ul>
+                <div class="card-menu">
+                  <div class="container mt-3">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight" 
+                        [queryParams]="{avail_name: availName, title_name: titleName}">Insight</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="flex-description box-3">
-            <i class="material-icons">vertical_align_center</i>
-            <i class="material-icons">replay</i>
-            <span (click)="sizePlus()"><i class="material-icons">title
-                <sup>+</sup>
-              </i></span>
-            <span (click)="sizeMinus()"><i class="material-icons">title
-                <sup>-</sup>
-              </i></span>
+            <div class="flex-description box-3">
+              <i class="material-icons">vertical_align_center</i>
+              <i class="material-icons" (click)="reload()">replay</i>
+              <span class="d-flex" (click)="sizePlus()">
+                <i class="material-icons">title
+                  <sup>+</sup>
+                </i>
+              </span>
+              <span class="d-flex" (click)="sizeMinus()">
+                <i class="material-icons">title
+                  <sup>-</sup>
+                </i>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container-fluid padding-side">
-        <div class="tab-content">
-          <div id="metaData" class="container-fluid tab-pane active">
-            <!-- <div id="metaData" class="container tab-pane fade"> -->
-            <div class="d-flex">
-              <div class="tab-content">
-                <div id="Global" class="tab-pane active">
-                  <div class="metaData-content">
-                    <div class="table-1">
-                      <ul>
-                        <li>Abstarct EIDR</li>
-                        <li>Account</li>
-                        <li>Activation Status</li>
-                        <li>Actors</li>
-                        <li>Aired End Date</li>
-                        <li>Aired From Date</li>
-                        <li>Announcement Date</li>
-                        <!-- <li>Announcement Name</li> -->
-                        <li>Atlas MCR Number</li>
-                        <li>Audio Language Description</li>
-                        <li>Broadcast Vehicle</li>
-                        <li>Bundle Video Version Number</li>
-                        <li>Bussiness Unit</li>
-                        <li>Change Status</li>
-                        <li>Change Fields</li>
-                        <li>Channel</li>
-                        <li>Cleared For sale</li>
-                        <li>Client End</li>
-                      </ul>
-                    </div>
-                    <div class="table-2 d-flex" >
-                      <ul *ngFor="let x of metaDataList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
-                        <li>{{x.abstractEIDR}}</li>
-                        <li>{{x.account}}</li>
-                        <li>{{x.activationStatus}}</li>
-                        <li>{{metaDataListUpdateVal}}</li>
-                        <li>{{x.airedEndDate}}</li>
-                        <li>{{x.AiredFromDate}}</li>
-                        <li>{{x.announcementDate}}</li>
-                        <li>{{x.atlasnumber}}</li>
-                        <li>{{x.audioLanguage}}</li>
-                        <li>{{x.broadcastVehicle}}</li>
-                        <li>{{x.bundleVersion}}</li>
-                        <li>{{x.businessUnit}}</li>
-                        <li>{{x.changeStatus}}</li>
-                        <li>{{x.changeFields}}</li>
-                        <li>{{x.channel}}</li>
-                        <li>{{x.ClearedForSale}}</li>
-                        <li>{{x.ClientEnd}}</li>
-                        <!-- <li>{{x.ClientEnd}}</li>
-                                <li>{{x.ClientEnd}}</li> -->
-                      </ul>
-                      <!-- <div class="" >
-                          <div class="table-3"> -->
-                      <div *ngIf="close" id="dataShow">
-                        <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
+        <div class="container-fluid padding-side">
+          <div class="tab-content">
+            <div id="metaData" class="tab-pane active content-bg">
+              <!-- <div id="metaData" class="container tab-pane fade"> -->
+              <div class="d-flex">
+                <div class="tab-content content-bg">
+                  <div id="Global" class="tab-pane active">
+                    <div class="metaData-content">
+                      <div class="table-1">
+                        <ul>
+                          <li>Abstract EIDR</li>
+                          <li>Account</li>
+                          <li>Activation Status</li>
+                          <li class="title-padding">Cast & Crew</li>
+                          <li>Aired End Date</li>
+                          <li>Aired From Date</li>
+                          <li>Announcement Date</li>
+                          <!-- <li>Announcement Name</li> -->
+                          <li>Atlas MCR Number</li>
+                          <li>Audio Language Description</li>
+                          <li>Broadcast Vehicle</li>
+                          <li>Bundle Video Version Number</li>
+                          <li>Bussiness Unit</li>
+                          <li>Change Status</li>
+                          <li>Change Fields</li>
+                          <li>Channel</li>
+                          <li>Cleared For sale</li>
+                          <li>Client End</li>
+                        </ul>
+                      </div>
+                      <div class="table-2 d-flex">
+                        <ul *ngFor="let x of filteredMetadataList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
                           <li>{{x.abstractEIDR}}</li>
                           <li>{{x.account}}</li>
                           <li>{{x.activationStatus}}</li>
-                          <li>{{metaDataListUpdateVal}}</li>
+                          <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="metaDataListUpdateVal" (click)="dataShow(metaDataListUpdateVal)">{{metaDataListUpdateVal}}</li>
                           <li>{{x.airedEndDate}}</li>
                           <li>{{x.AiredFromDate}}</li>
                           <li>{{x.announcementDate}}</li>
@@ -151,149 +133,222 @@
                           <li>{{x.ClearedForSale}}</li>
                           <li>{{x.ClientEnd}}</li>
                           <!-- <li>{{x.ClientEnd}}</li>
-                                    <li>{{x.ClientEnd}}</li> -->
+                                  <li>{{x.ClientEnd}}</li> -->
                         </ul>
+                        <!-- <div class="" >
+                            <div class="table-3"> -->
+                        <div *ngIf="close" id="dataShow">
+                          <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
+                            <li>{{x.abstractEIDR}}</li>
+                            <li>{{x.account}}</li>
+                            <li>{{x.activationStatus}}</li>
+                            <li class="border">{{metaDataListUpdateVal}}</li>
+                            <li>{{x.airedEndDate}}</li>
+                            <li>{{x.AiredFromDate}}</li>
+                            <li>{{x.announcementDate}}</li>
+                            <li>{{x.atlasnumber}}</li>
+                            <li>{{x.audioLanguage}}</li>
+                            <li>{{x.broadcastVehicle}}</li>
+                            <li>{{x.bundleVersion}}</li>
+                            <li>{{x.businessUnit}}</li>
+                            <li>{{x.changeStatus}}</li>
+                            <li>{{x.changeFields}}</li>
+                            <li>{{x.channel}}</li>
+                            <li>{{x.ClearedForSale}}</li>
+                            <li>{{x.ClientEnd}}</li>
+                            <!-- <li>{{x.ClientEnd}}</li>
+                                      <li>{{x.ClientEnd}}</li> -->
+                          </ul>
+                        </div>
+                        <!-- </div>
+                          </div> -->
+  
                       </div>
-                      <!-- </div>
-                        </div> -->
-
-                    </div>
-                    <div class="comparsion-box" *ngIf="show">
-                      <div class="d-flex">
-                        <div class="add-icon">
-                          <i class="material-icons" (click)="openBox()">add_box</i>
-                          <div id="mySidenav" class="searchBox d-flex" id="compareBox">
-                            <div class="compare-section">
-                              <div class="add-btn"><a href="javascript:void(0)" class="closebtn" (click)="closeBox()"><i
-                                    class="material-icons" (click)="openBox()">add_box</i></a>Compare</div>
-                              <input type="text" name="availId" [(ngModel)]="availId" (keydown)="onEnterKeyMeta($event,availId)">
-                              <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
+                      <div class="comparsion-box" *ngIf="show">
+                        <div class="d-flex">
+                          <div class="add-icon">
+                            <i class="material-icons" (click)="openBox()">add_box</i>
+                            <div id="mySidenav" class="searchBox d-flex" id="compareBox">
+                              <div class="compare-section">
+                                <div class="add-btn">
+                                  <a href="javascript:void(0)" class="closebtn" (click)="closeBox()">
+                                    <i class="material-icons cursor-pointer" (click)="openBox()">add_box</i>
+                                  </a>Compare</div>
+                                <input type="text" name="availId" [(ngModel)]="availId" (keydown)="onEnterKeyMeta($event,availId)">
+                                <!-- <button (click)="metaDataShow(availId)">Add</button>  -->
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
+                        <i class="material-icons cursor-pointer">add_box</i>
+                      </div>
+  
                     </div>
-                    <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
-                      <i class="material-icons">add_box</i>
+                    <!-- <div class="update-box mt-2">
+                      <div class="btn-group">
+                        <div cla>
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item ">
+                            <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                          </li>
+                        </ul>
+                        </div>
+                        <div class="text-area">
+                          <textarea cols="79" rows="2" #box [(ngModel)]="user">
+                                        
+                            </textarea>
+                        </div>
+                        <div class="btn btn-dark" (click)="update(box.value,user)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                      </div>
+                     
+  
+                    </div> -->
+  
+                    <div class="update-box mt-2">
+                      <div class="btn-group">
+                        <div cla>
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item ">
+                            <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                          </li>
+                        </ul>
+                        </div>
+                        <div class="text-area">
+                          <textarea cols="79" rows="2" #box [(ngModel)]="user">
+                                        
+                            </textarea>
+                        </div>
+                        <div class="btn gray-3 text-white" [(ngModel)]="user" name="fieldName" ngDefaultControl (click)="update(user)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                      </div>
+                     
+                
                     </div>
-
                   </div>
-                  <div class="update-box">
-                    <div class="btn-group">
+                  <div id="Language" class="tab-pane fade">
+                    <app-metadata-language></app-metadata-language>
+                  </div>
+                  <div id="Territorial" class="tab-pane fade">
+                   <app-metadata-terrtorial></app-metadata-terrtorial>
+                  </div>
+                </div>
+  
+                <div class="comment-data content-bg">
+                  <div class="comment-data-heading d-flex" *ngIf="!showStatus">
+                    <div>
                       <ul class="nav nav-tabs">
-                        <li class="nav-item ">
-                          <a class="nav-link active" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM</a>
+                        <li class="nav-item mb-2">
+                          <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
                         </li>
-                        <li class="nav-item ">
-                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                        <li class="nav-item mt-1 mb-1">
+                          <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                        <li class="nav-item mt-2">
+                          <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
                         </li>
                       </ul>
-                      <div class="text-area">
-                        <textarea cols="79" rows="2" #box>
-                                      
-                          </textarea>
-                      </div>
-                      <div class="btn btn-dark" (click)="update(box.value)">Update</div>
-                    </div>
-
                   </div>
-
-                </div>
-                <div id="Language" class="container tab-pane fade">
-                  <br>
-                  <h3>Language</h3>
-                  <div class="col-md-9 lang-info">
-                    <div class="metaData-content local-titles">
-                      <div class="table-1">
-                        <ul>
-                          <li>Local Titles</li>
-                          <li>English Short</li>
-                          <li>English Long</li>
-                        </ul>
+                    <div class="circle-class d-flex justify-content-center width-100 align-items-center">
+                      <div class="circle" (click)="showTitleStatus()">
+                        <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                          [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
                       </div>
-                      <div class="table-2">
-                        <ul *ngFor="let x of metaDataList">
-                          <li>{{x.abstractEIDR}}</li>
-                          <li>{{x.account}}</li>
-                          <li>{{x.activationStatus}}</li>
-                        </ul>
-                      </div>
-                      <div><label class="plus-symbol"> +</label></div>
                     </div>
+                    
                   </div>
+                  <div class="cust-text status-text-padding p-2 " *ngIf="showStatus===true">
+                    <h6 class="status-text text-primary">Status</h6>
+                    <p class="status mb-1">
+                        <b class="font-number"> -</b> Pending Translations</p>
+                    <p class="status mb-1">
+                        <b class="font-number"> -</b> Pending Ratings</p>
+                    <p class="status mb-1">
+                        <b class="font-number">-</b> Pending Clarifications</p>
+                    <p class="status mb-1">
+                        <b class="font-number">-</b> Escalations</p>
+  
                 </div>
-                <div id="Territorial" class="container tab-pane fade">
-                  <br>
-                  <h3>Territorial</h3>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                    rem aperiam.</p>
-                </div>
-              </div>
-
-              <div class="comment-data">
-                <div class="comment-data-heading">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#Global">Global</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#Language">Language</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
-                    </li>
+                  
+                  <ul class="comment-box">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Comments">Comments</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#Log">Log</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="Comments">
+                        <div class="comment-scroll">
+                        <li class="comment-style" *ngFor="let comment of comments">
+                          <div class="d-flex user-details">
+                            <span>JohnPaul</span>
+                            <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                          </div>
+                          {{comment.name}}
+                        </li>
+                        </div>
+                        <div class="main-comment">
+                          <div id="mySidenav" class="sidenav">
+                            <div class="custom-comment" [ngClass]="(changeColor) ? 'border-red' : 'border-blue'">
+                              <div><a class="closebtn" (click)="closeNav()">{{changeText}}</a></div>
+                              <label class="switch" >
+                                <input type="checkbox" id="commentSwitch" [(ngModel)]="switchvalue"  checked  (click)="valuechange($event, switchvalue)">
+                                <span class="slider round"></span>
+                              </label>
+                              <div class="f-12">
+                                <input type="text" id="comment" [(ngModel)]="commentValue" (keydown)="addComment($event,commentValue)" name="textBox" class="textBox width-100" placeholder="Type a comment">
+                              </div>
+                            </div>
+                          </div>
+                          <span class="float-right" (click)="openNav()">
+                            <i class="material-icons cursor-pointer">add_box</i>
+                          </span>
+                        </div>
+                        
+                        <!-- <button (click)="showInput()">Add</button> -->
+                      </div>
+                      <div class="tab-pane" id="Log">
+                        <li class="" *ngFor="let logD of logsDetails">
+                          <div class="d-flex user-details">
+                            <span>{{logD.name}}</span>
+                            <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
+                          </div>
+                          <span>{{logD.val}}</span>
+                          
+                        </li>
+                        <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
+                                    <button (click)="addComment(newComment.value)">Add</button> -->
+                      </div>
+                    </div>
                   </ul>
                 </div>
-                <ul class="comment-box">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#Comments">Comments</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#Log">Log</a>
-                    </li>
-                  </ul>
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="Comments">
-                      <li class="comment-style" *ngFor="let comment of comments">
-                        <div class="d-flex user-details">
-                          <span>JohnPaul</span>
-                          <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
-                        </div>
-                        {{comment.name}}
-                      </li>
-                      <div class="main-comment">
-                        <div id="mySidenav" class="sidenav">
-                          <div class="custom-comment">
-                          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">comments</a>
-                          hi
-                        </div>
-                        </div>
-                        </div>
-                        <span class="float-right" (click)="openNav()"><i class="material-icons">add_box</i></span>
-                      <!-- <button (click)="showInput()">Add</button> -->
-                    </div>
-                    <div class="tab-pane" id="Log">
-                      <li class="comment-style" *ngFor="let logD of logsDetails">
-                        <div class="d-flex user-details">
-                          <span>{{logD.name}}</span>
-                          <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
-                        </div>
-                        {{logD.val}}
-                      </li>
-                      <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
-                                  <button (click)="addComment(newComment.value)">Add</button> -->
-                    </div>
-                  </div>
-                </ul>
               </div>
             </div>
+            
+              <!-- <div class="tab-pane" id="insight">
+                <app-apo-insight></app-apo-insight>
+              </div> -->
+            
           </div>
+          
         </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  

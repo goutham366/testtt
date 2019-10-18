@@ -73,6 +73,7 @@ export class AvailfilterComponent implements OnInit {
   tvName: any;
   hideFilter: boolean;
   hideExport: boolean;
+  uploadRunningMessage: string;
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.highlight1 = false;
     this.highlight2 = false;
@@ -297,7 +298,8 @@ export class AvailfilterComponent implements OnInit {
                 this.errorCase = true;
                 this.showProgress = false;
                 if(error.error.message==undefined || error.error.message==null){
-                  this.errorMessage = "Upload is running in background, Please visit later";
+                  this.uploadRunningMessage = "Upload is running in background, Please visit later"
+                  //this.errorMessage = "Upload is running in background, Please visit later";
                 }else{
                   this.errorMessage = error.error.message;
                 } 

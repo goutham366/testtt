@@ -151,7 +151,8 @@
                                     <input id="files" class="visibilityText" #fileInput (click)="fileInput.value = null" value="" type="file"  (change)="upload($event.target.files,childMessage)">
                                 </div>
                                 <mat-progress-bar class="blue-progress" *ngIf="showProgress" mode="indeterminate"></mat-progress-bar>
-                                <span *ngIf="showProgress" class="progress-font">Upload is in progress</span>
+                                <span *ngIf="showProgress" class="progress-font blue-text">Upload is in progress</span>
+                                <span *ngIf="errorCase" class="progress-font blue-text">{{uploadRunningMessage}}</span>
                                 </div>
                           </div>
                       </div>

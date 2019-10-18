@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
+import { MatNativeDateModule, MatProgressBarModule } from '@angular/material';
 
 import {MatCardModule,  MatButtonModule} from '@angular/material';
 import { AvailTranslationComponent } from './avail-translation.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
  
     MatCardModule,
     MatButtonModule,
+    MatProgressBarModule,
     RouterModule.forChild(routes)
     
   ],

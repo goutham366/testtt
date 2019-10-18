@@ -1,0 +1,72 @@
+{
+    "resultData": [
+        {
+            "StartDate": "10/10/2019",
+            "AvailName": "FC Aug062019",
+            "AnnouncementDate": "08/06/2019",
+            "DueDate": "10/31/2019",
+            "TitleDetails": [
+                {
+                    "GlobalTitle": "LEGO Movie 2",
+                    "TitleStatus": "Completed"
+                },
+                {
+                    "GlobalTitle": "LEGO Movie 3",
+                    "TitleStatus": "Pending"
+                },
+                {
+                    "GlobalTitle": "LEGO Movie 4",
+                    "TitleStatus": "Pending"
+                }
+            ],
+            "CountryData": [
+                {
+                    "Country": "Belgium",
+                    "CountryStatus": "Pending"
+                },
+                {
+                    "Country": "Belgium",
+                    "CountryStatus": "Completed"
+                },
+                {
+                    "Country": "Belgium",
+                    "CountryStatus": "Pending"
+                }
+            ],
+            "TranslationsData": [
+                {
+                    "TranslationStatus": "Pending",
+                    "Language": "Dutch"
+                },
+                {
+                    "TranslationStatus": "Completed",
+                    "Language": "Dutch"
+                },
+                {
+                    "TranslationStatus": "Pending",
+                    "Language": "Dutch"
+                }
+            ],
+            "AvailComments": [],
+            "AvailLogs": [],
+            "TitleData": {
+                "TitlesCount": 1,
+                "PendingTitlesCount": 1,
+                "CompletedTitlesCount": 0,
+                "CountriesCompletedCount": 0,
+                "CountriesPendingCount": 1,
+                "TitleCountriesCount": 1,
+                "LanguagesPendingCount": 1,
+                "LanguagesCompletedCount": 0,
+                "AccontsCompletedCount": 0,
+                "AccontsPendingCount": 1,
+                "UniqueAccontsCount": 1,
+                "UniqueLanguagesCount": 1,
+                "UniqueCountriesCount": 1,
+                "AvailPercentage": 10,
+                "PendingRatings": 1,
+                "PendingTranslations": 1
+            }
+        }
+    ]
+}

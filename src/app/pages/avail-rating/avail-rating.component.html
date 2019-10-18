@@ -1,0 +1,138 @@
+<span class="f-r outline">
+  <i class="material-icons v-align  md-18 trans-icon outline"  routerLink="/pages/ratingconfig"> tune </i></span>
+<div class="p-2 cust-style d-flex">
+  <div class="d-flex cus-box">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="avail-breadcrumb" routerLink="/pages">Avails</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a class="avails-sidenav-color">{{sidenav_title}}</a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row avail-card">
+      <div class="col-sm-4 avail-box" *ngFor="let avail of availsList.resultData; let i = index">
+          <div class="card mb-3 text-white shadow-sm card-width">
+              <div class="c-pointer" >
+              </div>
+
+              <div class="card-header card-padding gray-bg">
+                  <span class="avail-status">
+                      <div class="current" [ngStyle]="getOverlayStyle()">0%</div>
+                      <round-progress class="round-outline"  [max]="100" [color]="'#008040'" [background]="'#006FAD'"
+                          [radius]="22" [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
+                          [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0" ></round-progress>
+                      <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                              [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
+                  </span>
+                  <span>
+                      <p class="avail-title" 
+                           data-toggle="tooltip" data-placement="left" title="{{avail.AvailName}}">{{avail.AvailName
+                          | uppercase }}</p>
+                      <p class="avail-date">
+                          <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'MM/dd' }} -
+                          <span>{{avail.DueDate | date:'MM/dd' }}</span>
+                      </p>
+                  </span>
+              </div>
+
+              <div class="card-body">
+                  <div class="pb-1">
+                      <div class="equalHMWrap">
+                          <span id="titlesDiv">
+                              <span class="avail-details titlesBox">
+                                  <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitleCountriesCount}}
+                                  Total (Titles + Countries)
+                              </span>
+                          </span>
+
+                      </div>
+                      <div class="progressBar">
+                          <div class="progress">
+                              <div class="bg-success" [style.width.%]="avail.TitleData.CompletedTitlesCount / avail.TitleData.TitlesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}}
+                                      (Unique Titles)</span>
+                              </div>
+                              <div [style.width.%]="avail.TitleData.PendingTitlesCount / avail.TitleData.TitlesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.PendingTitlesCount!=0">{{avail.TitleData.PendingTitlesCount}}
+                                      (Unique Titles)</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="pt-1 pb-1">
+                      <div class="equalHMWrap">
+                          <span id="countriesDiv">
+                              <span class="avail-details countriesBox">
+                                  <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}}
+                                  Countries
+                              </span>
+                          </span>
+                      </div>
+                      <div class="progressBar">
+                          <div class="progress">
+                              <div class="bg-success" [style.width.%]="avail.TitleData.CountriesCompletedCount / avail.TitleData.UniqueCountriesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.CountriesCompletedCount!=0">{{avail.TitleData.CountriesCompletedCount}}</span>
+                              </div>
+                              <div [style.width.%]="avail.TitleData.CountriesPendingCount / avail.TitleData.UniqueCountriesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.CountriesPendingCount!=0">{{avail.TitleData.CountriesPendingCount}}</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="pt-1 pb-1">
+                      <div class="equalHMWrap">
+                          <span id="languagesDiv">
+                              <span class="avail-details languagesBox">
+                                  <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.TitleData.UniqueLanguagesCount}}
+                                  Languages
+                              </span>
+                          </span>
+                      </div>
+                      <div class="progressBar">
+                          <div class="progress">
+                              <div class="bg-success" [style.width.%]="avail.TitleData.LanguagesCompletedCount / avail.TitleData.UniqueLanguagesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.LanguagesCompletedCount!=0">{{avail.TitleData.LanguagesCompletedCount}}</span>
+                              </div>
+                              <div [style.width.%]="avail.TitleData.LanguagesPendingCount / avail.TitleData.UniqueLanguagesCount * 100">
+                                  <span class="status-padding" *ngIf="avail.TitleData.LanguagesPendingCount!=0">{{avail.TitleData.LanguagesPendingCount}}</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="legend-margin m-0">
+                      <div class="d-flex legend-flex p-1">
+                          <div class="mt-1 status-bar">
+                              <div class="complete-legend"></div>
+                              <div class="legend-text ml-1 mr-1">Completed</div>
+                          </div>
+                          <div class="mt-1 status-bar">
+                              <div class="pending-legend"></div>
+                              <div class="legend-pending-text ml-1 mr-1">Pending</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cust-text">
+                      <span class="status-text">
+                          <strong class="status-font">Status</strong>
+                      </span>
+                       <p class="status">
+                          <b class="status-color">-</b> Ratings Available</p>
+                      <p class="status">
+                          <b class="status-color"> -</b> Ratings Missing</p>
+                      <p class="status">
+                          <b class="status-color">-</b> Ratings Requested</p>
+                      <p class="status">
+                          <b class="status-color">-</b> Overdue</p> 
+                  </div>
+                 
+          </div>
+      </div>
+  </div>
+  </div>
+</div>

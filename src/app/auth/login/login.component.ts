@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
 import { ChangeDetectorRef } from "@angular/core";
+import { AuthService } from '../../services/auth.service'  
 
 interface Nav {
   id: number;
@@ -104,7 +105,7 @@ export class LoginComponent implements OnInit {
   userNotEmpty:boolean
   passwordNotEmpty:boolean;
   textColor:boolean;
-  constructor(private fb: FormBuilder, private router: Router, private service: HttpService,  changeDetectRef: ChangeDetectorRef) { 
+  constructor(private fb: FormBuilder, private router: Router, private service: HttpService,  changeDetectRef: ChangeDetectorRef, private authService : AuthService  ) { 
     this.changeDetectRef = changeDetectRef;
     this.textColor = false;
    this.transComp = false;
@@ -149,6 +150,8 @@ export class LoginComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       password: new FormControl('', [Validators.required, Validators.minLength(3)]),
     });
+
+    this.authService.logout();  
   }
   
   get f() {
@@ -190,6 +193,8 @@ export class LoginComponent implements OnInit {
         this.delay(1000).then(any => {
           this.transComp = true;
           this.delay(200).then(any => {
+            sessionStorage.setItem('isLoggedIn', "true");  
+            sessionStorage.setItem('token', this.loginForm.value.name);  
             this.router.navigate(['pages'], {  
           skipLocationChange: false } );
           })

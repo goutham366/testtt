@@ -45,11 +45,11 @@ const routes: Routes = [
       },
       {
         path: 'rating',
-        loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
+        loadChildren: 'src/app/pages/avail-rating/avail-rating.module#AvailRatingModule'
       },
       {
         path: 'clarification',
-        loadChildren: 'src/app/pages/avail-translation/avail-translation.module#AvailTranslationModule'
+        loadChildren: 'src/app/pages/avail-clarification/avail-clarification.module#AvailClarificationModule'
       },
       {
         path: 'complete',
@@ -62,6 +62,10 @@ const routes: Routes = [
       {
         path: 'escalation',
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
+      },
+      {
+        path:'calendar',
+        loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
       },
       {
         path: 'profile',
@@ -94,7 +98,16 @@ const routes: Routes = [
       {
         path:'ratingconfig',
         loadChildren: 'src/app/pages/rating-config/rating-config.module#RatingConfigModule'
-        }
+      },
+      {
+        path: 'itunestitles',
+        loadChildren: 'src/app/pages/itunes-titles/itunes-titles.module#ItunesTitlesModule'
+      },
+      {
+        path: 'workorder',
+        loadChildren: 'src/app/pages/workorder/workorder.module#WorkorderModule'
+      },
+
     ]
   }
 ]

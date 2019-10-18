@@ -1,5 +1,7 @@
 //  TopNav CSS
-
+.height-50{
+    height: 50px;
+}
 $topnav-background-color: #007CC3;
 :host {
     .navbar {
@@ -202,7 +204,7 @@ $topnav-background-color: #007CC3;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 1px !important;
     // box-shadow: inset 0 0 3px rgba(0, 0, 0, 1);
     background: rgba(92, 89, 89, 0.6);
 }
@@ -222,7 +224,7 @@ $topnav-background-color: #007CC3;
         background: darken($topnav-background-color, 5%);
         color: #fff;
     }
-    border-top: 1px solid #999;
+    // border-top: 1px solid #999;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
@@ -262,8 +264,9 @@ $topnav-background-color: #007CC3;
 }
 .card-body {
     flex: 1 1 auto;
+    background-color: aliceblue;
     padding: 0.25rem;
-    width: 108%;
+    width: 100%;
 }
 .card-style {
     border-bottom: 1px solid lightgrey;
@@ -272,7 +275,8 @@ $topnav-background-color: #007CC3;
 
 .acc-style {
     margin: 1% 0 0 1%;
-    color:rgba(0, 0, 0, 0.6);
+    // color:rgba(0, 0, 0, 0.6);
+    border-right-color: rgba(220, 209, 209, 0.6) !important;
     .card-body-style {
         width: 35%; 
         border-radius: 3px;
@@ -294,6 +298,7 @@ $topnav-background-color: #007CC3;
 
 .column {
     float: left; 
+    
   }
   
   .row:after {
@@ -345,6 +350,7 @@ $topnav-background-color: #007CC3;
     background: #0AAD43;
     border-radius: 0;
     margin: -6px;
+    margin-top: 5px !important;
   }
   .pending-legend {
     height: 0.4em;
@@ -352,18 +358,23 @@ $topnav-background-color: #007CC3;
     background: #007CC3;
     border-radius: 0;
     margin: -1px 0px 0px 0px;
+    margin-top: 1px !important;
   }
   .legend-text {
     color: #7E7E7E;
     font-size: 8px;
     margin: -9px 0px 0px -5px;
     font-family: Roboto;
+    margin-top: 2px !important;
+   
 }
 .legend-pending-text {
     color: #7E7E7E;
     font-size: 8px;
     margin: -4px 31px 0px -4px;
     font-family: Roboto;
+    background-color: aliceblue;
+    margin-top: -2px !important;
 }
 .status_legend{
     display: flex;
@@ -385,11 +396,18 @@ $topnav-background-color: #007CC3;
      .inner-progress {
          height:23px;
          background: #0AAD43;
+         
      }
+   
  }
+ .bg-fail{
+    background-color: #007CC3 !important;
+}
+ 
 .avail-list{
     overflow: scroll;
     height: 330px;
+    margin-top: 18px !important;
     
     ul{
         list-style: none;
@@ -401,22 +419,55 @@ $topnav-background-color: #007CC3;
 .status-text{
     font-family: Roboto;
     color: #007CC3;
+    margin-top: -11px;
     font-size: 12px;
     padding: 4px 0px 5px 3px;
+    background-color: aliceblue;
+   
+    
    }
    .status-count{
     position: relative;
     display: flex;
     font-size: 12px;
     font-family: Roboto;
-    margin: -18px 0px 0px 40px;
-    color: darkgray;
+    margin-left: 12px !important;
+    margin: -18px 0px 0px 25px;
+    color: rgb(196, 195, 195);
+    // justify-content: space-between;
+    // margin-right: 130px;
+    
+    .digit{
+        color: darkgray;
+    }
+    .digit1{
+        color: darkgray;
+        margin-left: 7px;
+    }
+    .digit2{
+        color: darkgray;
+        margin-left:13px;
+    }
+    .stat-text{
+        margin-left:10px;
+        font-family: Roboto,Regular !important;    
+        font-weight: inherit;
+        columns: #999999;
+    }
+    
 }
+
 .status{
     margin:0 0 0 3px ;
     padding: 2px;
     font-size: 12px;
-    color: black;
+    color:aliceblue;
+}
+.timeline-update{
+    margin-left:20px;
+}
+.timing{
+    background-color: aliceblue;
 }
 .timeline-status{
     position: relative;
@@ -438,14 +489,25 @@ $topnav-background-color: #007CC3;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 0px 200px 0px 200px
+    margin: 0px 200px 0px 200px;
+    background-color: aliceblue;
+    margin-left: 100%;
 }
 .progress-main{
         width: 77%;
+        .bg-fail{
+            width:30%;
+        }
+        .bg-success{
+            width:70%;
+        }
+    
   }
+ 
   .row-list{
     width: 80%; 
     color: white;
+   
   }
   .timeLine{
     left: 10%;
@@ -471,7 +533,7 @@ $topnav-background-color: #007CC3;
  }
 
  a {
- 	color: #03658c;
+ 	color: #a9a9a9;
  	text-decoration: none;
  }
 
@@ -525,11 +587,13 @@ body {
     float: right;
     position: relative;
     box-shadow: none;
-    border-left: 2px solid #eeeeee;
+    border-left: 2px solid transparent;
+    
 }
 
 #rightContain .comments-list .comment-box:before, .comments-list .comment-box:after {
-	border-left: #eeeeee;
+    border-left: #eeeeee;
+    
 }
 
 #rightContain .comments-list .comment-box:before {
@@ -545,16 +609,40 @@ body {
     padding: 10px 12px;
     overflow: hidden;
     border-radius: 4px 4px 0 0;
+    background: #FCFCFC;
+    display:inline-block;
+    
 }
-#rightContain .comment-box .comment-log-head {
+.comment-box .comment-log-head {
 	background: #FCFCFC;
 	padding: 10px 12px;
 	overflow: hidden;
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0px;
+    margin-top:-10px;
+    .user-details{
+        justify-content: space-between;
+        font-size: 11px;
+        color: black;
+        
+    }
+  
 }
+#rightContain .comment-box .comment-head:nth-of-type(odd) {
+    
+    border-left:rgb(172, 173, 172);
+    border-style: none none none solid;
 
+}
+#rightContain .comment-box .comment-head:nth-of-type(even) {
+    margin-left:80px;
+    border-right:rgb(172, 173, 172);
+    border-style: none solid none  none ;
+}
 #rightContain .comment-box .comment-head i {
 	float: right;
 	margin-left: 14px;
@@ -564,7 +652,8 @@ body {
 	cursor: pointer;
 	-webkit-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
-	transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    border:1px;
 }
 
 #rightContain .comment-box .comment-head i:hover {
@@ -597,13 +686,14 @@ body {
 #rightContain .comment-box .comment-content {
 	background: #FFF;
 	padding: 12px;
-	font-size: 12px;
+	font-size: 14px;
 	color: #595959;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
     display: flex;
     flex-direction: row;
+    margin-top: 8px;
 
 }
 
@@ -642,12 +732,18 @@ body {
     color: #007CC3;
     border-radius: 0;
     font-weight: bold;
+    background-color: aliceblue;
     border: none;
     font-family: Roboto;
-    padding: 0px 15px 0px 0px;
+    margin-bottom: 10px;
+    //padding: 0px 20px 15px 14px;
     &:hover{
         border: none;
     }
+}
+#rightContain .nav-item .nav-link{
+    border:none;
+  
 }
 #rightContain .nav-tabs {
     border-bottom: none;
@@ -689,7 +785,7 @@ ul.timeline > li:before {
     width: 5%;
     text-align: center;
     cursor: pointer;
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     color: white;
     background-color: #7E7E7E;
 }
@@ -836,9 +932,21 @@ ul.timeline > li:before {
 
 .containerFlex{
     display: flex;
+    background-color: aliceblue;
+    box-shadow: grey;
+        .bordering{
+            border-style: none none groove none;
+            border-color: #f7ecec1c;
+       
+        
+    }
+   
 }
 
+
+
 .card{
+    margin-bottom:4px;
     .d-flex{
         .flex-description{
             &.box-1{
@@ -867,7 +975,7 @@ ul.timeline > li:before {
             }
             &.box-3{
                 flex: 1 0 23%;
-                border-left: 1px solid wheat;
+                border-left: 1px solid #e8e7e5;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -891,16 +999,28 @@ ul.timeline > li:before {
     color: rgba(0, 0, 0, 0.6);
 }    
 .top-bar{
-    background-color: whitesmoke
-}   
+    background-color: whitesmoke;
+    
+} 
+.newly-added{
+    background-color: aliceblue;
+}
+  
 .legend-bar{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -11px !important;
     flex-direction: row;
     position: relative;
-    margin: -14px 9px -5px 10px;
+    margin: 2px 30px 0px 0px;
+    background-color: aliceblue;
+    margin-left: 80px;
+   
 } 
+
+
+
 // .block{
 //     border: 1px solid rgba(0, 0, 0, 0.125);
 //     border-radius: .25rem;
@@ -911,23 +1031,26 @@ ul.timeline > li:before {
 .log_img{
     position: relative;
     display: flex;
-    width: 50%;
-    margin: 10px 0px 0px -85px;
+    //width: 50%;
+    //margin: 10px 0px 0px -85px;
 }
 .log-img-cmt{
-    position: relative;
     display: flex;
-    padding: 5px 0px 0px 10px;
+    /* padding: 5px 0px 0px 10px; */
+    /* margin-left: 10px; */
+    flex-direction: column;
+    margin: 0px 10px;
 }
-.log-img-status {
-    position: relative;
-    display: flex;
-    top: 20px;
-    right: 50px;
-    font-size: 12px;
-    font-family: Roboto, Regular;
-    color: black;
-}
+// .log-img-status {
+//     position: relative;
+//     display: flex;
+//     top: 20px;
+//     right: 50px;
+//     font-size: 12px;
+//     font-family: Roboto, Regular;
+//     color: black;
+//     margin-left:16px;
+// }
 // .st{
 //     position: relative;
 //     display: flex;
@@ -1011,3 +1134,60 @@ ul.timeline > li:before {
 .round-outline{
     outline: none;
 }
+// .thumbnail{
+//     position: relative;
+//     left: -5px;
+//     margin-top: 9px;
+// }
+.cursor-pointer{
+    cursor: pointer;
+}
+.main-comment{
+    // width: 20%;
+    // height: 20px;
+    position: relative;
+    height: 35px;
+}
+.sidenav {
+    height: auto; 
+    width: 0; 
+    position: absolute; 
+    z-index: 1; 
+    top: 0; 
+    right: 0;
+    background-color: white; 
+    overflow-x: hidden;
+    transition: 0.5s;
+    .custom-comment{
+       // border-right: 3px solid $blue;
+        height: 100%;
+        padding: 5px 0px;
+        padding-left: 5px;
+    }
+    .textBox{
+        border: none;
+        outline: none;
+        background: transparent;
+        :focus{
+            outline: transparent;
+        }
+        
+    }
+    a {
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        &:hover {
+            color: #818181;
+          }
+      }
+      .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 10px;
+        cursor: pointer;
+      }
+  }

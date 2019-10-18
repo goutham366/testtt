@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatProgressBarModule} from '@angular/material';
 import {MatCardModule,  MatButtonModule} from '@angular/material';
 import { ApoTitlesComponent } from './apo-titles.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
 import { FilterModule } from '../avail-filter/avail-filter.module';
+import { FilterModuleNew } from '../availfilter/availfilter.module';
+import { MatTooltipModule } from '@angular/material';
+
 const routes: Routes = [
   {
     path: 'titles', component: ApoTitlesComponent
@@ -39,9 +42,13 @@ const routes: Routes = [
       "showUnits": true,
       "clockwise": false
     }),
- 
+    
     MatCardModule,
     MatButtonModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    FilterModuleNew,
+    MatProgressBarModule,
     RouterModule.forChild(routes)
     
   ],
@@ -49,7 +56,8 @@ const routes: Routes = [
   exports:[
     MatCardModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatTooltipModule,
   ]
  
 })

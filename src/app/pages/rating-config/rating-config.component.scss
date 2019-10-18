@@ -1,4 +1,18 @@
-.container-fluid{
+$primary: rgba(0, 124, 195,1);
+$secondary:rgba(3, 169, 244,1);
+$black: rgba(0,0,0,1);
+$black-1: rgba(0,0,0,0.14);
+$black-3: rgba(0,0,0,0.3);
+$black-4: rgba(0,0,0,0.4);
+$black-6: rgba(0,0,0,0.6);
+$black-7: rgba(0,0,0,0.7);
+$black-8: rgba(0, 0, 0, 0.86);
+$white:rgba(255,255,255,1);
+$white-6:rgba(255,255,255,0.6);
+$blue: rgba(190, 227, 255,1);
+
+
+.container{
     background:rgba(242, 249, 252, 1);
 }
 .table td, .table th {
@@ -20,6 +34,7 @@
     color:black;
 }
 .row-align{
+    font-size: 12px;
     line-height: 1px;
     color: rgb(253, 254, 255);
 }
@@ -62,6 +77,7 @@
        }
         width: 170px;
         text-indent: 8px;
+        font-size: 12px;
    }
 }
 .font-align{
@@ -81,7 +97,7 @@
    }
 }
 .log{
-    background: rgba(255, 255, 255, 1);
+   
     border-left: 1px solid #d6d4d4;
     .font-align{
         font-size: 12px;
@@ -91,9 +107,11 @@
         top: 6%;
    }
     .log-box{
+        background: rgba(255, 255, 255, 1);
         list-style: none;
         line-height: 2rem;
         border: 1px solid white;
+        margin-bottom:12px;
         .timestamp{
             display: flex;
             justify-content: space-between;
@@ -112,8 +130,23 @@
             font-weight: 500;
        }
         .comment{
-            font-size: 15px;
+            font-size: 12px;
             color: #8c8a8a;
        }
    }
+}
+.textBox{
+    border: none;
+    outline: none;
+    background: transparent;
+    :focus{
+        outline: transparent;
+    }
+    
+}
+.user-details{
+    justify-content: space-between;
+    font-size: 11px;
+    color: $black-6;
+    
 }

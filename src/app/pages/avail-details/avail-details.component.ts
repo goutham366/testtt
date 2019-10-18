@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { Subject } from 'rxjs';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-avail-details',
@@ -25,14 +26,36 @@ export class AvailDetailsComponent implements OnInit {
   clickedOnTitle: boolean;
   clickedOnCountry: boolean;
   clickedOnLanguage: boolean;
+  condition: boolean;
+  commentValue:any;
   // positionA = { x: 0, y: 0 };
   // positionB = { x: 530, y: 0 };
-  constructor(private httpService: HttpService,private location: Location) {
+  availName:any;
+  constructor(private httpService: HttpService, private location: Location,  private route: ActivatedRoute) {
     this.removeButton = false;
     this.removeAddButton = true;
     this.clickedOnTitle = false;
     this.clickedOnCountry = false;
     this.clickedOnLanguage = false;
+  }
+  comments = [
+  ];
+  addComment(trigg, newComment: string) {
+    
+    if(trigg.keyCode==13){
+     
+      if (newComment) {
+        var toDate = Date();
+        this.comments.push({"name": newComment, "date": toDate});
+      }
+  }
+  }
+  openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+  }
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    
   }
 
   ngOnInit() {
@@ -45,65 +68,81 @@ export class AvailDetailsComponent implements OnInit {
       this.availDetailsViewList = data;
       console.log('Avails Details data', this.availDetailsViewList);
     })
+
+    this.route.queryParams.subscribe(params => {
+      this.availName = params['avail_name'];
+      let str =  this.availName;
+      let res = str.split(" ");
+      if( res[0]==="IN"){
+        this.condition = true;
+      }else if( res[0]==="FN"){
+        this.condition = false;
+      }
+    });
   }
+
 
   getAvailDetailsView() {
 
   }
-  addMultipleValue(point) {
-    console.log('*******');
-    if (!this.multipleList[point]) {
-      this.multipleList[point] = [];
-      this.multipleArray[point] = [];
-      this.removeAddButton = false;
-    }
-    var val = ''
-    switch (point) {
-      case this.COMMENTS:
-        if (this.Comments) {
-          val = this.Comments
-        }
-        this.Comments = '';
-        break;
-    }
-    if (val) {
-      this.multipleList[point].push({ n: val });
-      this.multipleArray[point].push(val);
-    }
-    if (!this.removeButton) {
-      this.removeButton = true;
-    } else {
-      this.removeButton = false;
-    }
-  }
+  // addMultipleValue(point) {
+  //   console.log("*******");
+  //   if (!this.multipleList[point]) {
+  //     this.multipleList[point] = [];
+  //     this.multipleArray[point] = [];
+  //     this.removeAddButton = false;
+  //   }
+  //   var val = ''
+  //   switch (point) {
+  //     case this.COMMENTS:
+  //       if (this.Comments) {
+  //         val = this.Comments
+  //       }
+  //       this.Comments = point;
+  //       break;
+  //   }
+  //   if (val) {
+  //     this.multipleList[point].push({ n: val });
+  //     this.multipleArray[point].push(val);
+    
+  //   }
+  //   if (!this.removeButton) {
+  //     this.removeButton = true;
+  //   } else {
+  //     this.removeButton = false;
+  //   }
+  // }
+/******************** */
+  // positionA = { x: 0, y: -150 };
+  // positionB = { x: 550, y: 0 };
 
-  positionA = { x: 0, y: -150 };
-  positionB = { x: 550, y: 0 };
-
-  onMoving(event) {
-    const boxWidth = 200;
-    const boxHeight = 500;
-    if (this.positionA.x < this.positionB.x &&
-      event.x + boxWidth >= this.positionB.x + boxWidth / 2 &&
-      event.x <= this.positionB.x + boxWidth &&
-      event.y + boxHeight >= this.positionA.y &&
-      event.y <= this.positionA.y + boxHeight) {
-      let tmp = this.positionB;
-      this.positionB = this.positionA;
-      this.positionA = tmp;
-    } else if (this.positionA.x >= this.positionB.x &&
-      event.x <= this.positionB.x + boxWidth / 2 &&
-      event.x + boxWidth >= this.positionB.x &&
-      event.y + boxHeight >= this.positionA.y &&
-      event.y <= this.positionA.y + boxHeight) {
-      let tmp = this.positionB;
-      this.positionB = this.positionA;
-      this.positionA = tmp;
-    }
-  }
+  // onMoving(event) {
+  //   const boxWidth = 200;
+  //   const boxHeight = 500;
+  //   if (this.positionA.x < this.positionB.x &&
+  //     event.x + boxWidth >= this.positionB.x + boxWidth / 2 &&
+  //     event.x <= this.positionB.x + boxWidth &&
+  //     event.y + boxHeight >= this.positionA.y &&
+  //     event.y <= this.positionA.y + boxHeight) {
+  //     let tmp = this.positionB;
+  //     this.positionB = this.positionA;
+  //     this.positionA = tmp;
+  //   } else if (this.positionA.x >= this.positionB.x &&
+  //     event.x <= this.positionB.x + boxWidth / 2 &&
+  //     event.x + boxWidth >= this.positionB.x &&
+  //     event.y + boxHeight >= this.positionA.y &&
+  //     event.y <= this.positionA.y + boxHeight) {
+  //     let tmp = this.positionB;
+  //     this.positionB = this.positionA;
+  //     this.positionA = tmp;
+  //   }
+  // }
 
 
   filteredTitle: any;
+ 
+
+
   filterTitles(data) {
     var availListA = this.availDetailsViewList;
     this.clickedOnTitle = true;
