@@ -182,6 +182,7 @@ export class TvEpisodesComponent implements OnInit {
     }
   }
   getProgressSwitch(title,l){
+    console.log('progress',title,l)
     switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
@@ -197,22 +198,6 @@ export class TvEpisodesComponent implements OnInit {
     }
     return this.progress;
   }
-
-
-  getColor(duedate) {
-    var todaydate = new Date();
-    duedate = new Date(duedate);
-    var duedat = duedate.getMonth() + 1 + '/' + duedate.getDate() + '/' + duedate.getFullYear();
-    var date = todaydate.getMonth() + 1 + '/' + todaydate.getDate() + '/' + todaydate.getFullYear();
-    //console.log(duedat, date, '&&&&&')
-    if (date<duedat) {
-      return "lessthan-todaydate";
-    }
-    else {
-      return "due-date";
-    }
-  }
-
   
   sortBy(field: string) {
       this.unorderedEpisodeList.sort((a: any, b: any) => {

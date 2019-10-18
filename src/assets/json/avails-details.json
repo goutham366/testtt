@@ -359,7 +359,7 @@
         ]
     },
     {
-        "id": "3",
+       "id": "3",
         "avail_title": "CAN JAN2015",
         "date_of_arrival": "01/15",
         "date_of_delivery": "21/03",
@@ -476,12 +476,12 @@
                         "countries_count": "32",
                         "languages_count": "28",
                         "accounts_completed": "100",
-                        "accounts_pending": "14",
+                       "accounts_pending": "14",
                         "countries_completed": "30",
                         "countries_pending": "2",
                         "languages_completed": "20",
                         "langauges_pending": "8",
-                        "pending_title_translations_count": "112",
+                       "pending_title_translations_count": "112",
                         "pending_title_ratings_count": "115",
                         "pending_title_clarifications_count": "38",
                         "escalations_title_count": "2"
@@ -506,3 +506,4 @@
         ]
     }
 ]
+

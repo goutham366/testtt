@@ -1,0 +1,602 @@
+[
+    {
+        "language_name": "English",
+        "country_name": "Albania"
+    },
+    {
+        "language_name": "LatAm Spanish",
+        "country_name": "Algeria"
+    },
+    {
+        "language_name": "Spanish - Latin",
+        "country_name": "Angola"
+    },
+    {
+        "language_name": "German",
+        "country_name": "Anguilla"
+    },
+    {
+        "language_name": "Arabic",
+        "country_name": "Antigua & Barbuda"
+    },
+    {
+        "language_name": "Russian",
+        "country_name": "Antigua and Barbuda"
+    },
+    {
+        "language_name": "Dutch",
+        "country_name": "Argentina"
+    },
+    {
+        "language_name": "French",
+        "country_name": "Armenia"
+    },
+    {
+        "language_name": "French - Parisian",
+        "country_name": "Aruba"
+    },
+    {
+        "language_name": "B. Portuguese",
+        "country_name": "Australia"
+    },
+    {
+        "language_name": "Portuguese - Brazilian",
+        "country_name": "Austria"
+    },
+    {
+        "language_name": "Canadian French",
+        "country_name": "Azerbaijan"
+    },
+    {
+        "language_name": "French - Canadian",
+        "country_name": "Bahamas"
+    },
+    {
+        "language_name": "Simplied Chinese",
+        "country_name": "Bahrain"
+    },
+    {
+        "language_name": "Czech",
+        "country_name": "Barbados"
+    },
+    {
+        "language_name": "Danish",
+        "country_name": "Belarus"
+    },
+    {
+        "language_name": "Finnish",
+        "country_name": "Belgium"
+    },
+    {
+        "language_name": "Cantonese",
+        "country_name": "Belize"
+    },
+    {
+        "language_name": "Hungarian",
+        "country_name": "Benin"
+    },
+    {
+        "language_name": "Hebrew",
+        "country_name": "Bermuda"
+    },
+    {
+        "language_name": "Italian",
+        "country_name": "Bolivia"
+    },
+    {
+        "language_name": "Japanese",
+        "country_name": "Bosnia & Herzegovina"
+    },
+    {
+        "language_name": "Korean",
+        "country_name": "Bosnia and Herzegovina"
+    },
+    {
+        "language_name": "Complex Chinese - HK",
+        "country_name": "Botswana"
+    },
+    {
+        "language_name": "Norwegian",
+        "country_name": "Brazil"
+    },
+    {
+        "language_name": "Polish",
+        "country_name": "Brunei"
+    },
+    {
+        "language_name": "Portuguese - European",
+        "country_name": "Bulgaria"
+    },
+    {
+        "language_name": "Castilian Spanish",
+        "country_name": "Burkina-Faso"
+    },
+    {
+        "language_name": "Spanish - Castilian",
+        "country_name": "Cambodia"
+    },
+    {
+        "language_name": "Swedish",
+        "country_name": "Cameroon"
+    },
+    {
+        "language_name": "Complex Chinese - TW",
+        "country_name": "Canada"
+    },
+    {
+        "language_name": "Thai",
+        "country_name": "Cape Verde"
+    },
+    {
+        "language_name": "Turkish",
+        "country_name": "Cayman Islands"
+    },
+    {
+        "language_name": "",
+        "country_name": "Chad"
+    },
+    {
+        "language_name": "",
+        "country_name": "Chile"
+    },
+    {
+        "language_name": "",
+        "country_name": "China"
+    },
+    {
+        "language_name": "",
+        "country_name": "Colombia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Costa Rica"
+    },
+    {
+        "language_name": "",
+        "country_name": "Croatia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Cyprus"
+    },
+    {
+        "language_name": "",
+        "country_name": "Czech Republic"
+    },
+    {
+        "language_name": "",
+        "country_name": "Denmark"
+    },
+    {
+        "language_name": "",
+        "country_name": "Dominica"
+    },
+    {
+        "language_name": "",
+        "country_name": "Dominican Republic"
+    },
+    {
+        "language_name": "",
+        "country_name": "Ecuador"
+    },
+    {
+        "language_name": "",
+        "country_name": "Egypt"
+    },
+    {
+        "language_name": "",
+        "country_name": "El Salvador"
+    },
+    {
+        "language_name": "",
+        "country_name": "Estonia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Fiji"
+    },
+    {
+        "language_name": "",
+        "country_name": "Finland"
+    },
+    {
+        "language_name": "",
+        "country_name": "France"
+    },
+    {
+        "language_name": "",
+        "country_name": "French Guyana"
+    },
+    {
+        "language_name": "",
+        "country_name": "Gabon"
+    },
+    {
+        "language_name": "",
+        "country_name": "Gambia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Germany"
+    },
+    {
+        "language_name": "",
+        "country_name": "Greece"
+    },
+    {
+        "language_name": "",
+        "country_name": "Grenada"
+    },
+    {
+        "language_name": "",
+        "country_name": "Guatemala"
+    },
+    {
+        "language_name": "",
+        "country_name": "Guinea-Bissau"
+    },
+    {
+        "language_name": "",
+        "country_name": "Guyana"
+    },
+    {
+        "language_name": "",
+        "country_name": "Haiti"
+    },
+    {
+        "language_name": "",
+        "country_name": "Honduras"
+    },
+    {
+        "language_name": "",
+        "country_name": "Hong Kong"
+    },
+    {
+        "language_name": "",
+        "country_name": "Hungary"
+    },
+    {
+        "language_name": "",
+        "country_name": "Iceland"
+    },
+    {
+        "language_name": "",
+        "country_name": "India"
+    },
+    {
+        "language_name": "",
+        "country_name": "Indonesia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Ireland"
+    },
+    {
+        "language_name": "",
+        "country_name": "Israel"
+    },
+    {
+        "language_name": "",
+        "country_name": "Italy"
+    },
+    {
+        "language_name": "",
+        "country_name": "Ivory Coast"
+    },
+    {
+        "language_name": "",
+        "country_name": "Jamaica"
+    },
+    {
+        "language_name": "",
+        "country_name": "Japan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Jordan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Kazakhstan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Korea"
+    },
+    {
+        "language_name": "",
+        "country_name": "Kyrgyzstan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Laos"
+    },
+    {
+        "language_name": "",
+        "country_name": "Latvia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Lebanon"
+    },
+    {
+        "language_name": "",
+        "country_name": "Lithuania"
+    },
+    {
+        "language_name": "",
+        "country_name": "Luxembourg"
+    },
+    {
+        "language_name": "",
+        "country_name": "Macau"
+    },
+    {
+        "language_name": "",
+        "country_name": "Macedonia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Malaysia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Mali"
+    },
+    {
+        "language_name": "",
+        "country_name": "Malta"
+    },
+    {
+        "language_name": "",
+        "country_name": "Mauritius"
+    },
+    {
+        "language_name": "",
+        "country_name": "Mexico"
+    },
+    {
+        "language_name": "",
+        "country_name": "Micronesia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Micronesia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Moldova"
+    },
+    {
+        "language_name": "",
+        "country_name": "Moldova Republic"
+    },
+    {
+        "language_name": "",
+        "country_name": "Mongolia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Mozambique"
+    },
+    {
+        "language_name": "",
+        "country_name": "Namibia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Netherlands"
+    },
+    {
+        "language_name": "",
+        "country_name": "New Zealand"
+    },
+    {
+        "language_name": "",
+        "country_name": "Nicaragua"
+    },
+    {
+        "language_name": "",
+        "country_name": "Niger"
+    },
+    {
+        "language_name": "",
+        "country_name": "Norway"
+    },
+    {
+        "language_name": "",
+        "country_name": "Oman"
+    },
+    {
+        "language_name": "",
+        "country_name": "Panama"
+    },
+    {
+        "language_name": "",
+        "country_name": "Papua Guinea"
+    },
+    {
+        "language_name": "",
+        "country_name": "Papua New Guinea"
+    },
+    {
+        "language_name": "",
+        "country_name": "Paraguay"
+    },
+    {
+        "language_name": "",
+        "country_name": "Peru"
+    },
+    {
+        "language_name": "",
+        "country_name": "Philippines"
+    },
+    {
+        "language_name": "",
+        "country_name": "Poland"
+    },
+    {
+        "language_name": "",
+        "country_name": "Portugal"
+    },
+    {
+        "language_name": "",
+        "country_name": "Qatar"
+    },
+    {
+        "language_name": "",
+        "country_name": "Romania"
+    },
+    {
+        "language_name": "",
+        "country_name": "Russia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Rwanda"
+    },
+    {
+        "language_name": "",
+        "country_name": "Saint Kitts & Nevis"
+    },
+    {
+        "language_name": "",
+        "country_name": "Saudi Arabia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Senegal"
+    },
+    {
+        "language_name": "",
+        "country_name": "Singapore"
+    },
+    {
+        "language_name": "",
+        "country_name": "Slovakia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Slovenia"
+    },
+    {
+        "language_name": "",
+        "country_name": "So. Africa"
+    },
+    {
+        "language_name": "",
+        "country_name": "South Africa"
+    },
+    {
+        "language_name": "",
+        "country_name": "Spain"
+    },
+    {
+        "language_name": "",
+        "country_name": "Sri Lanka"
+    },
+    {
+        "language_name": "",
+        "country_name": "Suriname"
+    },
+    {
+        "language_name": "",
+        "country_name": "Swaziland"
+    },
+    {
+        "language_name": "",
+        "country_name": "Sweden"
+    },
+    {
+        "language_name": "",
+        "country_name": "Switzerland"
+    },
+    {
+        "language_name": "",
+        "country_name": "Taiwan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Tajikistan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Tanzania"
+    },
+    {
+        "language_name": "",
+        "country_name": "Thailand"
+    },
+    {
+        "language_name": "",
+        "country_name": "Togo"
+    },
+    {
+        "language_name": "",
+        "country_name": "Trinidad & Tobago"
+    },
+    {
+        "language_name": "",
+        "country_name": "Tunisia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Turkey"
+    },
+    {
+        "language_name": "",
+        "country_name": "Turkmenistan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Uganda"
+    },
+    {
+        "language_name": "",
+        "country_name": "Ukraine"
+    },
+    {
+        "language_name": "",
+        "country_name": "United Arab Emirates"
+    },
+    {
+        "language_name": "",
+        "country_name": "United Kingdom"
+    },
+    {
+        "language_name": "",
+        "country_name": "United States"
+    },
+    {
+        "language_name": "",
+        "country_name": "Uruguay"
+    },
+    {
+        "language_name": "",
+        "country_name": "USA"
+    },
+    {
+        "language_name": "",
+        "country_name": "Uzbekistan"
+    },
+    {
+        "language_name": "",
+        "country_name": "Venezuela"
+    },
+    {
+        "language_name": "",
+        "country_name": "Vietnam"
+    },
+    {
+        "language_name": "",
+        "country_name": "Virgin Islands British"
+    },
+    {
+        "language_name": "",
+        "country_name": "Zambia"
+    },
+    {
+        "language_name": "",
+        "country_name": "Zimbabwe"
+    }
+]

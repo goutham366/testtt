@@ -12,6 +12,7 @@
     width: 100px;
     outline: none;
     white-space: nowrap;
+    cursor: pointer;
 }
 .itune-date {
     font-size: 11px;
@@ -168,6 +169,36 @@
     margin: -18px 0px 0px 10px;
     color: darkgray;
 }
+.download-image{
+    display: flex;
+    justify-content: flex-start;
+    /* padding: 10px 0px; */
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    .download-text{
+        height: auto;
+        flex: 0 0 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
+    .download-btn{
+        flex: 0 0 20%;
+        background: #007CC3;
+        color: #fff;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px !important;
+    }
+    i{
+        transform: rotate(90deg);
+        font-size: 12px;
+    }
+}
 .export-align{
     width:100%;
     background: #007CC3;
@@ -182,8 +213,9 @@
         font-size: 12px;  
     }
     .initiate-export{
-        margin-top: 20px;
-        margin-left: 66px;
+        position: absolute;
+        top: 0px;
+        left: 71px;
     }
 
 .modal-align {
@@ -197,16 +229,33 @@
     left: 0% !important;
     right: 0 !important;
     width: 100% !important;
-    height: 181px !important;
+    height: 120px !important;
     max-width: 250px !important;
   
 }
 .modal-body-align{
     padding: 5px 14px 0px !important;
+    height: 65px;
 }
 .modal-close{
 padding:0px;
+outline:none;
 }
 .font-12{
     font-size:12px !important;
+    position: absolute;
+    top: 20px;
+}
+.export-header{
+    border-bottom: 0 !important;
+}
+.blue-progress{
+    top: 40px;
+}
+.error-message{
+    margin-top: 10px;
+    font-size: 12px;
+}
+.close{
+    outline: none;
 }

@@ -5,12 +5,20 @@ import { HttpService } from '../../services/http.service';
   templateUrl: './rating-config.component.html',
   styleUrls: ['./rating-config.component.scss']
 }) export class RatingConfigComponent implements OnInit {
-  countryData: any; rating: any; flag: any; cont_name: any; showRatings: any; countryname: any; ratingData: any; email: any; COMMENTS = 'COMMENTS'; Comments = ''; ratings: any; show: boolean = false; displayComments: boolean = false; keydata: any; userData: any; keys: any; keyno: number = 0; ratingkey: any; countryCount: any; ratingscount: any; constructor(private httpService: HttpService) { }
+  countryData: any; rating: any; flag: any; cont_name: any; showRatings: any; countryname: any; ratingData: any; email: any; COMMENTS = 'COMMENTS'; Comments = ''; ratings: any; show: boolean = false; displayComments: boolean = false; keydata: any; userData: any; keys: any; keyno: number = 0; ratingkey: any; countryCount: any; ratingscount: any;countries: any;
+ constructor(private httpService: HttpService) { }
   getColor(i) {
     if (this.countryData) {
       if (i == 0) return "rgba(0, 0, 0, 0.37)";
       else if (i % 2 == 0) return "rgba(0, 0, 0, 0.37)";
       else return "rgba(0, 0, 0, 0.16)";
+    }
+  }
+  getColorCust(i) {
+    if (this.countryData) {
+      if (i == 0) return "rgba(0, 0, 0, 0.16)";
+      else if (i % 2 == 0) return "rgba(0, 0, 0, 0.16)";
+      else return "rgba(0, 0, 0, 0.37)";
     }
   }
   getColorlang2(i) {
@@ -30,6 +38,11 @@ import { HttpService } from '../../services/http.service';
       this.comments.push(Comments);
     }
   }
+  country = []; addCountries(Countries: string) {
+    if (Countries) {
+      this.country.push(Countries);
+    }
+  }
   showComment() {
     this.displayComments = true;
   }
@@ -38,6 +51,22 @@ import { HttpService } from '../../services/http.service';
   }
   showComments(key) {
     this.ratingkey = key;
+  }
+  
+  heroes = [''];
+  addHero(newHero: string) {
+    if (newHero) {
+      this.heroes.push(newHero);
+    }
+  }
+  addComment(trigg, newComment: string) {
+    newComment = '';
+    if(trigg.keyCode==13){
+     
+      if (newComment) {
+        this.comments.push(newComment);
+      }
+    }
   }
   ngOnInit() {
     this.httpService.getCountriesData().subscribe(data => {
@@ -66,7 +95,7 @@ import { HttpService } from '../../services/http.service';
         //console.log('this.keydata',this.ratingData[key]);  
       }
     })
-    this.httpService.getUsersData().subscribe(data => {
+    this.httpService.getUser().subscribe(data => {
       this.userData = data;
       for (let i = 0; i < this.userData; i++) {
         this.email = this.userData[i].user_email;

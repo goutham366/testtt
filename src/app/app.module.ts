@@ -43,6 +43,7 @@ import {
 
 import { ResizableDirective } from './directives/resizable';
 import { ResizerDirective } from './directives/resizer.directive';
+import { AuthorizationGuard } from './guards/auth-guard';
 //import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
@@ -78,7 +79,7 @@ import { ResizerDirective } from './directives/resizer.directive';
     // MDBBootstrapModule.forRoot()
     //MDBBootstrapModule.forRoot()
   ],
-  providers: [
+  providers: [AuthorizationGuard,
     HttpService,
     {
       provide: LocationStrategy,

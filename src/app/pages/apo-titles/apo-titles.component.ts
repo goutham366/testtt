@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
-import { ActivatedRoute } from '@angular/router';
-//import { ActivatedRoute } from '@angular/router';
+import { TooltipPosition } from '@angular/material';
+declare var jQuery:any;
+
 interface Stages {
   stageTitle: String;
 }
@@ -42,9 +42,26 @@ export class ApoTitlesComponent implements OnInit {
   todaydate: any;
   duedate: any;
   parentMessage:any;
-
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  successCase: boolean;
+  errorCase: boolean;
+  exporturl: string;
+  apiResp: any;
+  errorURl: any;
+  apiURL: any;
+  errorMessageDownload: any;
+  enableSaveFlag: boolean=false;
+  showExportProgress: boolean;
+  expS3: any;
+  expRep: any;
+  selectedAvail: any;
+  errorMessage: string;
+  selectedAvailNew: any;
+  isDisabled: boolean = true;
+  toolTipValue: string;
+  modalShow: boolean;
+  constructor(private httpService: HttpService) {
     this.getApoData();
+    this.modalShow= true;
     this.parentMessage = "APO";
     this.stages = [
       { stageTitle: "Announced" },
@@ -55,7 +72,7 @@ export class ApoTitlesComponent implements OnInit {
 
     this.ImageUrl = 'assets/images/dummy.png';
     this.removeButton = false;
-
+    
   }
 
   showTitleStatus(index) {
@@ -74,12 +91,84 @@ export class ApoTitlesComponent implements OnInit {
     this.account = index;
     this.showStatus = -1;
     this.countriesClicked = true;
+    document.getElementById('id').style.pointerEvents = 'none';
   }
   showTranslations(index) {
     this.account = index;
     this.showStatus = -1;
     this.translationsClicked = true;
+    document.getElementById('id').style.pointerEvents = 'auto'; 
   }
+  
+  checkTitleId(data) {
+    if(data==""){
+      //this.toolTipValue='hi';
+     
+      return true;
+      
+    }else{
+      //this.toolTipValue='';
+     
+      return false;
+      
+    }
+  }
+  getCursorForExport(data) {
+    if(data==""){
+      //this.toolTipValue='hi';
+     
+      return "auto";
+      
+    }else{
+      //this.toolTipValue='';
+     
+      return "pointer";
+      
+    }
+  }
+  method(){
+    return "hrllo";
+  }
+  export(page,Titlename) {
+    this.showExportProgress = true;
+    this.selectedAvail=Titlename;
+    if (page === 'APO') {
+      this.httpService.exportToSingleAPO(page,Titlename).subscribe(data => {
+        this.showExportProgress = true;
+        this.expRep = data;
+        if (data['status'] = "Success") {
+          this.successCase = true;
+          this.errorCase = false;
+          this.showExportProgress = false;
+          console.log('entered');
+          this.httpService.exportAPOS3ToLcalToSingle(page,Titlename).subscribe(data => {
+            this.apiResp = data;
+            this.apiURL = this.apiResp.url;
+            this.enableSaveFlag = true;
+          }, error => {
+            this.errorCase = true;
+            this.successCase = false;
+            this.showExportProgress = false;
+            this.errorURl = error.error.text;
+            this.errorMessageDownload = error.error.message;
+
+          }
+          )
+        }
+      }, error => {
+        this.errorCase = true;
+        this.successCase = false;
+        this.showExportProgress = false;
+        this.errorMessageDownload = error.error.message;
+        this.showExportProgress = false;
+      }
+      )
+
+    }
+ 
+  }
+
+
   selectTab(title, tabselected) {
     for (let i = 0; i < this.apoList.length; i++) {
       if (title === this.apoList[i].GlobalTitle) {
@@ -124,7 +213,7 @@ export class ApoTitlesComponent implements OnInit {
     this.httpService.refresh('apo').subscribe(dataof => {
       this.getApoData();
     })
-
+    
   }
   imgClickTrack(record, index) {
     this.showStatus = -1;
@@ -201,5 +290,16 @@ export class ApoTitlesComponent implements OnInit {
       return "due-date";
     }
   }
-
+  
+  openModal(Titlename,id){
+    if(id!=""){
+      this.selectedAvailNew=Titlename;
+      this.errorMessage = "";
+      this.enableSaveFlag=false;
+      this.errorMessageDownload='';
+      this.modalShow= true;
+    }else{
+      this.modalShow= false;
+    }
+  }
 }

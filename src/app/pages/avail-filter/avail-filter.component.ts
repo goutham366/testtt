@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -75,8 +74,9 @@ export class AvailFilterComponent implements OnInit {
   errorMessageDownload: any;
   enableSaveFlag: boolean = false;
   hideExport: boolean;
+  uploadRunningMessage: string;
 
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService) {
     this.errorCase = false;
     this.highlight1 = false;
     this.highlight2 = false;
@@ -235,7 +235,7 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   ngOnInit() {
-    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' ||this.childMessage ==='Episodes') {
+    if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' || this.childMessage === 'Episodes' || this.childMessage === 'TV' || this.childMessage === 'Account-Titles') {
       this.hideExport = true;
     }
     this.filteredOptions = this.myControl.valueChanges
@@ -303,7 +303,8 @@ export class AvailFilterComponent implements OnInit {
                 this.successCase = false;
                 this.successMessage = null;
                 if (error.error.message == undefined || error.error.message == null) {
-                  this.errorMessage = "Upload is running in background, Please visit later";
+                  //this.errorMessage = "Upload is running in background, Please visit later";
+                  this.uploadRunningMessage = "Upload is running in background, Please visit later"
                 } else {
                   this.errorMessage = error.error.message;
                 }
