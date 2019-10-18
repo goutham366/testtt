@@ -50,7 +50,7 @@
     "ng-image-editor": "^0.2.4",
     "ng-vertical-timeline": "^0.1.1",
     "ng2-img-cropper": "^0.9.0",
-    "ngx-progressbar": "^2.1.1",
+   
     "roboto-fontface": "^0.10.0",
     "rxjs": "^6.5.3",
     "rxjs-compat": "6.5.2",
