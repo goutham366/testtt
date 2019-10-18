@@ -142,7 +142,7 @@ export class HttpService {
     return  this.http.get(`./assets/json/metaData.json`);
   }
   getAvailData() {
-    return this.http.get(this.url + '/avails/FILMS');
+    return this.http.get(this.lambda + '/avails/FILMS');
   }
 
   uploadToS3(formData) {
@@ -152,9 +152,7 @@ export class HttpService {
     // let headers: HttpHeaders = new HttpHeaders();
     // headers = headers.append("Content-Type", "multipart/form-data");
     var url = this.awsS3Url + '/uploads/uploadFile'
-    return this.http.post(url , formData, {
-      headers: { ignoreLoadingBar: '' }
-    });
+    return this.http.post(url , formData);
   }
 
   uploadS3toAWS(fileName) {
