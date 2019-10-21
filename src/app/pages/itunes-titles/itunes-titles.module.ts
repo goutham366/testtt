@@ -6,12 +6,14 @@ import { ItunesTitlesComponent } from './itunes-titles.component';
 import { MatNativeDateModule, MatCardModule, MatButtonModule } from '@angular/material';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FilterModule } from '../avail-filter/avail-filter.module';
+import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     FilterModule,
+    ScrollingModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

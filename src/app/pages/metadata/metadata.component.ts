@@ -63,7 +63,7 @@ export class MetadataComponent implements OnInit {
     this.changeText= "Comment";
     this.isDisabled = true;
     this.user = this.metaDataListUpdateVal;
-    
+    this.filteredMetadataList = [];
    }
   comments = [{"name":'Sent for Transalation', "date":"1/12"},
               {"name":'The citizens of Bricksburg face a dangerous new threat when LEGO DUPLO invaders from outer space start to wreck everything in their path.', "date":"1/12"},
@@ -182,10 +182,21 @@ closeBox(){
     });
     this.httpservice.getMetaData().subscribe(data=>{
       this.metaDataList=data;
-      this.filteredMetadataList= this.metaDataList.filter(availdata=>{
-        return availdata.GlobalTitle==this.titleName;
-      }) 
-      
+      // this.filteredMetadataList= this.metaDataList.filter(availdata=>{
+      //   if(availdata.GlobalTitle==this.titleName){
+      //     return availdata.GlobalTitle==this.titleName;
+      //   }
+      // }) 
+
+      for(let i=0;i<this.metaDataList.length;i++){
+        if(this.metaDataList.GlobalTitle==this.titleName){
+          this.filteredMetadataList =  this.metaDataList[i];
+        }
+      }
+      if(this.filteredMetadataList.length==0){
+        var l = this.metaDataList.length;
+        this.filteredMetadataList.push(this.metaDataList[l-1]);
+      }
     })
     
     // this.httpservice.detailsOfAvail().subscribe(data=>{

@@ -24,133 +24,141 @@
               </div>
           </div>
           <div class="row">
-              <div class="col-md-3 apo-margin" *ngFor="let x of orderedSeasonList; let i=index">
-                  <div class="card">
-                      <div class="card-main">
-                          <div class="card-img">
-                              <span class="addPre_upBtn btn btn-sm btn-bg1" (click)="triggerUpload();">
-                                    <!-- <i class="material-icons">folder</i> -->
-                                  <img class="card-img-top" [src]="x.ImageUrl==''?ImageUrl:x.ImageUrl" (click)="imgClickTrack(x,i);">
-                                  <span class="folder"><i class="material-icons">folder</i></span>
-                                </span>
-                              <input type="file" class="file-display" (change)="handleFileInputForAdd($event.target.files)" id="fileUpload" accept="image/*"
-                                  [disabled]="uploadStatus" />
+                <div class="col-md-12">
+                        <div class="row">
+                                <cdk-virtual-scroll-viewport class="upload-loading" itemSize="90" >
+                                        <div class="d-flex upload-styles">
+                                            <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of orderedSeasonList; let i=index">
+                                                <div class="card">
+                                                    <div class="card-main">
+                                                        <div class="card-img">
+                                                            <span class="addPre_upBtn btn btn-sm btn-bg1" (click)="triggerUpload();">
+                                                                    <!-- <i class="material-icons">folder</i> -->
+                                                                <img class="card-img-top" [src]="x.ImageUrl==''?ImageUrl:x.ImageUrl" (click)="imgClickTrack(x,i);">
+                                                                <span class="folder"><i class="material-icons">folder</i></span>
+                                                                </span>
+                                                            <input type="file" class="file-display" (change)="handleFileInputForAdd($event.target.files)" id="fileUpload" accept="image/*"
+                                                                [disabled]="uploadStatus" />
 
-                          </div>
-                          <div>
-                          <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
-                              <div class="card-content card-flex" *ngIf="showStatus!==i">
-                                  <ul>
-                                      <li>
-                                          <h6 class="title-text" routerLink="/pages/tvepisode"  [queryParams]="{ availName: availName, seriesName: x.SeriesName,seasonNumber:x.SeasonNumber }" data-toggle="tooltip" data-placement="left" title="{{x.SeriesName}}"> {{x.SeriesName}}</h6>
-                                      </li>
-                                      <li>
-                                        <span class="season-name"> Season {{x.SeasonNumber}}</span>
-                                    </li>
-                                     
-                                  </ul>
-                                  <div class="circle" (click)="showTitleStatus(i)">
-                                      <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                          [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
-                                  </div>
-                              </div>
-                              <!-- <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
-                                  <ol class="wizard-progress">
-                                        
-                                      <li [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
-                                          <span class="step-name" >
-                                            <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
-                                          </span>
-                                          <span class="visuallyhidden"></span>
-                                          <span class="step-num"></span>
-                                      </li>
-                                  </ol>
-                              </div> -->
+                                                        </div>
+                                                        <div>
+                                                        <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
+                                                            <div class="card-content card-flex" *ngIf="showStatus!==i">
+                                                                <ul>
+                                                                    <li>
+                                                                        <h6 class="title-text" routerLink="/pages/tvepisode"  [queryParams]="{ availName: availName, seriesName: x.SeriesName,seasonNumber:x.SeasonNumber }" data-toggle="tooltip" data-placement="left" title="{{x.SeriesName}}"> {{x.SeriesName}}</h6>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="season-name"> Season {{x.SeasonNumber}}</span>
+                                                                    </li>
+                                                                    
+                                                                </ul>
+                                                                <div class="circle" (click)="showTitleStatus(i)">
+                                                                    <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                                                        [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
+                                                                <ol class="wizard-progress">
+                                                                        
+                                                                    <li [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
+                                                                        <span class="step-name" >
+                                                                            <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                                        </span>
+                                                                        <span class="visuallyhidden"></span>
+                                                                        <span class="step-num"></span>
+                                                                    </li>
+                                                                </ol>
+                                                            </div> -->
 
-                          </div>
-                          <div class="cust-text status-text-padding" *ngIf="showStatus==i">
-                              <h6 class="status-text">Status</h6>
-                              <p class="status">
-                                  <b class="font-number"> -</b> Pending Translations</p>
-                              <p class="status">
-                                  <b class="font-number"> -</b> Pending Ratings</p>
-                              <p class="status">
-                                  <b class="font-number">-</b> Pending Clarifications</p>
-                              <p class="status">
-                                  <b class="font-number">-</b> Escalations</p>
+                                                        </div>
+                                                        <div class="cust-text status-text-padding" *ngIf="showStatus==i">
+                                                            <h6 class="status-text">Status</h6>
+                                                            <p class="status">
+                                                                <b class="font-number"> -</b> Pending Translations</p>
+                                                            <p class="status">
+                                                                <b class="font-number"> -</b> Pending Ratings</p>
+                                                            <p class="status">
+                                                                <b class="font-number">-</b> Pending Clarifications</p>
+                                                            <p class="status">
+                                                                <b class="font-number">-</b> Escalations</p>
 
-                          </div>
-                          <div class="display-block">
-                          <div class="flex" *ngIf="showStatus!=i">
-                              <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.SeasonNumber,'seasons')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
-                                  <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{x.EpisodesCount}}
-                                  <span class="text-space" *ngIf="seasonStatus && (seasonName===x.SeasonNumber)">Episodes</span>
-                              </span>
-                              <span class="apo-color countriesBox" (click)="showCountries(i);selectTab(x.SeasonNumber,'countries')" [ngClass]="(countriesClicked) ? 'box1clicked' : 'box1'">
-                                  <i class="material-icons md-18 md-grey v-align">language</i>{{x.UniqueCountriesCount}}
-                                  <span class="text-space" *ngIf="langStatus && (seasonName===x.SeasonNumber)">Countries</span>
-                              </span>
-                              <span class="apo-color languagesBox" (click)="showTranslations(i);selectTab(x.SeasonNumber,'languages')" [ngClass]="(translationsClicked) ? 'box2clicked' : 'box2'">
-                                  <i class="material-icons md-18 md-grey v-align">translate</i> {{x.UniqueLanguagesCount}}
-                                  <span class="text-space" *ngIf="transStatus && (seasonName===x.SeasonNumber)">Languages</span>
-                              </span>
-                          </div>
-                          </div>
-                          <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && seasonStatus">
-                              <div class="progress progress-main">
-                                  <div class="completeColor" [style.width.%]="width">
-                                      {{x.EpisodesCompletedCount}}
-                                  </div>
-                                  <div class="pendingColor" [style.width.%]="remaining">
-                                      {{x.EpisodesPendingCount}}
-                                  </div>
-                                  
-                                
+                                                        </div>
+                                                        <div class="display-block">
+                                                        <div class="flex" *ngIf="showStatus!=i">
+                                                            <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.SeasonNumber,'seasons')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
+                                                                <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{x.EpisodesCount}}
+                                                                <span class="text-space" *ngIf="seasonStatus && (seasonName===x.SeasonNumber)">Episodes</span>
+                                                            </span>
+                                                            <span class="apo-color countriesBox" (click)="showCountries(i);selectTab(x.SeasonNumber,'countries')" [ngClass]="(countriesClicked) ? 'box1clicked' : 'box1'">
+                                                                <i class="material-icons md-18 md-grey v-align">language</i>{{x.UniqueCountriesCount}}
+                                                                <span class="text-space" *ngIf="langStatus && (seasonName===x.SeasonNumber)">Countries</span>
+                                                            </span>
+                                                            <span class="apo-color languagesBox" (click)="showTranslations(i);selectTab(x.SeasonNumber,'languages')" [ngClass]="(translationsClicked) ? 'box2clicked' : 'box2'">
+                                                                <i class="material-icons md-18 md-grey v-align">translate</i> {{x.UniqueLanguagesCount}}
+                                                                <span class="text-space" *ngIf="transStatus && (seasonName===x.SeasonNumber)">Languages</span>
+                                                            </span>
+                                                        </div>
+                                                        </div>
+                                                        <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && seasonStatus">
+                                                            <div class="progress progress-main">
+                                                                <div class="completeColor" [style.width.%]="width">
+                                                                    {{x.EpisodesCompletedCount}}
+                                                                </div>
+                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                    {{x.EpisodesPendingCount}}
+                                                                </div>
+                                                                
+                                                                
 
-                              </div>
+                                                            </div>
 
-                          </div>
-                          <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && langStatus">
-                              <div class="progress progress-main">
-                                  <div class="completeColor" [style.width.%]="width">
-                                      {{x.CountriesCompletedCount}}
-                                  </div>
-                                  <div class="pendingColor" [style.width.%]="remaining">
-                                      {{x.CountriesPendingCount}}
-                                  </div>
-                              </div>
+                                                        </div>
+                                                        <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && langStatus">
+                                                            <div class="progress progress-main">
+                                                                <div class="completeColor" [style.width.%]="width">
+                                                                    {{x.CountriesCompletedCount}}
+                                                                </div>
+                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                    {{x.CountriesPendingCount}}
+                                                                </div>
+                                                            </div>
 
-                          </div>
-                          <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && transStatus">
-                              <div class="progress progress-main">
-                                  <div class="completeColor" [style.width.%]="width">
-                                      {{x.LanguagesCompletedCount}}
-                                  </div>
-                                  <div class="pendingColor" [style.width.%]="remaining">
-                                      {{x.LanguagesPendingCount}}
-                                  </div>
-                              </div>
+                                                        </div>
+                                                        <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && transStatus">
+                                                            <div class="progress progress-main">
+                                                                <div class="completeColor" [style.width.%]="width">
+                                                                    {{x.LanguagesCompletedCount}}
+                                                                </div>
+                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                    {{x.LanguagesPendingCount}}
+                                                                </div>
+                                                            </div>
 
-                          </div>
-                    
-                          <div class="legend-margin m-0" *ngIf="seasonName===x.SeasonNumber && (seasonStatus || langStatus || transStatus)">
-                            <div class="d-flex legend-flex p-1">
-                              <div class="mt-1 status-bar">
-                                  <div class="complete-legend"></div>
-                                  <div class="legend-text ml-1 mr-1">Completed</div>
-                              </div>
-                              <div class="mt-1 status-bar">
-                                      <div class="pending-legend"></div>
-                                      <div class="legend-pending-text ml-1 mr-1">Pending</div>
-                              </div>
-                          </div>
-                      </div>
-                          </div>
-                      </div>
+                                                        </div>
+                                                    
+                                                        <div class="legend-margin m-0" *ngIf="seasonName===x.SeasonNumber && (seasonStatus || langStatus || transStatus)">
+                                                            <div class="d-flex legend-flex p-1">
+                                                            <div class="mt-1 status-bar">
+                                                                <div class="complete-legend"></div>
+                                                                <div class="legend-text ml-1 mr-1">Completed</div>
+                                                            </div>
+                                                            <div class="mt-1 status-bar">
+                                                                    <div class="pending-legend"></div>
+                                                                    <div class="legend-pending-text ml-1 mr-1">Pending</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        </div>
+                                                    </div>
 
 
-                  </div>
+                                                </div>
 
+                                            </div>
+                                        </div>
+                                </cdk-virtual-scroll-viewport>
+                        </div>
               </div>
           </div>
       </div>

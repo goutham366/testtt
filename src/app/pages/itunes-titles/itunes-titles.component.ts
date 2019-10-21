@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 interface Stages {
@@ -11,7 +11,7 @@ interface Stages {
 })
 export class ItunesTitlesComponent implements OnInit {
   showStatus: any;
-  apoList: any;
+  apoList=[];
   //apoResponse: any;
   titleStatus: boolean = false;
   langStatus: boolean = false;
@@ -41,6 +41,8 @@ export class ItunesTitlesComponent implements OnInit {
   parentMessage: any;
   availName: any;
   accounttitlesresp: any;
+  fullapoList: any;
+  apoListlength: number;
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
@@ -116,6 +118,7 @@ export class ItunesTitlesComponent implements OnInit {
     this.httpService.getAccountTittlesData(this.availName).subscribe(data => {
       this.accounttitlesresp = data;
       this.apoList = this.accounttitlesresp.resultData;
+      this.apoListlength=this.apoList.length;
     })
   }
   ngOnInit() {
@@ -128,6 +131,7 @@ export class ItunesTitlesComponent implements OnInit {
 
 
   }
+ 
   imgClickTrack(record, index) {
     this.showStatus = -1;
     this.accStatus = false;

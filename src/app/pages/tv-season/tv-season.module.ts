@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 import { TvSeasonComponent } from './tv-season.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 const routes: Routes = [
     {
       path: '', component: TvSeasonComponent
@@ -16,6 +17,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,  
     FilterModule,
+    ScrollingModule,
     NgCircleProgressModule.forRoot({
         "backgroundPadding": 7,
         "radius": 28,

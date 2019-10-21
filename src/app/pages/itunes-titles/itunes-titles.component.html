@@ -24,8 +24,12 @@
           <app-avail-filter [childMessage]="parentMessage"></app-avail-filter>
         </div>
       </div> -->
-      <div class="row">
-        <div class="col-md-3 apo-margin" *ngFor="let x of apoList; let i=index">
+      <div class="row mt-3">
+          <div class="col-md-12">
+              <div class="row">
+                  <cdk-virtual-scroll-viewport class="upload-loading" itemSize="90" >
+                      <div class="d-flex upload-styles">
+        <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList; let i=index">
           <div class="card">
             <div class="card-main">
               <div class="card-img">
@@ -145,6 +149,10 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      </cdk-virtual-scroll-viewport>
+        </div>
         </div>
       </div>
     </div>

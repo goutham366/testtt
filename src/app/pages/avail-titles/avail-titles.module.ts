@@ -5,6 +5,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
 import { FilterModule } from '../avail-filter/avail-filter.module';
+import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling';
 const routes: Routes = [
   {
     path: '', component: AvailTitlesComponent
@@ -14,6 +15,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FilterModule,
+    ScrollingModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

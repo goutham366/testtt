@@ -41,6 +41,7 @@ export class AvailTitlesComponent implements OnInit {
   parentMessage: any;
   availName: any;
   filmstitlesresp: any;
+  apoListlength: any;
 
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.parentMessage = "TV";
@@ -113,6 +114,7 @@ export class AvailTitlesComponent implements OnInit {
     this.httpService.getAvailTittlesData(this.availName).subscribe(data => {
       this.filmstitlesresp = data;
       this.apoList = this.filmstitlesresp.resultData;
+      this.apoListlength=this.apoList.length;
     })
   }
   ngOnInit() {
