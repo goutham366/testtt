@@ -1,5 +1,5 @@
 <div class="acc-style-top">
-  <div class="row">
+  <div class="row" *ngIf="!tvAvailName && !showApoBread">
     <ul class="breadcrumb">
       <li class="breadcrumb-item">
         <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
@@ -18,10 +18,45 @@
       </li>
     </ul>
   </div>
+  <div class="row" *ngIf="tvAvailName">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/pages/television']">Avails</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a #tref>{{availName}}</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}" #tref>Episodes</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item breadcrumb-title">
+        <a #tref>{{titleName}}</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="showApoBread">
+      <nav aria-label="breadcrumb" >
+          <ol class="breadcrumb m-0 pt-2 pb-2">
+              <li class="" aria-current="page"><a routerLink="/pages/apo/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+              </ol> 
+        </nav>
+   </div>
   <div class="card  top-main">
     <div class="d-flex top-bar">
       <div class="flex-description box-1">
-        <!-- <img class="img-card" src="../../../assets/images/lego.jpg"> -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage()">
         </button>
@@ -32,11 +67,6 @@
             <div class="card-content">
               <h6 class="main-title">{{titleName}}</h6>
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">02/22 - 03/19</h6>
-              <!-- <ul>
-                <li>The Lego Movie 2</li>
-                <li class="cust-text">
-                  <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
-              </ul> -->
             </div>
             <div class="circle circle-percentage">
               <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
@@ -51,7 +81,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-dark" data-toggle="tab" href="#metaData" routerLink="/pages/metadata"
-                  [queryParams]="{avail_name: availName, title_name: titleName}">Metadata</a>
+                  [queryParams]="{avail_name: availName, title_name: titleName, routeName : routeName, series: seriesName, seasonNumber: seasonNumber}">Metadata</a>
                 </li>
               </ul>
             </div>
@@ -65,7 +95,7 @@
         <i class="material-icons">title<sup>-</sup></i>
       </div>
     </div>
-  </div>
+  </div> 
 </div>
 
 <div class="" >

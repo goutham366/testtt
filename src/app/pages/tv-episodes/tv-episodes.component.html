@@ -49,7 +49,7 @@
                                                             <div class="card-content card-flex" *ngIf="showStatus!==i">
                                                                 <ul>
                                                                     <li>
-                                                                        <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}" routerLink="/pages/metadata" [queryParams]="{title_name: x.GlobalTitle, avail_name: availName}">
+                                                                        <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}" routerLink="/pages/metadata" [queryParams]="{title_name: x.GlobalTitle, avail_name: availName, series: seriesName, seasonNumber: x.SeasonNumber}">
                                                                         {{x.GlobalTitle}}</span>
                                                                     </li>
                                                                     <!-- <li>
@@ -63,7 +63,7 @@
                                                                 <div class="circle" (click)="showTitleStatus(i)">
                                                                     <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                                                         [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"
-                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle }"></circle-progress>
+                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, series: seriesName, seasonNumber: x.SeasonNumber}"></circle-progress>
                                                                 </div>
                                                             </div>
                                                             <div class="cus-text text-col" *ngIf="showStatus!==i">

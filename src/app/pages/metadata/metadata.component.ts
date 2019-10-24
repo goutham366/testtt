@@ -52,6 +52,13 @@ export class MetadataComponent implements OnInit {
   commentValue: any;
   filteredMetadataList:any;
   condition: boolean;
+  tvAvailName: any;
+  titleId: any;
+  seriesName: any;
+  seasonNumber: any;
+  routeName: any;
+  showApoBread: boolean;
+
   constructor(private httpservice: HttpService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.show=true;
     this.close=false;
@@ -172,13 +179,36 @@ closeBox(){
     this.activatedRoute.queryParams.subscribe(params => {
       this.titleName = params['title_name'];
       this.availName = params['avail_name'];
+      this.titleId = params['titleId'];
+      this.seriesName = params['series'];
+      this.seasonNumber = params['seasonNumber'];
+      this.routeName = params['routeName'];
       let str =  this.availName;
-      let res = str.split(" ");
-      if( res[0]==="IN"){
-        this.condition = true;
-      }else if( res[0]==="FN"){
-        this.condition = false;
+      if(this.availName!=undefined){
+        let res = str.split(" ");
+        if(res[0] === 'TN' || res[0] === 'TC' || res[0]==="LDC_TBD") {
+          this.tvAvailName = true;
+          this.condition = false;
+          }
+         else if( res[0]==="IN" || res[0]==="LDC_TBD"){
+          this.condition = true;
+          this.tvAvailName=false;
+          }else if(res[0]==="FN" || res[0]==="FC" || res[0]=="FT" || res[0]==="LDC_TBD") {
+          this.condition = false;
+          this.tvAvailName=false;
+          }
+          else{
+            this.tvAvailName=false;
+            this.condition = false;
+          }
+          this.showApoBread = false;
+      }else if(this.routeName==='APO'){
+        this.showApoBread = true;
+        this.tvAvailName=false;
+        this.condition = false;
+        this.availName = undefined;
       }
+      
     });
     this.httpservice.getMetaData().subscribe(data=>{
       this.metaDataList=data;

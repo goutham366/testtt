@@ -9,137 +9,137 @@
                 "titlesDetails": [
                     {
                         "id": "1",
-                        "title_name": "Apple iTunes",
+                        "title_name": "The Lego Movie 2",
                         "status": "completed"
                     },
                     {
                         "id": "2",
-                        "title_name": "DLA",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "3",
-                        "title_name": "Google",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "4",
-                        "title_name": "Cablevision",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "5",
-                        "title_name": "Greyjuice Lab",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "6",
-                        "title_name": "Qubit Argentina",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "7",
-                        "title_name": "DirecTV Latam",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "8",
-                        "title_name": "Microsoft",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "9",
-                        "title_name": "Sony",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "10",
-                        "title_name": "Videobuster",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "11",
-                        "title_name": "Chili",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "12",
-                        "title_name": "Rakuten",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "13",
-                        "title_name": "Sky Deutschland",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "14",
-                        "title_name": "On Demand",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "15",
-                        "title_name": "Pantaflix",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "16",
-                        "title_name": "UPC",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "17",
-                        "title_name": "Maxdome",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "18",
-                        "title_name": "Videociety",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "18",
-                        "title_name": "Vubiquity",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "19",
-                        "title_name": "Cineplex",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "20",
-                        "title_name": "Kaleidescape",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "21",
-                        "title_name": "Telus",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "21",
-                        "title_name": "Bell",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     },
                     {
                         "id": "22",
-                        "title_name": "Rogers",
+                        "title_name": "IT2",
                         "status": "completed"
                     },
                     {
                         "id": "23",
-                        "title_name": "Sasktel",
+                        "title_name": "Shaft",
                         "status": "pending"
                     },
                     {
                         "id": "24",
-                        "title_name": "Cogeco",
+                        "title_name": "Wonder Woman 2",
                         "status": "pending"
                     },
                     {
                         "id": "25",
-                        "title_name": "MTS Allstream",
+                        "title_name": "Untitled Horror",
                         "status": "pending"
                     }
                 ],
@@ -284,7 +284,7 @@
                         "name": "Samwell Tarly",
                         "log_dateAndTime": "01/12 12:16",
                         "status": "Edited",
-                        "image_url/fileName": "Videotron"
+                        "image_url/fileName": "A Star is Born"
                     },
                     {
                         "name": "Emilia Targaryen",
@@ -319,7 +319,7 @@
                 "titlesDetails": [
                     {
                         "id": "2",
-                        "title_name": "Shaw",
+                        "title_name": "A Star is Born",
                         "announced_date": "12/09",
                         "release_date": "12/12",
                         "percentage_title": "60",
@@ -368,7 +368,7 @@
                 "titlesDetails": [
                     {
                         "id": "3",
-                        "title_name": "Orange-FR",
+                        "title_name": "12 Strong",
                         "announced_date": "12/09",
                         "release_date": "12/12",
                         "percentage_title": "70",
@@ -417,7 +417,7 @@
                 "titlesDetails": [
                     {
                         "id": "4",
-                        "title_name": "Canal Play",
+                        "title_name": "Game Night",
                         "announced_date": "12/09",
                         "release_date": "12/12",
                         "percentage_title": "30",
@@ -466,7 +466,7 @@
                 "titlesDetails": [
                     {
                         "id": "5",
-                        "title_name": "Filmoline",
+                        "title_name": "A Star is Born",
                         "announced_date": "12/09",
                         "release_date": "12/12",
                         "percentage_title": "60",

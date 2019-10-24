@@ -16,21 +16,55 @@
   <div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
     <div class="d-flex">
       <div class="flex-grow-1">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb m-0 pt-2 pb-2">
-            <li class="">
-              <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
-            </li>
-            <i class="material-icons">keyboard_arrow_right</i>
-            <li class="">
-              <a #tref>{{availName}}</a>
-            </li>
-            <i class="material-icons">keyboard_arrow_right</i>
-            <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
-            <i class="material-icons">keyboard_arrow_right</i>
-            <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
-          </ol>
-        </nav>
+        <div *ngIf="!tvAvailName && !showApoBread">
+            <nav aria-label="breadcrumb" >
+                <ol class="breadcrumb m-0 pt-2 pb-2">
+                  <li class="">
+                    <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
+                  </li>
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <li class="">
+                    <a #tref>{{availName}}</a>
+                  </li>
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+                </ol>
+              </nav>
+        </div>
+     <div *ngIf="tvAvailName">
+        <nav aria-label="breadcrumb" >
+            <ol class="breadcrumb m-0 pt-2 pb-2">
+              <li class="">
+                <a [routerLink]="['/pages/television']">Avails</a>
+              </li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="">
+                <a #tref>{{availName}}</a>
+              </li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}" #tref>Episodes</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+            </ol>
+          </nav>
+     </div>
+     <div *ngIf="showApoBread">
+        <nav aria-label="breadcrumb" >
+            <ol class="breadcrumb m-0 pt-2 pb-2">
+                <li class="" aria-current="page"><a routerLink="/pages/apo/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+                </ol> 
+          </nav>
+     </div>
+     
+        
   
         <div class="card">
           <div class="d-flex">
@@ -56,8 +90,8 @@
                   <div class="container mt-3">
                     <ul class="nav nav-tabs">
                       <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#insight" routerLink="/pages/insight" 
-                        [queryParams]="{avail_name: availName, title_name: titleName}">Insight</a>
+                        <a class="nav-link" data-toggle="tab" href="#insight" [queryParams]="{routeName: routeName, title_name : titleName, avail_name : availName, series: seriesName, seasonNumber: seasonNumber}"   routerLink="/pages/insight" 
+                        >Insight</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>

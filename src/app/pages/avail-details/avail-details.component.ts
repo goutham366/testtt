@@ -64,7 +64,7 @@ export class AvailDetailsComponent implements OnInit {
     this.showDetails2 = true;
     this.showDetails3 = true;
     this.width = 75;
-    this.httpService.getAvailDetailsView().subscribe(data => {
+    this.httpService.getAvailDetailTitle().subscribe(data => {
       this.availDetailsViewList = data;
       console.log('Avails Details data', this.availDetailsViewList);
     })

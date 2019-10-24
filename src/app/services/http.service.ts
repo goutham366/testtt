@@ -72,6 +72,10 @@ export class HttpService {
     //return this.http.get(this.url + `/avails/all/FILMS/` + availName);
     return this.http.get(`./assets/json/avails-details.json`);
   }
+  getAvailDetailTitle() {
+    //return this.http.get(this.url + `/avails/all/FILMS/` + availName);
+    return this.http.get(`./assets/json/details-titles.json`);
+  }
   getAvailDetailsAPIView() {
     //return this.http.get(this.url + `/avails/all/FILMS/` + availName);
     return this.http.get(`./assets/json/avail-details-api.json`);

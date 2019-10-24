@@ -42,10 +42,15 @@ export class AvailInsightComponent implements OnInit {
   stages: { stageTitle: string; }[];
   progress: number;
   data: any;
+  tvAvailName: any;
+  seriesName: any;
+  seasonNumber: any;
   cropperSettings: CropperSettings;
 
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
+  routeName: any;
+  showApoBread: boolean;
 
   cropImage() {
     let img = document.getElementsByName("main_img")[0];
@@ -119,13 +124,31 @@ export class AvailInsightComponent implements OnInit {
       this.availName = params['avail_name'];
       this.titleId = params['titleId'];
       this.titleName = params['title_name'];
-      let str =  this.availName;
-      let res = str.split(" ");
-      if( res[0]==="IN"){
-        this.condition = true;
-      }else if( res[0]==="FN"){
-        this.condition = false;
+      this.seriesName = params['series'];
+      this.seasonNumber = params['seasonNumber'];
+      this.routeName = params['routeName'];
+      if(this.availName!=undefined){
+        let str =  this.availName;
+        let res = str.split(" ");
+        if(res[0] === 'TN' || res[0] === 'TC' || res[0]==="LDC_TBD") {
+          this.tvAvailName = true;
+          }
+          if( res[0]==="IN" || res[0]==="LDC_TBD"){
+          this.condition = true;
+          }else if(res[0]==="FN" || res[0]==="FC" || res[0]=="FT" ||  res[0]==="LDC_TBD") {
+          this.condition = false;
+          }
+          this.showApoBread = false;
+      }else if(this.routeName=='APO'){
+        this.showApoBread = true;
+        this.tvAvailName=false;
+        this.condition = false;
+        this.availName = undefined;
+        //this.titleName = undefined;
       }
+       
+         
+        
     });
     this.httpService.getAvailDetailsView().subscribe(data => {
       this.availDetailsViewList = data;

@@ -459,9 +459,9 @@ $topnav-background-color: #007CC3;
     margin-left: 0%;
     border-right: 1px solid #dadada;
   }
-  .line-last{
-    margin-left: 2%;
-  }
+//   .line-last{
+//     margin-left: 2%;
+//   }
 
  * {
  	margin: 0;
@@ -1024,7 +1024,14 @@ $topnav-background-color: #007CC3;
             margin-right: 20px;
         }
     }
+    i{
+        font-size: 15px;
+    }
+    ::placeholder{
+        font-size: 10px !important;
+    }
 }
+
 .arrow{
     display: flex;
    // margin: auto 0;
@@ -1404,7 +1411,7 @@ p {
 }}
 
 .acc-style-top{
-    margin: 1% 0 0 1%;
+    //margin: 1% 0 0 1%;
     color: rgba(0, 0, 0, 0.6);
     .row{
         background-color: white !important;
