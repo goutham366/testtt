@@ -63,10 +63,10 @@ const routes: Routes = [
         path: 'escalation',
         loadChildren: 'src/app/pages/avail-escalation/avail-escalation.module#AvailEscalationModule'
       },
-      {
-        path:'calendar',
-        loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
-      },
+      // {
+      //   path:'calendar',
+      //   loadChildren: 'src/app/pages/avail-calendar/avail-calendar.module#AvailCalendarModule'
+      // },
       {
         path: 'profile',
         loadChildren: 'src/app/pages/profile-page/profile-page.module#ProfilePageModule'

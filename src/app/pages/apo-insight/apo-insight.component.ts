@@ -28,12 +28,15 @@ export class AvailInsightComponent implements OnInit {
   Comments: string = '';
   multipleList: any = [];
   multipleArray: any = [];
-  availDetailsViewList: any;
+  availDetailsViewList: any = [];
   availName: string;
   titleId: any;
   titleName: string;
   titleStartDate: any;
   titleEndDate: any;
+  availHistoryText: any;
+  availHistory: any;
+
   condition: boolean;
   cropTitle:any;
   cropAccounts:any;
@@ -45,12 +48,19 @@ export class AvailInsightComponent implements OnInit {
   tvAvailName: any;
   seriesName: any;
   seasonNumber: any;
+  lobType: any;
   cropperSettings: CropperSettings;
 
   @ViewChild('cropper', undefined)
   cropper: ImageCropperComponent;
   routeName: any;
   showApoBread: boolean;
+  UniqueAccontsCount: any;
+  episodeNumber: any;
+  sizeVar: any;
+  titleComments: any;
+  comments: any;
+  commentValue: string;
 
   cropImage() {
     let img = document.getElementsByName("main_img")[0];
@@ -70,31 +80,31 @@ export class AvailInsightComponent implements OnInit {
     }
   }
 
-  addMultipleValue(point) {
-    if (!this.multipleList[point]) {
-      this.multipleList[point] = [];
-      this.multipleArray[point] = [];
-      this.removeAddButton = false;
-    }
-    var val = ''
-    switch (point) {
-      case this.COMMENTS:
-        if (this.Comments) {
-          val = this.Comments
-        }
-        this.Comments = '';
-        break;
-    }
-    if (val) {
-      this.multipleList[point].push({ n: val });
-      this.multipleArray[point].push(val);
-    }
-    if (!this.removeButton) {
-      this.removeButton = true;
-    } else {
-      this.removeButton = false;
-    }
-  }
+  // addMultipleValue(point) {
+  //   if (!this.multipleList[point]) {
+  //     this.multipleList[point] = [];
+  //     this.multipleArray[point] = [];
+  //     this.removeAddButton = false;
+  //   }
+  //   var val = ''
+  //   switch (point) {
+  //     case this.COMMENTS:
+  //       if (this.Comments) {
+  //         val = this.Comments
+  //       }
+  //       this.Comments = '';
+  //       break;
+  //   }
+  //   if (val) {
+  //     this.multipleList[point].push({ n: val });
+  //     this.multipleArray[point].push(val);
+  //   }
+  //   if (!this.removeButton) {
+  //     this.removeButton = true;
+  //   } else {
+  //     this.removeButton = false;
+  //   }
+  // }
   constructor(private httpService: HttpService, private route: ActivatedRoute, private router: Router) {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.noFileInput = true;
@@ -111,6 +121,7 @@ export class AvailInsightComponent implements OnInit {
       { stageTitle: "Quality Audit" },
       { stageTitle: "Data Delivery" }
     ];
+   
   }
   ngOnInit() {
     this.showDetails = -1;
@@ -123,11 +134,17 @@ export class AvailInsightComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
       this.titleId = params['titleId'];
+   //   console.log(this.titleId);
       this.titleName = params['title_name'];
-      this.seriesName = params['series'];
+      this.seriesName = params['seriesName'];
       this.seasonNumber = params['seasonNumber'];
+      this.episodeNumber = params['episodeNumber'];
+    //  console.log(this.episodeNumber);
+
+      this.lobType = params['lob'];
       this.routeName = params['routeName'];
-      if(this.availName!=undefined){
+    //  console.log(this.lobType);
+      if(this.availName!="title"){
         let str =  this.availName;
         let res = str.split(" ");
         if(res[0] === 'TN' || res[0] === 'TC' || res[0]==="LDC_TBD") {
@@ -139,34 +156,36 @@ export class AvailInsightComponent implements OnInit {
           this.condition = false;
           }
           this.showApoBread = false;
-      }else if(this.routeName=='APO'){
+      }else if(this.routeName=='APO' || this.availName=="title"){
         this.showApoBread = true;
         this.tvAvailName=false;
         this.condition = false;
-        this.availName = undefined;
+        this.availName = "title";
         //this.titleName = undefined;
       }
        
          
         
     });
-    this.httpService.getAvailDetailsView().subscribe(data => {
-      this.availDetailsViewList = data;
+    this.httpService.getAvailInsightDetails(this.availName, this.titleId, this.lobType).subscribe(data => {
+      this.availDetailsViewList.push(data);
+      // this.availHistory = this.availDetailsViewList[0].AvailHistory;
+     // console.log(this.availDetailsViewList[0].AvailHistory);
       this.titleStartDate = this.availDetailsViewList.StartDate;
-      this.titleEndDate = this.availDetailsViewList.DueDate
-      console.log(this.availDetailsViewList);
+      this.titleEndDate = this.availDetailsViewList.DueDate;
+      this.comments=this.availDetailsViewList.AvailComments;
     })
 
 
-    this.route.queryParams
-        
-    .subscribe(params => {
+    this.route.queryParams.subscribe(params => {
         this.cropTitle = params.title;
         this.cropAccounts = params.accounts;
         this.cropCountries = params.countries;
         this.cropLanguages = params.languages;
-        console.log('Avails Details data', this.cropAccounts);
+      //  console.log('Avails Details data', this.cropAccounts);
     });
+
+
 
     this.availsList = [
       {
@@ -280,6 +299,12 @@ export class AvailInsightComponent implements OnInit {
       event.srcElement.classList.add("clicked");
     }
   }
+  sizePlus(){
+    this.sizeVar=this.sizeVar+1;
+   }
+   sizeMinus(){
+    this.sizeVar=this.sizeVar-1;
+   }
   showcountriesDiv(event, index) {
     this.showDetails = index;
     const hashClass = event.target.classList.contains("clicked");
@@ -339,17 +364,48 @@ export class AvailInsightComponent implements OnInit {
   reload() {
     location.reload();
   }
-
+  openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+  }
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    
+  }
+  addComment(trigg, newComment: string) {
+    
+    if(trigg.keyCode==13){
+     
+      if (newComment) {
+        var toDate = Date();
+        if(this.comments == undefined){
+          this.comments = [{}];
+          
+          this.comments[0] = {"CommentBy": "John Paul", "TimeStamp": toDate,"CommentDescription":newComment};
+        }else{
+          var len = this.comments.length;
+          this.comments[len] = {"CommentBy": "John Paul", "TimeStamp": toDate,"CommentDescription":newComment};
+        }
+        this.commentValue = "";
+        
+      }
+  }
+  }
+  getProgress(title) {
+    var l = title.length;
+    var result= this.getProgressSwitch(title,l);
+    return result;
+  }
   getProgressFill(title) {
-    if(title==""){
+    var l = title.length;
+    if(title[l-1].StatusMessage==""){
       return -1
     }else{
-      var result= this.getProgressSwitch(title);
+      var result= this.getProgressSwitch(title,l);
       return result;
     }
   }
-  getProgressSwitch(title){
-    switch (title) {
+  getProgressSwitch(title,l){
+    switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
       case "Data Collation": this.progress = 1;
@@ -363,6 +419,26 @@ export class AvailInsightComponent implements OnInit {
 
     }
     return this.progress;
+  }
+
+
+  getCompleted(n) {
+    var result;
+   
+
+      result = (this.availDetailsViewList[n].AccontsCompletedCount * 100) / this.availDetailsViewList[n].UniqueAccontsCount;
+       
+   
+    return result;
+  }
+  getPending(n) {
+    var result;
+    
+      result = (this.availDetailsViewList[n].AccontsPendingCount * 100) / this.availDetailsViewList[n].UniqueAccontsCount;
+       
+
+   
+    return result;
   }
 
 }

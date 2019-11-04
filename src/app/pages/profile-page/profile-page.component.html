@@ -1,33 +1,39 @@
-<div class="container-fluid">
+<div class="container">
 
   <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <div class="row"><label class="mainUserLabel">{{userName}}</label></div>
+      <!-- <div class="col-md-2"></div> -->
+      <div class="col-md-12">
+        
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-8 border pt-2">
+              <!-- <div class="row"><label class="mainUserLabel">{{userName}}</label></div> -->
             <div class="flex-container">
-              <div class="col-md-5">
+              <div class="user-profile">
                 <a >
-                  <img class="profDim" src="assets/images/dummy.jpg">
+                  <img class="profDim" src="assets/images/userImage.jpg">
                 </a>
               </div>  
-              <div class="col-md-7">
-                <div class="row nameAlign">{{userName}}</div> 
-                <div class="row"><span class=""><img class="" src="assets/images/baseline_work_outline_black_18dp.png">{{userRole}}</span></div>
-                <div class="row"><span class=""><img class="" src="assets/images/baseline_mail_outline_black_18dp.png">{{userEmail}}</span></div>
+              <div class="user-data pt-2 pb-2 pl-3 pr-3">
+                <div class="nameAlign">{{userName}}</div> 
+                <div class="user-details pb-2">
+                <span class=""><img class="" src="assets/images/baseline_work_outline_black_18dp.png"> {{userRole}}</span>
+                <span class=""><img class="" src="assets/images/baseline_mail_outline_black_18dp.png"> {{userEmail}}</span>
+                </div>
                 <div  class="updateBtn">
-                  <button class="updBtnColor" type="button" data-toggle="modal" data-target="#myUpdateModal" mat-raised-button [disabled]="false">Update Password</button>
+                  <button class="btn updBtnColor p-1" type="button" data-toggle="modal" data-target="#myUpdateModal" [disabled]="false">Update Password</button>
                 </div> 
               </div>
             </div> 
+            <!-- <div class="nameAlign dummyClass"></div>  -->
+            <div style="margin-top: -3%;" class="svg-chart"> 
+              <p>Engagement</p>
+              <div id = "svgcontainer">
 
-            <div id = "svgcontainer">
-
-            </div>
+              </div>
+          </div>
             <br> 
             <div class="flex-container">
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                   <div class="row nameAlign">Line Of Business</div>
                   <div class="row pt-1"><span class=""><img class="" src="assets/images/baseline_theaters_black_18dp.png"> Film - New</span></div>
                   <div class="row pt-1"><span class=""><img class="" src="assets/images/baseline_theaters_black_18dp.png"> Film - Catalog</span></div>
@@ -36,7 +42,7 @@
                   <div class="row pt-1"><span class=""><i class="fa fa-music icon-music" aria-hidden="true"></i> ITunes</span></div>
                   <div class="row pt-1"><span class=""><img class="" src="assets/images/baseline_fast_forward_black_18dp.png"> Accelerated Pre Order</span></div>
                   <div class="row pt-1"><span class=""><img class="" src="assets/images/baseline_folder_special_black_18dp.png"> AdHoc</span></div>
-                </div>  
+              </div>  
               <div class="col-md-6">
                 <div class="row nameAlign">Group</div>
                 <div class="row pt-1 opac">#datanalyst</div>
@@ -62,143 +68,94 @@
                   </label>
                 </div>
 
-              </div>
+              </div> -->
+              <ul class="">
+                  <li class="nameAlign">Line Of Business</li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_theaters_black_18dp.png"> Film - New</span></li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_theaters_black_18dp.png"> Film - Catalog</span></li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_personal_video_black_18dp.png"> Television - Catalog</span></li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_personal_video_black_18dp.png"> Television - Day After</span></li>
+                  <li class="pt-1"><span class=""><i class="fa fa-music icon-music" aria-hidden="true"></i> ITunes</span></li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_fast_forward_black_18dp.png"> Accelerated Pre Order</span></li>
+                  <li class="pt-1"><span class=""><img class="" src="assets/images/baseline_folder_special_black_18dp.png"> AdHoc</span></li>
+              </ul>
+              <ul class="">
+                  <li class="nameAlign">Group</li>
+                  <li class="pt-1 opac">#datanalyst</li>
+                  <li class="pt-1 opac">#infydatanalyst</li>
+                  <li class="pt-1 opac">#qcsspecialist</li>
+                  <li class="pt-1 opac">#superuser</li>
+                  <li class="pt-1 opac">#adminuser</li>
+              </ul>
+              <ul class="">
+                  <li class="nameAlign">Emails</li>
+                 <li class="pt-1 flexSwitchTog">
+                    <span class="opac">Notification</span> 
+                   
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="pt-1 flexSwitchTog">
+                    <span class="opac">Risk</span>
+                   
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="pt-1 flexSwitchTog">
+                      <span class="opac">Red Alert</span>
+                     
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </li>
+              </ul>
             </div>      
           </div>
-          <div class="col-md-7">
+          <div class="col-md-4">
             <div class="row">
-              <div class="col-md-12">
-                <div class="container mt-3">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-toggle="tab" href="#comment">Comments</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#log">Log</a>
-                    </li>
+                <ul class="comment-box">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Comments">Comments</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#Log">Log</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="Comments">
+                        <div class="comment-scroll">
+                        <li class="comment-style" *ngFor="let comment of comments">
+                          <div class="d-flex user-details">
+                            <span>JohnPaul</span>
+                            <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                          </div>
+                          {{comment.name}}
+                        </li>
+                        </div>
+                        
+                        
+                        <!-- <button (click)="showInput()">Add</button> -->
+                      </div>
+                      <div class="tab-pane" id="Log">
+                        <li class="" *ngFor="let logD of logsDetails">
+                          <div class="d-flex user-details">
+                            <span>{{logD.name}}</span>
+                            <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
+                          </div>
+                          <span>{{logD.val}}</span>
+                          
+                        </li>
+                        <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
+                                    <button (click)="addComment(newComment.value)">Add</button> -->
+                      </div>
+                    </div>
                   </ul>
-      
-                  <!-- Tab panes -->
-                  <div class="tab-content cmnt-list-scroll">
-                    <div id="comment" class="container tab-pane active">
-                      <ul id="comments-list" class="comments-list">
-                        <li>
-                          <div class="comment-main-level">
-                            <div class="comment-box">
-                              <div class="comment-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">John Paul</a></h6>
-                                <span class="date">01/12 11:24</span>
-                              </div>
-                              <div class="comment-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt eros nec ante laoreet mattis. Suspendisse sollicitudintortor
-                                id nulla dictum, at congue turpis tristique. Maecenas eget consectetur tortor. Donec ut maurissit
-                                amet ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus</div>
-                            </div>
-                          </div>
-                          <ul class="comments-list reply-list">
-                            <li>
-                              <div class="comment-box">
-                                <div class="comment-head">
-                                  <h6 class="comment-name"><a href="http://creaticode.com/blog">Samwell Tarly</a></h6>
-                                  <span class="date">01/12 12:16</span>
-                                </div>
-                                <div class="comment-content">
-                                  Ante auctor elementum. Morbi at euismod sem. Mauris tincidunt pretium tellus vitae accumsan</div>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-      
-                        <li>
-                          <div class="comment-main-level">
-                            <div class="comment-box">
-                              <div class="comment-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Emilia Targaryen</a></h6>
-                                <span class="date">01/13 10:15</span>
-                              </div>
-                              <div class="comment-content">
-                                Cras tempor, ante ac suscipit venenatis, neque nibh molestie libero, non rutrum risus dui quis ante. Cras tristique, sapienac
-                                fermentum laoreet, turpis quam rutr tellus, efficitur volutpat arcu lectus nec justo. ut ornare
-                                neque,sit amet ultricies sapien. Cras sed ornare lorem, finibus laoreet urna. Nullam efficitur,
-                                massa a vestibulum interdum, lacus odio facilisis velit, eu rhoncus tellus risus sit amet lacus.
-                                Proin volutpat justo veltincidunt mollis. Cras aliquam, elit ornare tempus</div>
-                            </div>
-                          </div>
-                        </li>
-      
-                        <li>
-                          <div class="comment-main-level">
-                            <div class="comment-box">
-                              <div class="comment-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Emilia Targaryen</a></h6>
-                                <span class="date">01/13 10:15</span>
-                              </div>
-                              <div class="col-md-12">
-                                <label class="comment-content" *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
-                              </div>
-                              <div class="comment-content">
-                                <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
-                                <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-      
-                    <div id="log" class="container tab-pane fade"><br>
-                      <ul id="comments-list" class="comments-list">
-                        <li>
-                          <div class="comment-main-level">
-                            <div class="comment-box">
-                              <div class="comment-log-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">John Paul</a></h6>
-                                <span class="date">01/12 11:24</span>
-                              </div>
-                              <div class="comment-content">
-                                <img src="assets/images/a_star_is_born_big.jpg" alt="events">
-                                <span><p>Removed</p>
-                                  <p>Thumbnail Image</p></span>
-                              </div>
-                            </div>
-                          </div>
-                          <ul class="comments-list reply-list">
-                            <li>
-                              <div class="comment-box">
-                                <div class="comment-log-head">
-                                  <h6 class="comment-name"><a href="http://creaticode.com/blog">Samwell Tarly</a></h6>
-                                  <span class="date">01/12 12:16</span>
-                                </div>
-                                <div class="comment-content">
-                                  <span><p>Edited</p>
-                                    <p>Title: The Lego Movie 2</p></span>
-                                </div>
-                                
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-      
-                        <li>
-                          <div class="comment-main-level">
-                            <div class="comment-box">
-                              <div class="comment-log-head">
-                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Emilia Targaryen</a></h6>
-                                <span class="date">01/13 10:15</span>
-                              </div>
-                              <div class="comment-content">
-                                <img src="assets/images/a_star_is_born_big.jpg" alt="events">
-                                <span><p>Uploaded</p>
-                                  <p>Thumbnail Image</p></span>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>  
             </div>
         </div>
@@ -217,7 +174,7 @@
               <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 primaryColor">
                 
                 <a class="profileDimUpdatePass">
-                  <img  src="assets/images/dummy.jpg">
+                  <img  src="assets/images/userImage.jpg">
                 </a>
               
               </div>

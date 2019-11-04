@@ -46,7 +46,7 @@
                     <ul>
                       <li>
                         <h6 class="title-text" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}" routerLink="/pages/metadata"
-                        [queryParams]="{avail_name: availName,  title_name: x.GlobalTitle}"> {{x.GlobalTitle}}</h6>
+                        [queryParams]="{avail_name: availName,  title_name: x.GlobalTitle,lob:x.LOB,avail_name: availName,titleId:x.TitleId}"> {{x.GlobalTitle}}</h6>
                       </li>
                       <li class="cust-text">
                         <img src="assets/images/Icons/PNG/calendar.png">{{x.StartDate | date:'MM/dd'}} -
@@ -57,7 +57,7 @@
                     <div class="circle" (click)="showTitleStatus(i)">
                       <circle-progress class="round-outline" [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                         [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"
-                        routerLink="/pages/insight" [queryParams]="{avail_name: availName,  title_name: x.GlobalTitle}"></circle-progress>
+                        routerLink="/pages/insight" [queryParams]="{avail_name: availName,  title_name: x.GlobalTitle, titleId: x.TitleId, lob: 'ITUNES'}"></circle-progress>
                     </div>
                   </div>
                   <div class="cus-text text-col" *ngIf="showStatus!==i">

@@ -44,11 +44,11 @@
 
                                     </div>
                                     <div>
-                                        <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i">
+                                        <div class="card-body" [attr.id]="'undoBtn'+i" *ngIf="account !== i"> 
                                             <div class="card-content card-flex" *ngIf="showStatus!==i">
                                                 <ul>
                                                     <li>
-                                                        <h6 class="title-text" routerLink="/pages/metadata" [queryParams]="{title_name: x.GlobalTitle, avail_name: availName}" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}"> {{x.GlobalTitle}}</h6>
+                                                        <h6 class="title-text" routerLink="/pages/metadata" [queryParams]="{title_name: x.GlobalTitle, lob:x.LOB,avail_name: availName,titleId:x.TitleId, lob: 'FILMS'}" data-toggle="tooltip" data-placement="left" title="{{x.GlobalTitle}}"> {{x.GlobalTitle}}</h6>
                                                     </li>
                                                     <li class="cust-text">
                                                         <!-- <img src="assets/images/Icons/PNG/calendar.png">
@@ -62,7 +62,7 @@
                                                 <div class="circle" (click)="showTitleStatus(i)">
                                                     <circle-progress class="round-outline" [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2"
                                                         [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [animation]="true"
-                                                        [animationDuration]="1000" [queryParams]="{ title: x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage, accounts: x.AccontsCount, countries: x.CountriesCount, languages: x.LanguagesCount, title_name: x.GlobalTitle, avail_name: availName}" routerLink="/pages/insight"></circle-progress>
+                                                        [animationDuration]="1000" [queryParams]="{title_name: x.GlobalTitle, avail_name: availName, titleId: x.TitleId, lob: 'FILMS'}" routerLink="/pages/insight"></circle-progress>
                                                 </div>
                                             </div>
                                             <div class="cus-text text-col" *ngIf="showStatus!==i">

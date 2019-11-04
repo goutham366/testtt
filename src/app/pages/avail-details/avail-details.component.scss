@@ -342,42 +342,38 @@ $topnav-background-color: #007CC3;
     cursor: pointer;
     font-family: Roboto, Regular;
   }
+  .legend-margin {
+    margin: 0px -1px 2px 5px;
+  }
   .complete-legend {
     height: 0.4em;
     width: 0.4em;
     background: #0AAD43;
     border-radius: 0;
-    margin: -6px;
-    margin-top: 5px !important;
   }
   .pending-legend {
     height: 0.4em;
     width: 0.4em;
     background: #007CC3;
     border-radius: 0;
-    margin: -1px 0px 0px 0px;
-    margin-top: 1px !important;
+    
+  }
+  .pending-legend-margin {
+    margin: 0px 0px 0px 8px;
   }
   .legend-text {
     color: #7E7E7E;
     font-size: 8px;
-    margin: -9px 0px 0px -5px;
+    margin: -3px;
     font-family: Roboto;
-    margin-top: 2px !important;
-   
 }
 .legend-pending-text {
     color: #7E7E7E;
     font-size: 8px;
-    margin: -4px 31px 0px -4px;
+    margin: -3px;
     font-family: Roboto;
-    background-color: aliceblue;
-    margin-top: -2px !important;
 }
-.status_legend{
-    display: flex;
-    justify-content: center;
-    }
+
   .v-align {
       vertical-align: text-bottom;
   }
@@ -429,9 +425,9 @@ $topnav-background-color: #007CC3;
     display: flex;
     font-size: 12px;
     font-family: Roboto;
-    margin-left: 12px !important;
-    margin: -18px 0px 0px 25px;
-    color: rgb(196, 195, 195);
+    margin-left: 40px !important;
+    margin: -18px 0px 0px 0px;
+    color: #c4c3c3;
     // justify-content: space-between;
     // margin-right: 130px;
     
@@ -487,9 +483,7 @@ $topnav-background-color: #007CC3;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 0px 200px 0px 200px;
-    background-color: aliceblue;
-    margin-left: 100%;
+    margin:-2% 10% 0% -4%;
 }
 .progress-main{
         width: 77%;
@@ -550,7 +544,7 @@ body {
     width: 100%;
 }
 #rightContain .comments-list li {
-	margin-bottom: 15px;
+	//margin-bottom: 15px;
 	display: block;
 	position: relative;
 }
@@ -678,7 +672,7 @@ body {
     position: relative;
     font-family: Roboto, Regular;
     float: left;
-    margin: 1px 0px -11px 0px;
+    margin: 1px 100px -11px 0px;
 }
 
 #rightContain .comment-box .comment-content {
@@ -931,7 +925,12 @@ ul.timeline > li:before {
 .containerFlex{
     display: flex;
     background-color: aliceblue;
+    padding: 25px 0px 0px 0px;
+    margin-top: -22px;
+    margin-left: -1%;
     box-shadow: grey;
+    border: solid 1px;
+    color: gainsboro;
         .bordering{
             border-style: none none groove none;
             border-color: #f7ecec1c;
@@ -1011,12 +1010,15 @@ ul.timeline > li:before {
     margin-top: -11px !important;
     flex-direction: row;
     position: relative;
-    margin: 2px 30px 0px 0px;
+    margin: 2px 100px 0px 0px;
     background-color: aliceblue;
     margin-left: 80px;
-   
-} 
-
+   } 
+   .legend{
+    display: flex;
+    position: relative;
+    left: 75%;
+}
 
 
 // .block{
@@ -1081,7 +1083,7 @@ ul.timeline > li:before {
     font-size: 10px;
     font-family: roboto;
     color: #000000;
-    margin: 0 0 0 -1.8%;
+    margin: 0 0 0 -20px;
     .breadcrumb-item{
         a{
             margin-right: 20px;
@@ -1102,15 +1104,15 @@ ul.timeline > li:before {
 .main-title{
     position: relative;
     display: flex;
-    margin: 15px 0px 4px 15px;
-    font-size: 12px;
+    margin: 10px 0px 0px 0px;
+    font-size: 14px;
     font-family: Roboto;
     color: #007CC3;
 }
 .main-calender{
     position: relative;
     display: flex;
-    margin: 10px 0px 4px 15px;
+    margin: 10px 0px 4px 0px;
     font-size: 12px;
     font-family: Roboto;
     color: #000000;
@@ -1123,7 +1125,7 @@ ul.timeline > li:before {
  font-family: Roboto;
  color: #0AAD43;
 }
-.date{
+#rightContain .date{
     float: right !important;
     font-size: 12px;
     font-family: Roboto,Regular;
@@ -1166,6 +1168,7 @@ ul.timeline > li:before {
         border: none;
         outline: none;
         background: transparent;
+        height: 31px;
         :focus{
             outline: transparent;
         }
@@ -1189,3 +1192,54 @@ ul.timeline > li:before {
         cursor: pointer;
       }
   }
+  .avail-status {
+    float: right; 
+    position: absolute;
+    top: 20%;
+    left: 13%;
+}
+.current {
+    position: absolute;
+    color: green;
+  }
+  .progressBar{
+    //margin: 6px 42px 0px 0px;
+    margin-left: 0px;
+    width: 80%;
+     .progress {
+        height:23px;
+        width:100%;
+        .completeColor{
+            background: rgba(10, 173, 67, 1);
+            color: #fff;
+            padding-left: 3px;
+            display: flex;
+            align-items: center;
+        }
+        .pendingColor{
+            background:rgba(0, 124, 195, 1);
+            color: #fff;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+        }  
+    }
+   
+}
+.progress-main1{
+    width: 100%;
+}
+.status-color {
+    color: black;
+}
+.float-right{
+    float: right!important;
+    position: relative;
+    display: flex;
+    top: 10px;
+}
+
+.outline{
+    border: solid 1px;
+    color: gainsboro;
+}

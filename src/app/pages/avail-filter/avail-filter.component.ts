@@ -107,11 +107,11 @@ export class AvailFilterComponent implements OnInit {
   clickDate(c) {
     if (!c) {
       this.startDate = `01/01/` + this.startYear;
-      console.log('this.startDate', this.startDate);
+    //  console.log('this.startDate', this.startDate);
 
     } else {
       this.myDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
-      console.log('this.myDate', this.myDate);
+     // console.log('this.myDate', this.myDate);
     }
   }
 
@@ -123,7 +123,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight1 = true;
         }
-        console.log("", "654545");
+      //  console.log("", "654545");
         break;
       }
       case 2: {
@@ -132,7 +132,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight2 = true;
         }
-        console.log("", "5757");
+      //  console.log("", "5757");
         break;
       }
       case 3: {
@@ -141,7 +141,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight3 = true;
         }
-        console.log("", "5757");
+    //    console.log("", "5757");
         break;
       }
       case 4: {
@@ -257,7 +257,7 @@ export class AvailFilterComponent implements OnInit {
   }
 
   uploadDoc() {
-    console.log('uploadDoc')
+    //console.log('uploadDoc')
     this.showUpload = true;
   }
   upload(files: File[], childMessage) {
@@ -271,7 +271,7 @@ export class AvailFilterComponent implements OnInit {
     this.relaseDocumentName = this.filename.includes('Release');
     this.itunesDocumentName = this.filename.includes('iTunes');
     this.showProgress = true;
-    console.log(files[0].name, 'filename')
+ //   console.log(files[0].name, 'filename')
     var extension = this.filename.substr(this.filename.lastIndexOf('.'));
     if ((extension.toLowerCase() === ".xlsx")) {
       if (files[0].size <= 31457280) {
@@ -282,7 +282,7 @@ export class AvailFilterComponent implements OnInit {
 
             this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
               this.showProgress = true;
-              console.log("second call data : " + data);
+          //    console.log("second call data : " + data);
               this.secndUrlResp = data;
               if (data['status'] = "success") {
                 this.showProgress = false;
@@ -318,7 +318,7 @@ export class AvailFilterComponent implements OnInit {
               this.successCase = false;
               this.successMessage = null;
               this.errorMessage = error.error.message;
-              console.log('S3 Doc Error', error);
+              // console.log('S3 Doc Error', error);
             }
           )
         }
@@ -376,7 +376,7 @@ export class AvailFilterComponent implements OnInit {
           this.successCase = true;
           this.errorCase = false;
           this.showExportProgress = false;
-          console.log('entered');
+          // console.log('entered');
           this.httpService.exporS3ToLcal('APO').subscribe(data => {
             this.apiResp = data;
             this.apiURL = this.apiResp.url;

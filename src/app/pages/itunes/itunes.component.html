@@ -17,7 +17,7 @@
                         <div class="current" [ngStyle]="getOverlayStyle()">{{itune.TitleData.AvailPercentage}}%</div>
                         <round-progress [current]="itune.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
                             [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
-                            [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: itune.AvailName }" routerLink="/pages/details"></round-progress>
+                            [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: itune.AvailName, page:'ITUNES' }" routerLink="/pages/details"></round-progress>
 
                     </span>
 

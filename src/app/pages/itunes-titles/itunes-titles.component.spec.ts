@@ -7,8 +7,9 @@ import { HttpClientModule } from '../../../../node_modules/@angular/common/http'
 import { HttpService } from '../../services/http.service';
 import { HttpTestingController, HttpClientTestingModule } from '../../../../node_modules/@angular/common/http/testing';
 import { ItunesTitlesComponent } from './itunes-titles.component';
+import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling';
 
-fdescribe('ItunesTitlesComponent', () => {
+describe('ItunesTitlesComponent', () => {
   let component: ItunesTitlesComponent;
   let fixture: ComponentFixture<ItunesTitlesComponent>;
   let service: HttpService;
@@ -61,7 +62,7 @@ fdescribe('ItunesTitlesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ItunesTitlesComponent, AvailFilterComponent],
-      imports: [RouterTestingModule, MatProgressBarModule, HttpClientModule, HttpClientTestingModule, NgCircleProgressModule.forRoot({
+      imports: [RouterTestingModule,ScrollingModule, MatProgressBarModule, HttpClientModule, HttpClientTestingModule, NgCircleProgressModule.forRoot({
         "backgroundPadding": 7,
         "radius": 28,
         "space": -2,

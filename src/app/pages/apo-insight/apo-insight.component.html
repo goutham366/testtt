@@ -1,518 +1,483 @@
-<div class="acc-style-top">
-  <div class="row" *ngIf="!tvAvailName && !showApoBread">
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a #tref>{{availName}}</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item breadcrumb-title">
-        <a #tref>{{titleName}}</a>
-      </li>
-    </ul>
+<!-- <div class="flex-box">
+  <div class="flex-description">
+
   </div>
-  <div class="row" *ngIf="tvAvailName">
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a [routerLink]="['/pages/television']">Avails</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a #tref>{{availName}}</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item">
-        <a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}" #tref>Episodes</a>
-      </li>
-      <i class="fa fa-angle-right arrow"></i>
-      <li class="breadcrumb-item breadcrumb-title">
-        <a #tref>{{titleName}}</a>
-      </li>
-    </ul>
+  <div class="flex-description">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+    </nav>
   </div>
-  <div *ngIf="showApoBread">
-      <nav aria-label="breadcrumb" >
-          <ol class="breadcrumb m-0 pt-2 pb-2">
-              <li class="" aria-current="page"><a routerLink="/pages/apo/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
-              <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
-              </ol> 
-        </nav>
-   </div>
-  <div class="card  top-main">
-    <div class="d-flex top-bar">
-      <div class="flex-description box-1">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          <img name="main_img" class="img-card" src="assets/images/lego.jpg" (click)="cropImage()">
-        </button>
-      </div>
-      <div class="flex-description box-2">
-        <div class="d-flex">
-          <div class="card-data">
-            <div class="card-content">
-              <h6 class="main-title">{{titleName}}</h6>
-              <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">02/22 - 03/19</h6>
-            </div>
-            <div class="circle circle-percentage">
-              <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
-            </div>
-          </div>
-          <div class="card-menu">
-            <div class="container mt-3">
-              <ul class="nav nav-tabs">
-                <li class="nav-item mr-2">
-                  <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark" data-toggle="tab" href="#metaData" routerLink="/pages/metadata"
-                  [queryParams]="{avail_name: availName, title_name: titleName, routeName : routeName, series: seriesName, seasonNumber: seasonNumber}">Metadata</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-description box-3">
-        <i class="material-icons">vertical_align_center</i>&nbsp;&nbsp;&nbsp;&nbsp;
-        <i class="material-icons" (click)="reload()">replay</i>&nbsp;&nbsp;&nbsp;&nbsp;
-        <i class="material-icons">title<sup>+</sup></i>&nbsp;&nbsp;&nbsp;&nbsp;
-        <i class="material-icons">title<sup>-</sup></i>
-      </div>
-    </div>
-  </div> 
-</div>
-
-<div class="" >
-  <div class="row legend">
-    <div class="legend-status">
-      <div class="complete-legend"></div>
-      <div class="col-md-6 legend-text">Completed</div>
-    </div>
-    <div class="legend-status">
-      <div class="pending-legend"></div>
-      <div class="col-md-3 legend-pending-text">Pending</div>
-    </div>
-  </div>
-</div>
-
-<div class="acc-style">
-  <div class="row">
-    <div class="col-md-5 line-first">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-4">
-            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
-              <img src="assets/images/Icons/SVG/baseline-add_shopping_cart-24px.svg">&nbsp;59 Accounts</a>
-            <!-- <strong [hidden]="showDetails">Titles</strong> -->
-            <div class="progress progress-main">
-              <div class="progress-bar bg-success" style="width: 70%">
-                70
-              </div>
-              <div class="progress-bar bg-pending" style="width: 30%">
-                30
-              </div>
-            </div>&nbsp;&nbsp;
-
-            <div class="row row-list">
-              <div class="col-md-12 avail-list">
-                <div *ngFor="let x of availDetailsViewList">
-                  <div *ngFor="let y of x.avail_details">
-                    <span *ngFor="let z of y.titlesDetails" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
-                      <ul>
-                        <li>{{z.title_name}} </li>
-                      </ul>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-4">
-            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
-              <i class="material-icons md-18 md-grey v-align">language</i>&nbsp; 32 Countries</a>
-            <div class="progress progress-main">
-              <div class="progress-bar bg-success" style="width: 50%">
-                16
-              </div>
-              <div class="progress-bar bg-pending" style="width: 50%">
-                16
-              </div>
-            </div>&nbsp;&nbsp;
-            <div class="row row-list">
-              <div class="col-md-12 avail-list">
-                <div *ngFor="let x of availDetailsViewList">
-                  <div *ngFor="let y of x.avail_details">
-                    <span *ngFor="let z of y.countries" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
-                      <ul>
-                        <li>{{z.country_name}} </li>
-                      </ul>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <a class="avail-details text-head" (click)="showDetails3 = !showDetails3">
-              <i class="material-icons md-18 md-grey v-align">translate</i>&nbsp; 28 Languages</a>
-            <div class="progress progress-main">
-              <div class="progress-bar bg-success" style="width: 20%">
-                8
-              </div>
-              <div class="progress-bar bg-pending" style="width: 80%">
-                20
-              </div>
-            </div>&nbsp;&nbsp;
-            <div class="row row-list">
-              <div class="col-md-12 avail-list">
-                <div *ngFor="let x of availDetailsViewList">
-                  <div *ngFor="let y of x.avail_details">
-                    <span *ngFor="let z of y.languages" [ngClass]="[z.status == 'completed' ? 'progress bg-success' : 'progress']">
-                      <ul>
-                        <li>{{z.language_name}} </li>
-                      </ul>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div>&nbsp;</div>
-
-        <!-- progress bar -->
-        <div style="margin: 20px 21px 24px 5px;" [hidden]="showDetails3">
-          <div class="progress">
-            <div [ngStyle]="{'width.%': width}" class="inner-progress">100</div>
-          </div>
-        </div>
-        <!-- progress bar -->
-      </div>
-
-    </div>
-    <div class="col-md-1 line-middle"></div>
-
-    <div class="col-md-6 line-last">
-      <div class="row comman-row">
-        <div class="col-md-12 block">
-          <!-- <div *ngIf="showStatus">-->
-          <h6 class="status-text">Status</h6>
-          <p class="status">
-            <b>-</b></p>
-           
-          <p class="status-count">Pending Translations</p>
-          <p class="status">
-            <b>-</b></p>
-            
-          <p class="status-count">Pending Ratings</p>
-          <p class="status">
-            <b>-</b></p> 
-           
-          <p class="status-count">Pending Clarifications</p>
-          <p class="status">
-            <b>-</b> </p>
-         
-          <p class="status-count">Escalations</p>
-          <!-- </div>  -->
-        </div>
-      </div>
-      <br>
-
-      <div class="row block">
-        <div>
-          <h6 class="status-text">History</h6>
-        </div>
-        <div class="col-md-12 avail-card">
-          <div class="col-md-6" *ngFor="let avail of availsList; let i = index">
-            <div class="card text-white mb-3 shadow-sm card-width complete-card">
-              <div class="c-pointer" (click)="showDetails = null">
-
-              </div>
-
-              <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
-                <span class="avail-status c-pointer">
-                  <span class="fa-stack">
-                    <i class="fa fa-circle fa-stack-2x icon-background4"></i>
-                    <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
-                    <i class="fa fa-check fa-stack-1x custom-fa"></i>
-                  </span>
-                  <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                    [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
-                </span>
-                <!-- <br> -->
-                <span>
-                  <p class="avail-title history-card">{{avail.avail_title}}</p>
-                  <p class="avail-date history-card">
-                    <img src="assets/images/Icons/PNG/calendar.png"> {{avail.date_of_arrival}} -
-                    <span>{{avail.date_of_delivery}}</span>
-                  </p>
-                </span>
-
-              </div>
-              <div class="card-body" *ngFor="let detail of avail.avail_details">
-                <div class="equalHMWrap" *ngIf="showStatus !==i">
-                  <span id="titlesDiv">
-                    <span class="avail-details titlesBox">
-                      <img src="assets/images/Icons/PNG/titles.png"> {{detail.titlesCount}}
-                      <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
-                    </span>
-                  </span>
-                  <span id="countriesDiv">
-                    <span class="avail-details countriesBox">
-                      <i class="material-icons md-18 md-grey v-align">language</i> {{detail.countriesCount}}
-                      <span *ngIf="showDetails == i">{{showCountriesText}}</span>
-                    </span>
-                  </span>
-                  <span id="languagesDiv">
-                    <span class="avail-details languagesBox">
-                      <i class="material-icons md-18 md-grey v-align">translate</i> {{detail.languagesCount}}
-                      <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
-                    </span>
-                  </span>
-                </div>
-                <!-- progress bar -->
-                <div class="progressBar" *ngIf="showDetails===i && showTitlesText == 'Titles'">
-                  <div class="progress">
-                    <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                      {{detail.titlesCompleted}}
-                    </div>
-                    <div [ngStyle]="{'width.%': pendingWidth}">
-                      {{detail.titlesPending}}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="progressBar" *ngIf="showDetails===i && showCountriesText == 'Countries'">
-                  <div class="progress">
-                    <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                      {{detail.countriesCompleted}}
-                    </div>
-                    <div [ngStyle]="{'width.%': pendingWidth}">
-                      {{detail.countriesPending}}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="progressBar" *ngIf="showDetails===i && showLanguagesText == 'Languages'">
-                  <div class="progress">
-                    <div class="bg-success" [ngStyle]="{'width.%': completedWidth}">
-                      {{detail.languagesCompleted}}
-                    </div>
-                    <div [ngStyle]="{'width.%': pendingWidth}">
-                      {{detail.languagesPending}}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="legend-margin" *ngIf="showDetails===i ">
-                  <div class="row">
-                    <div class="col-md-1 mt-1">
-                      <div class="complete-legend"></div>
-                    </div>
-                    <div class="col-md-5 legend-text">Completed</div>
-
-                    <div class="col-md-2 mt-1">
-                      <div class="pending-legend pending-legend-margin"></div>
-                    </div>
-                    <div class="col-md-2 legend-pending-text">Pending</div>
-                  </div>
-                  <!-- progress bar -->
-                </div>
-                <div class="cust-text" *ngIf="showStatus== i">
-                  <span class="status-text" (click)="showStatus = null">
-                    <strong class="status-font">Status</strong>
-                  </span>
-                  <p class="status">
-                    <b>{{detail.pending_avail_translations_count}}</b> Translations Available</p>
-                  <div style="text-align: center; margin: 9px;">
-                    <button type="button" class="btn btn-success btn-sm">Ingest&nbsp;&nbsp;
-                      <i class="material-icons v-align">send</i>&nbsp;
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-
-      <div class="row comman-row">
-        <div class="col-md-3">
-          <div class="container">
-            <div class="row block-timeline">
-              <div class="col-md-6 offset-md-3">
-                <h6 class="status-text">Timeline</h6>
-                <br>
-                <ul class="timeline">
-                  <li>
-                    <a href="#" class="timeline-date">2/22/2019</a>
-                    <p class="timeline-status"> Announced</p>
-                  </li>
-                  <li>
-                    <a href="#" class="timeline-date">03/03/2019</a>
-                    <p class="timeline-status">Data Collation</p>
-                  </li>
-                  <li>
-                    <a href="#" class="timeline-date">03/08/2019</a>
-                    <p class="timeline-status">Quality Audit</p>
-                  </li>
-                  <li>
-                    <a href="#" class="timeline-date">03/19/2019</a>
-                    <p class="timeline-status">Data Delivery</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-9 block-timeline">
-          <div class="container">
-            <ul class="nav nav-tabs">
-              <li class="nav-item text-log">
-                <a class="nav-link active mr-2" data-toggle="tab" href="#comment">Comments</a>
-              </li>
-              <li class="nav-item text-log">
-                <a class="nav-link text-dark" data-toggle="tab" href="#log">Log</a>
-              </li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content cmnt-list-scroll">
-              <div id="comment" class="container tab-pane active">
-                <ul id="comments-list" class="comments-list">
-                  <li>
-                    <div class="comment-main-level comment-box" *ngFor="let x of availDetailsViewList">
-                      <div class="comment-box" *ngFor="let y of x.avail_details">
-                        <div class="comment-head" *ngFor="let z of y.commentDetails">
-                          <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">{{z.name}}</a>
-                          </h6>
-                          <span class="date">{{z.comment_dateAndTime}}</span><br>
-                          <span class="comment-content">{{z.comment_text}}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                  </li>
-                  <div class="col-md-12">
-                    <label class="comment-content add-cmnt"  *ngFor="let val of multipleList.COMMENTS">{{val.n}} </label>
-                  </div>
-                  <div class="comment-content add-cmnt">
-                    <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
-                    <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label>
-                  </div>
-                </ul>
-              </div>
-
-              <div id="log" class="container tab-pane fade">
-                <br>
-                <ul id="comments-list" class="comments-list">
-                  <li>
-                    <div class="comment-main-level" *ngFor="let x of availDetailsViewList">
-                      <div class="comment-box" *ngFor="let y of x.avail_details">
-                        <div class="comment-log-head" *ngFor="let z of y.logDetails">
-                          <h6 class="comment-name">
-                            <a href="http://creaticode.com/blog">{{z.name}}</a>
-                          </h6>
-                          <span class="date">{{z.log_dateAndTime}}</span>
-
-                          <div class="comment-content">
-                            <img class="log_img" src="assets/images/lego.jpg" alt="events">
-                            <span class="log-img-cmt">
-                              <p>{{z.status}}</p>
-                              <!-- <p>{{z.image_url/fileName}}</p> -->
-                            </span>
-                            <span class="log-img-status">Thumbnail Image</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</div>
-
-<div class="container  acc-style">
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered" style=" display: flex;justify-content: center;
-    width: 28%;">
-      <div class="modal-content modal-view">
-        <!-- <img class="img-card img-crop" src="assets/images/lego.jpg" (click)="cropImage(src);"> -->
-        <div class="flex">
-        <div>
-          <img-cropper name="crop_img" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-          <br>
-          <div data-dismiss="modal" style="font-size:35px ; color: rgb(195, 0, 26) ; background-color: transparent; border: aliceblue;
-              position: relative;bottom: 78px;left: 160px;">
-              <i class="fa fa-times" aria-hidden="true"></i>
-          </div>
-          <span  style="display: none;" class="result rounded" *ngIf="data.image">
-            <img name="final_img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight"
-             >
-          </span>
-        </div>
-        <div style="display: flex;justify-content: center;width:340px;margin-top:-58px;">
-        <div class="crop-cardBody"> 
-            <div class="cus-text text-col" style="padding-left: 8px;">
-                <ol class="wizard-progress d-flex">
-
-                    <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(cropTitle)}" *ngFor="let stage of stages, let i = index">
-                        <span class="step-name">
-                            <span *ngIf="stage.stageTitle==cropTitle" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
-                        </span>
-                        <span class="visuallyhidden"></span>
-                        <span class="step-num"></span>
+</div> -->
+<div class="over-flow height-100">
+    <div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <div *ngIf="!tvAvailName && !showApoBread">
+              <nav aria-label="breadcrumb" >
+                  <ol class="breadcrumb m-0 pt-2 pb-2">
+                    <li class="">
+                      <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
                     </li>
-                </ol>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <li class="">
+                      <a #tref>{{availName}}</a>
+                    </li>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+                  </ol>
+                </nav>
+          </div>
+       <div *ngIf="tvAvailName">
+          <nav aria-label="breadcrumb" >
+              <ol class="breadcrumb m-0 pt-2 pb-2">
+                <li class="">
+                  <a [routerLink]="['/pages/television']">Avails</a>
+                </li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="">
+                  <a #tref>{{availName}}</a>
+                </li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="" aria-current="page"><a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a></li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="" aria-current="page"><a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a></li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="" aria-current="page"><a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}" #tref>Episodes</a></li>
+                <i class="material-icons">keyboard_arrow_right</i>
+                <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+              </ol>
+            </nav>
+       </div>
+       <div *ngIf="showApoBread">
+          <nav aria-label="breadcrumb" >
+              <ol class="breadcrumb m-0 pt-2 pb-2">
+                  <li class="" aria-current="page"><a routerLink="/pages/apo/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+                  </ol> 
+            </nav>
+       </div>
+       
+          
+    
+          <div class="card" >
+            <div class="d-flex">
+              <div class="flex-description box-1">
+                <img class="img-card" src="assets/images/lego.jpg">
+              </div>
+              <div class="flex-description box-2">
+                <div class="d-flex" >
+                  <div class="card-data" *ngFor="let titleDetail of availDetailsViewList">
+                    <div class="card-content">
+                      <ul>
+                        <!-- <li>{{titleName}}</li> -->
+                        <li>{{titleDetail.GlobalTitle}}</li>
+                        <li class="cust-text">
+                          <img src="assets/images/Icons/PNG/calendar.png">{{titleDetail.StartDate | date:'MM/dd'}} - {{titleDetail.DueDate | date:'MM/dd'}}</li>
+                      </ul>
+                    </div>
+                    <div class="circle">
+                      <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                        [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                    </div>
+                  </div>
+                  <div class="card-menu">
+                    <div class="container mt-3">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item mr-2">
+                              <a class="nav-link active" data-toggle="tab" href="#insight">Insight</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link text-dark" data-toggle="tab" href="#metaData" routerLink="/pages/metadata"
+                              [queryParams]="{avail_name: availName, title_name: titleName, routeName : routeName, titleId: titleId, seriesName: seriesName, seasonNumber: seasonNumber, episodeNumber : episodeNumber,lob: lobType}">Metadata</a>
+                            </li>
+                          </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-description box-3">
+                <i class="material-icons">vertical_align_center</i>
+                <i class="material-icons" (click)="reload()">replay</i>
+                <span class="d-flex" (click)="sizePlus()">
+                  <i class="material-icons">title
+                    <sup>+</sup>
+                  </i>
+                </span>
+                <span class="d-flex" (click)="sizeMinus()">
+                  <i class="material-icons">title
+                    <sup>-</sup>
+                  </i>
+                </span>
+              </div>
             </div>
-            <div class="flex" style="display: flex;justify-content: space-between;padding: 0px 10px;" >
-                <span class="apo-color accountsBox"  >
-                    <i class="material-icons md-18 md-grey v-align">add_shopping_cart</i>{{cropAccounts}}
-                </span>
-                <span class="apo-color countriesBox"  >
-                    <i class="material-icons md-18 md-grey v-align">language</i>{{cropCountries}}
-                </span>
-                <span class="apo-color languagesBox" >
-                    <i class="material-icons md-18 md-grey v-align">translate</i> {{cropLanguages}}
-               </span>
+          </div>
+          <div class="container-fluid padding-side">
+              <!-- <div class="legendFlex" >
+                  <div class="legendAlign legend">
+                    <div class="legend-status legStatusComp">
+                      <div class="complete-legend"></div>
+                      <div class="col-md-6 legend-text">Completed</div>
+                    </div>
+                    <div class="legend-status legStatusPend">
+                      <div class="pending-legend"></div>
+                      <div class="col-md-3 legend-pending-text">Pending</div>
+                    </div>
+                  </div>
+                </div> -->
+            
+              <div class="tab-content">
+                <div id="metaData" class="tab-pane active content-bg">
+                  <!-- <div id="metaData" class="container tab-pane fade"> -->
+                      <div class="legend-margin m-0 ">
+                          <div class="d-flex legend-flex p-1">
+                              <div class="mt-1 status-bar">
+                                  <div class="complete-legend"></div>
+                                  <div class="legend-text ml-1 mr-1">Completed</div>
+                              </div>
+                              <div class="mt-1 status-bar">
+                                  <div class="pending-legend"></div>
+                                  <div class="legend-pending-text ml-1 mr-1">Pending</div>
+                              </div>
+                          </div>
+                      </div>  
+                  <div class="d-flex" *ngFor="let titleDetail of availDetailsViewList">
+                      
+                    <div class="tab-content content-bg insightFlex">
+                      
+                      <div class="flexWidth">
+                        <a class="avail-details text-head availlistHeadFlex" (click)="showDetails3 = !showDetails3">
+                            <img src="assets/images/Icons/SVG/baseline-add_shopping_cart-24px.svg">{{titleDetail.UniqueAccontsCount}}  Accounts</a>
+                            <div class="progressBar">
+                                <div class="progress">
+                                    <div class="bg-success" [style.width.%]="titleDetail.AccontsCompletedCount / titleDetail.UniqueAccontsCount * 100">
+                                        <span class="status-padding" *ngIf="titleDetail.AccontsCompletedCount!=0">
+                                          {{titleDetail.AccontsCompletedCount}}
+                                          </span>
+                                    </div>
+                                    <div [style.width.%]="titleDetail.AccontsPendingCount / titleDetail.UniqueAccontsCount * 100">
+                                        <span class="status-padding" *ngIf="titleDetail.AccontsPendingCount!=0">
+                                          {{titleDetail.AccontsPendingCount}}
+                                          </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="avail-list">
+                           <div *ngFor="let detail of titleDetail.AccountsData">
+                              <div class="avail-description">
+                                
+                                    <span [ngClass]="[detail.AccountStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                        <ul>
+                                          <li>{{detail.Account}} </li>
+                                        </ul>
+                                    </span>
+                                
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                          <div class="flexWidth">
+                              <a class="avail-details text-head availlistHeadFlex" (click)="showDetails3 = !showDetails3">
+                                  <i class="material-icons md-18 md-grey v-align">language</i>{{titleDetail.UniqueCountriesCount}}  Countries</a>
+                                  <div class="progressBar">
+                                      <div class="progress">
+                                          <div class="bg-success" [style.width.%]="titleDetail.CountriesCompletedCount / titleDetail.UniqueCountriesCount * 100">
+                                              <span class="status-padding" *ngIf="titleDetail.CountriesCompletedCount!=0"> 
+                                                {{titleDetail.CountriesCompletedCount}}
+                                                </span>
+                                          </div>
+                                          <div class="country-width" [style.width.%]="titleDetail.CountriesPendingCount / titleDetail.UniqueCountriesCount * 100">
+                                              <span class="status-padding" *ngIf="titleDetail.CountriesPendingCount!=0">
+                                                {{titleDetail.CountriesPendingCount}}
+                                                </span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="avail-list">
+                                 <div *ngFor="let countryDetail of titleDetail.CountryData">
+                                    <div>
+                                      
+                                          <span [ngClass]="[countryDetail.CountryStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                              <ul>
+                                                <li>{{countryDetail.Country}} </li>
+                                              </ul>
+                                            </span>
+                                      
+                                    </div>
+                                  </div>
+                                  </div>
+                                </div>
+                                <div class="flexWidth">
+                                    <a class="avail-details text-head availlistHeadFlex" (click)="showDetails3 = !showDetails3">
+                                        <i class="material-icons md-18 md-grey v-align">translate</i>{{titleDetail.UniqueLanguagesCount}}  Languages</a>
+                                        <div class="progressBar">
+                                            <div class="progress">
+                                                <div class="bg-success" [style.width.%]="titleDetail.LanguagesCompletedCount / titleDetail.UniqueLanguagesCount * 100">
+                                                    <span class="status-padding" *ngIf="titleDetail.LanguagesCompletedCount!=0">
+                                                      {{titleDetail.LanguagesCompletedCount}}
+                                                      </span>
+                                                </div>
+                                                <div [style.width.%]="titleDetail.LanguagesPendingCount / titleDetail.UniqueLanguagesCount * 100">
+                                                    <span class="status-padding" *ngIf="titleDetail.LanguagesPendingCount!=0">
+                                                      {{titleDetail.LanguagesPendingCount}}
+                                                      </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="avail-list">
+                                       <div *ngFor="let LanguageDetail of titleDetail.TranslationsData">
+                                          <div>
+                                            
+                                                <span [ngClass]="[LanguageDetail.TranslationStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                                    <ul>
+                                                      <li>{{LanguageDetail.Language}} </li>
+                                                    </ul>
+                                                  </span>
+                                            
+                                          </div>
+                                        </div>
+                                        </div>
+                                      </div>
+                    </div>
+                    
+                    <div class="comment-data content-bg">
+                      <div class="Status-box">
+                        <h6 class="status-text">Status</h6>
+                        <p class="status">
+                          <b>-</b></p>
+                        
+                        <p class="status-count">Pending Translations</p>
+                        <p class="status">
+                          <b>{{titleDetail.PendingTranslations}}</b></p>
+                          
+                        <p class="status-count">Pending Ratings</p>
+                        <p class="status">
+                          <b>{{titleDetail.PendingRatings}}</b></p> 
+                        
+                        <p class="status-count">Pending Clarifications</p>
+                        <p class="status">
+                          <b>-</b> </p>
+                      
+                        <p class="status-count">Escalations</p>
+                      </div>
+                      <div *ngIf="titleDetail.AvailHistory">
+                          <h6 class="status-text">History</h6> {{titleDetail.AvailHistory}}
+                        </div> 
+                        <div class="col-md-12 avail-card avail-history" *ngIf="titleDetail.AvailHistory">
+                            <div class="avail-history-text" *ngIf="titleDetail.AvailHistory.length === 0">No History Available!</div>
+                            <div class="col-md-6"  style="padding-left: 0px;" *ngFor="let avail of titleDetail.AvailHistory; let i = index">
+                              <div class="card text-white mb-3 shadow-sm card-width complete-card">
+                                <div class="c-pointer" (click)="showDetails = null">
+                  
+                                </div>
+                  
+                                <div class="card-header card-padding" *ngIf="showDetails !== i && showStatus !== i">
+                                  <span class="avail-status c-pointer">
+                                    <span class="fa-stack">
+                                      <i class="fa fa-circle fa-stack-2x icon-background4"></i>
+                                      <i class="fa fa-circle-thin fa-stack-2x icon-background6"></i>
+                                      <i class="fa fa-check fa-stack-1x custom-fa"></i>
+                                    </span>
+                                  
+                                  </span>
+                           
+                                  <span>
+                                    <p class="avail-title history-card">{{avail.AvailName}}</p>
+                                    <p class="avail-date history-card">
+                                      <img src="assets/images/Icons/PNG/calendar.png"> {{avail.StartDate | date:'MM/dd'}} -
+                                      <span>{{avail.DueDate | date:'MM/dd'}}</span>
+                                    </p>
+                                  </span>
+                  
+                                </div>
+                                <div class="card-body">
+                                  <div class="equalHMWrap" *ngIf="showStatus !==i">
+                                    <span id="titlesDiv">
+                                      <span class="avail-details titlesBox">
+                                        <img src="assets/images/Icons/PNG/titles.png"> {{avail.AvailTitlesCount}}
+                                        <span class="titles box" *ngIf="showDetails == i">{{showTitlesText}}</span>
+                                      </span>
+                                    </span>
+                                    <span id="countriesDiv">
+                                      <span class="avail-details countriesBox">
+                                        <i class="material-icons md-18 md-grey v-align">language</i> {{avail.AvailCountryCount}}
+                                        <span *ngIf="showDetails == i">{{showCountriesText}}</span>
+                                      </span>
+                                    </span>
+                                    <span id="languagesDiv">
+                                      <span class="avail-details languagesBox">
+                                        <i class="material-icons md-18 md-grey v-align">translate</i> {{avail.AvailLanguagesCount}}
+                                        <span *ngIf="showDetails == i">{{showLanguagesText}}</span>
+                                      </span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="commentTimelineFLex" >
+                              <div class="">
+                                <div class="container">
+                                  <div class="row block-timeline">
+                                    <div class="">
+                                      <h6 class="status-text">Timeline</h6> 
+                                     
+                                      <!-- <div class="cus-text text-col" >
+                                        <ol class="wizard-progress timeline d-flex" >
+                                            <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(titleDetail.TitleStatus)}" *ngFor="let stage of stages, let i = index">
+                                                <span class="step-name">
+                                                    <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                </span>
+                                                <span class="visuallyhidden"></span>
+                                                <span class="step-num"></span>
+                                            </li>
+                                        </ol>
+                                    </div> -->
+                                    <div class="cus-text text-col">
+                                        <ul class=" wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
+                                            <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(titleDetail.TitleStatus)}" *ngFor="let stage of stages, let i = index">
+                                              <div class="timeline-date">
+                                              
+                                              
+                                              <span class="visuallyhidden"></span>
+                                                <span class="step-num"></span>
+                                               <span class="stage-title">
+                                                <span class="step-name ml-1">
+                                                  <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                </span> 
+                                                <!-- <span>
+                                                {{timeline.StatusDate | date: 'MM/dd/yyyy'}}
+                                                </span> -->
+                                              </span>
+                                                <!-- <ul>
+                                                  <li class="step-name">
+                                                      <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>&nbsp;
+                                                      <span>{{timeline.StatusDate | date: 'MM/dd/yyyy'}}</span>                                                      
+                                                  </li>
+                                                 
+                                                </ul> -->
+                                                </div>
+
+                                            </li>
+                                          </ul>
+                                    </div>
+
+
+                                    
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                      
+                              <div id="commentId" class="block-timeline">
+                                <div  class="comment-box">
+                                    <ul class="nav nav-tabs comment-padding">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" data-toggle="tab" href="#Comments">Comments</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" data-toggle="tab" href="#Log">Log</a>
+                                        </li>
+                                      </ul>
+                      
+                                  <!-- Tab panes -->
+                                  <div  class="tab-content cmnt-list-scroll">
+                                    <div id="Comments" class="container tab-pane active">
+                                      <ul id="comments-list" class="comments-list">
+                                        <li>
+                                          <div class="comment-main-level comment-box" *ngFor="let comment of comments">
+                                            <div class="comment-box" >
+                                              <div class="comment-head" >
+                                                <h6 class="comment-name">
+                                                  <a href="">{{comment.CommentBy}}</a>
+                                                </h6>
+                                                <span class="date">{{comment.TimeStamp | date:'dd/MM hh:mm'}}</span><br>
+                                                <span class="comment-content">{{comment.CommentDescription}}</span>
+                                              </div>
+                                            </div>
+                                          </div>
+                      
+                                        </li>
+                                        <!-- <div class="col-md-12">
+                                          <label class="comment-content add-cmnt"></label>
+                                        </div> -->
+                                        <!-- <div class="comment-content add-cmnt">
+                                          <textarea *ngIf="removeButton" class="custom-field w90 textarea" [(ngModel)]="Comments"></textarea>
+                                         
+                                        </div>
+                                        <label class="right_btn ml-auto" (click)="addMultipleValue(COMMENTS)">+</label> -->
+
+                                        <div class="main-comment">
+                                          <div id="mySidenav" class="sidenav" >
+                                            <div class="custom-comment" [ngClass]="(changeColor) ? 'border-red' : 'border-blue'">
+                                              <div class="d-inline-block"><a class="closebtn" (click)="closeNav()"><i class="material-icons cursor-pointer f-12">clear</i></a></div>
+                                              <div class="f-12">
+                                                <input type="text" id="comment" [(ngModel)]="commentValue" (keydown)="addComment($event,commentValue)" name="textBox" class="textBox width-100" placeholder="Type a comment">
+                                              </div>
+                                              
+                                            </div>
+                                            
+                                          </div>
+                                          <span class="float-right" (click)="openNav()">
+                                            <i class="material-icons cursor-pointer">add_box</i>
+                                          </span>
+                                        </div>
+                                      </ul>
+                                    </div>
+                      
+                                    <div id="Log" class="container tab-pane fade">
+                                      <br>
+                                      <ul id="comments-list" class="comments-list">
+                                        <li>
+                                          <div class="comment-main-level" *ngFor="let log of titleDetail.AvailLogs">
+                                            <div class="comment-box" >
+                                              <div class="comment-log-head">
+                                                <h6 class="comment-name">
+                                                  <a href="http://creaticode.com/blog">{{log.LoggedBy }}</a>
+                                                </h6>
+                                                <span class="date">{{log.TimeStamp}}</span>
+                      
+                                                <div class="comment-content">
+                                                  <!-- <img class="log_img" src="assets/images/Minions.png" alt="events"> -->
+                                                  <img class="log_img" [src]="srcimageurl" alt="events">
+                                                  <span class="log-img-cmt">
+                                                    <p>{{log.LogDescription }}</p>
+                                                    <!-- <p>{{z.image_url/fileName}}</p> -->
+                                                  </span>
+                                                  <span class="log-img-status">Thumbnail Image</span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                       
+                      </div>
+                    
+                  </div>
+                </div>
+                
+                  <!-- <div class="tab-pane" id="insight">
+                    <app-apo-insight></app-apo-insight>
+                  </div> -->
+                
+              </div>
+              
             </div>
         </div>
       </div>
-          <div class="crop-save-btn">
-            <button (click)="saveCropImage()" data-dismiss="modal" style="font-size:35px ; color: #007CC3 ; background-color: transparent; border: aliceblue;"
-              class="fa">&#xf058;</button>
-          </div>
-        </div>  
-      </div>
     </div>
-  </div>
-</div>
+    </div>
+    

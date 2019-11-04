@@ -2,21 +2,137 @@
     "resultData": [
         {
             "StartDate": "10/10/2019",
-            "AvailName": "FC Aug062019",
+            "AvailName": "FN Jun112019",
             "AnnouncementDate": "08/06/2019",
+            "AvailLogs": [
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "LoggedBy": "Harish",
+                    "ImageUrl": "",
+                    "Activity": "actvity134",
+                    "LogDescription": "logs",
+                    "TimeStamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "LoggedBy": "Harish",
+                    "ImageUrl": "",
+                    "Activity": "actvity134",
+                    "LogDescription": "logs",
+                    "TimeStamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "LoggedBy": "Harish",
+                    "ImageUrl": "",
+                    "Activity": "actvity134",
+                    "LogDescription": "logs",
+                    "TimeStamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "LoggedBy": "Harish",
+                    "ImageUrl": "",
+                    "Activity": "actvity134",
+                    "LogDescription": "logs",
+                    "TimeStamp": "2019-10-04 15:58:27.507"
+                }
+            ],
             "DueDate": "10/31/2019",
+            "TranslationsData": [
+                {
+                    "TranslationStatus": "Pending",
+                    "Language": "Dutch"
+                },
+                {
+                    "TranslationStatus": "Completed",
+                    "Language": "Dutch1"
+                },
+                {
+                    "TranslationStatus": "Pending",
+                    "Language": "Dutch2"
+                },
+                {
+                    "TranslationStatus": "Completed",
+                    "Language": "Dutch3"
+                },
+                {
+                    "TranslationStatus": "Pending",
+                    "Language": "Dutch4"
+                }
+            ],
+            "AvailComments": [
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "CommentBy": "Harish",
+                    "CommentDescription": "dummycomments3434",
+                    "Timestamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "CommentBy": "Harish",
+                    "CommentDescription": "dummycomments3434",
+                    "Timestamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "CommentBy": "Harish",
+                    "CommentDescription": "dummycomments3434",
+                    "Timestamp": "2019-10-04 15:58:27.507"
+                },
+                {
+                    "AvailName": "FC Jan232019",
+                    "TitleId": "60001222402082894",
+                    "CommentBy": "Harish",
+                    "CommentDescription": "dummycomments3434",
+                    "Timestamp": "2019-10-04 15:58:27.507"
+                }
+            ],
+            "TitleData": {
+                "PendingTitlesCount": 2,
+                "AccontsCompletedCount": 0,
+                "UniqueLanguagesCount": 5,
+                "TitleCountriesCount": 1,
+                "AvailPercentage": 0,
+                "UniqueCountriesCount": 5,
+                "AccontsPendingCount": 1,
+                "CountriesPendingCount": 3,
+                "LanguagesPendingCount": 3,
+                "CountriesCompletedCount": 2,
+                "CompletedTitlesCount": 3,
+                "TitlesCount": 5,
+                "LanguagesCompletedCount": 2,
+                "PendingRatings": 1,
+                "PendingTranslations": 1,
+                "UniqueAccontsCount": 1
+            },
             "TitleDetails": [
                 {
-                    "GlobalTitle": "LEGO Movie 2",
+                    "GlobalTitle": "LEGO Movie 1",
                     "TitleStatus": "Completed"
                 },
                 {
-                    "GlobalTitle": "LEGO Movie 3",
+                    "GlobalTitle": "LEGO Movie 2",
                     "TitleStatus": "Pending"
+                },
+                {
+                    "GlobalTitle": "LEGO Movie 3",
+                    "TitleStatus": "Completed"
                 },
                 {
                     "GlobalTitle": "LEGO Movie 4",
                     "TitleStatus": "Pending"
+                },
+                {
+                    "GlobalTitle": "LEGO Movie 5",
+                    "TitleStatus": "Completed"
                 }
             ],
             "CountryData": [
@@ -25,48 +141,22 @@
                     "CountryStatus": "Pending"
                 },
                 {
-                    "Country": "Belgium",
+                    "Country": "Belgium1",
                     "CountryStatus": "Completed"
                 },
                 {
-                    "Country": "Belgium",
+                    "Country": "Belgium2",
+                    "CountryStatus": "Pending"
+                },
+                {
+                    "Country": "Belgium3",
+                    "CountryStatus": "Completed"
+                },
+                {
+                    "Country": "Belgium4",
                     "CountryStatus": "Pending"
                 }
-            ],
-            "TranslationsData": [
-                {
-                    "TranslationStatus": "Pending",
-                    "Language": "Dutch"
-                },
-                {
-                    "TranslationStatus": "Completed",
-                    "Language": "Dutch"
-                },
-                {
-                    "TranslationStatus": "Pending",
-                    "Language": "Dutch"
-                }
-            ],
-            "AvailComments": [],
-            "AvailLogs": [],
-            "TitleData": {
-                "TitlesCount": 1,
-                "PendingTitlesCount": 1,
-                "CompletedTitlesCount": 0,
-                "CountriesCompletedCount": 0,
-                "CountriesPendingCount": 1,
-                "TitleCountriesCount": 1,
-                "LanguagesPendingCount": 1,
-                "LanguagesCompletedCount": 0,
-                "AccontsCompletedCount": 0,
-                "AccontsPendingCount": 1,
-                "UniqueAccontsCount": 1,
-                "UniqueLanguagesCount": 1,
-                "UniqueCountriesCount": 1,
-                "AvailPercentage": 10,
-                "PendingRatings": 1,
-                "PendingTranslations": 1
-            }
+            ]
         }
     ]
 }

@@ -122,8 +122,6 @@ export class TvEpisodesComponent implements OnInit {
       this.sortBy('EpisodeNumber');  
       //console.log('episodes list data',this.orderedEpisodeList);
      
-    },error=>{
-      console.log("error message",error,error.message)
     })
   }
   ngOnInit() {
@@ -133,7 +131,7 @@ export class TvEpisodesComponent implements OnInit {
       this.seriesName = params['seriesName'];
       this.availName = params['availName'];
       this.seasonNumber = params['seasonNumber'];
-      console.log('avail name',this.availName,'series name',this.seriesName,'this.seasonNumber',this.seasonNumber);
+    
     });
      this.getEpisodeDetails();
       }
@@ -173,8 +171,8 @@ export class TvEpisodesComponent implements OnInit {
     return result;
   }
   getProgressFill(title) {
-    var l = title.length;
-    if(title[l-1].StatusMessage==""){
+      var l = title.length;
+       if(title[l-1].StatusMessage==""){
       return -1
     }else{
       var result= this.getProgressSwitch(title,l);
@@ -182,7 +180,7 @@ export class TvEpisodesComponent implements OnInit {
     }
   }
   getProgressSwitch(title,l){
-    console.log('progress',title,l)
+   
     switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;

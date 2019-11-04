@@ -103,11 +103,11 @@ export class AvailfilterComponent implements OnInit {
   clickDate(c) {
     if (!c) {
       this.startDate = `01/01/` + this.startYear;
-      console.log('this.startDate', this.startDate);
+     // console.log('this.startDate', this.startDate);
 
     } else {
       this.myDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
-      console.log('this.myDate', this.myDate);
+    //  console.log('this.myDate', this.myDate);
     }
   }
 
@@ -119,7 +119,7 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight1 = true;
         }
-        console.log("", "654545");
+      //  console.log("", "654545");
         break;
       }
       case 2: {
@@ -128,7 +128,7 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight2 = true;
         }
-        console.log("", "5757");
+     //   console.log("", "5757");
         break;
       }
       case 3: {
@@ -137,7 +137,7 @@ export class AvailfilterComponent implements OnInit {
         } else {
           this.highlight3 = true;
         }
-        console.log("", "5757");
+      //  console.log("", "5757");
         break;
       }
       case 4: {
@@ -252,11 +252,11 @@ export class AvailfilterComponent implements OnInit {
   }
 
   uploadDoc() {
-    console.log('uploadDoc')
+   // console.log('uploadDoc')
     this.showUpload = true;
   }
   upload(files: File[], childMessage) {
-    console.log('childMessage', childMessage);
+  //  console.log('childMessage', childMessage);
     var formData = new FormData();
     this.errorMessage = null;
     this.successMessage = null;
@@ -267,7 +267,7 @@ export class AvailfilterComponent implements OnInit {
     this.featureName = this.filename.includes('iTunes');
     this.tvName = this.filename.includes('TV');
     var extension = this.filename.substr(this.filename.lastIndexOf('.'));
-    console.log('31457280', files[0].size);
+   // console.log('31457280', files[0].size);
     if ((extension.toLowerCase() === ".xlsx")) {
       if (files[0].size <= 31457280) {
         if ((this.availDocName === true && this.featureName === false && childMessage === 'Films') ||(this.tvName===true && childMessage === 'TV')) {
@@ -275,9 +275,9 @@ export class AvailfilterComponent implements OnInit {
           this.httpService.uploadToS3(formData).subscribe(data => {
             this.showProgress = true;
             this.s3Resp = data;
-            console.log(this.s3Resp, "s3 response")
+        //    console.log(this.s3Resp, "s3 response")
             this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
-              console.log("second call data : " + data);
+            //  console.log("second call data : " + data);
               this.secndUrlResp = data;
               if (data['status'] = "success") {
                 this.successCase = true;
@@ -372,7 +372,7 @@ export class AvailfilterComponent implements OnInit {
           this.successCase = true;
           this.errorCase = false;
           this.showExportProgress = false;
-          console.log('entered');
+         // console.log('entered');
           this.httpService.exporS3ToLcal('FILMS').subscribe(data => {
             this.apiResp = data;
             this.apiURL = this.apiResp.url;
@@ -405,7 +405,7 @@ export class AvailfilterComponent implements OnInit {
           this.successCase = true;
           this.errorCase = false;
           this.showExportProgress = false;
-          console.log('entered');
+         // console.log('entered');
           this.httpService.exporS3ToLcal('TV').subscribe(data => {
             this.apiResp = data;
             this.apiURL = this.apiResp.url;

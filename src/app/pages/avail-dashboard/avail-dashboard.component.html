@@ -18,7 +18,7 @@
                         <div class="current" [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
                         <round-progress class="round-outline" [current]="avail.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'"
                             [radius]="22" [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
-                            [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: avail.AvailName }" routerLink="/pages/details"></round-progress>
+                            [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: avail.AvailName , page:'FILMS' }" routerLink="/pages/details"></round-progress>
                         <!-- <circle-progress [percent]="avail.total_avail_percentage" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                 [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> -->
                     </span>

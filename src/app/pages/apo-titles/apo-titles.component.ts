@@ -59,6 +59,7 @@ export class ApoTitlesComponent implements OnInit {
   isDisabled: boolean = true;
   toolTipValue: string;
   modalShow: boolean;
+  availName: string;
   constructor(private httpService: HttpService) {
     this.getApoData();
     this.modalShow= true;
@@ -69,7 +70,7 @@ export class ApoTitlesComponent implements OnInit {
       { stageTitle: "Quality Audit" },
       { stageTitle: "Data Delivery" }
     ];
-
+    this.availName = "title";
     this.ImageUrl = 'assets/images/dummy.png';
     this.removeButton = false;
     

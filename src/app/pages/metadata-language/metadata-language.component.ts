@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { MetadataComponent } from '../metadata/metadata.component';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-metadata-language',
   templateUrl: './metadata-language.component.html',
@@ -14,10 +17,14 @@ export class MetadataLanguageComponent implements OnInit {
   logsDetails: any;
   user : any;
   languageShort: any;
-  constructor(private httpService: HttpService) {
+  @Input() childMessage :any;
+  
+  
+  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.languageShort='English';
     this.clickedOnLanguage = false;
     this.user = this.metaDataListUpdateVal;
+    
    }
 
   ngOnInit() {
@@ -29,7 +36,7 @@ export class MetadataLanguageComponent implements OnInit {
       this.availLanguageList = data;
       console.log('Avails Details data', this.availLanguageList);
     })
-    
+    console.log("jjjjjjj : "+this.childMessage)
   }
    addDescription(trigg, newComment: string) {
     if(trigg.keyCode==13){

@@ -87,6 +87,9 @@ i{
     padding: 8px 0px;
     padding-top: 0px
 }
+.p-12{
+    padding: 4px 12px;
+}
 .border-red{
     border-right: 3px solid red;
 }
@@ -233,6 +236,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
+                            height: 20.1px;
                         }
                         .title-padding{
                             padding: 2px 8px;
@@ -262,7 +266,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
-
+                            height: 20.1px;
                         }
                     }
                     ul li:nth-of-type(odd){
@@ -289,6 +293,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
+                            height: 20.1px;
                         }
                     }
                     ul li:nth-of-type(odd){
@@ -531,9 +536,9 @@ i{
                         }
                     }
                     .comment-scroll{
-                        overflow: scroll;
-                        overflow-x: hidden;
-                        height: 230px;
+                        // overflow: scroll;
+                        // overflow-x: hidden;
+                        // height: 230px;
                         margin-bottom: 10px;
                     }
                     .comment-style{
@@ -695,8 +700,203 @@ i{
    
     .sidenav a {font-size: 18px;}
   }
+  // language styles
+  .top-heading{
+    //font-size: 12px;
+    display: flex;
+    flex-direction: row;
+  .language-data{
+      flex: 0 0 15%;
+      width: 20%;
+      
+      
+      .avail-list{
+          .list-description{
+            list-style: none;
+            padding: 0;
+            margin: auto;
+            width: 100%;
+            text-align: center;
+          }
+      }
+  }
+  .language-scroll{
+    height: 315px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  .language-metadata{
+      flex: 0 0 80%;
+      padding: 0px 20px;
+      //padding-top: 24px;
+  }
+  /* width */
+::-webkit-scrollbar {
+    width: 0px;
+  }
   
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $black-1; 
+    border-radius: 4px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $black-1; 
+    border-radius: 10px;
+    display: none;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black-1;
+    display: block;
+  }
+}
+  
+  .progress {
+    height:23px;
+    width:100%;
+    background: #007CC3;
+    .inner-progress {
+        height:23px;
+        background: #0AAD43;
+    }
+    .progress-bar{
+        background: #007CC3;
+    }
+}
 
+
+.metalanguage-content{
+    display: flex;
+    flex-direction: row;
+    //font-size: 12px;
+    // box-shadow: 0 0 2px rgba(0,0,0,0.4);
+    .cust-input{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        background: none;
+        border: 1px solid;
+    }
+    
+    .table-1{
+         width: 40%;
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: $white-6;
+            width: 100%;
+            li{
+                border-radius: 2px;
+                padding: 1px 8px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                height: 20.1px;
+                span{
+                    width: 300px;
+                }
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: $black-4;
+        }
+        ul li:nth-of-type(even){
+            background: $black-3;
+        }
+    }
+    .table-2{
+        width: 80%;
+        padding-right: 10px;
+        color: $black-6;
+        ul{
+            list-style: none;
+            width: 500px;
+            padding: 0;
+            margin: 0;
+            li{
+               // border-radius: 2px;
+                padding: 1px 8px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                height: 20.1px;
+            }
+            .datahide{
+                text-overflow: ellipsis;
+                overflow: hidden; 
+                //width: 160px;
+                white-space: nowrap;
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: rgba(0, 0, 0, 0.2);
+            
+        }
+        ul li:nth-of-type(even){
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+   
+    .table-3{
+        width: 100%;
+        padding-right: 10px;
+        color: $black-6;
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            li{
+                border-radius: 2px;
+                padding: 0px 8px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                height: 20.1px;
+            }
+        }
+        ul li:nth-of-type(odd){
+            background: $black-1;
+        }
+        ul li:nth-of-type(even){
+            background: #E8E8E8;
+        }
+    }
+    .comparsion-box{
+        .d-flex{
+            align-items: center;
+            height: 100%;
+            border-radius: 4px;
+            .add-icon{
+                .material-icons{
+                    cursor: pointer;
+                    color: $black-6;
+                }
+                .compare-section{
+                    justify-content: center;
+                    padding: 15px;
+                    .add-btn{
+                        display: flex;
+                    }
+                    input{
+                        border: transparent;
+                        &:focus{
+                            outline: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
     

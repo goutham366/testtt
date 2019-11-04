@@ -146,7 +146,7 @@ export class ItunesComponent implements OnInit {
           this.successCase = true;
           this.errorCase = false;
           this.showExportProgress = false;
-          console.log('entered');
+        //  console.log('entered');
           this.httpService.exporS3ToLcalToSingle(page,AvailName).subscribe(data => {
             this.apiResp = data;
             this.apiURL = this.apiResp.url;

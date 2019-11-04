@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -10,15 +10,21 @@ export class MetadataTerrtorialComponent implements OnInit {
   clickedOnLanguage: boolean;
   filteredLanguage: any[];
   availDetailsViewList: any;
-  availLanguageList: Object;
+  availLanguageList: any;
   clickedOnCountry: boolean;
   user: any;
   languageShort: any;
+  @Input() childMessage: any;
+  @Input() childCountryList: any;
+  result: number;
+  resultPending: number;
+  resultCompleted: number;
+  
 
   constructor(private httpService: HttpService) {
     this.clickedOnLanguage = false;
     this.user = this.metaDataListUpdateVal;
-  
+    
    }
 
    ngOnInit() {
@@ -26,11 +32,21 @@ export class MetadataTerrtorialComponent implements OnInit {
       this.availDetailsViewList = data;
       console.log('Avails Details data', this.availDetailsViewList);
     })
-    this.httpService.getLangMetadata().subscribe(data => {
-      this.availLanguageList = data;
-      console.log('Avails Details data', this.availLanguageList);
-    })
+    // this.httpService.getLangMetadata().subscribe(data => {
+    //   this.availLanguageList = data;
+    //   console.log('Avails Details data', this.availLanguageList);
+    // })
+    console.log("jjjjjjj : "+this.childMessage);
+
+    this.resultCompleted = (this.childCountryList.CountriesCompletedCount * 100) / this.childCountryList.UniqueCountriesCount;
+    this.resultPending = (this.childCountryList.CountriesPendingCount * 100) / this.childCountryList.UniqueCountriesCount;
+
     
+   // this.availLanguageList.push(this.childMessage);
+    
+  }
+  ngAfterViewInit() {
+    console.log("jjjjjjj : "+this.childMessage);
   }
   filteredCountry: any;
   filterCountries(data) {
@@ -73,6 +89,7 @@ export class MetadataTerrtorialComponent implements OnInit {
     isDisabled = true;
   flip() {
     this.isDisabled = !this.isDisabled;
+    console.log(this.availLanguageList[0].AnnouncementDate)
   }
   languageName(LangName){
     this.languageShort = LangName;

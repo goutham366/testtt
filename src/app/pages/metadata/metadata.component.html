@@ -90,7 +90,7 @@
                   <div class="container mt-3">
                     <ul class="nav nav-tabs">
                       <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#insight" [queryParams]="{routeName: routeName, title_name : titleName, avail_name : availName, series: seriesName, seasonNumber: seasonNumber}"   routerLink="/pages/insight" 
+                        <a class="nav-link" data-toggle="tab" href="#insight" [queryParams]="{title_name : titleName, avail_name : availName, titleId: titleId, lob : lobType, seriesName : seriesName, seasonNumber : seasonNumber, episodeNumber : episodeNumber}"   routerLink="/pages/insight" 
                         >Insight</a>
                       </li>
                       <li class="nav-item">
@@ -128,13 +128,13 @@
                       <div class="table-1">
                         <ul>
                           <li>Abstract EIDR</li>
-                          <li>Account</li>
+                          <!-- <li>Account</li> -->
                           <li>Activation Status</li>
                           <li class="title-padding">Cast & Crew</li>
                           <li>Aired End Date</li>
                           <li>Aired From Date</li>
                           <li>Announcement Date</li>
-                          <!-- <li>Announcement Name</li> -->
+                          <li>Announcement Name</li>
                           <li>Atlas MCR Number</li>
                           <li>Audio Language Description</li>
                           <li>Broadcast Vehicle</li>
@@ -148,48 +148,46 @@
                         </ul>
                       </div>
                       <div class="table-2 d-flex">
-                        <ul *ngFor="let x of filteredMetadataList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
-                          <li>{{x.abstractEIDR}}</li>
-                          <li>{{x.account}}</li>
-                          <li>{{x.activationStatus}}</li>
-                          <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="metaDataListUpdateVal" (click)="dataShow(metaDataListUpdateVal)">{{metaDataListUpdateVal}}</li>
-                          <li>{{x.airedEndDate}}</li>
+                        <ul *ngFor="let x of globalData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
+                          <li>{{x.AbstractEIDR}}</li>
+                          <li>{{x.ActivationStatus}}</li>
+                          <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
+                          <li>{{x.AiredEndDate}}</li>
                           <li>{{x.AiredFromDate}}</li>
-                          <li>{{x.announcementDate}}</li>
-                          <li>{{x.atlasnumber}}</li>
-                          <li>{{x.audioLanguage}}</li>
-                          <li>{{x.broadcastVehicle}}</li>
-                          <li>{{x.bundleVersion}}</li>
-                          <li>{{x.businessUnit}}</li>
-                          <li>{{x.changeStatus}}</li>
-                          <li>{{x.changeFields}}</li>
-                          <li>{{x.channel}}</li>
+                          <li>{{x.AnnouncementDate}}</li>
+                          <li>{{x.AnnouncementName}}</li>
+                          <li>{{x.AtlastMCRNumber}}</li>
+                          <li>{{x.AudioLanguageDescription}}</li>
+                          <li>{{x.BroadcastVehicle}}</li>
+                          <li>{{x.BundleVideoVersionNumber}}</li>
+                          <li>{{x.BusinessUnit}}</li>
+                          <li>{{x.ChangeStatus}}</li>
+                          <li>{{x.ChangedFields}}</li>
+                          <li>{{x.Channel}}</li>
                           <li>{{x.ClearedForSale}}</li>
                           <li>{{x.ClientEnd}}</li>
-                          <!-- <li>{{x.ClientEnd}}</li>
-                                  <li>{{x.ClientEnd}}</li> -->
                         </ul>
                         <!-- <div class="" >
                             <div class="table-3"> -->
                         <div *ngIf="close" id="dataShow">
                           <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
-                            <li>{{x.abstractEIDR}}</li>
-                            <li>{{x.account}}</li>
-                            <li>{{x.activationStatus}}</li>
-                            <li class="border">{{metaDataListUpdateVal}}</li>
-                            <li>{{x.airedEndDate}}</li>
-                            <li>{{x.AiredFromDate}}</li>
-                            <li>{{x.announcementDate}}</li>
-                            <li>{{x.atlasnumber}}</li>
-                            <li>{{x.audioLanguage}}</li>
-                            <li>{{x.broadcastVehicle}}</li>
-                            <li>{{x.bundleVersion}}</li>
-                            <li>{{x.businessUnit}}</li>
-                            <li>{{x.changeStatus}}</li>
-                            <li>{{x.changeFields}}</li>
-                            <li>{{x.channel}}</li>
-                            <li>{{x.ClearedForSale}}</li>
-                            <li>{{x.ClientEnd}}</li>
+                              <li>{{x.AbstractEIDR}}</li>
+                              <li>{{x.ActivationStatus}}</li>
+                              <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
+                              <li>{{x.AiredEndDate}}</li>
+                              <li>{{x.AiredFromDate}}</li>
+                              <li>{{x.AnnouncementDate}}</li>
+                              <li>{{x.AnnouncementName}}</li>
+                              <li>{{x.AtlastMCRNumber}}</li>
+                              <li>{{x.AudioLanguageDescription}}</li>
+                              <li>{{x.BroadcastVehicle}}</li>
+                              <li>{{x.BundleVideoVersionNumber}}</li>
+                              <li>{{x.BusinessUnit}}</li>
+                              <li>{{x.ChangeStatus}}</li>
+                              <li>{{x.ChangedFields}}</li>
+                              <li>{{x.Channel}}</li>
+                              <li>{{x.ClearedForSale}}</li>
+                              <li>{{x.ClientEnd}}</li>
                             <!-- <li>{{x.ClientEnd}}</li>
                                       <li>{{x.ClientEnd}}</li> -->
                           </ul>
@@ -262,21 +260,249 @@
                         </ul>
                         </div>
                         <div class="text-area">
-                          <textarea cols="79" rows="2" #box [(ngModel)]="user">
+                          <textarea cols="79" rows="2" #box [(ngModel)]="userMetadata">
                                         
                             </textarea>
                         </div>
-                        <div class="btn gray-3 text-white" [(ngModel)]="user" name="fieldName" ngDefaultControl (click)="update(user)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                        <div class="btn gray-3 text-white" [(ngModel)]="userMetadata" name="fieldName" ngDefaultControl (click)="update(userMetadata)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
                       </div>
                      
                 
                     </div>
                   </div>
                   <div id="Language" class="tab-pane fade">
-                    <app-metadata-language></app-metadata-language>
+                    <div class="container-fluid p-12">
+                        <a class="avail-details d-flex mb-1" >
+                            <i class="material-icons md-18 md-grey v-align">translate</i>{{uniqueLanguagesCount}} Languages</a>
+                      <div class="top-heading">
+                        <div class="language-data">
+                          
+                            <div class="progress progress-main">
+                                <div class="progress-bar bg-success" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}">
+                                  <span class="status-padding"  >{{countriesCompletedCount}}</span>
+                                </div>
+                                <div class="progress-bar" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}">
+                                  <span class="status-padding" >{{countriesPendingCount}}</span>
+                                </div>
+                              </div>
+                          <div *ngIf="!clickedOnLanguage" class="row row-list mt-2 text-white language-scroll">
+                            <div class="col-md-12 avail-list mt-2">
+                              <!-- <div *ngFor="let x of availDetailsViewList">
+                                <div *ngFor="let y of x.avail_details"> -->
+                                    <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                        <ul class="list-style list-description">
+                                            <li class="cursor-pointer" (click)="languageName(z.Language)">
+                                                <span>{{z.Language}} </span>
+                                              </li>
+                                          <!-- <li (click)="languageName(z.language_name)">{{z.Language}} </li> -->
+                                        </ul>
+                                      </span>
+                                <!-- </div>
+                              </div> -->
+                            </div>
+                          </div>
+                          <div *ngIf="clickedOnLanguage" class="row row-list">
+                              <div class="col-md-12 avail-list mt-2">
+                                  <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'completed' ? 'progress bg-success' : 'progress']">
+                                    <ul class="list-style list-description">
+                                      <li>{{filterCountry.country_name}} </li>
+                                    </ul>
+                                  </span>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="language-metadata">
+                          <div class="metalanguage-content">
+                            <div class="table-1">
+                              <ul >
+                                <li>Local Titles</li>
+                              
+                                  <li>{{languageShort}} Short</li>
+                                  <li>{{languageShort}} Long</li>
+                                
+                               
+                              </ul>
+                            </div>
+                            <div class="table-2 d-flex">
+                              <!-- <ul *ngFor="let x of availLanguageList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
+                                <li>{{x.Local_Titles}}</li>
+                                <li (click)="dataShow(metaDataLangUpdateVal)" class="cursor-pointer datahide">{{metaDataLangUpdateVal}}</li>
+                                <li>{{x.English_short}}</li>
+                               
+                              </ul> -->
+                              <ul *ngFor="let x of availLanguageList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-100' : 'width-px'">
+                                  <li>{{titleName}}</li>
+                                  <li  name="fieldName1" ngDefaultControl [(ngModel)]="metaDataLangUpdateVal"  class="cursor-pointer datahide" (click)="dataShow(metaDataLangUpdateVal, 'L')">{{metaDataLangUpdateVal}}</li>
+                                  <li>{{x.English_short}}</li>
+                                 
+                                </ul>
+                              <!-- <div class="" >
+                                        <div class="table-3"> -->
+                    
+                              <!-- </div>
+                                      </div> -->
+                              <div class="add-icon cursor-pointer d-flex align-items-center">
+                                <i class="material-icons" (click)="flip()">add_box</i>
+                              </div>                
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                        <!-- <div class="update-field">
+                          <input type="text" class="form-control" id="usr" [(ngModel)]="user" (keydown)="updateDescription($event,user)">
+                        </div> -->
+                        <div class="update-box mt-2">
+                          <div class="btn-group">
+                            <div cla>
+                            <ul class="nav nav-tabs">
+                              <li class="nav-item ">
+                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                              </li>
+                            </ul>
+                            </div>
+                            <div class="text-area">
+                              <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userLanguage">
+                                            
+                                </textarea>
+                            </div>
+                            <div class="btn btn-dark" name="fieldName1" ngDefaultControl  [(ngModel)]="userLanguage"  (click)="updateDescription($event,userLanguage)"><p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p></div>
+                          </div>
+                         
+                    
+                        </div>
+                    
+                        
+                    </div>
                   </div>
                   <div id="Territorial" class="tab-pane fade">
-                   <app-metadata-terrtorial></app-metadata-terrtorial>
+                    <div class="container-fluid p-12">
+                        <a class="avail-details d-flex mb-1" >
+                            <i class="material-icons md-18 md-grey v-align">language</i> {{uniqueCountriesCount}} Countries</a>
+                      <div class="top-heading">
+                        <div class="language-data">
+                          
+                          <div class="progress progress-main">
+                            <div class="progress-bar bg-success" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}">
+                              <span class="status-padding"  >{{countriesCompletedCount}}</span>
+                            </div>
+                            <div class="progress-bar" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}">
+                              <span class="status-padding" >{{countriesPendingCount}}</span>
+                            </div>
+                          </div>
+                          <!--'clickedOnCountry' should--> 
+                          <div *ngIf="" class="row row-list text-white language-scroll mt-2">
+                            <div class="col-md-12 avail-list mt-2">
+                              <!-- <div *ngFor="let x of childCountryList"> -->
+                                <!-- <div *ngFor="let y of x.avail_details"> -->
+                                  <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                    <ul class="list-style list-description">
+                                      <li>{{z.Country}} </li>
+                                    </ul>
+                                  </span>
+                                <!-- </div> -->
+                              <!-- </div> -->
+                            </div>
+                          </div>
+                          <div *ngIf="" class="row row-list text-white">
+                            <div class="col-md-12 avail-list mt-2">
+                              <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'completed' ? 'progress bg-success' : 'progress']">
+                                <ul class="list-style list-description">
+                                  <li>{{filterCountry.country_name}} </li>
+                                </ul>
+                              </span>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <div class="language-metadata">
+                          <div class="metalanguage-content">
+                            <div class="table-1">
+                              <ul>
+                                <li>Rating</li>
+                                <li>Rating Comments</li>
+                                <li>Short Description</li>
+                                <li>Initial release Date</li>
+                                <li>Current release Date</li>
+                                <li>Rights Window Begin Date</li>
+                                <li>Rights Window End Date</li>
+                                <li>Announcement Date</li>
+                                <li>Pre-Sell Date</li>
+                                <li>Web WHV Internal</li>
+                                <li>Web Retailers</li>
+                                <li>Vendor Id</li>
+                              </ul>
+                            </div>
+                            <div class="table-2 d-flex">
+                              <ul *ngFor="let x of countryData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-px'">
+                                  <li>{{x.Rating}}</li>
+                                  <li  class="cursor-pointer datahide" name="fieldName2" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'T')">{{metaDataCountryUpdateVal}}</li>
+                                  <!-- <li (click)="dataShow(x.RatingComments)">{{x.RatingComments}}</li> -->
+                                  <li>{{x.ShortDescription}}</li>
+                                  <li>{{x.InitialReleaseDate}}</li>
+                                  <li>{{x.CurrentReleaseDate}}</li>
+                                  <li>{{x.RightsWindowBeginDate}}</li>
+                                  <li>{{x.RightsWindowEndDate}}</li>
+                                  <li>{{x.AnnouncementDate}}</li>
+                                  <li *ngIf="!checkNaN(x.Pre-SellDate)">{{x.Pre-SellDate}}</li>
+                                  <li *ngIf="checkNaN(x.Pre-SellDate)"></li>
+                                  <li>{{x.WebWHVInternal}}</li>
+                                  <li>{{x.WebRetailers}}</li>
+                                  <li>{{x.VendorsId}}</li>
+                                <!-- <li>{{x.ClientEnd}}</li>
+                                              <li>{{x.ClientEnd}}</li> -->
+                              </ul>
+                              <!-- <div class="" >
+                                        <div class="table-3"> -->
+                    
+                              <!-- </div>
+                                      </div> -->
+                              <div class="add-icon cursor-pointer d-flex align-items-center">
+                                <i class="material-icons" (click)="flip()">add_box</i>
+                              </div>
+                            </div>
+                            
+                            
+                    
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="update-field">
+                          <input type="text" class="form-control" id="usr" [(ngModel)]="user" (keydown)="updateDescription($event,user)">
+                        </div> -->
+                    
+                        <div class="update-box mt-2">
+                          <div class="btn-group">
+                            <div cla>
+                            <ul class="nav nav-tabs">
+                              <li class="nav-item ">
+                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                              </li>
+                            </ul>
+                            </div>
+                            <div class="text-area">
+                              <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userCountry">
+                                            
+                                </textarea>
+                            </div>
+                            <div class="btn btn-dark" name="fieldName2" ngDefaultControl [(ngModel)]="userCountry"  (click)="updateCountryDescription($event,userCountry)"><p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p></div>
+                          </div>
+                         
+                    
+                        </div>
+                    </div>
                   </div>
                 </div>
   

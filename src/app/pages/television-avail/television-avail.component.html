@@ -7,6 +7,7 @@
     </div>
     <div class="row">
         <div class="col-md-3 card-resize" *ngFor="let tv of tvData ;let i=index">
+  
             <div class="card television">
                 <div class="card-header" routerLink="/pages/tvseries" [queryParams]="{ avail_name: tv.AvailName }">
                     <div class="card-header-align">

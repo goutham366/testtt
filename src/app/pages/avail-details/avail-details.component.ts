@@ -27,138 +27,105 @@ export class AvailDetailsComponent implements OnInit {
   clickedOnCountry: boolean;
   clickedOnLanguage: boolean;
   condition: boolean;
-  commentValue:any;
-  // positionA = { x: 0, y: 0 };
-  // positionB = { x: 530, y: 0 };
-  availName:any;
-  constructor(private httpService: HttpService, private location: Location,  private route: ActivatedRoute) {
+  commentValue: any;
+  availName: any;
+  availdetailsresp: any;
+  semicircle: any;
+  activatedRoute: any;
+  remaining: number;
+  widthofTitle: number;
+  remainingofTitle: number;
+  widthofCountries: number;
+  remainingofCountries: number;
+  widthofLang: number;
+  remainingofLang: number;
+  pageName: any;
+  constructor(private httpService: HttpService, private location: Location, private route: ActivatedRoute) {
     this.removeButton = false;
     this.removeAddButton = true;
     this.clickedOnTitle = false;
     this.clickedOnCountry = false;
     this.clickedOnLanguage = false;
   }
-  comments = [
-  ];
+  comments = [];
   addComment(trigg, newComment: string) {
-    
-    if(trigg.keyCode==13){
-     
+    if (trigg.keyCode == 13) {
       if (newComment) {
         var toDate = Date();
-        this.comments.push({"name": newComment, "date": toDate});
+        this.comments.push({ "name": newComment, "date": toDate });
       }
-  }
+    }
   }
   openNav() {
     document.getElementById("mySidenav").style.width = "200px";
   }
   closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    
   }
-
   ngOnInit() {
     this.showDetails = true;
     this.showDetails1 = true;
     this.showDetails2 = true;
     this.showDetails3 = true;
     this.width = 75;
-    this.httpService.getAvailDetailTitle().subscribe(data => {
-      this.availDetailsViewList = data;
-      console.log('Avails Details data', this.availDetailsViewList);
-    })
-
     this.route.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
-      let str =  this.availName;
+      this.pageName = params['page'];
+      let str = this.availName;
       let res = str.split(" ");
-      if( res[0]==="IN"){
+      if (res[0] === "IN") {
         this.condition = true;
-      }else if( res[0]==="FN"){
+      } else if (res[0] === "FN") {
         this.condition = false;
       }
     });
+    this.httpService.getAvailDetailsAPIView(this.availName, this.pageName).subscribe(data => {
+      this.availdetailsresp = data;
+      this.availDetailsViewList = this.availdetailsresp.resultData;
+      for (let i = 0; i < this.availDetailsViewList.length; i++) {
+        if (this.availName === this.availDetailsViewList[i].AvailName) {
+
+          this.widthofTitle = (this.availDetailsViewList[i].TitleData.CompletedTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
+          this.remainingofTitle = (this.availDetailsViewList[i].TitleData.PendingTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
+
+          this.widthofCountries = (this.availDetailsViewList[i].TitleData.CountriesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+          this.remainingofCountries = (this.availDetailsViewList[i].TitleData.CountriesPendingCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+
+          this.widthofLang = (this.availDetailsViewList[i].TitleData.LanguagesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+          this.remainingofLang = (this.availDetailsViewList[i].TitleData.LanguagesPendingCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+
+        }
+      }
+    })
   }
+  getOverlayStyle() {
+    let isSemi = this.semicircle;
+    let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
 
-
-  getAvailDetailsView() {
-
+    return {
+      'top': '48%',
+      'bottom': isSemi ? '5%' : 'auto',
+      'left': '54%',
+      'transform': transform,
+      '-moz-transform': transform,
+      '-webkit-transform': transform,
+      'font-size': '12px'
+    };
   }
-  // addMultipleValue(point) {
-  //   console.log("*******");
-  //   if (!this.multipleList[point]) {
-  //     this.multipleList[point] = [];
-  //     this.multipleArray[point] = [];
-  //     this.removeAddButton = false;
-  //   }
-  //   var val = ''
-  //   switch (point) {
-  //     case this.COMMENTS:
-  //       if (this.Comments) {
-  //         val = this.Comments
-  //       }
-  //       this.Comments = point;
-  //       break;
-  //   }
-  //   if (val) {
-  //     this.multipleList[point].push({ n: val });
-  //     this.multipleArray[point].push(val);
-    
-  //   }
-  //   if (!this.removeButton) {
-  //     this.removeButton = true;
-  //   } else {
-  //     this.removeButton = false;
-  //   }
-  // }
-/******************** */
-  // positionA = { x: 0, y: -150 };
-  // positionB = { x: 550, y: 0 };
-
-  // onMoving(event) {
-  //   const boxWidth = 200;
-  //   const boxHeight = 500;
-  //   if (this.positionA.x < this.positionB.x &&
-  //     event.x + boxWidth >= this.positionB.x + boxWidth / 2 &&
-  //     event.x <= this.positionB.x + boxWidth &&
-  //     event.y + boxHeight >= this.positionA.y &&
-  //     event.y <= this.positionA.y + boxHeight) {
-  //     let tmp = this.positionB;
-  //     this.positionB = this.positionA;
-  //     this.positionA = tmp;
-  //   } else if (this.positionA.x >= this.positionB.x &&
-  //     event.x <= this.positionB.x + boxWidth / 2 &&
-  //     event.x + boxWidth >= this.positionB.x &&
-  //     event.y + boxHeight >= this.positionA.y &&
-  //     event.y <= this.positionA.y + boxHeight) {
-  //     let tmp = this.positionB;
-  //     this.positionB = this.positionA;
-  //     this.positionA = tmp;
-  //   }
-  // }
-
-
+  getAvailDetailsView() { }
   filteredTitle: any;
- 
-
-
   filterTitles(data) {
     var availListA = this.availDetailsViewList;
     this.clickedOnTitle = true;
     var filterTitle = [];
     for (let a of availListA) {
-      for (let b of a.avail_details) {
-        for (let c of b.titlesDetails) {
-          if (c.status == data) {
-            filterTitle.push({ "status": c.status, "title_name": c.title_name });
-          }
+      for (let c of a.TitleDetails) {
+        if (c.TitleStatus == data) {
+          filterTitle.push({ "status": c.TitleStatus, "title_name": c.GlobalTitle });
         }
       }
     }
     this.filteredTitle = filterTitle;
-
-
   }
   filteredCountry: any;
   filterCountries(data) {
@@ -166,12 +133,10 @@ export class AvailDetailsComponent implements OnInit {
     this.clickedOnCountry = true;
     var filterCountry = [];
     for (let d of availListB) {
-      for (let e of d.avail_details) {
-        for (let f of e.countries) {
-          if (f.status == data) {
+      for (let f of d.CountryData) {
+        if (f.CountryStatus == data) {
 
-            filterCountry.push({ "status": f.status, "country_name": f.country_name });
-          }
+          filterCountry.push({ "status": f.CountryStatus, "country_name": f.Country });
         }
       }
     }
@@ -183,13 +148,10 @@ export class AvailDetailsComponent implements OnInit {
     this.clickedOnLanguage = true;
     var filterLanguage = [];
     for (let g of availListC) {
-      for (let h of g.avail_details) {
-        for (let l of h.languages) {
-          if (l.status == data) {
-            filterLanguage.push({ "status": l.status, "language_name": l.language_name });
-          }
+      for (let l of g.TranslationsData) {
+        if (l.TranslationStatus == data) {
+          filterLanguage.push({ "status": l.TranslationStatus, "language_name": l.Language });
         }
-
       }
     }
     this.filteredLanguage = filterLanguage;
@@ -198,5 +160,4 @@ export class AvailDetailsComponent implements OnInit {
   reload() {
     location.reload();
   }
-
 }

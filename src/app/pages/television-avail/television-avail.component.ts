@@ -28,6 +28,7 @@ export class TelevisionAvailComponent implements OnInit {
   tvDataList: any;
   selected: any;
   pendingResult: any;
+  completedResult: number;
   constructor(private httpService: HttpService) {
     this.parentMessage = "TV";
   }
@@ -86,6 +87,7 @@ export class TelevisionAvailComponent implements OnInit {
     })
   }
   getPending(n, data) {
+   
     switch (data) {
       case 'E': this.pendingResult = (this.tvData[n].TitleData.EpisodesPendingCount * 100) / this.tvData[n].TitleData.EpisodesCount;
         break;
@@ -98,17 +100,17 @@ export class TelevisionAvailComponent implements OnInit {
     return this.pendingResult;
   }
   getCompleted(n, data) {
-    let result;
+   
     switch (data) {
 
-      case 'E': result = (this.tvData[n].TitleData.EpisodesCompletedCount * 100) / this.tvData[n].TitleData.EpisodesCount;
+      case 'E': this.completedResult = (this.tvData[n].TitleData.EpisodesCompletedCount * 100) / this.tvData[n].TitleData.EpisodesCount;
         break;
-      case 'C': result = (this.tvData[n].TitleData.CountriesCompletedCount * 100) / this.tvData[n].TitleData.UniqueCountriesCount;
+      case 'C': this.completedResult = (this.tvData[n].TitleData.CountriesCompletedCount * 100) / this.tvData[n].TitleData.UniqueCountriesCount;
         break;
-      case 'L': result = (this.tvData[n].TitleData.LanguagesCompletedCount * 100) / this.tvData[n].TitleData.UniqueLanguagesCount;
+      case 'L': this.completedResult = (this.tvData[n].TitleData.LanguagesCompletedCount * 100) / this.tvData[n].TitleData.UniqueLanguagesCount;
         break;
     }
-    return result;
+    return this.completedResult;
   }
   export(page, AvailName) {
     this.showExportProgress = true;
@@ -121,7 +123,7 @@ export class TelevisionAvailComponent implements OnInit {
           this.successCase = true;
           this.errorCase = false;
           this.showExportProgress = false;
-          console.log('entered');
+      
           this.httpService.exporS3ToLcalToSingle(page, AvailName).subscribe(data => {
             this.apiResp = data;
             this.apiURL = this.apiResp.url;

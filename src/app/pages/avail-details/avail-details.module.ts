@@ -7,6 +7,7 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { AngularDraggableModule } from 'angular2-draggable';
+import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
 //import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AngularDraggableModule } from 'angular2-draggable';
     MatNativeDateModule,
     MatCardModule,
     MatButtonModule,
+    RoundProgressModule
     
   ],
   exports: [

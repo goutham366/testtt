@@ -187,13 +187,3 @@
 //     this.activeDayIsOpen = false;
 //   }
 // }
-
-import {
-    Component,
-  } from '@angular/core';
-@Component({
-    selector: 'mwl-demo-component',
-    templateUrl: './avail-calendar.component.html',
-    styleUrls: ['./avail-calendar.component.scss'],
-  })
-  export class CalendarComponent {}
