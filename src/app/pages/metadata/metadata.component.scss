@@ -427,9 +427,11 @@ i{
                             }
                         }
                     }
-                 .textarea{
+                 .text-area{
                     height: 100%;
-                    padding: 0px 10px;
+                    // padding: 0px 10px;
+                    width: 100%;
+
                  }
                     textarea{
                         resize: none;
@@ -540,6 +542,10 @@ i{
                         // overflow-x: hidden;
                         // height: 230px;
                         margin-bottom: 10px;
+                        ul{
+                            list-style: none;
+                            padding: 0px;
+                        }
                     }
                     .comment-style{
                         // border: 1px solid $black-3;
@@ -574,6 +580,7 @@ i{
                             margin: 7px;
                             padding: 4px 7px;
                             border-radius: 4px;
+                            word-break: break-word;
                         }
                         
                     }
@@ -713,15 +720,15 @@ i{
       .avail-list{
           .list-description{
             list-style: none;
-            padding: 0;
+            padding: 0px 5px;
             margin: auto;
             width: 100%;
-            text-align: center;
+            //text-align: center;
           }
       }
   }
   .language-scroll{
-    height: 315px;
+    height: 300px;
     overflow: scroll;
     overflow-x: hidden;
   }
@@ -765,8 +772,14 @@ i{
     }
     .progress-bar{
         background: #007CC3;
+        text-align: left !important;
+        padding: 0px 5px;
     }
-}
+    
+    }
+    .data-success{
+        background-color: #28a745!important;
+    }
 
 
 .metalanguage-content{
@@ -784,7 +797,7 @@ i{
     }
     
     .table-1{
-         width: 40%;
+         width: 19%;
         ul{
             list-style: none;
             padding: 0;
@@ -811,12 +824,12 @@ i{
         }
     }
     .table-2{
-        width: 80%;
+        width: 65%;
         padding-right: 10px;
         color: $black-6;
         ul{
             list-style: none;
-            width: 500px;
+            width: 330px;
             padding: 0;
             margin: 0;
             li{
@@ -897,8 +910,12 @@ i{
         }
     }
 }
-
-
+.true{
+    background-color: red;
+}
+.false{
+    background-color: yellow;
+}
     
 
     

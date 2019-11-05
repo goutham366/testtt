@@ -78,22 +78,37 @@ export class AvailDetailsComponent implements OnInit {
       } else if (res[0] === "FN") {
         this.condition = false;
       }
+      else if (res[0] === "TN") {
+        this.condition = false;
+      }
     });
     this.httpService.getAvailDetailsAPIView(this.availName, this.pageName).subscribe(data => {
       this.availdetailsresp = data;
       this.availDetailsViewList = this.availdetailsresp.resultData;
       for (let i = 0; i < this.availDetailsViewList.length; i++) {
         if (this.availName === this.availDetailsViewList[i].AvailName) {
+          if (this.pageName === 'ITUNES' || this.pageName === 'FILMS') {
+            this.widthofTitle = (this.availDetailsViewList[i].TitleData.CompletedTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
+            this.remainingofTitle = (this.availDetailsViewList[i].TitleData.PendingTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
 
-          this.widthofTitle = (this.availDetailsViewList[i].TitleData.CompletedTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
-          this.remainingofTitle = (this.availDetailsViewList[i].TitleData.PendingTitlesCount / this.availDetailsViewList[i].TitleData.TitlesCount) * 100;
+            this.widthofCountries = (this.availDetailsViewList[i].TitleData.CountriesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+            this.remainingofCountries = (this.availDetailsViewList[i].TitleData.CountriesPendingCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
 
-          this.widthofCountries = (this.availDetailsViewList[i].TitleData.CountriesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
-          this.remainingofCountries = (this.availDetailsViewList[i].TitleData.CountriesPendingCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+            this.widthofLang = (this.availDetailsViewList[i].TitleData.LanguagesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+            this.remainingofLang = (this.availDetailsViewList[i].TitleData.LanguagesPendingCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+          }
+          else if (this.pageName === 'TV') {
 
-          this.widthofLang = (this.availDetailsViewList[i].TitleData.LanguagesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
-          this.remainingofLang = (this.availDetailsViewList[i].TitleData.LanguagesPendingCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+            this.widthofTitle = (this.availDetailsViewList[i].TitleData.EpisodesCompletedCount / this.availDetailsViewList[i].TitleData.EpisodesCount) * 100;
+            this.remainingofTitle = (this.availDetailsViewList[i].TitleData.EpisodesPendingCount / this.availDetailsViewList[i].TitleData.EpisodesCount) * 100;
 
+            this.widthofCountries = (this.availDetailsViewList[i].TitleData.CountriesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+            this.remainingofCountries = (this.availDetailsViewList[i].TitleData.CountriesPendingCount / this.availDetailsViewList[i].TitleData.UniqueCountriesCount) * 100;
+
+            this.widthofLang = (this.availDetailsViewList[i].TitleData.LanguagesCompletedCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+            this.remainingofLang = (this.availDetailsViewList[i].TitleData.LanguagesPendingCount / this.availDetailsViewList[i].TitleData.UniqueLanguagesCount) * 100;
+
+          }
         }
       }
     })

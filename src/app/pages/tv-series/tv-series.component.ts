@@ -42,6 +42,7 @@ export class TvSeriesComponent implements OnInit {
   seriesListResp: any;
   availName: string;
   SeriesNameNew: any;
+  seriesListLength: any;
 
   constructor(private httpService: HttpService, private activatedRoute:ActivatedRoute) {
 
@@ -115,6 +116,7 @@ export class TvSeriesComponent implements OnInit {
     this.httpService.getSeriesDetails(this.availName).subscribe(data => {
       this.seriesListResp = data;
       this.seriesList = this.seriesListResp.resultData;
+      this.seriesListLength=this.seriesList.length;
     })
   }
   ngOnInit() {

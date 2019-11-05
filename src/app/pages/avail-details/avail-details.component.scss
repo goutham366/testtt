@@ -497,7 +497,7 @@ $topnav-background-color: #007CC3;
   }
  
   .row-list{
-    width: 80%; 
+    width: 83%; 
     color: white;
    
   }
@@ -1242,4 +1242,16 @@ ul.timeline > li:before {
 .outline{
     border: solid 1px;
     color: gainsboro;
+}
+
+.title-text{
+    // font-size: 12px;
+    // font-family: 'Roboto', sans-serif;
+    // font-weight: 600;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    outline:none;
+    cursor: pointer;
 }

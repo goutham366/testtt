@@ -2,9 +2,10 @@
     <div class="col-md-12">
       <nav class="navbar navbar-expand-lg p-0">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <button type="button" class="btn btn-light" (click)="openingModal();" data-toggle="modal" data-target="#myModal2">
-              <i class="material-icons">filter_list</i>
+          <ul class="navbar-nav ml-auto p-0">
+            <button type="button" class="btn btn-light d-flex" (click)="openingModal();" data-toggle="modal" data-target="#myModal2">
+  
+          <span><i class="material-icons">filter_list</i></span>  <span>{{titleLength}}</span>
               
             </button>
           </ul>
@@ -45,8 +46,9 @@
                         </i>
                         <p>Export</p></a>
                     </li>
-                    <!-- <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{availCount}}</button> -->
+                    
                   </ul>
+                  <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{titleLength}}</button>
                   <button *ngIf="successCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
                   <button *ngIf="errorCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
               </div>

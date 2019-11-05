@@ -36,7 +36,7 @@ const routes: Routes = [
       "showUnits": true,
       "clockwise": false
     }),
-    FilterModule,
+    
     RouterModule.forChild(routes)
   ],
   

@@ -45,6 +45,7 @@ export class TvSeasonComponent implements OnInit {
   orderedSeasonListResp: any;
   unorderedSeasonList: any;
   orderedSeasonList: any;
+  seasonsLength: any;
 
   constructor(private httpService: HttpService, private activatedRoute:ActivatedRoute) {
 
@@ -128,6 +129,7 @@ export class TvSeasonComponent implements OnInit {
     this.httpService.getSeasonDetails(this.availName, this.seriesName).subscribe(data => {
       this.orderedSeasonListResp = data;
       this.unorderedSeasonList=this.orderedSeasonListResp.resultData;
+      this.seasonsLength=this.unorderedSeasonList.length;
       this.sortBy('SeasonNumber');  
     },error=>{
       console.log("error message",error,error.message)

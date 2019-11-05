@@ -69,7 +69,7 @@ export class MetadataComponent implements OnInit {
   availLanguageList: Object;
   userCountry: any;
   userLanguage: any;
-  metaDataListUpdateVal:String="1. Jude Law";
+  metaDataListUpdateVal:String="";
   metaDataLangUpdateVal:String="";
   metaDataCountryUpdateVal:String="";
   countryData: any;
@@ -89,6 +89,8 @@ export class MetadataComponent implements OnInit {
   filteredLanguage: any[];
   languageShort='English';
   lobType: any;
+  startDate: any;
+  endDate: any;
 
   constructor(private httpservice: HttpService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.show=true;
@@ -176,8 +178,8 @@ export class MetadataComponent implements OnInit {
     this.LanguagesPendingCount = this.metaDataList.LanguagesPendingCount;
     this.uniqueCountriesCount = this.metaDataList.UniqueCountriesCount;
     this.uniqueLanguagesCount = this.metaDataList.UniqueLanguagesCount;
-    
-
+    this.startDate = this.metaDataList.StartDate;
+    this.endDate = this.metaDataList.DueDate;
     this.resultTerritoryCompleted = (this.metaDataList.CountriesCompletedCount * 100) / this.metaDataList.UniqueCountriesCount;
     this.resultTerritoryPending = (this.metaDataList.CountriesPendingCount * 100) / this.metaDataList.UniqueCountriesCount;
     this.resultLanguageCompleted = (this.metaDataList.LanguagesCompletedCount * 100) / this.metaDataList.UniqueLanguagesCount;
@@ -313,14 +315,14 @@ dataNull(){
     //var modifiedData = data.replace(/^\s*|\s*$/g,'');
     this.metaDataListUpdateVal = data;
     var toDate = Date();
-    this.logsDetails.push({"name": "hi", "date": toDate, "val": data});
+    this.logsDetails.push({"name": "John Paul", "date": toDate, "val": data});
   }
   
   
   updateDescription(trig, data){
     this.metaDataLangUpdateVal = data;
       var toDate = Date();
-      this.logsDetails.push({"name": "hi", "date": toDate, "val": data});
+      this.logsDetails.push({"name": "John Paul", "date": toDate, "val": data});
     
   }
   
@@ -328,7 +330,7 @@ dataNull(){
   updateCountryDescription(trig, data){
     this.metaDataCountryUpdateVal = data;
       var toDate = Date();
-      this.logsDetails.push({"name": "hi", "date": toDate, "val": data});
+      this.logsDetails.push({"name": "John Paul", "date": toDate, "val": data});
     
   }
   dataSource(database){

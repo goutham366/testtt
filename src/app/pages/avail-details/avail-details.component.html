@@ -67,35 +67,54 @@
           </div>
           <div class="row">
             <div class="col-md-4">
-              <a class="avail-details" (click)="showDetails3 = !showDetails3">
-                <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitlesCount}} Titles</a>
+              <div *ngIf="pageName=='TV'">
+                <a class="avail-details" (click)="showDetails3 = !showDetails3">
+                  <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.EpisodesCount}} Titles</a>
 
-              <div class="progressBar">
-                <div class="progress progress-main1">
-                  <div class="completeColor" (click)="filterTitles('Completed');" *ngIf="avail.TitleData.CompletedTitlesCount!=0" [style.width.%]="widthofTitle">
-                    {{avail.TitleData.CompletedTitlesCount}}
+                <div class="progressBar">
+                  <div class="progress progress-main1">
+                    <div class="completeColor" (click)="filterTitles('Completed');" *ngIf="avail.TitleData.EpisodesCompletedCount!=0" [style.width.%]="widthofTitle">
+                      {{avail.TitleData.EpisodesCompletedCount}}
+                    </div>
+                    <div class="pendingColor" (click)="filterTitles('Pending');" *ngIf="avail.TitleData.EpisodesPendingCount!=0" [style.width.%]="remainingofTitle">
+                      {{avail.TitleData.EpisodesPendingCount}}
+                    </div>
                   </div>
-                  <div class="pendingColor" (click)="filterTitles('Pending');" *ngIf="avail.TitleData.PendingTitlesCount!=0" [style.width.%]="remainingofTitle">
-                    {{avail.TitleData.PendingTitlesCount}}
+                </div>
+              </div>
+
+              <div *ngIf="pageName=='FILMS' || pageName=='ITUNES'">
+                <a class="avail-details" (click)="showDetails3 = !showDetails3">
+                  <img src="assets/images/Icons/PNG/titles.png"> {{avail.TitleData.TitlesCount}} Titles</a>
+
+                <div class="progressBar">
+                  <div class="progress progress-main1">
+                    <div class="completeColor" (click)="filterTitles('Completed');" *ngIf="avail.TitleData.CompletedTitlesCount!=0" [style.width.%]="widthofTitle">
+                      {{avail.TitleData.CompletedTitlesCount}}
+                    </div>
+                    <div class="pendingColor" (click)="filterTitles('Pending');" *ngIf="avail.TitleData.PendingTitlesCount!=0" [style.width.%]="remainingofTitle">
+                      {{avail.TitleData.PendingTitlesCount}}
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div *ngIf="!clickedOnTitle" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let z of avail.TitleDetails" [ngClass]="[z.TitleStatus == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let z of avail.TitleDetails" [ngClass]="[z.TitleStatus == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{z.GlobalTitle}}">
                     <ul>
-                      <li>{{z.GlobalTitle}} </li>
+                      <li class="title-text">{{z.GlobalTitle}} </li>
                     </ul>
                   </span>
-
                 </div>
               </div>
               <div *ngIf="clickedOnTitle" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let filterTitle of filteredTitle" [ngClass]="[filterTitle.status == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let filterTitle of filteredTitle" [ngClass]="[filterTitle.status == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{filterTitle.title_name}}">
                     <ul>
-                      <li>{{filterTitle.title_name}} </li>
+                      <li class="title-text">{{filterTitle.title_name}} </li>
                     </ul>
                   </span>
                 </div>
@@ -118,18 +137,20 @@
 
               <div *ngIf="!clickedOnCountry" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let z of avail.CountryData" [ngClass]="[z.CountryStatus == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let z of avail.CountryData" [ngClass]="[z.CountryStatus == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{z.Country}}">
                     <ul>
-                      <li>{{z.Country}} </li>
+                      <li class="title-text">{{z.Country}} </li>
                     </ul>
                   </span>
                 </div>
               </div>
               <div *ngIf="clickedOnCountry" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{filterCountry.country_name}}">
                     <ul>
-                      <li>{{filterCountry.country_name}} </li>
+                      <li class="title-text">{{filterCountry.country_name}} </li>
                     </ul>
                   </span>
                 </div>
@@ -152,18 +173,20 @@
 
               <div *ngIf="!clickedOnLanguage" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let z of avail.TranslationsData" [ngClass]="[z.TranslationStatus == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let z of avail.TranslationsData" [ngClass]="[z.TranslationStatus == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{z.Language}}">
                     <ul>
-                      <li>{{z.Language}} </li>
+                      <li class="title-text">{{z.Language}} </li>
                     </ul>
                   </span>
                 </div>
               </div>
               <div *ngIf="clickedOnLanguage" class="row row-list">
                 <div class="col-md-12 avail-list">
-                  <span *ngFor="let filterLanguage of filteredLanguage" [ngClass]="[filterLanguage.status == 'Completed' ? 'progress bg-success' : 'progress']">
+                  <span *ngFor="let filterLanguage of filteredLanguage" [ngClass]="[filterLanguage.status == 'Completed' ? 'progress bg-success' : 'progress']"
+                    data-toggle="tooltip" data-placement="left" title="{{filterLanguage.language_name}}">
                     <ul>
-                      <li>{{filterLanguage.language_name}} </li>
+                      <li class="title-text">{{filterLanguage.language_name}} </li>
                     </ul>
                   </span>
                 </div>

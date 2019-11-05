@@ -15,7 +15,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const routes: Routes = [
   {
-    path: 'titles', component: ApoTitlesComponent
+    path: '', component: ApoTitlesComponent
 }
 ];
 

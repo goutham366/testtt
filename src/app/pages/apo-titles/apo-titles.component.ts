@@ -60,6 +60,7 @@ export class ApoTitlesComponent implements OnInit {
   toolTipValue: string;
   modalShow: boolean;
   availName: string;
+  apoListlength: any;
   constructor(private httpService: HttpService) {
     this.getApoData();
     this.modalShow= true;
@@ -205,6 +206,7 @@ export class ApoTitlesComponent implements OnInit {
     this.httpService.getAPODetails().subscribe(data => {
       this.apoResponse = data;
       this.apoList = this.apoResponse.resultData;
+      this.apoListlength=  this.apoList.length;
     })
   }
   ngOnInit() {

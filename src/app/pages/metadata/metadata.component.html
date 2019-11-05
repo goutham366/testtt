@@ -13,7 +13,7 @@
   </div>
 </div> -->
 <div class="over-flow height-100">
-  <div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
+  <div class="container-fluid noselection over-flow"  [ngStyle]="{'font-size': sizeVar+'px'}">
     <div class="d-flex">
       <div class="flex-grow-1">
         <div *ngIf="!tvAvailName && !showApoBread">
@@ -78,7 +78,7 @@
                     <ul>
                       <li>{{titleName}}</li>
                       <li class="cust-text">
-                        <img src="assets/images/Icons/PNG/calendar.png">22/22 - 3/19</li>
+                        <img src="assets/images/Icons/PNG/calendar.png">{{startDate | date:'MM/dd'}} - {{endDate | date:'MM/dd'}}</li>
                     </ul>
                   </div>
                   <div class="circle">
@@ -165,7 +165,7 @@
                           <li>{{x.ChangedFields}}</li>
                           <li>{{x.Channel}}</li>
                           <li>{{x.ClearedForSale}}</li>
-                          <li>{{x.ClientEnd}}</li>
+                          <li>{{x.ClientEndDate}}</li>
                         </ul>
                         <!-- <div class="" >
                             <div class="table-3"> -->
@@ -187,7 +187,7 @@
                               <li>{{x.ChangedFields}}</li>
                               <li>{{x.Channel}}</li>
                               <li>{{x.ClearedForSale}}</li>
-                              <li>{{x.ClientEnd}}</li>
+                              <li>{{x.ClientEndDate}}</li>
                             <!-- <li>{{x.ClientEnd}}</li>
                                       <li>{{x.ClientEnd}}</li> -->
                           </ul>
@@ -287,9 +287,9 @@
                               </div>
                           <div *ngIf="!clickedOnLanguage" class="row row-list mt-2 text-white language-scroll">
                             <div class="col-md-12 avail-list mt-2">
-                              <!-- <div *ngFor="let x of availDetailsViewList">
-                                <div *ngFor="let y of x.avail_details"> -->
-                                    <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                              <!-- <div >
+                                <div > -->
+                                    <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                         <ul class="list-style list-description">
                                             <li class="cursor-pointer" (click)="languageName(z.Language)">
                                                 <span>{{z.Language}} </span>
@@ -324,7 +324,7 @@
                               </ul>
                             </div>
                             <div class="table-2 d-flex">
-                              <!-- <ul *ngFor="let x of availLanguageList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
+                              <!-- <ul  id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
                                 <li>{{x.Local_Titles}}</li>
                                 <li (click)="dataShow(metaDataLangUpdateVal)" class="cursor-pointer datahide">{{metaDataLangUpdateVal}}</li>
                                 <li>{{x.English_short}}</li>
@@ -397,20 +397,19 @@
                             </div>
                           </div>
                           <!--'clickedOnCountry' should--> 
-                          <div *ngIf="" class="row row-list text-white language-scroll mt-2">
+                          <div class="row row-list text-white language-scroll mt-2">
                             <div class="col-md-12 avail-list mt-2">
-                              <!-- <div *ngFor="let x of childCountryList"> -->
-                                <!-- <div *ngFor="let y of x.avail_details"> -->
-                                  <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                              
+                               
+                                  <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                     <ul class="list-style list-description">
                                       <li>{{z.Country}} </li>
                                     </ul>
                                   </span>
-                                <!-- </div> -->
-                              <!-- </div> -->
+                                
                             </div>
                           </div>
-                          <div *ngIf="" class="row row-list text-white">
+                          <div class="row row-list text-white">
                             <div class="col-md-12 avail-list mt-2">
                               <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.status == 'completed' ? 'progress bg-success' : 'progress']">
                                 <ul class="list-style list-description">
@@ -554,6 +553,7 @@
                     <div class="tab-content">
                       <div class="tab-pane active" id="Comments">
                         <div class="comment-scroll">
+                          <ul>
                         <li class="comment-style" *ngFor="let comment of comments">
                           <div class="d-flex user-details">
                             <span>JohnPaul</span>
@@ -561,6 +561,7 @@
                           </div>
                           {{comment.name}}
                         </li>
+                        </ul>
                         </div>
                         <div class="main-comment">
                           <div id="mySidenav" class="sidenav">
@@ -588,7 +589,7 @@
                             <span>{{logD.name}}</span>
                             <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
                           </div>
-                          <span>{{logD.val}}</span>
+                          <div>{{logD.val}}</div>
                           
                         </li>
                         <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">

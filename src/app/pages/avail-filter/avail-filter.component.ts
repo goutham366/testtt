@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -21,6 +21,9 @@ export class AvailFilterComponent implements OnInit {
 
   @Input() childMessage: string;
   @Input() childUrl: string;
+  @Input() titleLength:any;
+  // @Output() searchValue = new EventEmitter();
+  // searchtext:any;
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
@@ -259,6 +262,7 @@ export class AvailFilterComponent implements OnInit {
   uploadDoc() {
     //console.log('uploadDoc')
     this.showUpload = true;
+  
   }
   upload(files: File[], childMessage) {
     var formData = new FormData();
@@ -442,5 +446,8 @@ export class AvailFilterComponent implements OnInit {
   buttons = [
     { text: 'Download', isClicked: true }
   ]
+  // valueChanged(){
+  //   this.searchValue.emit(this.searchtext);
+  // }
 }
 
