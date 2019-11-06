@@ -147,12 +147,12 @@ export class AvailInsightComponent implements OnInit {
       if(this.availName!="title"){
         let str =  this.availName;
         let res = str.split(" ");
-        if(res[0] === 'TN' || res[0] === 'TC' || res[0]==="LDC_TBD") {
+        if(res[0] === 'TN' || res[0] === 'TC'|| res[0] === 'TD' || (res[0] === "LDC" && this.lobType == "TV")) {
           this.tvAvailName = true;
           }
-          if( res[0]==="IN" || res[0]==="LDC_TBD"){
+          if( res[0]==="IN" || (res[0] === "LDC" && this.lobType == "ITUNES")){
           this.condition = true;
-          }else if(res[0]==="FN" || res[0]==="FC" || res[0]=="FT" ||  res[0]==="LDC_TBD") {
+          }else if(res[0]==="FN" || res[0]==="FC" || res[0]=="FT" || (res[0] === "LDC" && this.lobType == "FILMS")) {
           this.condition = false;
           }
           this.showApoBread = false;

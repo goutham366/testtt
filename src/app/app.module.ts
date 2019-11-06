@@ -8,8 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { LoadingBarModule } from '@ngx-loading-bar/core';
-// import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { HttpService } from './services/http.service';
@@ -61,8 +59,6 @@ import { AuthorizationGuard } from './guards/auth-guard';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    // LoadingBarModule,
-    // LoadingBarHttpClientModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
@@ -77,7 +73,7 @@ import { AuthorizationGuard } from './guards/auth-guard';
     MatTabsModule,
     MatToolbarModule,
     MatProgressBarModule,
-	NgProgressModule,
+    NgProgressModule,
     NgProgressHttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     // MDBBootstrapModule.forRoot()

@@ -40,6 +40,7 @@ export class AvailDetailsComponent implements OnInit {
   widthofLang: number;
   remainingofLang: number;
   pageName: any;
+  enableTV: boolean;
   constructor(private httpService: HttpService, private location: Location, private route: ActivatedRoute) {
     this.removeButton = false;
     this.removeAddButton = true;
@@ -73,13 +74,16 @@ export class AvailDetailsComponent implements OnInit {
       this.pageName = params['page'];
       let str = this.availName;
       let res = str.split(" ");
-      if (res[0] === "IN") {
+      if (res[0] === "IN" || (res[0] === "LDC" && this.pageName == "ITUNES")) {
         this.condition = true;
-      } else if (res[0] === "FN") {
+        this.enableTV = false;
+      } else if (res[0] === "FN" || res[0] === "FC" || res[0] === "FT" || (res[0] === "LDC" && this.pageName == "FILMS")) {
         this.condition = false;
+        this.enableTV = false;
       }
-      else if (res[0] === "TN") {
+      else if (res[0] === "TN" || res[0] === "TC" || res[0] === "TD" ||(res[0] === "LDC" && this.pageName == "TV")) {
         this.condition = false;
+        this.enableTV = true;
       }
     });
     this.httpService.getAvailDetailsAPIView(this.availName, this.pageName).subscribe(data => {

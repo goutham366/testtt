@@ -172,7 +172,7 @@
                            <div *ngFor="let detail of titleDetail.AccountsData">
                               <div class="avail-description">
                                 
-                                    <span [ngClass]="[detail.AccountStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                    <span [ngClass]="[detail.AccountStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                         <ul>
                                           <li>{{detail.Account}} </li>
                                         </ul>
@@ -203,7 +203,7 @@
                                  <div *ngFor="let countryDetail of titleDetail.CountryData">
                                     <div>
                                       
-                                          <span [ngClass]="[countryDetail.CountryStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                          <span [ngClass]="[countryDetail.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                               <ul>
                                                 <li>{{countryDetail.Country}} </li>
                                               </ul>
@@ -234,7 +234,7 @@
                                        <div *ngFor="let LanguageDetail of titleDetail.TranslationsData">
                                           <div>
                                             
-                                                <span [ngClass]="[LanguageDetail.TranslationStatus == 'completed' ? 'progress bg-success' : 'progress']">
+                                                <span [ngClass]="[LanguageDetail.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                                     <ul>
                                                       <li>{{LanguageDetail.Language}} </li>
                                                     </ul>
@@ -344,25 +344,14 @@
                                         <ul class=" wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
                                             <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(titleDetail.TitleStatus)}" *ngFor="let stage of stages, let i = index">
                                               <div class="timeline-date">
-                                              
-                                              
                                               <span class="visuallyhidden"></span>
                                                 <span class="step-num"></span>
                                                <span class="stage-title">
+                                                  <span *ngIf="i<=getProgressFill(titleDetail.TitleStatus)">{{timeline.StatusDate | date: 'MM/dd/yyyy'}}</span>
                                                 <span class="step-name ml-1">
                                                   <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
                                                 </span> 
-                                                <!-- <span>
-                                                {{timeline.StatusDate | date: 'MM/dd/yyyy'}}
-                                                </span> -->
                                               </span>
-                                                <!-- <ul>
-                                                  <li class="step-name">
-                                                      <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>&nbsp;
-                                                      <span>{{timeline.StatusDate | date: 'MM/dd/yyyy'}}</span>                                                      
-                                                  </li>
-                                                 
-                                                </ul> -->
                                                 </div>
 
                                             </li>
