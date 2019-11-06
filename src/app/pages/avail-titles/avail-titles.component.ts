@@ -42,6 +42,7 @@ export class AvailTitlesComponent implements OnInit {
   availName: any;
   filmstitlesresp: any;
   apoListlength: any;
+  searchval: any;
 
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.parentMessage = "TV";
@@ -118,6 +119,7 @@ export class AvailTitlesComponent implements OnInit {
     })
   }
   ngOnInit() {
+   
     this.account = -1;
     this.showStatus = -1;
     this.activatedRoute.queryParams.subscribe(params => {
@@ -130,6 +132,10 @@ export class AvailTitlesComponent implements OnInit {
     // })
 
 
+  }
+  onSearch(searchtext){
+    this.searchval=searchtext;
+console.log('search',searchtext)
   }
   imgClickTrack(record, index) {
     this.showStatus = -1;

@@ -22,8 +22,8 @@ export class AvailFilterComponent implements OnInit {
   @Input() childMessage: string;
   @Input() childUrl: string;
   @Input() titleLength:any;
-  // @Output() searchValue = new EventEmitter();
-  // searchtext:any;
+  @Output() searchValue = new EventEmitter();
+  searchtext:any;
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
@@ -446,8 +446,12 @@ export class AvailFilterComponent implements OnInit {
   buttons = [
     { text: 'Download', isClicked: true }
   ]
-  // valueChanged(){
-  //   this.searchValue.emit(this.searchtext);
-  // }
+  valueChange(event,searchtext){
+    console.log('searchtextsearchtext',searchtext);
+    if(event.keyCode==13){
+    this.searchValue.emit(searchtext);
+    console.log('searchtt',this.searchValue);
+    }
+  }
 }
 

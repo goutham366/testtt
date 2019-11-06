@@ -44,6 +44,7 @@ import {
 import { ResizableDirective } from './directives/resizable';
 import { ResizerDirective } from './directives/resizer.directive';
 import { AuthorizationGuard } from './guards/auth-guard';
+import { SearchPipePipe } from './directives/search.pipes';
 //import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AuthorizationGuard } from './guards/auth-guard';
     ResetComponent,
     //ImageCropperComponent
     ResizableDirective,
-    ResizerDirective
+    ResizerDirective,
+    
   ],
   imports: [
     BrowserModule,

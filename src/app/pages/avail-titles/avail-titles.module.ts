@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AvailFilterComponent } from '../avail-filter/avail-filter.component';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling';
+import { SearchPipePipe } from 'src/app/directives/search.pipes';
+import { SearchPipeModule } from 'src/app/directives/search.pipe.module';
+
 const routes: Routes = [
   {
     path: '', component: AvailTitlesComponent
@@ -16,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FilterModule,
     ScrollingModule,
+    SearchPipeModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

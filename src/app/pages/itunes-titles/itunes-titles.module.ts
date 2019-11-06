@@ -7,6 +7,7 @@ import { MatNativeDateModule, MatCardModule, MatButtonModule } from '@angular/ma
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling';
+import { SearchPipeModule } from 'src/app/directives/search.pipe.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { ScrollingModule } from '../../../../node_modules/@angular/cdk/scrolling
     FormsModule,
     FilterModule,
     ScrollingModule,
+    SearchPipeModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

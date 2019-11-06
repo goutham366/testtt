@@ -12,6 +12,7 @@ import { FilterModule } from '../avail-filter/avail-filter.module';
 import { FilterModuleNew } from '../availfilter/availfilter.module';
 import { MatTooltipModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SearchPipeModule } from 'src/app/directives/search.pipe.module';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     CommonModule,
     FilterModule,
     ScrollingModule,
+    SearchPipeModule,
     NgCircleProgressModule.forRoot({
       "backgroundPadding": 7,
       "radius": 28,

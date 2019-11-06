@@ -8,11 +8,15 @@ import { PagesComponent } from './pages-component';
 import { MetadataLanguageComponent } from './metadata-language/metadata-language.component';
 import { MetadataTerrtorialComponent } from './metadata-terrtorial/metadata-terrtorial.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
-    SharedModule,
+    SharedModule
+    
+   
     // NgProgressModule.forRoot(),
     // NgProgressHttpClientModule
 

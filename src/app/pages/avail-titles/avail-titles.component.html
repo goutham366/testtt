@@ -20,18 +20,20 @@
                     </li>
                 </ul>
                 <div class="ml-auto filter">
-                  <app-avail-filter [childMessage]="parentMessage" [titleLength]="apoListlength"></app-avail-filter>
+                  <app-avail-filter [childMessage]="parentMessage" [titleLength]="apoListlength" (searchValue)="onSearch($event)"></app-avail-filter>
+              
                 </div>
                 <!-- <div class="ml-auto">
                     <app-avail-filter></app-avail-filter>
                 </div> -->
             </div>
+           
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="row">
                      <cdk-virtual-scroll-viewport class="upload-loading" itemSize="40" >
                         <div class="d-flex upload-styles">
-                        <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList">
+                        <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList |searchPipe: {GlobalTitle:searchval}">
                         <div class="" >
                             <div class="card">
                                 <div class="card-main">

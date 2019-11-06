@@ -46,6 +46,7 @@ export class TvSeasonComponent implements OnInit {
   unorderedSeasonList: any;
   orderedSeasonList: any;
   seasonsLength: any;
+  searchval: any;
 
   constructor(private httpService: HttpService, private activatedRoute:ActivatedRoute) {
 
@@ -207,5 +208,8 @@ export class TvSeasonComponent implements OnInit {
         });
         this.orderedSeasonList = this.unorderedSeasonList;
 }
-
+onSearch(searchtext){
+  this.searchval=searchtext;
+console.log('search',searchtext)
+}
 }

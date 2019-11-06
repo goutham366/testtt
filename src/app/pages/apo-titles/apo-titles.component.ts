@@ -61,6 +61,7 @@ export class ApoTitlesComponent implements OnInit {
   modalShow: boolean;
   availName: string;
   apoListlength: any;
+  searchval: any;
   constructor(private httpService: HttpService) {
     this.getApoData();
     this.modalShow= true;
@@ -304,5 +305,10 @@ export class ApoTitlesComponent implements OnInit {
     }else{
       this.modalShow= false;
     }
+  }
+  onSearch(searchtext){
+    this.searchval=searchtext;
+    
+console.log('search',searchtext)
   }
 }

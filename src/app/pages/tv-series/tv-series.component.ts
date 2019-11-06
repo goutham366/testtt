@@ -43,6 +43,7 @@ export class TvSeriesComponent implements OnInit {
   availName: string;
   SeriesNameNew: any;
   seriesListLength: any;
+  searchval: any;
 
   constructor(private httpService: HttpService, private activatedRoute:ActivatedRoute) {
 
@@ -192,6 +193,9 @@ export class TvSeriesComponent implements OnInit {
     return this.progress;
   }
 
-
+  onSearch(searchtext){
+    this.searchval=searchtext;
+console.log('search',searchtext)
+  }
 
 }

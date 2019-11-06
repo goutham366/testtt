@@ -43,6 +43,7 @@ export class ItunesTitlesComponent implements OnInit {
   accounttitlesresp: any;
   fullapoList: any;
   apoListlength: number;
+  searchval: any;
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
@@ -206,6 +207,10 @@ export class ItunesTitlesComponent implements OnInit {
     else {
       return "due-date";
     }
+  }
+  onSearch(searchtext){
+    this.searchval=searchtext;
+console.log('search',searchtext)
   }
 
 }
