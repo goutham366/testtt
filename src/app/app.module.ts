@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { LoadingBarModule } from '@ngx-loading-bar/core';
 // import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { HttpService } from './services/http.service';
 // import { SearchPipePipe } from './directives/search.pipes';
 
@@ -75,6 +77,8 @@ import { AuthorizationGuard } from './guards/auth-guard';
     MatTabsModule,
     MatToolbarModule,
     MatProgressBarModule,
+	NgProgressModule,
+    NgProgressHttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     // MDBBootstrapModule.forRoot()
     //MDBBootstrapModule.forRoot()

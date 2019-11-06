@@ -13,6 +13,7 @@
     *ngIf="loading" color="blue" mode="indeterminate">
   </mat-progress-bar> -->
   <router-outlet>
+  <ng-progress [spinner]="false"></ng-progress>
     <!-- <ngx-loading-bar [includeSpinner]="false"></ngx-loading-bar> -->
   </router-outlet>
 
