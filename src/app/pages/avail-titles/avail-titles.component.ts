@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 interface Stages {
   stageTitle: String;
 }
+
 @Component({
   selector: 'app-avail-titles',
   templateUrl: './avail-titles.component.html',
   styleUrls: ['./avail-titles.component.scss']
 })
 export class AvailTitlesComponent implements OnInit {
-
+ 
+ 
   showStatus: any;
   apoList: any;
   titleStatus: boolean = false;
@@ -42,9 +44,17 @@ export class AvailTitlesComponent implements OnInit {
   availName: any;
   filmstitlesresp: any;
   apoListlength: any;
+  @ViewChildren('someVar') filteredItems;
   searchval: any;
-
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  
+  
+  //changeDetection: ChangeDetectionStrategy.OnPush
+  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef) {
+    
+      // this.filteredItems= this.apoList;
+      // this.changeDetectRef = changeDetectRef;
+      // this.changeDetectRef.detectChanges();
     this.parentMessage = "TV";
     this.stages = [
       { stageTitle: "Announced" },
@@ -116,27 +126,29 @@ export class AvailTitlesComponent implements OnInit {
       this.filmstitlesresp = data;
       this.apoList = this.filmstitlesresp.resultData;
       this.apoListlength=this.apoList.length;
+      // this.count=this.apoListlength;
+     
     })
   }
   ngOnInit() {
    
     this.account = -1;
     this.showStatus = -1;
+  
     this.activatedRoute.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
     });
 
     this.getApoData();
+   
+    this.cdr.detectChanges();
     // this.httpService.refresh('avail').subscribe(dataof => {
     //   this.getApoData();
     // })
 
 
   }
-  onSearch(searchtext){
-    this.searchval=searchtext;
-console.log('search',searchtext)
-  }
+  
   imgClickTrack(record, index) {
     this.showStatus = -1;
     this.accStatus = false;
@@ -212,8 +224,19 @@ console.log('search',searchtext)
       return "due-date";
     }
   }
-
-
+  
+  onSearch(searchtext){
+      this.searchval=searchtext;
+        this.cdr.detectChanges();
+  
+  //  this.changeDetectRef.detectChanges();
+  }
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+   
+  }
+  
 }
+
 
 

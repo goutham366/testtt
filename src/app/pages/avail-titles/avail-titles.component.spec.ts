@@ -9,7 +9,7 @@ import { HttpTestingController, HttpClientTestingModule } from '../../../../node
 import { AvailTitlesComponent } from './avail-titles.component';
 
 
-describe('AvailTitlesComponent', () => {
+xdescribe('AvailTitlesComponent', () => {
   let component: AvailTitlesComponent;
   let fixture: ComponentFixture<AvailTitlesComponent>;
   let service: HttpService;

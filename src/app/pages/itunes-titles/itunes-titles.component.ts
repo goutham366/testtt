@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectorRef, ViewChildren } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 interface Stages {
@@ -10,6 +10,7 @@ interface Stages {
   styleUrls: ['./itunes-titles.component.scss']
 })
 export class ItunesTitlesComponent implements OnInit {
+  @ViewChildren('someVar') filteredItems;
   showStatus: any;
   apoList=[];
   //apoResponse: any;
@@ -44,7 +45,7 @@ export class ItunesTitlesComponent implements OnInit {
   fullapoList: any;
   apoListlength: number;
   searchval: any;
-  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute,private cdr: ChangeDetectorRef) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
       this.titleName = params['title_name'];
@@ -210,7 +211,10 @@ export class ItunesTitlesComponent implements OnInit {
   }
   onSearch(searchtext){
     this.searchval=searchtext;
-console.log('search',searchtext)
-  }
 
+  }
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+   
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 interface Stages {
@@ -10,7 +10,7 @@ interface Stages {
   styleUrls: ['./tv-episodes.component.scss']
 })
 export class TvEpisodesComponent implements OnInit {
-
+  @ViewChildren('someVar') filteredItems;
   showStatus: any;
   orderedEpisodeList: any;
   titleStatus: boolean = false;
@@ -48,7 +48,7 @@ export class TvEpisodesComponent implements OnInit {
   episodeLength: any;
   searchval: any;
 
-  constructor(private httpService: HttpService,private activatedRoute:ActivatedRoute) {
+  constructor(private httpService: HttpService,private activatedRoute:ActivatedRoute,private cdr: ChangeDetectorRef) {
 
    this.parentMessage = "Episodes";
     this.stages = [
@@ -214,6 +214,10 @@ export class TvEpisodesComponent implements OnInit {
   }
   onSearch(searchtext){
     this.searchval=searchtext;
-console.log('search',searchtext)
+
+  }
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+   
   }
 }

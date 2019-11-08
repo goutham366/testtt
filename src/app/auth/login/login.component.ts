@@ -98,7 +98,12 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   showError = false;
-  userDetails = [{ 'name': 'joe', 'password': 'joe1' }, { 'name': 'neha', 'password': 'neha1' }, { 'name': 'jayesh', 'password': 'jayesh1' }];
+  userDetails = [{ 'name': 'joe', 'password': 'joe1' }, { 'name': 'neha', 'password': 'neha1' }, 
+  { 'name': 'jayesh', 'password': 'jayesh1' },
+  { 'name': 'manoj', 'password': 'manoj1' },
+  { 'name': 'sridhar', 'password': 'sridhar1' },
+  { 'name': 'srinivasan', 'password': 'srinivasan1' },
+  { 'name': 'nithia', 'password': 'nithia1' }];
   type= "password";
   transComp:boolean;
   classAdd:boolean;
@@ -186,7 +191,11 @@ export class LoginComponent implements OnInit {
     //for (var i = 0; i < this.userDetails.length; i++) {
       if (("joe" == this.loginForm.value.name && "joe1" == this.loginForm.value.password)
        || ("neha" == this.loginForm.value.name && "neha1" == this.loginForm.value.password)
-       || ("jayesh" == this.loginForm.value.name && "jayesh1" == this.loginForm.value.password)) {
+       || ("jayesh" == this.loginForm.value.name && "jayesh1" == this.loginForm.value.password)
+       || ("manoj" == this.loginForm.value.name && "manoj1" == this.loginForm.value.password)
+       || ("sridhar" == this.loginForm.value.name && "sridhar1" == this.loginForm.value.password)
+       || ("srinivasan" == this.loginForm.value.name && "srinivasan1" == this.loginForm.value.password)
+       || ("nithia" == this.loginForm.value.name && "nithia1" == this.loginForm.value.password)) {
         console.log("welcome");
         this.showError = false;
         this.textColor = false;

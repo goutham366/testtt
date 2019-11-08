@@ -9,7 +9,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { MatProgressBarModule } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '../../../../node_modules/@angular/core';
-fdescribe('TelevisionAvailComponent', () => {
+xdescribe('TelevisionAvailComponent', () => {
   let component: TelevisionAvailComponent;
   let fixture: ComponentFixture<TelevisionAvailComponent>;
   let service: HttpService;

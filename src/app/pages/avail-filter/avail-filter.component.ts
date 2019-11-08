@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
@@ -21,9 +21,11 @@ export class AvailFilterComponent implements OnInit {
 
   @Input() childMessage: string;
   @Input() childUrl: string;
-  @Input() titleLength:any;
+  @Input() titleLength: any;
   @Output() searchValue = new EventEmitter();
-  searchtext:any;
+  @Input() filterCount: any;
+  @Input() countVal:any;
+  searchtext: any;
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   backgroundColor = '#000000';
@@ -78,6 +80,8 @@ export class AvailFilterComponent implements OnInit {
   enableSaveFlag: boolean = false;
   hideExport: boolean;
   uploadRunningMessage: string;
+  titleLength1: any;
+  enableSearchFlag: boolean;
 
   constructor(private httpService: HttpService) {
     this.errorCase = false;
@@ -110,11 +114,11 @@ export class AvailFilterComponent implements OnInit {
   clickDate(c) {
     if (!c) {
       this.startDate = `01/01/` + this.startYear;
-    //  console.log('this.startDate', this.startDate);
+      //  console.log('this.startDate', this.startDate);
 
     } else {
       this.myDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
-     // console.log('this.myDate', this.myDate);
+      // console.log('this.myDate', this.myDate);
     }
   }
 
@@ -126,7 +130,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight1 = true;
         }
-      //  console.log("", "654545");
+        //  console.log("", "654545");
         break;
       }
       case 2: {
@@ -135,7 +139,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight2 = true;
         }
-      //  console.log("", "5757");
+        //  console.log("", "5757");
         break;
       }
       case 3: {
@@ -144,7 +148,7 @@ export class AvailFilterComponent implements OnInit {
         } else {
           this.highlight3 = true;
         }
-    //    console.log("", "5757");
+        //    console.log("", "5757");
         break;
       }
       case 4: {
@@ -238,6 +242,7 @@ export class AvailFilterComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.filterCount=this.titleLength;
     if (this.childMessage === 'SERIES' || this.childMessage === 'SEASON' || this.childMessage === 'Episodes' || this.childMessage === 'TV' || this.childMessage === 'Account-Titles') {
       this.hideExport = true;
     }
@@ -262,7 +267,7 @@ export class AvailFilterComponent implements OnInit {
   uploadDoc() {
     //console.log('uploadDoc')
     this.showUpload = true;
-  
+
   }
   upload(files: File[], childMessage) {
     var formData = new FormData();
@@ -275,7 +280,7 @@ export class AvailFilterComponent implements OnInit {
     this.relaseDocumentName = this.filename.includes('Release');
     this.itunesDocumentName = this.filename.includes('iTunes');
     this.showProgress = true;
- //   console.log(files[0].name, 'filename')
+    //   console.log(files[0].name, 'filename')
     var extension = this.filename.substr(this.filename.lastIndexOf('.'));
     if ((extension.toLowerCase() === ".xlsx")) {
       if (files[0].size <= 31457280) {
@@ -286,7 +291,7 @@ export class AvailFilterComponent implements OnInit {
 
             this.httpService.uploadS3toAWS(this.s3Resp.s3filename).subscribe(data => {
               this.showProgress = true;
-          //    console.log("second call data : " + data);
+              //    console.log("second call data : " + data);
               this.secndUrlResp = data;
               if (data['status'] = "success") {
                 this.showProgress = false;
@@ -446,11 +451,11 @@ export class AvailFilterComponent implements OnInit {
   buttons = [
     { text: 'Download', isClicked: true }
   ]
-  valueChange(event,searchtext){
-    console.log('searchtextsearchtext',searchtext);
-    if(event.keyCode==13){
-    this.searchValue.emit(searchtext);
-    console.log('searchtt',this.searchValue);
+  valueChange(event, searchtext) {
+       if (event.keyCode == 13) {
+       this.searchValue.emit(searchtext);
+      // this.titleLength=this.filterCount;
+    this.enableSearchFlag=true;
     }
   }
 }

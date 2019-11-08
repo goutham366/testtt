@@ -27,7 +27,7 @@ export class SearchPipePipe implements PipeTransform {
                 (x && new RegExp(filter[keyName], 'gi').test(item[keyName])) || filter[keyName] == "", true));
               }
       else {
-        console.log('items',items) 
+      
         return items.filter(item => {
           return filterKeys.some((keyName) => {
             return new RegExp(filter[keyName], 'gi').test(item[keyName]) || filter[keyName] == "";

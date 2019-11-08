@@ -3,7 +3,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="ml-auto filter">
-                        <app-avail-filter [childMessage]="parentMessage" [titleLength]="apoListlength" (searchValue)="onSearch($event)"></app-avail-filter>
+                        <app-avail-filter [childMessage]="parentMessage" [titleLength]="apoListlength" [filterCount]="filteredItems?.length" (searchValue)="onSearch($event)"></app-avail-filter>
                     </div>
                 </div>
                 <div class="row">
@@ -11,7 +11,7 @@
                         <div class="row">
                             <cdk-virtual-scroll-viewport class="upload-loading" itemSize="40" >
                                 <div class="d-flex upload-styles">
-                                    <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList |searchPipe: {GlobalTitle:searchval} ; let i=index">
+                                    <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList |searchPipe: {GlobalTitle:searchval} ; let i=index" #someVar>
                                         <div class="card">
                                             <div class="card-main">
                                                 <div class="card-img">

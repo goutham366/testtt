@@ -48,7 +48,15 @@
                     </li>
                     
                   </ul>
+                <div *ngIf="enableSearchFlag">
+                  <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{filterCount}}</button>
+               
+                </div>
+                 
+                <div *ngIf="!enableSearchFlag">
                   <button class="modal-title close f-15" data-dismiss="modal" aria-label="Close" id="myModalLabel2">{{titleLength}}</button>
+               
+                </div>
                   <button *ngIf="successCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
                   <button *ngIf="errorCase" class="modal-title close close-button" data-dismiss="modal" aria-label="Close" id="myModalLabel2">&times;</button>
               </div>
@@ -62,12 +70,9 @@
                                 <ul class="fliter-des">
                                   <li class="filter-content">
                                     <div class="form-group">
-                                      <!-- <span class="fa fa-search form-control-feedback"></span> -->
-                                      <div class="input-group-prepend">
-                                          <!-- <span class="input-group-text" id="basic-addon1">
-                                            <i class="material-icons">search</i>
-                                          </span> -->
-                                        </div>
+                                     <div class="input-group-prepend">
+                                        <i class="material-icons">search</i>
+                                         </div>
                                         <input type="text" class="form-control" aria-label="search" aria-describedby="basic-addon1" name="searchtext" [(ngModel)]="searchtext" (keyup)="valueChange($event,searchtext)">
                                       <!-- <input type="text" placeholder="{{avail_title}}"> -->
                                     </div>

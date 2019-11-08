@@ -10,7 +10,7 @@ export class HttpService {
     throw new Error("Method not implemented.");
   }
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
-  lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
+   lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
  //lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   //lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
  // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
@@ -176,7 +176,7 @@ export class HttpService {
     // headers = headers.append("Content-Type", "multipart/form-data");
     var url = this.awsS3Url + '/uploads/uploadFile'
     return this.http.post(url , formData, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
 
@@ -186,7 +186,7 @@ export class HttpService {
     // headers = headers.append("Access-Control-Allow-Origin", "*");
     var url = this.lambda + '/data/process/' + fileName;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   exportToS3(message) {
@@ -196,14 +196,14 @@ export class HttpService {
     //headers = headers.append("Access-Control-Allow-Origin", "*");
     var url = this.lambda + `/export/${message}`;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   exporS3ToLcal(message) {
 
     var url = this.lambda + `/export/excel/${message}`
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   // uploadApoToBack(path, relDoc, trigDoc){
@@ -251,25 +251,25 @@ export class HttpService {
     console.log('avail name in service', availname);
     var url = this.lambda + `/export/${availname}`;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   exporS3ToLcalToSingle(message, availname) {
     var url = this.lambda + `/export/excel/${availname}`;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   exportToSingleAPO(message, GlobalTitle) {
     var url = this.lambda + `/export/apotitle/${GlobalTitle}`;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
   exportAPOS3ToLcalToSingle(message, GlobalTitle) {
     var url = this.lambda + `/export/apotitle/excel/${GlobalTitle}`;
     return this.http.get(url, {
-      headers: { ignoreLoadingBar: '' }
+      headers: { ignoreProgressBar : '' }
     });
   }
 }

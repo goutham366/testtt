@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChildren } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { TooltipPosition } from '@angular/material';
 declare var jQuery:any;
@@ -12,7 +12,7 @@ interface Stages {
   styleUrls: ['./apo-titles.component.scss']
 })
 export class ApoTitlesComponent implements OnInit {
-  
+  @ViewChildren('someVar') filteredItems;
   showStatus: any;
   apoList: any;
   apoResponse: any;
@@ -62,7 +62,7 @@ export class ApoTitlesComponent implements OnInit {
   availName: string;
   apoListlength: any;
   searchval: any;
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private cdr: ChangeDetectorRef) {
     this.getApoData();
     this.modalShow= true;
     this.parentMessage = "APO";
@@ -308,7 +308,10 @@ export class ApoTitlesComponent implements OnInit {
   }
   onSearch(searchtext){
     this.searchval=searchtext;
-    
-console.log('search',searchtext)
+   
+  }
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+   
   }
 }

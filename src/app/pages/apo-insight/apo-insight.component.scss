@@ -1619,7 +1619,17 @@ i{
 //     display: inline-grid;
 // }
 
-
+.title-text{
+    // font-size: 12px;
+    // font-family: 'Roboto', sans-serif;
+    // font-weight: 600;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    outline:none;
+    cursor: pointer;
+}
 
 
 

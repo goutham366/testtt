@@ -132,7 +132,7 @@
 
             </div>
             <div class="col-md-4">
-              <a class="avail-details" (click)="showDetails3 = !showDetails3">
+              <a class="avail-details">
                 <i class="material-icons md-18 md-grey v-align">language</i> {{avail.TitleData.UniqueCountriesCount}} Countries</a>
               <div class="progressBar">
                 <div class="progress progress-main1">
@@ -203,15 +203,6 @@
               </div>
             </div>
           </div>
-
-
-          <!-- progress bar -->
-          <div style="margin: 20px 21px 24px 5px;" [hidden]="showDetails3">
-            <div class="progress">
-              <div [ngStyle]="{'width.%': width}" class="inner-progress">100</div>
-            </div>
-          </div>
-          <!-- progress bar -->
         </div>
         <!-- </div> -->
       </div>

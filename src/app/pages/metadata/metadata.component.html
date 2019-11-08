@@ -278,11 +278,11 @@
                         <div class="language-data">
                           
                             <div class="progress progress-main">
-                                <div class="progress-bar bg-success" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}">
-                                  <span class="status-padding"  >{{countriesCompletedCount}}</span>
+                                <div class="progress-bar bg-success" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}">
+                                  <span class="status-padding"  >{{LanguagesCompletedCount}}</span>
                                 </div>
-                                <div class="progress-bar" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}">
-                                  <span class="status-padding" >{{countriesPendingCount}}</span>
+                                <div class="progress-bar" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}">
+                                  <span class="status-padding" >{{LanguagesPendingCount}}</span>
                                 </div>
                               </div>
                           <div *ngIf="!clickedOnLanguage" class="row row-list mt-2 text-white language-scroll">
@@ -292,7 +292,7 @@
                                     <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                         <ul class="list-style list-description">
                                             <li class="cursor-pointer" (click)="languageName(z.Language)">
-                                                <span>{{z.Language}} </span>
+                                                <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Language}}">{{z.Language}} </span>
                                               </li>
                                           <!-- <li (click)="languageName(z.language_name)">{{z.Language}} </li> -->
                                         </ul>
@@ -403,7 +403,7 @@
                                
                                   <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                     <ul class="list-style list-description">
-                                      <li>{{z.Country}} </li>
+                                      <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Country}}">{{z.Country}} </li>
                                     </ul>
                                   </span>
                                 

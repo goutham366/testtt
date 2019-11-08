@@ -10,11 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./avail-details.component.scss']
 })
 export class AvailDetailsComponent implements OnInit {
-  showDetails: boolean;
+
   runspinner: any;
-  showDetails1: boolean;
-  showDetails2: boolean;
-  showDetails3: boolean;
   width: any;
   removeButton: boolean;
   removeAddButton: boolean;
@@ -64,10 +61,6 @@ export class AvailDetailsComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "0";
   }
   ngOnInit() {
-    this.showDetails = true;
-    this.showDetails1 = true;
-    this.showDetails2 = true;
-    this.showDetails3 = true;
     this.width = 75;
     this.route.queryParams.subscribe(params => {
       this.availName = params['avail_name'];

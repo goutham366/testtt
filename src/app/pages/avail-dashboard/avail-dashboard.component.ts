@@ -157,4 +157,4 @@ export class AvailDashboardComponent implements OnInit {
     this.enableSaveFlag=false;
     this.errorMessageDownload='';
   }
-}
+  }

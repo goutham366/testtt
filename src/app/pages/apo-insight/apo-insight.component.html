@@ -174,7 +174,7 @@
                                 
                                     <span [ngClass]="[detail.AccountStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                         <ul>
-                                          <li>{{detail.Account}} </li>
+                                          <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{detail.Account}}">{{detail.Account}} </li>
                                         </ul>
                                     </span>
                                 
@@ -205,7 +205,7 @@
                                       
                                           <span [ngClass]="[countryDetail.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                               <ul>
-                                                <li>{{countryDetail.Country}} </li>
+                                                <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{countryDetail.Country}}">{{countryDetail.Country}} </li>
                                               </ul>
                                             </span>
                                       
@@ -236,7 +236,7 @@
                                             
                                                 <span [ngClass]="[LanguageDetail.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                                     <ul>
-                                                      <li>{{LanguageDetail.Language}} </li>
+                                                      <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{LanguageDetail.Language}}">{{LanguageDetail.Language}} </li>
                                                     </ul>
                                                   </span>
                                             
@@ -250,15 +250,15 @@
                       <div class="Status-box">
                         <h6 class="status-text">Status</h6>
                         <p class="status">
-                          <b>-</b></p>
+                          <b>{{titleDetail.PendingTranslations}}</b></p>
                         
                         <p class="status-count">Pending Translations</p>
                         <p class="status">
-                          <b>{{titleDetail.PendingTranslations}}</b></p>
+                          <b>{{titleDetail.PendingRatings}}</b></p>
                           
                         <p class="status-count">Pending Ratings</p>
                         <p class="status">
-                          <b>{{titleDetail.PendingRatings}}</b></p> 
+                          <b>-</b></p> 
                         
                         <p class="status-count">Pending Clarifications</p>
                         <p class="status">
@@ -267,7 +267,7 @@
                         <p class="status-count">Escalations</p>
                       </div>
                       <div *ngIf="titleDetail.AvailHistory">
-                          <h6 class="status-text">History</h6> {{titleDetail.AvailHistory}}
+                          <h6 class="status-text">History</h6>
                         </div> 
                         <div class="col-md-12 avail-card avail-history" *ngIf="titleDetail.AvailHistory">
                             <div class="avail-history-text" *ngIf="titleDetail.AvailHistory.length === 0">No History Available!</div>
