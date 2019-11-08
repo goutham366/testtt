@@ -454,12 +454,14 @@ export class AvailFilterComponent implements OnInit {
   valueChange(event, searchtext) {
        if (event.keyCode == 13) {
        this.searchValue.emit(searchtext);
-      // this.titleLength=this.filterCount;
-    if(searchtext!=""){
+       if(searchtext!=""){
         this.enableSearchFlag=true;
-      }else{
+       }else{
         this.enableSearchFlag=false;
-      }
+       }
+      // this.titleLength=this.filterCount;
+    
+    
     }
   }
 }

@@ -341,7 +341,7 @@
                                         </ol>
                                     </div> -->
                                     <div class="cus-text text-col">
-                                        <ul class=" wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
+                                        <ul class="wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
                                             <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(titleDetail.TitleStatus)}" *ngFor="let stage of stages, let i = index">
                                               <div class="timeline-date">
                                               <span class="visuallyhidden"></span>

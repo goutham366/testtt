@@ -113,12 +113,13 @@
                     <span class="status-text">
                         <strong class="status-font">Status</strong>
                     </span>
+
                     <p class="status">
-                        <span class="bold"> -</span></p>
-                    <p class="status-count">Pending Translations</p>
+                        <span class="bold">{{itune.TitleData.PendingTranslations ? itune.TitleData.PendingTranslations : "-" }}</span> Pending Translations</p>
+                    
                     <p class="status">
-                        <span class="bold"> -</span></p>
-                    <p class="status-count">Pending Ratings</p>
+                        <span class="bold">{{itune.TitleData.PendingRatings ? itune.TitleData.PendingRatings : "-" }}</span> Pending Ratings</p>
+                    <!-- <p class="status-count">Pending Ratings</p> -->
                     <p class="status">
                         <span class="bold"> -</span></p>
                     <p class="status-count">Pending Clarifications</p>
