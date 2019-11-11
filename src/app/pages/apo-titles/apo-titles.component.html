@@ -92,19 +92,7 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            <div class=""  >
-                                                                <div class="download-image ml-auto" id="id" [ngStyle]="{'cursor':getCursorForExport(x.TitleId)}" (click)="openModal(x.GlobalTitle,x.TitleId)" data-toggle="modal" data-target="#myModal">
-                                                                    <div class="download-image ml-auto" id="exportTool" [ngStyle]="checkTitleId(x.TitleId) ? {'opacity': '0.3'} : {'opacity': '1'}"  matTooltipPosition="above" matTooltip="{{checkTitleId(x.TitleId)?'Trigger Doc is not Uploaded': ''}}">
-                                                                        <div class="download-text border text-dark">Export Data</div>
-                                                                        <div class="download-btn btn-default">
-                                                                            <i class="material-icons">keyboard_tab</i>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div>
-                                                                    <!-- <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(avail.AvailName)">Export</button> -->
-                                                                </div>
-                                                            </div>
+                                                          
                                                             <div class="progressBar paddingtb-10" *ngIf="titleName===x.GlobalTitle && accStatus">
                                                                 <div class="progress progress-main">
                                                                     <div class="completeColor" [style.width.%]="width">
@@ -147,6 +135,19 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class=""  >
+                                                                    <div class="download-image ml-auto" id="id" [ngStyle]="{'cursor':getCursorForExport(x.TitleId)}" (click)="openModal(x.GlobalTitle,x.TitleId)" data-toggle="modal" data-target="#myModal">
+                                                                        <div class="download-image ml-auto" id="exportTool" [ngStyle]="checkTitleId(x.TitleId) ? {'opacity': '0.3'} : {'opacity': '1'}"  matTooltipPosition="above" matTooltip="{{checkTitleId(x.TitleId)?'Trigger Doc is not Uploaded': ''}}">
+                                                                            <div class="download-text border text-dark">Export Data</div>
+                                                                            <div class="download-btn btn-default">
+                                                                                <i class="material-icons">keyboard_tab</i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <!-- <button type="button" class="btn btn-info btn-sm export-align" data-toggle="modal" data-target="#myModal" (click)="openModal(avail.AvailName)">Export</button> -->
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
