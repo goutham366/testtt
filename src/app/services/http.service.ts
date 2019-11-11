@@ -12,7 +12,7 @@ export class HttpService {
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
    lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
  //lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
- // lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
+  //lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
  // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   awsS3Url: string = 'http://s3ecsalb-384269995.us-west-2.elb.amazonaws.com/AWSS3';
   //awsS3Url: string='http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';

@@ -33,7 +33,7 @@
                     <div class="row">
                      <cdk-virtual-scroll-viewport class="upload-loading" itemSize="40" >
                         <div class="d-flex upload-styles">
-                        <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList |searchPipe: {GlobalTitle:searchval }" #someVar>
+                        <div class="col-md-3 apo-margin" *cdkVirtualFor="let x of apoList |searchPipe: {GlobalTitle:searchval }; let i=index" #someVar>
                         <div class="" >
                             <div class="card">
                                 <div class="card-main">
