@@ -106,7 +106,9 @@
    
 }
 .circle{
-    
+    :focus {
+        outline: none;
+    }
     cursor: pointer;
 }
 
@@ -125,28 +127,43 @@
 .font-number{
     color: black;
 }
+// .progressBar{
+//     margin: 20px 21px 24px 10px;
+//     margin-left: 18px;
+//     .progress {
+//         height:23px;
+      
+//         .completeColor{
+//             background: rgba(10, 173, 67, 1);
+//             color: #fff;
+//             display: flex;
+//             align-items: center;
+//         }
+//         .pendingColor{
+//             background:rgba(0, 124, 195, 1);
+//             color: #fff;
+           
+//             display: flex;
+//             align-items: center;
+//         }  
+//     }
+   
+// }
 .progressBar{
     margin: 20px 21px 24px 10px;
-    margin-left: 18px;
     .progress {
         height:23px;
-        width:100%;
-        .completeColor{
-            background: rgba(10, 173, 67, 1);
-            color: #fff;
-            display: flex;
-            align-items: center;
+        
+        color: #fff;
+        background: #007CC3;
+        .inner-progress {
+            height:23px;
+            background: #0AAD43;
         }
-        .pendingColor{
-            background:rgba(0, 124, 195, 1);
-            color: #fff;
-            padding-left: 5px;
-            display: flex;
-            align-items: center;
-        }  
     }
    
 }
+
 .complete-legend {
     height: 0.5em;
     width: 0.5em;
@@ -286,9 +303,9 @@ i{
     padding-right: 3px;
 }
 }
-.progress-main{
-    width: 100%;
-}
+// .progress-main{
+//     width: 100%;
+// }
 // .progress {
 //  height:23px;
 //  width:100%;

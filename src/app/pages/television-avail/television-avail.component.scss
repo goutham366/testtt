@@ -230,3 +230,8 @@
     outline: none;
     cursor: pointer;
 }
+.circle-outline {
+    :focus {
+        outline: none;
+    }
+}

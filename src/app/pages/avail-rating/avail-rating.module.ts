@@ -4,6 +4,7 @@ import { RoundProgressModule, ROUND_PROGRESS_DEFAULTS } from 'angular-svg-round-
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { MatNativeDateModule, MatProgressBarModule } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AvailRatingComponent } from './avail-rating.component';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
     MatCardModule,
     MatProgressBarModule,
     MatButtonModule,
+    NgCircleProgressModule.forRoot({}),
     RouterModule.forChild(routes)
   ],
   declarations: [AvailRatingComponent],

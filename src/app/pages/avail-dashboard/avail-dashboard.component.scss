@@ -270,8 +270,11 @@ $topnav-background-color: #007CC3;
     .avail-status {
         float: right; 
         position: absolute;
-        top: 4%;
-        left: 74%;
+        top: 2%;
+        left: 70%;
+        :focus{
+            outline: none !important;
+        }
     }
     .current {
         position: absolute;

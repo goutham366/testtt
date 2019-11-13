@@ -14,11 +14,10 @@
             <div class="card text-white mb-3 shadow-sm ">
                 <div class="card-header card-padding gray-bg ">
                     <span class="itune-status c-pointer">
-                        <div class="current" [ngStyle]="getOverlayStyle()">{{itune.TitleData.AvailPercentage}}%</div>
-                        <round-progress [current]="itune.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
-                            [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
-                            [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: itune.AvailName, page:'ITUNES' }" routerLink="/pages/details"></round-progress>
-
+                            <circle-progress class="c-pointer" [percent]="itune.TitleData.AvailPercentage ? itune.TitleData.AvailPercentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                            [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                            [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                            [lazy]="false" [queryParams]="{ avail_name: itune.AvailName, page:'ITUNES' }" routerLink="/pages/details"></circle-progress>
                     </span>
 
                     <span>

@@ -60,10 +60,14 @@
                                                                     </li>
 
                                                                 </ul>
-                                                                <div class="circle" (click)="showTitleStatus(i)">
-                                                                    <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                                                <div>
+                                                                        <circle-progress class="c-pointer" [percent]="x.Percentage ? x.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                                                                        [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                                                                        [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                                                                        [lazy]="false" routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress>
+                                                                    <!-- <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                                                         [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"
-                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress>
+                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress> -->
                                                                 </div>
                                                             </div>
                                                             <div class="cus-text text-col" *ngIf="showStatus!==i">
@@ -80,7 +84,7 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="cust-text status-text-padding" *ngIf="showStatus==i">
+                                                        <!-- <div class="cust-text status-text-padding" *ngIf="showStatus==i">
                                                             <h6 class="status-text">Status</h6>
                                                             <p class="status">
                                                                 <b class="font-number"> -</b> Pending Translations</p>
@@ -91,7 +95,7 @@
                                                             <p class="status">
                                                                 <b class="font-number">-</b> Escalations</p>
 
-                                                        </div>
+                                                        </div> -->
                                                         <div class="display-block">
                                                             <div class="flex" *ngIf="showStatus!=i">
                                                                 <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.EpisodeNumber,'episodes')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">

@@ -95,6 +95,7 @@ export class ItunesTitlesComponent implements OnInit {
           this.titleName = title;
           this.width = (this.apoList[i].AccontsCompletedCount / this.apoList[i].AccontsCount) * 100;
           this.remaining = (this.apoList[i].AccontsPendingCount / this.apoList[i].AccontsCount) * 100;
+         
         }
         else if (tabselected == "countries") {
           this.accStatus = false;

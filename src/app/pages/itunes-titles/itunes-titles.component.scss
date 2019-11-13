@@ -113,8 +113,10 @@
        
     }
     .circle{
-        
         cursor: pointer;
+        :focus {
+            outline: none;
+        }
     }
     
     .avail-details {
@@ -137,7 +139,7 @@
         margin-left: 18px;
         .progress {
             height:23px;
-            width:100%;
+          
             .completeColor{
                 background: rgba(10, 173, 67, 1);
                 color: #fff;
@@ -147,7 +149,7 @@
             .pendingColor{
                 background:rgba(0, 124, 195, 1);
                 color: #fff;
-                padding-left: 5px;
+               
                 display: flex;
                 align-items: center;
             }  

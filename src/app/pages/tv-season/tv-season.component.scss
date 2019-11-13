@@ -143,8 +143,10 @@
        
     }
     .circle{
-        
         cursor: pointer;
+        :focus {
+            outline: none;
+        }
     }
     
     .avail-details {

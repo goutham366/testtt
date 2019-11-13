@@ -46,6 +46,7 @@ export class AvailTitlesComponent implements OnInit {
   apoListlength: any;
   @ViewChildren('someVar') filteredItems;
   searchval: any;
+  semicircle: any;
   
   
   //changeDetection: ChangeDetectionStrategy.OnPush
@@ -66,6 +67,20 @@ export class AvailTitlesComponent implements OnInit {
     this.ImageURL = 'assets/images/dummy.png';
     this.removeButton = false;
 
+  }
+  getOverlayStyle() {
+    let isSemi = this.semicircle;
+    let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
+
+    return {
+      'top': '48%',
+      'bottom': isSemi ? '5%' : 'auto',
+      'left': '54%',
+      'transform': transform,
+      '-moz-transform': transform,
+      '-webkit-transform': transform,
+      'font-size': '12px'
+    };
   }
 
   showTitleStatus(index) {

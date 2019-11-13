@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MatNativeDateModule, MatProgressBarModule } from '@angular/material';
 import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
 import { AvailEscalationComponent } from './avail-escalation.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 const routes: Routes = [
   {
@@ -17,26 +18,7 @@ const routes: Routes = [
     CommonModule,
     RoundProgressModule,
     MatProgressBarModule,
-    // NgCircleProgressModule.forRoot({
-    //   "backgroundPadding": 7,
-    //   "radius": 28,
-    //   "space": -2,
-    //   "maxPercent": 100,
-    //   "unitsColor": "#008040",
-    //   "outerStrokeWidth": 2,
-    //   "outerStrokeColor": "#008040",
-    //   "innerStrokeColor": "#e7e8ea",
-    //   "innerStrokeWidth": 2,
-    //   "titleColor": "#008040",
-    //   "titleFontSize": "12",
-    //   "subtitleColor": "#008040",
-    //   "animateTitle": false,
-    //   "animationDuration": 1000,
-    //   "showTitle": true,
-    //   "showSubtitle": false,
-    //   "showUnits": true,
-    //   "clockwise": true
-    // }),
+    NgCircleProgressModule.forRoot({}),
     RouterModule.forChild(routes)
   ],
   declarations: [AvailEscalationComponent]

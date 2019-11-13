@@ -10,14 +10,14 @@
       </li>
     </ul>
     <ul *ngIf="enableTV" class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a [routerLink]="['/pages/television']">Avails</a>
-        </li>
-        <i class="fa fa-angle-right arrow"></i>
-        <li class="breadcrumb-item breadcrumb-title">
-          <a #tref>{{availName | uppercase}}</a>
-        </li>
-      </ul>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/pages/television']">Avails</a>
+      </li>
+      <i class="fa fa-angle-right arrow"></i>
+      <li class="breadcrumb-item breadcrumb-title">
+        <a #tref>{{availName | uppercase}}</a>
+      </li>
+    </ul>
   </div>
   <div class="card">
     <div class="d-flex top-bar">
@@ -31,11 +31,11 @@
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">{{avail.StartDate | date:'MM/dd'}}
                 - {{avail.DueDate | date:'MM/dd'}} </h6>
               <span class="avail-status">
-                  <div *ngIf="avail.TitleData.AvailPercentage" class="current" [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
-                  <div *ngIf="!avail.TitleData.AvailPercentage" class="current" [ngStyle]="getOverlayStyle()">0%</div>
-                <round-progress class="round-outline" [current]="avail.TitleData.AvailPercentage?avail.TitleData.AvailPercentage:0" [max]="100" [color]="'#008040'" [background]="'#006FAD'"
-                  [radius]="22" [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
-                  [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0">
+                <div *ngIf="avail.TitleData.AvailPercentage"  class="current"  [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
+                <div *ngIf="!avail.TitleData.AvailPercentage"  class="current"  [ngStyle]="getOverlayStyle()">0%</div>
+                <round-progress class="round-outline" [current]="avail.TitleData.AvailPercentage?avail.TitleData.AvailPercentage:0" [max]="100"
+                  [color]="'#008040'" [background]="'#006FAD'" [radius]="22" [stroke]="2.3" [semicircle]="false" [rounded]="true"
+                  [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0">
                 </round-progress>
               </span>
             </div>
@@ -141,6 +141,7 @@
                   </div>
                   <div class="pendingColor" (click)="filterCountries('Pending');" *ngIf="avail.TitleData.CountriesPendingCount!=0" [style.width.%]="remainingofCountries">
                     {{avail.TitleData.CountriesPendingCount}}
+                  
                   </div>
                 </div>
               </div>
@@ -234,12 +235,35 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="col-md-12 timing">
+
+
+            <h6 class="status-text">Timeline</h6>
+            <div class="cus-text text-col">
+              <ul class=" wizard-progress timeline">
+                <li [ngClass]="{'active-step': (stage.active=='Y'),'inactive-step': (stage.active=='N')}" *ngFor="let stage of stages, let i = index">
+                  <div class="timeline-date">
+                    <span class="visuallyhidden"></span>
+                    <!-- <span class="step-num"></span> -->
+                    <span class="stage-title">
+                      <span class="stage-date" *ngIf="stage.active=='Y'">{{stage.date | date: 'MM/dd/yyyy'}}
+                      </span>
+                      <span class="step-name ml-1">
+                        <span class="timeline-status" *ngIf="stage.active=='Y'" [ngClass]="{'mid': (i==1), 'last': i==2}">{{stage.stageTitle}}</span>
+                      </span>
+                    </span>
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+
+
+            <!-- <div class="col-md-12 timing">
               <h6 class="status-text timeline-update">Timeline</h6>
               <ul class="timeline">
                 <li>
-                  <a href="#" class="timeline-date">2/22/2019</a>
-                  <p class="timeline-status"> Announced</p>
+                  <a href="#" class="timeline-date">{{avail.TimelineStatus.StatusDate | date: 'MM/dd/yyyy'}}</a>
+                  <p class="timeline-status"> {{avail.TimelineStatus.StatusMessage}}</p>
                 </li>
                 <li>
                   <a href="#" class="timeline-date">03/03/2019</a>
@@ -250,7 +274,7 @@
                   <p class="timeline-status">Acknowledged</p>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
         </div>
