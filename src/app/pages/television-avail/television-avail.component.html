@@ -45,14 +45,14 @@
                                 </div>
                                 <div class="progressBar">
                                     <div class="progress">
-                                        <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'E')}">
+                                        <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.EpisodesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'E')}">
                                             <span class="status-padding" *ngIf="getCompleted(i,'E')!==0">{{tv.TitleData.EpisodesCompletedCount}}
                                                 (Unique Titles)</span>
                                         </div>
-                                        <div [ngStyle]="{'width.%': getPending(i,'E')}">
+                                        <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.EpisodesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'E')}">
                                             <span class="status-padding" *ngIf="getPending(i,'E')!==0">{{tv.TitleData.EpisodesPendingCount}}
                                                 (Unique Titles)</span>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>
@@ -64,10 +64,10 @@
 
                                 <div class="progressBar">
                                     <div class="progress">
-                                        <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
-                                            <span class="status-padding" *ngIf="getCompleted(i,'C')!=0">{{tv.TitleData.CountriesCompletedCount}}</span>
+                                        <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.CountriesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'C')}">
+                                            <span class="status-padding " *ngIf="getCompleted(i,'C')!=0">{{tv.TitleData.CountriesCompletedCount}}</span>
                                         </div>
-                                        <div [ngStyle]="{'width.%': getPending(i,'C')}">
+                                        <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.CountriesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'C')}">
                                             <span class="status-padding" *ngIf="getPending(i,'C')!=0">{{tv.TitleData.CountriesPendingCount}}</span>
                                         </div>
                                     </div>
@@ -80,10 +80,10 @@
                                 </div>
                                 <div class="progressBar">
                                     <div class="progress">
-                                        <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                                        <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.LanguagesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'L')}">
                                             <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{tv.TitleData.LanguagesCompletedCount}}</span>
                                         </div>
-                                        <div [ngStyle]="{'width.%': getPending(i,'L')}">
+                                        <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.LanguagesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'L')}">
                                             <span class="status-padding" *ngIf="getPending(i,'L')!=0">{{tv.TitleData.LanguagesPendingCount}}</span>
                                         </div>
                                     </div>

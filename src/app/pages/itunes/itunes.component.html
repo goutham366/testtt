@@ -46,11 +46,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'T')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
+                            <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CompletedTitlesCount}}" [ngStyle]="{'width.%': getCompleted(i,'T')}">
+                                <span class="status-padding "  *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
                                     (Unique Titles)</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'T')}">
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.PendingTitlesCount}}" [ngStyle]="{'width.%': getPending(i,'T')}">
                                 <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}}
                                     (Unique Titles)</span>
                             </div>
@@ -67,11 +67,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'C')!=0">{{itune.TitleData.CountriesCompletedCount}}</span>
+                            <div class="bg-success avail-titleEllipses"  data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'C')}">
+                                <span class="status-padding"  *ngIf="getCompleted(i,'C')!=0">{{itune.TitleData.CountriesCompletedCount}}</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'C')}">
-                                <span class="status-padding" *ngIf="getPending(i,'C')!=0">{{itune.TitleData.CountriesPendingCount}}</span>
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'C')}">
+                                <span class="status-padding avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesPendingCount}}" *ngIf="getPending(i,'C')!=0">{{itune.TitleData.CountriesPendingCount}}</span>
                             </div>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
+                            <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.LanguagesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                                <span class="status-padding"   *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'L')}">
-                                <span class="status-padding" *ngIf="getPending(i,'L')!=0">{{itune.TitleData.LanguagesPendingCount}}</span>
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.LanguagesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'L')}">
+                                <span class="status-padding"  *ngIf="getPending(i,'L')!=0">{{itune.TitleData.LanguagesPendingCount}}</span>
                             </div>
                         </div>
                     </div>

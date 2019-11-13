@@ -158,12 +158,12 @@
                             <img src="assets/images/Icons/SVG/baseline-add_shopping_cart-24px.svg">{{titleDetail.UniqueAccontsCount}}  Accounts</a>
                             <div class="progressBar">
                                 <div class="progress">
-                                    <div class="bg-success" [style.width.%]="titleDetail.AccontsCompletedCount / titleDetail.UniqueAccontsCount * 100">
+                                    <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.AccontsCompletedCount}}" [style.width.%]="titleDetail.AccontsCompletedCount / titleDetail.UniqueAccontsCount * 100">
                                         <span class="status-padding" *ngIf="titleDetail.AccontsCompletedCount!=0">
                                           {{titleDetail.AccontsCompletedCount}}
                                           </span>
                                     </div>
-                                    <div [style.width.%]="titleDetail.AccontsPendingCount / titleDetail.UniqueAccontsCount * 100">
+                                    <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.AccontsPendingCount}}" [style.width.%]="titleDetail.AccontsPendingCount / titleDetail.UniqueAccontsCount * 100">
                                         <span class="status-padding" *ngIf="titleDetail.AccontsPendingCount!=0">
                                           {{titleDetail.AccontsPendingCount}}
                                           </span>
@@ -189,12 +189,12 @@
                                   <i class="material-icons md-18 md-grey v-align">language</i>{{titleDetail.UniqueCountriesCount}}  Countries</a>
                                   <div class="progressBar">
                                       <div class="progress">
-                                          <div class="bg-success" [style.width.%]="titleDetail.CountriesCompletedCount / titleDetail.UniqueCountriesCount * 100">
+                                          <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.CountriesCompletedCount}}" [style.width.%]="titleDetail.CountriesCompletedCount / titleDetail.UniqueCountriesCount * 100">
                                               <span class="status-padding" *ngIf="titleDetail.CountriesCompletedCount!=0"> 
                                                 {{titleDetail.CountriesCompletedCount}}
                                                 </span>
                                           </div>
-                                          <div class="country-width" [style.width.%]="titleDetail.CountriesPendingCount / titleDetail.UniqueCountriesCount * 100">
+                                          <div class="country-width avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.CountriesPendingCount}}" [style.width.%]="titleDetail.CountriesPendingCount / titleDetail.UniqueCountriesCount * 100">
                                               <span class="status-padding" *ngIf="titleDetail.CountriesPendingCount!=0">
                                                 {{titleDetail.CountriesPendingCount}}
                                                 </span>
@@ -220,12 +220,12 @@
                                         <i class="material-icons md-18 md-grey v-align">translate</i>{{titleDetail.UniqueLanguagesCount}}  Languages</a>
                                         <div class="progressBar">
                                             <div class="progress">
-                                                <div class="bg-success" [style.width.%]="titleDetail.LanguagesCompletedCount / titleDetail.UniqueLanguagesCount * 100">
+                                                <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.LanguagesCompletedCount}}" [style.width.%]="titleDetail.LanguagesCompletedCount / titleDetail.UniqueLanguagesCount * 100">
                                                     <span class="status-padding" *ngIf="titleDetail.LanguagesCompletedCount!=0">
                                                       {{titleDetail.LanguagesCompletedCount}}
                                                       </span>
                                                 </div>
-                                                <div [style.width.%]="titleDetail.LanguagesPendingCount / titleDetail.UniqueLanguagesCount * 100">
+                                                <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.LanguagesPendingCount}}" [style.width.%]="titleDetail.LanguagesPendingCount / titleDetail.UniqueLanguagesCount * 100">
                                                     <span class="status-padding" *ngIf="titleDetail.LanguagesPendingCount!=0">
                                                       {{titleDetail.LanguagesPendingCount}}
                                                       </span>

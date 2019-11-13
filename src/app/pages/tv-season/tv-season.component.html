@@ -106,10 +106,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && seasonStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.EpisodesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.EpisodesPendingCount}}
                                                                 </div>
                                                                 
@@ -120,10 +120,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && langStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{x.CountriesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.CountriesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.CountriesPendingCount}}
                                                                 </div>
                                                             </div>
@@ -131,10 +131,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && transStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.LanguagesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.LanguagesPendingCount}}
                                                                 </div>
                                                             </div>

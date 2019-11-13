@@ -297,10 +297,12 @@
                         <div class="language-data">
 
                           <div class="progress progress-main">
-                            <div class="progress-bar bg-success" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}">
+                            <div class="progress-bar bg-success c-pointer" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}"
+                              data-toggle="tooltip" data-placement="left" title="{{LanguagesCompletedCount}}">
                               <span class="status-padding">{{LanguagesCompletedCount}}</span>
                             </div>
-                            <div class="progress-bar" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}">
+                            <div class="progress-bar c-pointer" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}" data-toggle="tooltip"
+                              data-placement="left" title="{{LanguagesPendingCount}}">
                               <span class="status-padding">{{LanguagesPendingCount}}</span>
                             </div>
                           </div>
@@ -412,10 +414,12 @@
                         <div class="language-data">
 
                           <div class="progress progress-main">
-                            <div class="progress-bar bg-success" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}">
+                            <div class="progress-bar bg-success c-pointer" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}"
+                              data-toggle="tooltip" data-placement="left" title="{{countriesCompletedCount}}">
                               <span class="status-padding">{{countriesCompletedCount}}</span>
                             </div>
-                            <div class="progress-bar" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}">
+                            <div class="progress-bar c-pointer" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}" data-toggle="tooltip"
+                              data-placement="left" title="{{countriesPendingCount}}">
                               <span class="status-padding">{{countriesPendingCount}}</span>
                             </div>
                           </div>

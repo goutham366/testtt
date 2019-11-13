@@ -36,6 +36,7 @@
         display: flex !important;
         justify-content: space-between;
     .avail-titleEllipses{
+        cursor: pointer;
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
         color: #007CC3;
@@ -45,7 +46,7 @@
         width: 100px;
         outline: none;
         white-space: nowrap;
-        cursor: pointer;
+       
     }
     .avail-date{
         font-size: 11px;
@@ -116,6 +117,7 @@
         padding: 13.5px;
         color: white;
         vertical-align: text-top;
+        
     }
     .status-text{
         color: #007CC3;
@@ -234,4 +236,8 @@
     :focus {
         outline: none;
     }
+}
+.pointer{
+    cursor: pointer;
+
 }

@@ -106,20 +106,20 @@
                 <div class="progressBar paddingtb-10" *ngIf="titleName===x.GlobalTitle && accStatus">
                   <div class="progress progress-main">
                     <div class="completeColor" [style.width.%]="width">
-                     <span *ngIf="x.AccontsCompletedCount!=0"> {{x.AccontsCompletedCount}}</span> 
+                     <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.AccontsCompletedCount}}" *ngIf="x.AccontsCompletedCount!=0"> {{x.AccontsCompletedCount}}</span> 
                     </div>
                     <div class="pendingColor" [style.width.%]="remaining">
-                     <span *ngIf="x.AccontsPendingCount!=0"> {{x.AccontsPendingCount}}</span> 
+                     <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.AccontsPendingCount}}" *ngIf="x.AccontsPendingCount!=0"> {{x.AccontsPendingCount}}</span> 
                     </div>
                   </div>
                 </div>
                 <div class="progressBar paddingtb-10" *ngIf="titleName===x.GlobalTitle && langStatus">
                   <div class="progress progress-main">
                     <div class="completeColor" [style.width.%]="width">
-                  <span  *ngIf="x.CountriesCompletedCount!=0">{{x.CountriesCompletedCount}}</span> 
+                  <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.CountriesCompletedCount}}" *ngIf="x.CountriesCompletedCount!=0">{{x.CountriesCompletedCount}}</span> 
                     </div>
                     <div class="pendingColor" [style.width.%]="remaining">
-                     <span *ngIf="x.CountriesPendingCount!=0"> {{x.CountriesPendingCount}}</span> 
+                     <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" *ngIf="x.CountriesPendingCount!=0"> {{x.CountriesPendingCount}}</span> 
                     </div>
                   </div>
 
@@ -127,10 +127,10 @@
                 <div class="progressBar paddingtb-10" *ngIf="titleName===x.GlobalTitle && transStatus">
                   <div class="progress progress-main">
                     <div class="completeColor" [style.width.%]="width">
-                    <span *ngIf="x.LanguagesCompletedCount!=0"> {{x.LanguagesCompletedCount}}</span>  
+                    <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" *ngIf="x.LanguagesCompletedCount!=0"> {{x.LanguagesCompletedCount}}</span>  
                     </div>
                     <div class="pendingColor" [style.width.%]="remaining">
-                    <span *ngIf="x.LanguagesPendingCount!=0"> {{x.LanguagesPendingCount}}</span>
+                    <span class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" *ngIf="x.LanguagesPendingCount!=0"> {{x.LanguagesPendingCount}}</span>
                     </div>
                   </div>
 

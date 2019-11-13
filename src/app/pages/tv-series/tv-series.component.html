@@ -101,11 +101,11 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && seriesStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.SeasonsCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.SeasonsCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.SeasonsCompletedCount}}" *ngIf="x.SeasonsCompletedCount!=0" [style.width.%]="width">
+                                                                   {{x.SeasonsCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.SeasonsPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.SeasonsPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.SeasonsPendingCount}}" *ngIf="x.SeasonsPendingCount!=0" [style.width.%]="remaining">
+                                                                       {{x.SeasonsPendingCount}}
                                                                 </div>
 
 
@@ -115,22 +115,22 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && langStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.CountriesCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesCompletedCount}}" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
+                                                                          {{x.CountriesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.CountriesPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
+                                                                        {{x.CountriesPendingCount}}
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && transStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.LanguagesCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
+                                                                          {{x.LanguagesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.LanguagesPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
+                                                                         {{x.LanguagesPendingCount}}
                                                                 </div>
                                                             </div>
 
