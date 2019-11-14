@@ -46,6 +46,8 @@ export class AvailTitlesComponent implements OnInit {
   apoListlength: any;
   @ViewChildren('someVar') filteredItems;
   searchval: any;
+  semicircle: any;
+  completeFlag: boolean;
   
   
   //changeDetection: ChangeDetectionStrategy.OnPush
@@ -66,6 +68,20 @@ export class AvailTitlesComponent implements OnInit {
     this.ImageURL = 'assets/images/dummy.png';
     this.removeButton = false;
 
+  }
+  getOverlayStyle() {
+    let isSemi = this.semicircle;
+    let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
+
+    return {
+      'top': '48%',
+      'bottom': isSemi ? '5%' : 'auto',
+      'left': '54%',
+      'transform': transform,
+      '-moz-transform': transform,
+      '-webkit-transform': transform,
+      'font-size': '12px'
+    };
   }
 
   showTitleStatus(index) {
@@ -194,6 +210,13 @@ export class AvailTitlesComponent implements OnInit {
     }
   }
   getProgressSwitch(title, l) {
+    for(let j=0;j<l;j++){
+      if(title[j].StatusMessage == "Completed"){
+        this.completeFlag = true;
+      }else{
+        this.completeFlag = false;
+      }
+    }
     switch (title[l - 1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
@@ -202,6 +225,8 @@ export class AvailTitlesComponent implements OnInit {
       case "Quality Audit": this.progress = 2;
         break;
       case "Data Delivery": this.progress = 3;
+        break;
+      case "Completed": this.progress = 3;
         break;
       case "": this.progress = 0;
         break;

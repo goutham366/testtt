@@ -63,6 +63,9 @@
     float: right;
     position: relative;
     right: 10px;
+    :focus {
+        outline: none;
+    }
 }
 .card-body {
     flex: 1 1 auto;
@@ -259,3 +262,7 @@ outline:none;
 .close{
     outline: none;
 }
+.avail-titleEllipses{
+   
+    cursor: pointer;
+}  

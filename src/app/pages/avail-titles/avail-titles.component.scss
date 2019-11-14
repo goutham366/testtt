@@ -111,13 +111,18 @@
    
 }
 .circle{
-    
     cursor: pointer;
+    :focus {
+        outline: none;
+    }
 }
 
 .avail-details {
      padding: 10px;    
  }
+ .round-outline{
+    outline: none;
+}
 .status-text{
      color: cornflowerblue;
     }
@@ -135,17 +140,18 @@
     margin-left: 18px;
     .progress {
         height:23px;
-        width:100%;
+        
         .completeColor{
             background: rgba(10, 173, 67, 1);
             color: #fff;
             display: flex;
             align-items: center;
+           
         }
         .pendingColor{
             background:rgba(0, 124, 195, 1);
             color: #fff;
-            padding-left: 5px;
+           
             display: flex;
             align-items: center;
         }  
@@ -391,7 +397,7 @@ i{
 }
 .last{
     position: relative;
-    right:64px;
+    right:63px;
 }
 .marginProgress{
     margin-top: -10%; // negative values
@@ -471,3 +477,7 @@ i{
    display: flex;
    //background: red;
 }
+.avail-titleEllipses{
+   
+    cursor: pointer;
+}   

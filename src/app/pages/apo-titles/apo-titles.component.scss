@@ -106,7 +106,9 @@
    
 }
 .circle{
-    
+    :focus {
+        outline: none;
+    }
     cursor: pointer;
 }
 
@@ -130,7 +132,7 @@
     margin-left: 18px;
     .progress {
         height:23px;
-        width:100%;
+       
         .completeColor{
             background: rgba(10, 173, 67, 1);
             color: #fff;
@@ -147,6 +149,9 @@
     }
    
 }
+
+
+
 .complete-legend {
     height: 0.5em;
     width: 0.5em;
@@ -414,7 +419,7 @@ i{
 }
 .last{
     position: relative;
-    right:64px;
+    right:63px;
 }
 .marginProgress{
     margin-top: -10%; // negative values
@@ -563,3 +568,12 @@ outline:none;
    display: flex;
    //background: red;
 }
+.avail-titleEllipses{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+     overflow: hidden !important;
+    text-overflow: ellipsis !important;
+     outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+}  

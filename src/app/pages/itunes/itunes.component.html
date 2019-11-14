@@ -14,11 +14,10 @@
             <div class="card text-white mb-3 shadow-sm ">
                 <div class="card-header card-padding gray-bg ">
                     <span class="itune-status c-pointer">
-                        <div class="current" [ngStyle]="getOverlayStyle()">{{itune.TitleData.AvailPercentage}}%</div>
-                        <round-progress [current]="itune.TitleData.AvailPercentage" [max]="100" [color]="'#008040'" [background]="'#006FAD'" [radius]="22"
-                            [stroke]="2.3" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800"
-                            [animation]="'easeInOutQuart'" [animationDelay]="0" [queryParams]="{ avail_name: itune.AvailName, page:'ITUNES' }" routerLink="/pages/details"></round-progress>
-
+                            <circle-progress class="c-pointer" [percent]="itune.TitleData.AvailPercentage ? itune.TitleData.AvailPercentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                            [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                            [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                            [lazy]="false" [queryParams]="{ avail_name: itune.AvailName, page:'ITUNES' }" routerLink="/pages/details"></circle-progress>
                     </span>
 
                     <span>
@@ -47,11 +46,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'T')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
+                            <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CompletedTitlesCount}}" [ngStyle]="{'width.%': getCompleted(i,'T')}">
+                                <span class="status-padding "  *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
                                     (Unique Titles)</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'T')}">
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.PendingTitlesCount}}" [ngStyle]="{'width.%': getPending(i,'T')}">
                                 <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}}
                                     (Unique Titles)</span>
                             </div>
@@ -68,11 +67,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'C')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'C')!=0">{{itune.TitleData.CountriesCompletedCount}}</span>
+                            <div class="bg-success avail-titleEllipses"  data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'C')}">
+                                <span class="status-padding"  *ngIf="getCompleted(i,'C')!=0">{{itune.TitleData.CountriesCompletedCount}}</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'C')}">
-                                <span class="status-padding" *ngIf="getPending(i,'C')!=0">{{itune.TitleData.CountriesPendingCount}}</span>
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'C')}">
+                                <span class="status-padding avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CountriesPendingCount}}" *ngIf="getPending(i,'C')!=0">{{itune.TitleData.CountriesPendingCount}}</span>
                             </div>
                         </div>
                     </div>
@@ -87,11 +86,11 @@
                     </div>
                     <div class="progressBar">
                         <div class="progress">
-                            <div class="bg-success" [ngStyle]="{'width.%': getCompleted(i,'L')}">
-                                <span class="status-padding" *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
+                            <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.LanguagesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'L')}">
+                                <span class="status-padding"   *ngIf="getCompleted(i,'L')!=0">{{itune.TitleData.LanguagesCompletedCount}}</span>
                             </div>
-                            <div [ngStyle]="{'width.%': getPending(i,'L')}">
-                                <span class="status-padding" *ngIf="getPending(i,'L')!=0">{{itune.TitleData.LanguagesPendingCount}}</span>
+                            <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.LanguagesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'L')}">
+                                <span class="status-padding"  *ngIf="getPending(i,'L')!=0">{{itune.TitleData.LanguagesPendingCount}}</span>
                             </div>
                         </div>
                     </div>

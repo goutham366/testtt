@@ -60,19 +60,26 @@
                                                                     </li>
 
                                                                 </ul>
-                                                                <div class="circle" (click)="showTitleStatus(i)">
-                                                                    <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                                                                <div>
+                                                                        <circle-progress class="c-pointer" [percent]="x.Percentage ? x.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                                                                        [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                                                                        [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                                                                        [lazy]="false" routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress>
+                                                                    <!-- <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
                                                                         [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"
-                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress>
+                                                                        routerLink="/pages/insight" [queryParams]="{ avail_name: availName, title_name:x.GlobalTitle, titleId: x.EpisodeNumber, seriesName: seriesName, seasonNumber: x.SeasonNumber,episodeNumber : x.EpisodeNumber, lob: 'TV'}"></circle-progress> -->
                                                                 </div>
                                                             </div>
                                                             <div class="cus-text text-col" *ngIf="showStatus!==i">
                                                                 <ol class="wizard-progress d-flex">
 
                                                                     <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
-                                                                        <span class="step-name">
-                                                                            <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
-                                                                        </span>
+                                                                            <span *ngIf="!completeFlag" class="step-name">
+                                                                                <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                                            </span>
+                                                                            <span *ngIf="completeFlag" class="step-name">
+                                                                                <span *ngIf="i==3"  [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                                            </span>
                                                                         <span class="visuallyhidden"></span>
                                                                         <span class="step-num"></span>
                                                                     </li>
@@ -80,7 +87,7 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="cust-text status-text-padding" *ngIf="showStatus==i">
+                                                        <!-- <div class="cust-text status-text-padding" *ngIf="showStatus==i">
                                                             <h6 class="status-text">Status</h6>
                                                             <p class="status">
                                                                 <b class="font-number"> -</b> Pending Translations</p>
@@ -91,7 +98,7 @@
                                                             <p class="status">
                                                                 <b class="font-number">-</b> Escalations</p>
 
-                                                        </div>
+                                                        </div> -->
                                                         <div class="display-block">
                                                             <div class="flex" *ngIf="showStatus!=i">
                                                                 <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.EpisodeNumber,'episodes')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
@@ -110,10 +117,10 @@
                                                         </div>
                                                         <div class="progressBar paddingtb-10" *ngIf="episodeNum===x.EpisodeNumber && episodeStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.AccontsCompletedCount!=0" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.AccontsCompletedCount}}" *ngIf="x.AccontsCompletedCount!=0" [style.width.%]="width">
                                                                     {{x.AccontsCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.AccontsPendingCount!=0" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.AccontsPendingCount}}" *ngIf="x.AccontsPendingCount!=0" [style.width.%]="remaining">
                                                                     {{x.AccontsPendingCount}}
                                                                 </div>
 
@@ -124,10 +131,10 @@
                                                         </div>
                                                         <div class="progressBar paddingtb-10" *ngIf="episodeNum===x.EpisodeNumber && langStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesCompletedCount}}" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
                                                                     {{x.CountriesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
                                                                     {{x.CountriesPendingCount}}
                                                                 </div>
                                                             </div>
@@ -135,10 +142,10 @@
                                                         </div>
                                                         <div class="progressBar paddingtb-10" *ngIf="episodeNum===x.EpisodeNumber && transStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
                                                                     {{x.LanguagesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
                                                                     {{x.LanguagesPendingCount}}
                                                                 </div>
                                                             </div>

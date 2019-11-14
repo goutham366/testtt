@@ -38,13 +38,26 @@ export class AvailDetailsComponent implements OnInit {
   remainingofLang: number;
   pageName: any;
   enableTV: boolean;
+  stages: { stageTitle: string; active:string; date: string }[];
+  progress: number;
+  timeLineData: any;
   constructor(private httpService: HttpService, private location: Location, private route: ActivatedRoute) {
     this.removeButton = false;
     this.removeAddButton = true;
     this.clickedOnTitle = false;
     this.clickedOnCountry = false;
     this.clickedOnLanguage = false;
+
+    this.stages = [
+      { stageTitle: "Announced", active: "N", date: "" },
+      { stageTitle: "Completed", active: "N", date: "" },
+      { stageTitle: "Acknowledged", active: "N", date: "" }
+    ];
+
+
   }
+  
+
   comments = [];
   addComment(trigg, newComment: string) {
     if (trigg.keyCode == 13) {
@@ -74,7 +87,7 @@ export class AvailDetailsComponent implements OnInit {
         this.condition = false;
         this.enableTV = false;
       }
-      else if (res[0] === "TN" || res[0] === "TC" || res[0] === "TD" ||(res[0] === "LDC" && this.pageName == "TV")) {
+      else if (res[0] === "TN" || res[0] === "TC" || res[0] === "TD" || (res[0] === "LDC" && this.pageName == "TV")) {
         this.condition = false;
         this.enableTV = true;
       }
@@ -82,6 +95,9 @@ export class AvailDetailsComponent implements OnInit {
     this.httpService.getAvailDetailsAPIView(this.availName, this.pageName).subscribe(data => {
       this.availdetailsresp = data;
       this.availDetailsViewList = this.availdetailsresp.resultData;
+      this.timeLineData =  this.availDetailsViewList[0].TimelineStatus;
+      //stages
+      
       for (let i = 0; i < this.availDetailsViewList.length; i++) {
         if (this.availName === this.availDetailsViewList[i].AvailName) {
           if (this.pageName === 'ITUNES' || this.pageName === 'FILMS') {
@@ -108,8 +124,29 @@ export class AvailDetailsComponent implements OnInit {
           }
         }
       }
+
+
+      this.checkTimeline();
     })
+
+   
+
+
+
   }
+  checkTimeline(){
+   
+    var l = this.timeLineData.length;
+    
+      for(let i=l;i>0;i--){
+        this.stages[l-1].active = "Y";
+        this.stages[l-1].date = this.timeLineData[l-1].StatusDate;
+      }
+    
+  }
+
+ 
+ 
   getOverlayStyle() {
     let isSemi = this.semicircle;
     let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';

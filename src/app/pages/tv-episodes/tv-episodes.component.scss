@@ -100,8 +100,10 @@
        
     }
     .circle{
-        
         cursor: pointer;
+        :focus {
+            outline: none;
+        }
     }
     
     .avail-details {
@@ -385,7 +387,7 @@
     }
     .last{
         position: relative;
-        right:64px;
+        right:63px;
     }
     .marginProgress{
         margin-top: -10%; // negative values
@@ -461,4 +463,8 @@
     .upload-loading:nth-of-type(1){
        display: flex;
        //background: red;
+    }
+ 
+    .pointer{
+        cursor: pointer;
     }

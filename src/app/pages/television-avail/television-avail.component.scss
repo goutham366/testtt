@@ -36,6 +36,7 @@
         display: flex !important;
         justify-content: space-between;
     .avail-titleEllipses{
+        cursor: pointer;
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
         color: #007CC3;
@@ -45,7 +46,7 @@
         width: 100px;
         outline: none;
         white-space: nowrap;
-        cursor: pointer;
+       
     }
     .avail-date{
         font-size: 11px;
@@ -113,9 +114,10 @@
         background: rgba(0, 0, 0, 0.03);
       }
     .status-padding{
-        padding: 13.5px;
+       // padding: 13.5px;
         color: white;
         vertical-align: text-top;
+        
     }
     .status-text{
         color: #007CC3;
@@ -229,4 +231,13 @@
 .round-outline{
     outline: none;
     cursor: pointer;
+}
+.circle-outline {
+    :focus {
+        outline: none;
+    }
+}
+.pointer{
+    cursor: pointer;
+
 }

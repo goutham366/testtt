@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ItunesComponent } from './itunes.component';
 import { Routes, RouterModule } from '@angular/router';
 import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FilterModule } from '../avail-filter/avail-filter.module';
 import { MatProgressBarModule } from '@angular/material';
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
     RoundProgressModule,
     RouterModule.forChild(routes),
     FilterModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgCircleProgressModule.forRoot({})
   ],
   declarations: [ItunesComponent],
   exports: [RouterModule]

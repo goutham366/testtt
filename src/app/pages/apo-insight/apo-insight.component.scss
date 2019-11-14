@@ -1630,8 +1630,15 @@ i{
     outline:none;
     cursor: pointer;
 }
+.circle {
+    :focus {
+        outline: none;
+    }
+}
 
-
+.pointer{
+    cursor: pointer;
+}
 
 
 

@@ -51,9 +51,11 @@
                                                                     </li>
 
                                                                 </ul>
-                                                                <div class="circle" (click)="showTitleStatus(i)">
-                                                                    <circle-progress [percent]="x.Percentage" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                                                                        [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                                                                <div >
+                                                                        <circle-progress [percent]="x.Percentage ? x.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                                                                        [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                                                                        [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                                                                        [lazy]="false"></circle-progress>
                                                                 </div>
                                                             </div>
                                                             <!-- <div class="cus-text text-col marginProgress" *ngIf="showStatus!==i">
@@ -69,7 +71,7 @@
                                                             </div> -->
 
                                                         </div>
-                                                        <div class="cust-text status-text-padding" *ngIf="showStatus==i">
+                                                        <!-- <div class="cust-text status-text-padding" *ngIf="showStatus==i">
                                                             <h6 class="status-text">Status</h6>
                                                             <p class="status">
                                                                 <b class="font-number"> -</b> Pending Translations</p>
@@ -80,7 +82,7 @@
                                                             <p class="status">
                                                                 <b class="font-number">-</b> Escalations</p>
 
-                                                        </div>
+                                                        </div> -->
                                                         <div class="display-block">
                                                             <div class="flex" *ngIf="showStatus!=i">
                                                                 <span class="apo-color accountsBox" (click)="showAccounts(i);selectTab(x.SeriesName,'series')" [ngClass]="(acccountClicked) ? 'boxclicked' : 'box'">
@@ -99,11 +101,11 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && seriesStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.SeasonsCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.SeasonsCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.SeasonsCompletedCount}}" *ngIf="x.SeasonsCompletedCount!=0" [style.width.%]="width">
+                                                                   {{x.SeasonsCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.SeasonsPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.SeasonsPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.SeasonsPendingCount}}" *ngIf="x.SeasonsPendingCount!=0" [style.width.%]="remaining">
+                                                                       {{x.SeasonsPendingCount}}
                                                                 </div>
 
 
@@ -113,22 +115,22 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && langStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.CountriesCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesCompletedCount}}" *ngIf="x.CountriesCompletedCount!=0" [style.width.%]="width">
+                                                                          {{x.CountriesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.CountriesPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" *ngIf="x.CountriesPendingCount!=0" [style.width.%]="remaining">
+                                                                        {{x.CountriesPendingCount}}
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                         <div class="progressBar" *ngIf="SeriesNameNew===x.SeriesName && transStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
-                                                                    {{x.LanguagesCompletedCount}}
+                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" *ngIf="x.LanguagesCompletedCount!=0" [style.width.%]="width">
+                                                                          {{x.LanguagesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
-                                                                    {{x.LanguagesPendingCount}}
+                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" *ngIf="x.LanguagesPendingCount!=0" [style.width.%]="remaining">
+                                                                         {{x.LanguagesPendingCount}}
                                                                 </div>
                                                             </div>
 

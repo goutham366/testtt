@@ -13,28 +13,29 @@
   </div>
 </div> -->
 <div class="over-flow height-100">
-  <div class="container-fluid noselection over-flow"  [ngStyle]="{'font-size': sizeVar+'px'}">
+  <div class="container-fluid noselection over-flow" [ngStyle]="{'font-size': sizeVar+'px'}">
     <div class="d-flex">
       <div class="flex-grow-1">
         <div *ngIf="!tvAvailName && !showApoBread">
-            <nav aria-label="breadcrumb" >
-                <ol class="breadcrumb m-0 pt-2 pb-2">
-                  <li class="">
-                    <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
-                  </li>
-                  <i class="material-icons">keyboard_arrow_right</i>
-                  <li class="">
-                    <a #tref>{{availName}}</a>
-                  </li>
-                  <i class="material-icons">keyboard_arrow_right</i>
-                  <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
-                  <i class="material-icons">keyboard_arrow_right</i>
-                  <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
-                </ol>
-              </nav>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-0 pt-2 pb-2">
+              <li class="">
+                <a [routerLink]="condition ? ['/pages/itunes'] : ['/pages']">Avails</a>
+              </li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="">
+                <a #tref>{{availName}}</a>
+              </li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']"
+                  [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+            </ol>
+          </nav>
         </div>
-     <div *ngIf="tvAvailName">
-        <nav aria-label="breadcrumb" >
+        <div *ngIf="tvAvailName">
+          <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0 pt-2 pb-2">
               <li class="">
                 <a [routerLink]="['/pages/television']">Avails</a>
@@ -44,28 +45,32 @@
                 <a #tref>{{availName}}</a>
               </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a></li>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}"
+                  #tref>Series</a></li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a></li>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}"
+                  #tref>Seasons</a></li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}" #tref>Episodes</a></li>
+              <li class="" aria-current="page"><a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}"
+                  #tref>Episodes</a></li>
               <i class="material-icons">keyboard_arrow_right</i>
               <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
             </ol>
           </nav>
-     </div>
-     <div *ngIf="showApoBread">
-        <nav aria-label="breadcrumb" >
+        </div>
+        <div *ngIf="showApoBread">
+          <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0 pt-2 pb-2">
-                <li class="" aria-current="page"><a routerLink="/pages/apo/titles" [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
-                <i class="material-icons">keyboard_arrow_right</i>
-                <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
-                </ol> 
+              <li class=""  aria-current="page"><a routerLink="/pages/apo/titles"  [queryParams]="{avail_name: availName}"
+                   #tref>Titles</a></li>
+              <i class="material-icons">keyboard_arrow_right</i>
+              <li class=""  aria-current="page"><a #tref>{{titleName}}</a></li>
+            </ol>
           </nav>
-     </div>
-     
-        
-  
+        </div>
+
+
+
         <div class="card">
           <div class="d-flex">
             <div class="flex-description box-1">
@@ -82,16 +87,27 @@
                     </ul>
                   </div>
                   <div class="circle">
-                    <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                      [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                    <circle-progress class="c-pointer" [percent]="percentage ? percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2"
+                      [space]="-2" [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                      [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                      [lazy]="false"></circle-progress>
                   </div>
+                  <!-- <div class="circle">
+            <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
+                      [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress> 
+
+                      <circle-progress class="c-pointer" [percent]="0" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                      [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                      [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                      [lazy]="false"></circle-progress>
+                  </div> -->
                 </div>
                 <div class="card-menu">
                   <div class="container mt-3">
                     <ul class="nav nav-tabs">
                       <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#insight" [queryParams]="{title_name : titleName, avail_name : availName, titleId: titleId, lob : lobType, seriesName : seriesName, seasonNumber : seasonNumber, episodeNumber : episodeNumber}"   routerLink="/pages/insight" 
-                        >Insight</a>
+                        <a class="nav-link" data-toggle="tab" href="#insight" [queryParams]="{title_name : titleName, avail_name : availName, titleId: titleId, lob : lobType, seriesName : seriesName, seasonNumber : seasonNumber, episodeNumber : episodeNumber}"
+                            routerLink="/pages/insight">Insight</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#metaData">Metadata</a>
@@ -171,30 +187,30 @@
                             <div class="table-3"> -->
                         <div *ngIf="close" id="dataShow">
                           <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
-                              <li>{{x.AbstractEIDR}}</li>
-                              <li>{{x.ActivationStatus}}</li>
-                              <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
-                              <li>{{x.AiredEndDate}}</li>
-                              <li>{{x.AiredFromDate}}</li>
-                              <li>{{x.AnnouncementDate}}</li>
-                              <li>{{x.AnnouncementName}}</li>
-                              <li>{{x.AtlastMCRNumber}}</li>
-                              <li>{{x.AudioLanguageDescription}}</li>
-                              <li>{{x.BroadcastVehicle}}</li>
-                              <li>{{x.BundleVideoVersionNumber}}</li>
-                              <li>{{x.BusinessUnit}}</li>
-                              <li>{{x.ChangeStatus}}</li>
-                              <li>{{x.ChangedFields}}</li>
-                              <li>{{x.Channel}}</li>
-                              <li>{{x.ClearedForSale}}</li>
-                              <li>{{x.ClientEndDate}}</li>
+                            <li>{{x.AbstractEIDR}}</li>
+                            <li>{{x.ActivationStatus}}</li>
+                            <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
+                            <li>{{x.AiredEndDate}}</li>
+                            <li>{{x.AiredFromDate}}</li>
+                            <li>{{x.AnnouncementDate}}</li>
+                            <li>{{x.AnnouncementName}}</li>
+                            <li>{{x.AtlastMCRNumber}}</li>
+                            <li>{{x.AudioLanguageDescription}}</li>
+                            <li>{{x.BroadcastVehicle}}</li>
+                            <li>{{x.BundleVideoVersionNumber}}</li>
+                            <li>{{x.BusinessUnit}}</li>
+                            <li>{{x.ChangeStatus}}</li>
+                            <li>{{x.ChangedFields}}</li>
+                            <li>{{x.Channel}}</li>
+                            <li>{{x.ClearedForSale}}</li>
+                            <li>{{x.ClientEndDate}}</li>
                             <!-- <li>{{x.ClientEnd}}</li>
                                       <li>{{x.ClientEnd}}</li> -->
                           </ul>
                         </div>
                         <!-- </div>
                           </div> -->
-  
+
                       </div>
                       <div class="comparsion-box" *ngIf="show">
                         <div class="d-flex">
@@ -216,7 +232,7 @@
                       <div class="add-icon d-flex align-items-center" *ngIf="close" (click)="showComment()">
                         <i class="material-icons cursor-pointer">add_box</i>
                       </div>
-  
+
                     </div>
                     <!-- <div class="update-box mt-2">
                       <div class="btn-group">
@@ -243,61 +259,67 @@
                      
   
                     </div> -->
-  
+
                     <div class="update-box mt-2">
                       <div class="btn-group">
                         <div cla>
-                        <ul class="nav nav-tabs">
-                          <li class="nav-item ">
-                            <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
-                          </li>
-                        </ul>
+                          <ul class="nav nav-tabs">
+                            <li class="nav-item ">
+                              <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
+                                <i class="material-icons atom-icon">cloud_done</i></a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
+                            </li>
+                          </ul>
                         </div>
                         <div class="text-area">
                           <textarea cols="79" rows="2" #box [(ngModel)]="userMetadata">
                                         
                             </textarea>
                         </div>
-                        <div class="btn gray-3 text-white" [(ngModel)]="userMetadata" name="fieldName" ngDefaultControl (click)="update(userMetadata)"><p class="d-flex align-items-center height-100 mb-0">Update</p></div>
+                        <div class="btn gray-3 text-white" [(ngModel)]="userMetadata" name="fieldName" ngDefaultControl (click)="update(userMetadata)">
+                          <p class="d-flex align-items-center height-100 mb-0">Update</p>
+                        </div>
                       </div>
-                     
-                
+
+
                     </div>
                   </div>
                   <div id="Language" class="tab-pane fade">
                     <div class="container-fluid p-12">
-                        <a class="avail-details d-flex mb-1" >
-                            <i class="material-icons md-18 md-grey v-align">translate</i>{{uniqueLanguagesCount}} Languages</a>
+                      <a class="avail-details d-flex mb-1">
+                        <i class="material-icons md-18 md-grey v-align">translate</i>{{uniqueLanguagesCount}} Languages</a>
                       <div class="top-heading">
                         <div class="language-data">
-                          
-                            <div class="progress progress-main">
-                                <div class="progress-bar bg-success" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}">
-                                  <span class="status-padding"  >{{LanguagesCompletedCount}}</span>
-                                </div>
-                                <div class="progress-bar" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}">
-                                  <span class="status-padding" >{{LanguagesPendingCount}}</span>
-                                </div>
-                              </div>
+
+                          <div class="progress progress-main">
+                            <div class="progress-bar bg-success c-pointer" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}"
+                              data-toggle="tooltip" data-placement="left" title="{{LanguagesCompletedCount}}">
+                              <span class="status-padding">{{LanguagesCompletedCount}}</span>
+                            </div>
+                            <div class="progress-bar c-pointer" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}" data-toggle="tooltip"
+                              data-placement="left" title="{{LanguagesPendingCount}}">
+                              <span class="status-padding">{{LanguagesPendingCount}}</span>
+                            </div>
+                          </div>
                           <div *ngIf="!clickedOnLanguage" class="row row-list mt-2 text-white language-scroll">
                             <div class="col-md-12 avail-list mt-2">
                               <!-- <div >
                                 <div > -->
-                                    <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
-                                        <ul class="list-style list-description">
-                                            <li class="cursor-pointer" (click)="languageName(z.Language)">
-                                                <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Language}}">{{z.Language}} </span>
-                                              </li>
-                                          <!-- <li (click)="languageName(z.language_name)">{{z.Language}} </li> -->
-                                        </ul>
-                                      </span>
-                                <!-- </div>
+                              <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
+                                <ul class="list-style list-description">
+                                  <li class="cursor-pointer" (click)="languageName(z.Language)">
+                                    <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Language}}">{{z.Language}}
+                                    </span>
+                                  </li>
+                                  <!-- <li (click)="languageName(z.language_name)">{{z.Language}} </li> -->
+                                </ul>
+                              </span>
+                              <!-- </div>
                               </div> -->
                             </div>
                           </div>
@@ -314,13 +336,13 @@
                         <div class="language-metadata">
                           <div class="metalanguage-content">
                             <div class="table-1">
-                              <ul >
+                              <ul>
                                 <li>Local Titles</li>
-                              
-                                  <li>{{languageShort}} Short</li>
-                                  <li>{{languageShort}} Long</li>
-                                
-                               
+
+                                <li>{{languageShort}} Short</li>
+                                <li>{{languageShort}} Long</li>
+
+
                               </ul>
                             </div>
                             <div class="table-2 d-flex">
@@ -331,33 +353,34 @@
                                
                               </ul> -->
                               <ul *ngFor="let x of availLanguageList" id="OriginalData" [ngClass]="(changedWidth) ? 'width-100' : 'width-px'">
-                                  <li>{{titleName}}</li>
-                                  <li  name="fieldName1" ngDefaultControl [(ngModel)]="metaDataLangUpdateVal"  class="cursor-pointer datahide" (click)="dataShow(metaDataLangUpdateVal, 'L')">{{metaDataLangUpdateVal}}</li>
-                                  <li>{{x.English_short}}</li>
-                                 
-                                </ul>
+                                <li>{{titleName}}</li>
+                                <li name="fieldName1" ngDefaultControl [(ngModel)]="metaDataLangUpdateVal" class="cursor-pointer datahide" (click)="dataShow(metaDataLangUpdateVal, 'L')">{{metaDataLangUpdateVal}}</li>
+                                <li>{{x.English_short}}</li>
+
+                              </ul>
                               <!-- <div class="" >
                                         <div class="table-3"> -->
-                    
+
                               <!-- </div>
                                       </div> -->
                               <div class="add-icon cursor-pointer d-flex align-items-center">
                                 <i class="material-icons" (click)="flip()">add_box</i>
-                              </div>                
+                              </div>
                             </div>
-                            
+
                           </div>
                         </div>
                       </div>
-                        <!-- <div class="update-field">
+                      <!-- <div class="update-field">
                           <input type="text" class="form-control" id="usr" [(ngModel)]="user" (keydown)="updateDescription($event,user)">
                         </div> -->
-                        <div class="update-box mt-2">
-                          <div class="btn-group">
-                            <div cla>
+                      <div class="update-box mt-2">
+                        <div class="btn-group">
+                          <div cla>
                             <ul class="nav nav-tabs">
                               <li class="nav-item ">
-                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
+                                  <i class="material-icons atom-icon">cloud_done</i></a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
@@ -366,47 +389,52 @@
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
                               </li>
                             </ul>
-                            </div>
-                            <div class="text-area">
-                              <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userLanguage">
+                          </div>
+                          <div class="text-area">
+                            <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userLanguage">
                                             
                                 </textarea>
-                            </div>
-                            <div class="btn btn-dark" name="fieldName1" ngDefaultControl  [(ngModel)]="userLanguage"  (click)="updateDescription($event,userLanguage)"><p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p></div>
                           </div>
-                         
-                    
+                          <div class="btn btn-dark" name="fieldName1" ngDefaultControl [(ngModel)]="userLanguage" (click)="updateDescription($event,userLanguage)">
+                            <p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p>
+                          </div>
                         </div>
-                    
-                        
+
+
+                      </div>
+
+
                     </div>
                   </div>
                   <div id="Territorial" class="tab-pane fade">
                     <div class="container-fluid p-12">
-                        <a class="avail-details d-flex mb-1" >
-                            <i class="material-icons md-18 md-grey v-align">language</i> {{uniqueCountriesCount}} Countries</a>
+                      <a class="avail-details d-flex mb-1">
+                        <i class="material-icons md-18 md-grey v-align">language</i> {{uniqueCountriesCount}} Countries</a>
                       <div class="top-heading">
                         <div class="language-data">
-                          
+
                           <div class="progress progress-main">
-                            <div class="progress-bar bg-success" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}">
-                              <span class="status-padding"  >{{countriesCompletedCount}}</span>
+                            <div class="progress-bar bg-success c-pointer" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}"
+                              data-toggle="tooltip" data-placement="left" title="{{countriesCompletedCount}}">
+                              <span class="status-padding">{{countriesCompletedCount}}</span>
                             </div>
-                            <div class="progress-bar" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}">
-                              <span class="status-padding" >{{countriesPendingCount}}</span>
+                            <div class="progress-bar c-pointer" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}" data-toggle="tooltip"
+                              data-placement="left" title="{{countriesPendingCount}}">
+                              <span class="status-padding">{{countriesPendingCount}}</span>
                             </div>
                           </div>
-                          <!--'clickedOnCountry' should--> 
+                          <!--'clickedOnCountry' should-->
                           <div class="row row-list text-white language-scroll mt-2">
                             <div class="col-md-12 avail-list mt-2">
-                              
-                               
-                                  <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
-                                    <ul class="list-style list-description">
-                                      <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Country}}">{{z.Country}} </li>
-                                    </ul>
-                                  </span>
-                                
+
+
+                              <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
+                                <ul class="list-style list-description">
+                                  <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Country}}">{{z.Country}}
+                                  </li>
+                                </ul>
+                              </span>
+
                             </div>
                           </div>
                           <!-- <div class="row row-list text-white">
@@ -418,7 +446,7 @@
                               </span>
                             </div>
                           </div> -->
-                          
+
                         </div>
                         <div class="language-metadata">
                           <div class="metalanguage-content">
@@ -440,48 +468,49 @@
                             </div>
                             <div class="table-2 d-flex">
                               <ul *ngFor="let x of countryData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-px'">
-                                  <li>{{x.Rating}}</li>
-                                  <li  class="cursor-pointer datahide" name="fieldName2" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'T')">{{metaDataCountryUpdateVal}}</li>
-                                  <!-- <li (click)="dataShow(x.RatingComments)">{{x.RatingComments}}</li> -->
-                                  <li>{{x.ShortDescription}}</li>
-                                  <li>{{x.InitialReleaseDate}}</li>
-                                  <li>{{x.CurrentReleaseDate}}</li>
-                                  <li>{{x.RightsWindowBeginDate}}</li>
-                                  <li>{{x.RightsWindowEndDate}}</li>
-                                  <li>{{x.AnnouncementDate}}</li>
-                                  <li *ngIf="!checkNaN(x.Pre-SellDate)">{{x.Pre-SellDate}}</li>
-                                  <li *ngIf="checkNaN(x.Pre-SellDate)"></li>
-                                  <li>{{x.WebWHVInternal}}</li>
-                                  <li>{{x.WebRetailers}}</li>
-                                  <li>{{x.VendorsId}}</li>
+                                <li>{{x.Rating}}</li>
+                                <li class="cursor-pointer datahide" name="fieldName2" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'T')">{{metaDataCountryUpdateVal}}</li>
+                                <!-- <li (click)="dataShow(x.RatingComments)">{{x.RatingComments}}</li> -->
+                                <li>{{x.ShortDescription}}</li>
+                                <li>{{x.InitialReleaseDate}}</li>
+                                <li>{{x.CurrentReleaseDate}}</li>
+                                <li>{{x.RightsWindowBeginDate}}</li>
+                                <li>{{x.RightsWindowEndDate}}</li>
+                                <li>{{x.AnnouncementDate}}</li>
+                                <li *ngIf="!checkNaN(x.Pre-SellDate)">{{x.Pre-SellDate}}</li>
+                                <li *ngIf="checkNaN(x.Pre-SellDate)"></li>
+                                <li>{{x.WebWHVInternal}}</li>
+                                <li>{{x.WebRetailers}}</li>
+                                <li>{{x.VendorsId}}</li>
                                 <!-- <li>{{x.ClientEnd}}</li>
                                               <li>{{x.ClientEnd}}</li> -->
                               </ul>
                               <!-- <div class="" >
                                         <div class="table-3"> -->
-                    
+
                               <!-- </div>
                                       </div> -->
                               <div class="add-icon cursor-pointer d-flex align-items-center">
                                 <i class="material-icons" (click)="flip()">add_box</i>
                               </div>
                             </div>
-                            
-                            
-                    
+
+
+
                           </div>
                         </div>
                       </div>
                       <!-- <div class="update-field">
                           <input type="text" class="form-control" id="usr" [(ngModel)]="user" (keydown)="updateDescription($event,user)">
                         </div> -->
-                    
-                        <div class="update-box mt-2">
-                          <div class="btn-group">
-                            <div cla>
+
+                      <div class="update-box mt-2">
+                        <div class="btn-group">
+                          <div cla>
                             <ul class="nav nav-tabs">
                               <li class="nav-item ">
-                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM <i class="material-icons atom-icon">cloud_done</i></a>
+                                <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
+                                  <i class="material-icons atom-icon">cloud_done</i></a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
@@ -490,21 +519,23 @@
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('sap')}">SAP</a>
                               </li>
                             </ul>
-                            </div>
-                            <div class="text-area">
-                              <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userCountry">
+                          </div>
+                          <div class="text-area">
+                            <textarea [disabled]="isDisabled" cols="79" rows="2" #box [(ngModel)]="userCountry">
                                             
                                 </textarea>
-                            </div>
-                            <div class="btn btn-dark" name="fieldName2" ngDefaultControl [(ngModel)]="userCountry"  (click)="updateCountryDescription($event,userCountry)"><p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p></div>
                           </div>
-                         
-                    
+                          <div class="btn btn-dark" name="fieldName2" ngDefaultControl [(ngModel)]="userCountry" (click)="updateCountryDescription($event,userCountry)">
+                            <p class="d-flex align-items-center height-100 mb-0 cursor-pointer">Update</p>
+                          </div>
                         </div>
+
+
+                      </div>
                     </div>
                   </div>
                 </div>
-  
+
                 <div class="comment-data content-bg">
                   <div class="comment-data-heading d-flex" *ngIf="!showStatus">
                     <div>
@@ -519,28 +550,30 @@
                           <a class="nav-link" data-toggle="tab" href="#Territorial">Territorial</a>
                         </li>
                       </ul>
-                  </div>
+                    </div>
                     <div class="circle-class d-flex justify-content-center width-100 align-items-center">
                       <div class="circle" (click)="showTitleStatus()">
-                        <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                          [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                        <circle-progress class="c-pointer" [percent]="0" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                          [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                          [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                          [lazy]="false"></circle-progress>
                       </div>
                     </div>
-                    
+
                   </div>
                   <div class="cust-text status-text-padding p-2 " *ngIf="showStatus===true">
                     <h6 class="status-text text-primary">Status</h6>
                     <p class="status mb-1">
-                        <b class="font-number"> -</b> Pending Translations</p>
+                      <b class="font-number"> -</b> Pending Translations</p>
                     <p class="status mb-1">
-                        <b class="font-number"> -</b> Pending Ratings</p>
+                      <b class="font-number"> -</b> Pending Ratings</p>
                     <p class="status mb-1">
-                        <b class="font-number">-</b> Pending Clarifications</p>
+                      <b class="font-number">-</b> Pending Clarifications</p>
                     <p class="status mb-1">
-                        <b class="font-number">-</b> Escalations</p>
-  
-                </div>
-                  
+                      <b class="font-number">-</b> Escalations</p>
+
+                  </div>
+
                   <ul class="comment-box">
                     <ul class="nav nav-tabs">
                       <li class="nav-item">
@@ -554,25 +587,26 @@
                       <div class="tab-pane active" id="Comments">
                         <div class="comment-scroll">
                           <ul>
-                        <li class="comment-style" *ngFor="let comment of comments">
-                          <div class="d-flex user-details">
-                            <span>JohnPaul</span>
-                            <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
-                          </div>
-                          {{comment.name}}
-                        </li>
-                        </ul>
+                            <li class="comment-style" *ngFor="let comment of comments">
+                              <div class="d-flex user-details">
+                                <span>JohnPaul</span>
+                                <span>{{comment.date | date:'dd/MM hh:mm'}}</span>
+                              </div>
+                              {{comment.name}}
+                            </li>
+                          </ul>
                         </div>
                         <div class="main-comment">
                           <div id="mySidenav" class="sidenav">
                             <div class="custom-comment" [ngClass]="(changeColor) ? 'border-red' : 'border-blue'">
                               <div><a class="closebtn" (click)="closeNav()">{{changeText}}</a></div>
-                              <label class="switch" >
-                                <input type="checkbox" id="commentSwitch" [(ngModel)]="switchvalue"  checked  (click)="valuechange($event, switchvalue)">
+                              <label class="switch">
+                                <input type="checkbox" id="commentSwitch" [(ngModel)]="switchvalue" checked (click)="valuechange($event, switchvalue)">
                                 <span class="slider round"></span>
                               </label>
                               <div class="f-12">
-                                <input type="text" id="comment" [(ngModel)]="commentValue" (keydown)="addComment($event,commentValue)" name="textBox" class="textBox width-100" placeholder="Type a comment">
+                                <input type="text" id="comment" [(ngModel)]="commentValue" (keydown)="addComment($event,commentValue)" name="textBox" class="textBox width-100"
+                                  placeholder="Type a comment">
                               </div>
                             </div>
                           </div>
@@ -580,7 +614,7 @@
                             <i class="material-icons cursor-pointer">add_box</i>
                           </span>
                         </div>
-                        
+
                         <!-- <button (click)="showInput()">Add</button> -->
                       </div>
                       <div class="tab-pane" id="Log">
@@ -590,7 +624,7 @@
                             <span>{{logD.date | date:'dd/MM hh:mm'}}</span>
                           </div>
                           <div>{{logD.val}}</div>
-                          
+
                         </li>
                         <!-- <input #newComment (keyup.enter)="addComment(newComment.value)" (blur)="addComment(newComment.value); newComment.value='' ">
                                     <button (click)="addComment(newComment.value)">Add</button> -->
@@ -600,16 +634,15 @@
                 </div>
               </div>
             </div>
-            
-              <!-- <div class="tab-pane" id="insight">
+
+            <!-- <div class="tab-pane" id="insight">
                 <app-apo-insight></app-apo-insight>
               </div> -->
-            
+
           </div>
-          
+
         </div>
       </div>
     </div>
   </div>
-  </div>
-  
+</div>

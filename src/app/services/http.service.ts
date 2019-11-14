@@ -10,12 +10,12 @@ export class HttpService {
     throw new Error("Method not implemented.");
   }
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
-   lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
- //lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
- // lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
+  lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
  // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
+  //lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
+  // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   awsS3Url: string = 'http://s3ecsalb-384269995.us-west-2.elb.amazonaws.com/AWSS3';
- // awsS3Url: string='http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
+  //awsS3Url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
   localurl: string = 'http://10.219.20.213:8082/AWSS3';
   refreshcomp: Subject<any>;
   availrefreshcomp: Subject<any>;
@@ -73,8 +73,7 @@ export class HttpService {
     return this.http.get(`./assets/json/metadata-language.json`);
   }
   getAvailInsightDetails(availName, titleId, lob) {
-    console.log(titleId);
-    if(lob === 'APO') {
+    if (lob === 'APO') {
       this.api = this.http.get(this.lambda + '/titles/insight/APO/title/' + titleId);
     }
     else {
@@ -88,9 +87,8 @@ export class HttpService {
     //return this.http.get(this.url + `/avails/all/FILMS/` + availName);
     return this.http.get(`./assets/json/avails-details.json`);
   }
-  getAvailDetailsAPIView(availName,pageName) {
-    console.log("avail name in service......",availName);
-    return this.http.get(this.lambda + `/avails/all/${pageName}/` + availName);
+  getAvailDetailsAPIView(availName, pageName) {
+   return this.http.get(this.lambda + `/avails/all/${pageName}/` + availName);
     //return this.http.get(`./assets/json/avail-details-api.json`);
   }
   getmetadataLangConList() {
@@ -99,10 +97,10 @@ export class HttpService {
   // getMetaData() {
   //   return this.http.get(`./assets/json/metaData.json`);
   // }
-  getMetaData(lob,availName,titleID) {
+  getMetaData(lob, availName, titleID) {
     //return this.http.get(this.url + '/avails/metadata/FILMS/title/60001139112044719');
     return this.http.get(this.lambda + `/titles/metadata/${lob}/${availName}/${titleID}`);
-  
+
   }
   // getItunesData() {
   //    return  this.http.get(`./assets/json/avails_api.json`);
@@ -121,16 +119,21 @@ export class HttpService {
   //   return  this.http.get(`./assets/json/apo_api.json`);
   // }
   getSeriesDetails(availName) {
-    console.log(availName);
     return this.http.get(this.lambda + `/avails/TV/` + availName);
   }
-  getSeasonDetails(availName, series) {
-    return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + series);
-  }
- 
-  getEpisodeDetails(availName, series, seasonNumber) {
-    return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + series + '/' + seasonNumber);
-  }
+  // getSeasonDetails(availName, series) {
+  //   return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + series);
+  // }
+
+  // getEpisodeDetails(availName, series, seasonNumber) {
+  //   return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + series + '/' + seasonNumber);
+  // }
+  getSeasonDetails(availName, series) {
+    return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + encodeURIComponent(series));
+    }
+    getEpisodeDetails(availName, series, seasonNumber) {
+    return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + encodeURIComponent(series) + '/' + seasonNumber);
+    }  
   // uploadrelease(formData){
   //   let headers: HttpHeaders = new HttpHeaders();
   //   headers = headers.append('Accept', 'application/json');
@@ -176,7 +179,7 @@ export class HttpService {
     // headers = headers.append("Content-Type", "multipart/form-data");
     var url = this.awsS3Url + '/uploads/uploadFile'
     return this.http.post(url , formData, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
 
@@ -186,24 +189,23 @@ export class HttpService {
     // headers = headers.append("Access-Control-Allow-Origin", "*");
     var url = this.lambda + '/data/process/' + fileName;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   exportToS3(message) {
-    console.log('mesaage', message);
     //let headers: HttpHeaders = new HttpHeaders();
     // headers = headers.append('Accept', 'application/json');
     //headers = headers.append("Access-Control-Allow-Origin", "*");
     var url = this.lambda + `/export/${message}`;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   exporS3ToLcal(message) {
 
     var url = this.lambda + `/export/excel/${message}`
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   // uploadApoToBack(path, relDoc, trigDoc){
@@ -237,7 +239,6 @@ export class HttpService {
   }
 
   getAvailTittlesData(availName) {
-    console.log("avail titles name ....", availName);
     //return this.http.get(`./assets/json/avail_titles_api.json`);
     // return this.http.get(this.url + `/avails/FILMS/` + availName);
     return this.http.get(this.lambda + `/avails/FILMS/` + availName);
@@ -251,25 +252,25 @@ export class HttpService {
     console.log('avail name in service', availname);
     var url = this.lambda + `/export/${availname}`;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   exporS3ToLcalToSingle(message, availname) {
     var url = this.lambda + `/export/excel/${availname}`;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   exportToSingleAPO(message, GlobalTitle) {
     var url = this.lambda + `/export/apotitle/${GlobalTitle}`;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
   exportAPOS3ToLcalToSingle(message, GlobalTitle) {
     var url = this.lambda + `/export/apotitle/excel/${GlobalTitle}`;
     return this.http.get(url, {
-      headers: { ignoreProgressBar : '' }
+      headers: { ignoreProgressBar: '' }
     });
   }
 }

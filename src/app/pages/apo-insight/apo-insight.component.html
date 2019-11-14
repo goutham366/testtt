@@ -83,8 +83,10 @@
                       </ul>
                     </div>
                     <div class="circle">
-                      <circle-progress [percent]="0" [radius]="20" [outerStrokeWidth]="2" [innerStrokeWidth]="2" [outerStrokeColor]="'#008040'"
-                        [innerStrokeColor]="'#006FAD'" [animation]="true" [animationDuration]="1000"></circle-progress>
+                        <circle-progress class="c-pointer" [percent]="titleDetail.Percentage ? titleDetail.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                            [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                            [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                            [lazy]="false"></circle-progress>
                     </div>
                   </div>
                   <div class="card-menu">
@@ -156,12 +158,12 @@
                             <img src="assets/images/Icons/SVG/baseline-add_shopping_cart-24px.svg">{{titleDetail.UniqueAccontsCount}}  Accounts</a>
                             <div class="progressBar">
                                 <div class="progress">
-                                    <div class="bg-success" [style.width.%]="titleDetail.AccontsCompletedCount / titleDetail.UniqueAccontsCount * 100">
+                                    <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.AccontsCompletedCount}}" [style.width.%]="titleDetail.AccontsCompletedCount / titleDetail.UniqueAccontsCount * 100">
                                         <span class="status-padding" *ngIf="titleDetail.AccontsCompletedCount!=0">
                                           {{titleDetail.AccontsCompletedCount}}
                                           </span>
                                     </div>
-                                    <div [style.width.%]="titleDetail.AccontsPendingCount / titleDetail.UniqueAccontsCount * 100">
+                                    <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.AccontsPendingCount}}" [style.width.%]="titleDetail.AccontsPendingCount / titleDetail.UniqueAccontsCount * 100">
                                         <span class="status-padding" *ngIf="titleDetail.AccontsPendingCount!=0">
                                           {{titleDetail.AccontsPendingCount}}
                                           </span>
@@ -187,12 +189,12 @@
                                   <i class="material-icons md-18 md-grey v-align">language</i>{{titleDetail.UniqueCountriesCount}}  Countries</a>
                                   <div class="progressBar">
                                       <div class="progress">
-                                          <div class="bg-success" [style.width.%]="titleDetail.CountriesCompletedCount / titleDetail.UniqueCountriesCount * 100">
+                                          <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.CountriesCompletedCount}}" [style.width.%]="titleDetail.CountriesCompletedCount / titleDetail.UniqueCountriesCount * 100">
                                               <span class="status-padding" *ngIf="titleDetail.CountriesCompletedCount!=0"> 
                                                 {{titleDetail.CountriesCompletedCount}}
                                                 </span>
                                           </div>
-                                          <div class="country-width" [style.width.%]="titleDetail.CountriesPendingCount / titleDetail.UniqueCountriesCount * 100">
+                                          <div class="country-width avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.CountriesPendingCount}}" [style.width.%]="titleDetail.CountriesPendingCount / titleDetail.UniqueCountriesCount * 100">
                                               <span class="status-padding" *ngIf="titleDetail.CountriesPendingCount!=0">
                                                 {{titleDetail.CountriesPendingCount}}
                                                 </span>
@@ -218,12 +220,12 @@
                                         <i class="material-icons md-18 md-grey v-align">translate</i>{{titleDetail.UniqueLanguagesCount}}  Languages</a>
                                         <div class="progressBar">
                                             <div class="progress">
-                                                <div class="bg-success" [style.width.%]="titleDetail.LanguagesCompletedCount / titleDetail.UniqueLanguagesCount * 100">
+                                                <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.LanguagesCompletedCount}}" [style.width.%]="titleDetail.LanguagesCompletedCount / titleDetail.UniqueLanguagesCount * 100">
                                                     <span class="status-padding" *ngIf="titleDetail.LanguagesCompletedCount!=0">
                                                       {{titleDetail.LanguagesCompletedCount}}
                                                       </span>
                                                 </div>
-                                                <div [style.width.%]="titleDetail.LanguagesPendingCount / titleDetail.UniqueLanguagesCount * 100">
+                                                <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{titleDetail.LanguagesPendingCount}}" [style.width.%]="titleDetail.LanguagesPendingCount / titleDetail.UniqueLanguagesCount * 100">
                                                     <span class="status-padding" *ngIf="titleDetail.LanguagesPendingCount!=0">
                                                       {{titleDetail.LanguagesPendingCount}}
                                                       </span>
@@ -340,22 +342,45 @@
                                             </li>
                                         </ol>
                                     </div> -->
+                                    
                                     <div class="cus-text text-col">
-                                        <ul class="wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
+                                        <!-- <ul class="wizard-progress timeline" *ngFor="let timeline of titleDetail.TitleStatus">
                                             <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(titleDetail.TitleStatus)}" *ngFor="let stage of stages, let i = index">
                                               <div class="timeline-date">
                                               <span class="visuallyhidden"></span>
                                                 <span class="step-num"></span>
                                                <span class="stage-title">
                                                   <span *ngIf="i<=getProgressFill(titleDetail.TitleStatus)">{{timeline.StatusDate | date: 'MM/dd/yyyy'}}</span>
-                                                <span class="step-name ml-1">
-                                                  <span class="timeline-status" *ngIf="stage.stageTitle==titleDetail.TitleStatus[getProgress(titleDetail.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
-                                                </span> 
+                                                  <span *ngIf="!completeFlag" class="step-name ml-1">
+                                                      <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                  </span>
+                                                  <span *ngIf="completeFlag" class="step-name ml-1">
+                                                      <span *ngIf="i==3"  [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                  </span>
                                               </span>
                                                 </div>
 
                                             </li>
-                                          </ul>
+                                          </ul> -->
+                                          <ul class=" wizard-progress timeline">
+                                              <li [ngClass]="{'active-step': (stage.active=='Y'),'inactive-step': (stage.active=='N')}" *ngFor="let stage of stages, let i = index">
+                                                <div class="timeline-date">
+                                                  <span class="visuallyhidden"></span>
+                                                  <span class="step-num"></span>
+                                                  <span  class="stage-title">
+                                                    <span class="stage-date" *ngIf="stage.active=='Y'">{{stage.date | date: 'MM/dd/yyyy'}}</span>
+                                                    <!-- <span class="stage-date" *ngIf="i==3 && completeFlag">{{stage.date | date: 'MM/dd/yyyy'}}</span> -->
+                                                   <span  class="step-name ml-1">
+                                                        <span class="timeline-status" *ngIf="stage.active=='Y'" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                    </span>
+                                                    <!-- <span *ngIf="completeFlag" class="step-name ml-1">
+                                                        <span class="timeline-status" *ngIf="i==3"  [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                    </span> -->
+                                                  </span>
+                                                </div>
+                              
+                                              </li>
+                                            </ul>
                                     </div>
 
 

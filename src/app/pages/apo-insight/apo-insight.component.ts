@@ -42,7 +42,7 @@ export class AvailInsightComponent implements OnInit {
   cropAccounts:any;
   cropCountries:any;
   cropLanguages:any;
-  stages: { stageTitle: string; }[];
+  stages: { stageTitle: string; active:string; date: string }[];
   progress: number;
   data: any;
   tvAvailName: any;
@@ -61,6 +61,8 @@ export class AvailInsightComponent implements OnInit {
   titleComments: any;
   comments: any;
   commentValue: string;
+  completeFlag: boolean;
+  timeLineData: any;
 
   cropImage() {
     let img = document.getElementsByName("main_img")[0];
@@ -115,11 +117,12 @@ export class AvailInsightComponent implements OnInit {
     this.cropperSettings.canvasHeight = 200;
     this.data = {};
 
+   
     this.stages = [
-      { stageTitle: "Announced" },
-      { stageTitle: "Data Collation" },
-      { stageTitle: "Quality Audit" },
-      { stageTitle: "Data Delivery" }
+      { stageTitle: "Announced", active: "N", date: "" },
+      { stageTitle: "Data Collation", active: "N", date: "" },
+      { stageTitle: "Quality Audit", active: "N", date: "" },
+      { stageTitle: "Data Delivery", active: "N", date: "" }
     ];
    
   }
@@ -174,6 +177,8 @@ export class AvailInsightComponent implements OnInit {
       this.titleStartDate = this.availDetailsViewList.StartDate;
       this.titleEndDate = this.availDetailsViewList.DueDate;
       this.comments=this.availDetailsViewList.AvailComments;
+      this.timeLineData =  this.availDetailsViewList[0].TitleStatus;
+      this.checkTimeline();
     })
 
 
@@ -287,6 +292,52 @@ export class AvailInsightComponent implements OnInit {
         ]
       },
     ]
+    
+  }
+  checkTimeline(){
+   
+    var l = this.timeLineData.length;
+    for(let j=0;j<l;j++){
+      this.stages = [
+        { stageTitle: "Announced", active: "N", date: "" },
+        { stageTitle: "Data Collation", active: "N", date: "" },
+        { stageTitle: "Quality Audit", active: "N", date: "" },
+        { stageTitle: "Data Delivery", active: "N", date: "" }
+      ];
+      if(this.timeLineData[j].StatusMessage == "Completed"){
+        this.completeFlag = true;
+        for(let k=0;k<this.stages.length;k++){
+          this.stages[k].active = "Y";
+          
+          if(j==1){
+            this.stages[0].date = this.timeLineData[0].StatusDate;
+            this.stages[1].date = "";
+            this.stages[2].date = "";
+            this.stages[3].date = this.timeLineData[l-1].StatusDate;
+          }else if(j==2){
+            this.stages[0].date = this.timeLineData[0].StatusDate;
+            this.stages[1].date = this.timeLineData[1].StatusDate;
+            this.stages[2].date = "";
+            this.stages[3].date = this.timeLineData[l-1].StatusDate;
+          }else if(j==3){
+             this.stages[0].date = this.timeLineData[0].StatusDate;
+            this.stages[1].date = this.timeLineData[1].StatusDate;
+            this.stages[2].date = this.timeLineData[2].StatusDate;
+            this.stages[3].date = this.timeLineData[l-1].StatusDate;
+          }
+          
+        }
+      }else{
+        this.completeFlag = false;
+        for(let i=l;i>0;i--){
+          this.stages[l-1].active = "Y";
+          this.stages[l-1].date = this.timeLineData[l-1].StatusDate;
+        }
+      }
+    }
+    
+      
+    
   }
 
   showtitlesDiv(event, index) {
@@ -405,6 +456,13 @@ export class AvailInsightComponent implements OnInit {
     }
   }
   getProgressSwitch(title,l){
+    for(let j=0;j<l;j++){
+      if(title[j].StatusMessage == "Completed"){
+        this.completeFlag = true;
+      }else{
+        this.completeFlag = false;
+      }
+    }
     switch (title[l-1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;

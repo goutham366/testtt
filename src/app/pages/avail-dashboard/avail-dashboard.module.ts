@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {RoundProgressModule, ROUND_PROGRESS_DEFAULTS} from 'angular-svg-round-progressbar';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { MatNativeDateModule, MatProgressBarModule } from '@angular/material';
 import { MatCardModule, MatButtonModule } from '@angular/material';
@@ -18,7 +19,8 @@ import { FilterModuleNew } from '../availfilter/availfilter.module';
     MatCardModule,
     MatButtonModule,
     FilterModuleNew,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgCircleProgressModule.forRoot({})
   ],
   exports: [
     MatCardModule,
