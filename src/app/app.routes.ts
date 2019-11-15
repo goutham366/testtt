@@ -5,6 +5,7 @@ import { ResetComponent } from './auth/reset/reset.component';
 import { AuthorizationGuard } from './guards/auth-guard';
 
 
+
 export const ROUTES: Routes = [
     { path: '', redirectTo: 'auth', pathMatch: 'full' },
     { path: 'forgot', component: ForgotComponent },
