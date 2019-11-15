@@ -5,7 +5,7 @@ files:
    
   
   - source: /
-    destination: /home/ec2-user/warnerbros-ui  
+    destination: /home/ec2-user/warnerbrosUI
   
     
 hooks:   
