@@ -139,8 +139,8 @@ export class AvailDetailsComponent implements OnInit {
     var l = this.timeLineData.length;
     
       for(let i=l;i>0;i--){
-        this.stages[l-1].active = "Y";
-        this.stages[l-1].date = this.timeLineData[l-1].StatusDate;
+        this.stages[i-1].active = "Y";
+        this.stages[i-1].date = this.timeLineData[i-1].StatusDate;
       }
     
   }

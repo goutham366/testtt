@@ -297,121 +297,73 @@ export class AvailInsightComponent implements OnInit {
   checkTimeline(){
    
     var l = this.timeLineData.length;
-    for(let j=0;j<l;j++){
-      this.stages = [
-        { stageTitle: "Announced", active: "N", date: "" },
-        { stageTitle: "Data Collation", active: "N", date: "" },
-        { stageTitle: "Quality Audit", active: "N", date: "" },
-        { stageTitle: "Data Delivery", active: "N", date: "" }
-      ];
-      if(this.timeLineData[j].StatusMessage == "Completed"){
-        this.completeFlag = true;
-        for(let k=0;k<this.stages.length;k++){
-          this.stages[k].active = "Y";
+    // for(let j=0;j<l;j++){
+    //   this.stages = [
+    //     { stageTitle: "Announced", active: "N", date: "" },
+    //     { stageTitle: "Data Collation", active: "N", date: "" },
+    //     { stageTitle: "Quality Audit", active: "N", date: "" },
+    //     { stageTitle: "Data Delivery", active: "N", date: "" }
+    //   ];
+    //   if(this.timeLineData[j].StatusMessage == "Completed"){
+    //     this.completeFlag = true;
+    //     for(let k=0;k<this.stages.length;k++){
+    //       this.stages[k].active = "Y";
           
-          if(j==1){
-            this.stages[0].date = this.timeLineData[0].StatusDate;
-            this.stages[1].date = "";
-            this.stages[2].date = "";
-            this.stages[3].date = this.timeLineData[l-1].StatusDate;
-          }else if(j==2){
-            this.stages[0].date = this.timeLineData[0].StatusDate;
-            this.stages[1].date = this.timeLineData[1].StatusDate;
-            this.stages[2].date = "";
-            this.stages[3].date = this.timeLineData[l-1].StatusDate;
-          }else if(j==3){
-             this.stages[0].date = this.timeLineData[0].StatusDate;
-            this.stages[1].date = this.timeLineData[1].StatusDate;
-            this.stages[2].date = this.timeLineData[2].StatusDate;
-            this.stages[3].date = this.timeLineData[l-1].StatusDate;
-          }
+    //       if(j==1){
+    //         this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = "";
+    //         this.stages[2].date = "";
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }else if(j==2){
+    //         this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = this.timeLineData[1].StatusDate;
+    //         this.stages[2].date = "";
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }else if(j==3){
+    //          this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = this.timeLineData[1].StatusDate;
+    //         this.stages[2].date = this.timeLineData[2].StatusDate;
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }
           
-        }
-      }else{
-        this.completeFlag = false;
-        for(let i=l;i>0;i--){
-          this.stages[l-1].active = "Y";
-          this.stages[l-1].date = this.timeLineData[l-1].StatusDate;
-        }
-      }
-    }
-    
+    //     }
+    //   }else{
+    //     this.completeFlag = false;
+    //     for(let i=l;i>0;i--){
+    //       this.stages[i-1].active = "Y";
+    //       this.stages[i-1].date = this.timeLineData[i-1].StatusDate;
+    //     }
+    //   }
+    // }
+    if(l>0){
       
-    
+        if(l==2 && this.timeLineData[1].StatusMessage == "Completed" ){
+          this.stages[0].date = this.timeLineData[0].StatusDate;
+          this.stages[0].active = "Y";
+          this.stages[1].date = "";
+          this.stages[1].active = "Y";
+          this.stages[2].date = "";
+          this.stages[2].active = "Y";
+          this.stages[3].date = this.timeLineData[l-1].StatusDate;
+          this.stages[3].active = "Y";
+        }else{
+          for(let i=l;i>0;i--){
+            this.stages[i-1].active = "Y";
+            this.stages[i-1].date = this.timeLineData[i-1].StatusDate;
+          }
+        }
+      
+       
+    }
   }
 
-  showtitlesDiv(event, index) {
-    this.showDetails = index;
-    const hashClass = event.target.classList.contains("clicked");
-    if (hashClass) {
-      event.srcElement.classList.remove("clicked");
-    }
-    else {
-      event.srcElement.classList.add("clicked");
-    }
-  }
   sizePlus(){
     this.sizeVar=this.sizeVar+1;
    }
    sizeMinus(){
     this.sizeVar=this.sizeVar-1;
    }
-  showcountriesDiv(event, index) {
-    this.showDetails = index;
-    const hashClass = event.target.classList.contains("clicked");
-    if (hashClass) {
-      event.srcElement.classList.remove("clicked");
-    }
-    else {
-      event.srcElement.classList.add("clicked");
-    }
-  }
-  showlanguagesDiv(event, index) {
-    this.showDetails = index;
-    const hashClass = event.target.classList.contains("clicked");
-    if (hashClass) {
-      event.srcElement.classList.remove("clicked");
-    }
-    else {
-      event.srcElement.classList.add("clicked");
-    }
-  }
 
-  showAvailStatus(index) {
-    this.showStatus = index;
-    this.showDetails = null;
-  }
-  rotate(title, clickedText) {
-    for (let i = 0; i < this.availsList.length; i++) {
-      for (let j = 0; j < this.availsList[i].avail_details.length; j++) {
-        let tName = this.availsList[i].avail_name;
-        if (title === tName) {
-          if (clickedText === "titles") {
-            this.showTitlesText = "Titles";
-            this.completedWidth = this.availsList[i].avail_details[0].titlesCompleted;
-            this.pendingWidth = this.availsList[i].avail_details[0].titlesPending;
-            this.showCountriesText = null;
-            this.showLanguagesText = null;
-          }
-          else if (clickedText == "countries") {
-            this.showCountriesText = "Countries";
-            this.completedWidth = this.availsList[i].avail_details[0].countriesCompleted;
-            this.pendingWidth = this.availsList[i].avail_details[0].countriesPending;
-            this.showTitlesText = null;
-            this.showLanguagesText = null;
-          }
-          else if (clickedText == "languages") {
-            this.showLanguagesText = "Languages";
-            this.completedWidth = this.availsList[i].avail_details[0].languagesCompleted;
-            this.pendingWidth = this.availsList[i].avail_details[0].languagesPending;
-            this.showTitlesText = null;
-            this.showCountriesText = null;
-          }
-        }
-      }
-
-    }
-  }
   reload() {
     location.reload();
   }

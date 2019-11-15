@@ -577,3 +577,8 @@ outline:none;
     white-space: nowrap;
     cursor: pointer;
 }  
+.circle-outline {
+    :focus {
+        outline: none;
+    }
+}

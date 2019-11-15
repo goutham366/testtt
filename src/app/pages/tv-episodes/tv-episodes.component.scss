@@ -468,3 +468,8 @@
     .pointer{
         cursor: pointer;
     }
+    .circle-outline {
+        :focus {
+            outline: none;
+        }
+    }
