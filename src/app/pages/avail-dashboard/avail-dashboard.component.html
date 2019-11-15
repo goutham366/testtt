@@ -49,14 +49,16 @@
                         <div class="progressBar">
                             <div class="progress">
                                 <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{avail.TitleData.CompletedTitlesCount}}" [style.width.%]="avail.TitleData.CompletedTitlesCount / avail.TitleData.TitlesCount * 100">
-                                    <span class="status-padding " *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}} (Unique Titles)</span>
+                                    <span class="status-padding " *ngIf="avail.TitleData.CompletedTitlesCount!=0">{{avail.TitleData.CompletedTitlesCount}}</span>
+                                    
                                 </div>
                                 <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{avail.TitleData.PendingTitlesCount}}" [style.width.%]="avail.TitleData.PendingTitlesCount / avail.TitleData.TitlesCount * 100">
                                     <span class="status-padding " *ngIf="avail.TitleData.PendingTitlesCount!=0">{{avail.TitleData.PendingTitlesCount}}
-                                        (Unique Titles)</span>
+                                        </span>
                                 </div>
                             </div>
                         </div>
+                        <div class="unique-titles-text">Unique Titles</div>
                     </div>
                     <div class="pt-1 pb-1">
                         <div class="equalHMWrap">

@@ -48,14 +48,15 @@
                         <div class="progress">
                             <div class="bg-success avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.CompletedTitlesCount}}" [ngStyle]="{'width.%': getCompleted(i,'T')}">
                                 <span class="status-padding "  *ngIf="getCompleted(i,'T')!=0">{{itune.TitleData.CompletedTitlesCount}}
-                                    (Unique Titles)</span>
+                                    </span>
                             </div>
                             <div class="avail-titleEllipses" data-toggle="tooltip" data-placement="top" title="{{itune.TitleData.PendingTitlesCount}}" [ngStyle]="{'width.%': getPending(i,'T')}">
                                 <span class="status-padding" *ngIf="getPending(i,'T')!=0">{{itune.TitleData.PendingTitlesCount}}
-                                    (Unique Titles)</span>
+                                    </span>
                             </div>
                         </div>
                     </div>
+                    <div class="unique-titles-text">Unique Titles</div>
                     <div class="equalHMWrap">
                         <span id="countriesDiv">
                             <span class="itune-details titlesBox">
