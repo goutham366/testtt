@@ -36,13 +36,12 @@ export class AvailInsightComponent implements OnInit {
   titleEndDate: any;
   availHistoryText: any;
   availHistory: any;
-
   condition: boolean;
   cropTitle:any;
   cropAccounts:any;
   cropCountries:any;
   cropLanguages:any;
-  stages: { stageTitle: string; }[];
+  stages: { stageTitle: string; active:string; date: string }[];
   progress: number;
   data: any;
   tvAvailName: any;
@@ -61,6 +60,11 @@ export class AvailInsightComponent implements OnInit {
   titleComments: any;
   comments: any;
   commentValue: string;
+  completeFlag: boolean;
+  timeLineData: any;
+  clickedOnCountry: boolean;
+  clickedOnLanguage: boolean;
+  clickedOnAccount: boolean;
 
   cropImage() {
     let img = document.getElementsByName("main_img")[0];
@@ -113,13 +117,15 @@ export class AvailInsightComponent implements OnInit {
     this.cropperSettings.croppedHeight = 100;
     this.cropperSettings.canvasWidth = 350;
     this.cropperSettings.canvasHeight = 200;
+    this.sizeVar=12;
     this.data = {};
 
+   
     this.stages = [
-      { stageTitle: "Announced" },
-      { stageTitle: "Data Collation" },
-      { stageTitle: "Quality Audit" },
-      { stageTitle: "Data Delivery" }
+      { stageTitle: "Announced", active: "N", date: "" },
+      { stageTitle: "Data Collation", active: "N", date: "" },
+      { stageTitle: "Quality Audit", active: "N", date: "" },
+      { stageTitle: "Data Delivery", active: "N", date: "" }
     ];
    
   }
@@ -174,6 +180,8 @@ export class AvailInsightComponent implements OnInit {
       this.titleStartDate = this.availDetailsViewList.StartDate;
       this.titleEndDate = this.availDetailsViewList.DueDate;
       this.comments=this.availDetailsViewList.AvailComments;
+      this.timeLineData =  this.availDetailsViewList[0].TitleStatus;
+      this.checkTimeline();
     })
 
 
@@ -287,6 +295,71 @@ export class AvailInsightComponent implements OnInit {
         ]
       },
     ]
+    
+  }
+  checkTimeline(){
+   
+    var l = this.timeLineData.length;
+    // for(let j=0;j<l;j++){
+    //   this.stages = [
+    //     { stageTitle: "Announced", active: "N", date: "" },
+    //     { stageTitle: "Data Collation", active: "N", date: "" },
+    //     { stageTitle: "Quality Audit", active: "N", date: "" },
+    //     { stageTitle: "Data Delivery", active: "N", date: "" }
+    //   ];
+    //   if(this.timeLineData[j].StatusMessage == "Completed"){
+    //     this.completeFlag = true;
+    //     for(let k=0;k<this.stages.length;k++){
+    //       this.stages[k].active = "Y";
+          
+    //       if(j==1){
+    //         this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = "";
+    //         this.stages[2].date = "";
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }else if(j==2){
+    //         this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = this.timeLineData[1].StatusDate;
+    //         this.stages[2].date = "";
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }else if(j==3){
+    //          this.stages[0].date = this.timeLineData[0].StatusDate;
+    //         this.stages[1].date = this.timeLineData[1].StatusDate;
+    //         this.stages[2].date = this.timeLineData[2].StatusDate;
+    //         this.stages[3].date = this.timeLineData[l-1].StatusDate;
+    //       }
+          
+    //     }
+    //   }else{
+    //     this.completeFlag = false;
+    //     for(let i=l;i>0;i--){
+    //       this.stages[l-1].active = "Y";
+    //       this.stages[l-1].date = this.timeLineData[l-1].StatusDate;
+    //     }
+    //   }
+    // }
+
+
+    if(l>0){
+      if(l==2 && this.timeLineData[1].StatusMessage == "Completed" ){
+        this.stages[0].date = this.timeLineData[0].StatusDate;
+        this.stages[0].active = "Y";
+        this.stages[1].date = "";
+        this.stages[1].active = "Y";
+        this.stages[2].date = "";
+        this.stages[2].active = "Y";
+        this.stages[3].date = this.timeLineData[l-1].StatusDate;
+        this.stages[3].active = "Y";
+        }else{
+        for(let i=l;i>0;i--){
+          this.stages[i-1].active = "Y";
+          this.stages[i-1].date = this.timeLineData[i-1].StatusDate;
+        }
+      }
+    }
+    
+      
+    
   }
 
   showtitlesDiv(event, index) {
@@ -299,12 +372,35 @@ export class AvailInsightComponent implements OnInit {
       event.srcElement.classList.add("clicked");
     }
   }
-  sizePlus(){
-    this.sizeVar=this.sizeVar+1;
+  // sizePlus(){
+  //   this.sizeVar=this.sizeVar+1;
+  //  }
+  //  sizeMinus(){
+  //   this.sizeVar=this.sizeVar-1;
+  //  }
+  c:any =0;
+ sizePlus(){
+   
+   if(this.c<3){
+    this.sizeVar=this.sizeVar+2;
+    this.c++;
+   }else{
+     alert("Maximum Zoom in exceeded");
+     this.m=0;
    }
-   sizeMinus(){
-    this.sizeVar=this.sizeVar-1;
-   }
+  
+ }
+ m:any =0;
+ sizeMinus(){
+  
+  if(this.m<3){
+   this.sizeVar=this.sizeVar-2;
+   this.m++;
+  }else{
+    alert("Maximum Zoom out exceeded");
+    this.c=0;
+  }
+ }
   showcountriesDiv(event, index) {
     this.showDetails = index;
     const hashClass = event.target.classList.contains("clicked");
@@ -364,6 +460,7 @@ export class AvailInsightComponent implements OnInit {
   reload() {
     location.reload();
   }
+  
   openNav() {
     document.getElementById("mySidenav").style.width = "200px";
   }
@@ -390,37 +487,7 @@ export class AvailInsightComponent implements OnInit {
       }
   }
   }
-  getProgress(title) {
-    var l = title.length;
-    var result= this.getProgressSwitch(title,l);
-    return result;
-  }
-  getProgressFill(title) {
-    var l = title.length;
-    if(title[l-1].StatusMessage==""){
-      return -1
-    }else{
-      var result= this.getProgressSwitch(title,l);
-      return result;
-    }
-  }
-  getProgressSwitch(title,l){
-    switch (title[l-1].StatusMessage) {
-      case "Announced": this.progress = 0;
-        break;
-      case "Data Collation": this.progress = 1;
-        break;
-      case "Quality Audit": this.progress = 2;
-        break;
-      case "Data Delivery": this.progress = 3;
-        break;
-      case "": this.progress = 0;
-        break;
-
-    }
-    return this.progress;
-  }
-
+  
 
   getCompleted(n) {
     var result;
@@ -439,6 +506,51 @@ export class AvailInsightComponent implements OnInit {
 
    
     return result;
+  }
+
+
+  filteredAccounts: any;
+  filterAccounts(data) {
+    var availListA = this.availDetailsViewList;
+    this.clickedOnAccount = true;
+    var filterAccount = [];
+    for (let a of availListA) {
+      for (let c of a.AccountsData) {
+        if (c.AccountStatus == data) {
+          filterAccount.push({ "AccountStatus": c.AccountStatus, "Account": c.Account });
+        }
+      }
+    }
+    this.filteredAccounts = filterAccount;
+  }
+  filteredCountry: any;
+  filterCountries(data) {
+    var availListB = this.availDetailsViewList;
+    this.clickedOnCountry = true;
+    var filterCountry = [];
+    for (let d of availListB) {
+      for (let f of d.CountryData) {
+        if (f.CountryStatus == data) {
+
+          filterCountry.push({ "CountryStatus": f.CountryStatus, "Country": f.Country });
+        }
+      }
+    }
+    this.filteredCountry = filterCountry;
+  }
+  filteredLanguage: any;
+  filterlanguages(data) {
+    var availListC = this.availDetailsViewList;
+    this.clickedOnLanguage = true;
+    var filterLanguage = [];
+    for (let g of availListC) {
+      for (let l of g.TranslationsData) {
+        if (l.TranslationStatus == data) {
+          filterLanguage.push({ "TranslationStatus": l.TranslationStatus, "Language": l.Language });
+        }
+      }
+    }
+    this.filteredLanguage = filterLanguage;
   }
 
 }

@@ -69,9 +69,9 @@ export class MetadataComponent implements OnInit {
   availLanguageList: Object;
   userCountry: any;
   userLanguage: any;
-  metaDataListUpdateVal: String = "";
-  metaDataLangUpdateVal: String = "";
-  metaDataCountryUpdateVal: String = "";
+  metaDataListUpdateVal:String="-";
+  metaDataLangUpdateVal:String="-";
+  metaDataCountryUpdateVal:String="-";
   countryData: any;
   countryList: any;
   translationList: any;
@@ -86,12 +86,13 @@ export class MetadataComponent implements OnInit {
   resultLanguageCompleted: number;
   resultLanguagePending: number;
   clickedOnLanguage: boolean;
-  filteredLanguage: any[];
+ 
   languageShort = 'English';
   lobType: any;
   startDate: any;
   endDate: any;
   percentage: any;
+  clickedOnCountry: boolean;
 
   constructor(private httpservice: HttpService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.show = true;
@@ -207,15 +208,17 @@ export class MetadataComponent implements OnInit {
       // }
     })
 
+    this.httpservice.getmetadataLangConList().subscribe(data => {
+      this.availDetailsViewList = data;
+      // console.log('Avails Details data', this.availDetailsViewList);
+      })
+      this.httpservice.getLangMetadata().subscribe(data => {
+      this.availLanguageList = data;
+      // console.log('Avails Details data', this.availLanguageList);
+      }) 
 
-    this.httpservice.getmetadataLangConList().subscribe(data => {
-      this.availDetailsViewList = data;
-      //  console.log('Avails Details data', this.availDetailsViewList);
-    })
-    this.httpservice.getLangMetadata().subscribe(data => {
-      this.availLanguageList = data;
-      //  console.log('Avails Details data', this.availLanguageList);
-    })
+
+    
 
     // this.httpservice.detailsOfAvail().subscribe(data=>{
     //   this.availDetail=data;
@@ -276,22 +279,9 @@ export class MetadataComponent implements OnInit {
     //   this.userCountry = data;
     // }
   }
-  filterlanguages(data) {
-    var availListC = this.availDetailsViewList;
-    this.clickedOnLanguage = true;
-    var filterLanguage = [];
 
-
-    for (let l of this.translationList) {
-      if (l.status == data) {
-        filterLanguage.push({ "status": l.status, "language_name": l.language_name });
-      }
-    }
-
-
-
-    this.filteredLanguage = filterLanguage;
-  }
+  
+  
   languageName(LangName) {
     this.languageShort = LangName;
   }
@@ -352,31 +342,31 @@ export class MetadataComponent implements OnInit {
   getWidth() {
     return '100%';
   }
-  sizePlus() {
-    this.sizeVar = this.sizeVar + 1;
-  }
-  sizeMinus() {
-    this.sizeVar = this.sizeVar - 1;
-  }
-  // c:any =0;
-  //  sizePlus(){
-  //    this.c++
-  //    if(this.c<4){
-  //     this.sizeVar=this.sizeVar+1;
-  //    }else{
-  //      alert("Maximum limit exceeded")
-  //    }
-
+  // sizePlus(){
+  //   this.sizeVar=this.sizeVar+1;
   //  }
-  //  m:any =0;
   //  sizeMinus(){
-  //   this.m++
-  //   if(this.m<4){
-  //    this.sizeVar=this.sizeVar-1;
-  //   }else{
-  //     alert("Maximum limit exceeded")
-  //   }
+  //   this.sizeVar=this.sizeVar-1;
   //  }
+c:any =0;
+ sizePlus(){
+   this.c++
+   if(this.c<4){
+    this.sizeVar=this.sizeVar+0.5;
+   }else{
+     alert("Maximum Zoom in exceeded")
+   }
+  
+ }
+ m:any =0;
+ sizeMinus(){
+  this.m++
+  if(this.m<4){
+   this.sizeVar=this.sizeVar-0.5;
+  }else{
+    alert("Maximum Zoom out exceeded")
+  }
+ }
   addHero(newHero: string) {
     if (newHero) {
       this.metaDataList.push(newHero);
@@ -430,4 +420,37 @@ export class MetadataComponent implements OnInit {
   checkNaN(value) {
     return Number.isNaN(value);
   }
+
+  filteredCountry: any;
+  filterCountries(data) {
+    var availListB=[];
+    availListB[0] = this.metaDataList;
+    this.clickedOnCountry = true;
+    var filterCountry = [];
+    for (let d of availListB) {
+      for (let f of d.CountryData) {
+        if (f.CountryStatus == data) {
+
+          filterCountry.push({ "CountryStatus": f.CountryStatus, "Country": f.Country });
+        }
+      }
+    }
+    this.filteredCountry = filterCountry;
+  }
+  filteredLanguage: any;
+  filterlanguages(data) {
+    var availListC=[];
+     availListC[0] = this.metaDataList;
+    this.clickedOnLanguage = true;
+    var filterLanguage = [];
+    for (let g of availListC) {
+      for (let l of g.TranslationsData) {
+        if (l.TranslationStatus == data) {
+          filterLanguage.push({ "TranslationStatus": l.TranslationStatus, "Language": l.Language });
+        }
+      }
+    }
+    this.filteredLanguage = filterLanguage;
+  }
+  
 }

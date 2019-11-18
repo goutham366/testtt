@@ -10,11 +10,12 @@ export class HttpService {
     throw new Error("Method not implemented.");
   }
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
-  lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
+ lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
   //lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
- // lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
+  //lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
   // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
-   awsS3Url: string = 'http://s3ecsalb-384269995.us-west-2.elb.amazonaws.com/AWSS3';
+  // awsS3Url: string = 'http://s3ecsalb-384269995.us-west-2.elb.amazonaws.com/AWSS3';
+  awsS3Url: string = 'http://wbs3ecsalb-527911498.us-west-2.elb.amazonaws.com/AWSS3';
   //awsS3Url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
   localurl: string = 'http://10.219.20.213:8082/AWSS3';
   refreshcomp: Subject<any>;
@@ -73,7 +74,6 @@ export class HttpService {
     return this.http.get(`./assets/json/metadata-language.json`);
   }
   getAvailInsightDetails(availName, titleId, lob) {
-    console.log(titleId);
     if (lob === 'APO') {
       this.api = this.http.get(this.lambda + '/titles/insight/APO/title/' + titleId);
     }
@@ -89,8 +89,7 @@ export class HttpService {
     return this.http.get(`./assets/json/avails-details.json`);
   }
   getAvailDetailsAPIView(availName, pageName) {
-    console.log("avail name in service......", availName);
-    return this.http.get(this.lambda + `/avails/all/${pageName}/` + availName);
+   return this.http.get(this.lambda + `/avails/all/${pageName}/` + availName);
     //return this.http.get(`./assets/json/avail-details-api.json`);
   }
   getmetadataLangConList() {
@@ -121,16 +120,21 @@ export class HttpService {
   //   return  this.http.get(`./assets/json/apo_api.json`);
   // }
   getSeriesDetails(availName) {
-    console.log(availName);
     return this.http.get(this.lambda + `/avails/TV/` + availName);
   }
-  getSeasonDetails(availName, series) {
-    return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + series);
-  }
+  // getSeasonDetails(availName, series) {
+  //   return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + series);
+  // }
 
-  getEpisodeDetails(availName, series, seasonNumber) {
-    return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + series + '/' + seasonNumber);
-  }
+  // getEpisodeDetails(availName, series, seasonNumber) {
+  //   return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + series + '/' + seasonNumber);
+  // }
+  getSeasonDetails(availName, series) {
+    return this.http.get(this.lambda + '/avails/TV/' + availName + '/' + encodeURIComponent(series));
+    }
+    getEpisodeDetails(availName, series, seasonNumber) {
+    return this.http.get(this.lambda + `/avails/TV/` + availName + '/' + encodeURIComponent(series) + '/' + seasonNumber);
+    }  
   // uploadrelease(formData){
   //   let headers: HttpHeaders = new HttpHeaders();
   //   headers = headers.append('Accept', 'application/json');
@@ -190,7 +194,6 @@ export class HttpService {
     });
   }
   exportToS3(message) {
-    console.log('mesaage', message);
     //let headers: HttpHeaders = new HttpHeaders();
     // headers = headers.append('Accept', 'application/json');
     //headers = headers.append("Access-Control-Allow-Origin", "*");
@@ -237,7 +240,6 @@ export class HttpService {
   }
 
   getAvailTittlesData(availName) {
-    console.log("avail titles name ....", availName);
     //return this.http.get(`./assets/json/avail_titles_api.json`);
     // return this.http.get(this.url + `/avails/FILMS/` + availName);
     return this.http.get(this.lambda + `/avails/FILMS/` + availName);

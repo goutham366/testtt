@@ -1212,8 +1212,11 @@ ul.timeline > li.inactive-step:before {
   .avail-status {
     float: right; 
     position: absolute;
-    top: 20%;
+    top: 9%;
     left: 13%;
+    :focus{
+        outline: none !important;
+    }
 }
 .current {
     position: absolute;

@@ -27,10 +27,14 @@
                 <a #tref>{{availName}}</a>
               </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']"
-                  [queryParams]="{avail_name: availName}" #tref>Titles</a></li>
+              <li class="" aria-current="page">
+                <a [routerLink]="condition ? ['/pages/itunestitles'] : ['/pages/titles']" [queryParams]="{avail_name: availName}"
+                  #tref>Titles</a>
+              </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+              <li class="" aria-current="page">
+                <a #tref>{{titleName}}</a>
+              </li>
             </ol>
           </nav>
         </div>
@@ -45,26 +49,35 @@
                 <a #tref>{{availName}}</a>
               </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}"
-                  #tref>Series</a></li>
+              <li class="" aria-current="page">
+                <a [routerLink]="['/pages/tvseries']" [queryParams]="{avail_name: availName}" #tref>Series</a>
+              </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}"
-                  #tref>Seasons</a></li>
+              <li class="" aria-current="page">
+                <a [routerLink]="['/pages/tvseason']" [queryParams]="{avail: availName, series: seriesName}" #tref>Seasons</a>
+              </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}"
-                  #tref>Episodes</a></li>
+              <li class="" aria-current="page">
+                <a [routerLink]="['/pages/tvepisode']" [queryParams]="{availName: availName, seriesName: seriesName, seasonNumber: seasonNumber}"
+                  #tref>Episodes</a>
+              </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class="" aria-current="page"><a #tref>{{titleName}}</a></li>
+              <li class="" aria-current="page">
+                <a #tref>{{titleName}}</a>
+              </li>
             </ol>
           </nav>
         </div>
         <div *ngIf="showApoBread">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0 pt-2 pb-2">
-              <li class=""  aria-current="page"><a routerLink="/pages/apo/titles"  [queryParams]="{avail_name: availName}"
-                   #tref>Titles</a></li>
+              <li class=""  aria-current="page">
+                <a routerLink="/pages/apo"  [queryParams]="{avail_name: availName}"  #tref>Titles</a>
+              </li>
               <i class="material-icons">keyboard_arrow_right</i>
-              <li class=""  aria-current="page"><a #tref>{{titleName}}</a></li>
+              <li class=""  aria-current="page">
+                <a #tref>{{titleName}}</a>
+              </li>
             </ol>
           </nav>
         </div>
@@ -81,7 +94,7 @@
                 <div class="card-data">
                   <div class="card-content">
                     <ul>
-                      <li>{{titleName}}</li>
+                      <li class="global-title" data-toggle="tooltip"  data-placement="top" title="{{titleName}}">{{titleName}}</li>
                       <li class="cust-text">
                         <img src="assets/images/Icons/PNG/calendar.png">{{startDate | date:'MM/dd'}} - {{endDate | date:'MM/dd'}}</li>
                     </ul>
@@ -165,47 +178,45 @@
                       </div>
                       <div class="table-2 d-flex">
                         <ul *ngFor="let x of globalData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
-                          <li>{{x.AbstractEIDR}}</li>
-                          <li>{{x.ActivationStatus}}</li>
+                          <li>{{x.AbstractEIDR?x.AbstractEIDR:"-"}}</li>
+                          <li>{{x.ActivationStatus?x.ActivationStatus:"-"}}</li>
                           <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
-                          <li>{{x.AiredEndDate}}</li>
-                          <li>{{x.AiredFromDate}}</li>
-                          <li>{{x.AnnouncementDate}}</li>
-                          <li>{{x.AnnouncementName}}</li>
-                          <li>{{x.AtlastMCRNumber}}</li>
-                          <li>{{x.AudioLanguageDescription}}</li>
-                          <li>{{x.BroadcastVehicle}}</li>
-                          <li>{{x.BundleVideoVersionNumber}}</li>
-                          <li>{{x.BusinessUnit}}</li>
-                          <li>{{x.ChangeStatus}}</li>
-                          <li>{{x.ChangedFields}}</li>
-                          <li>{{x.Channel}}</li>
-                          <li>{{x.ClearedForSale}}</li>
-                          <li>{{x.ClientEndDate}}</li>
+                          <li>{{x.AiredEndDate?x.AiredEndDate:"-"}}</li>
+                          <li>{{x.AiredFromDate?x.AiredFromDate:"-"}}</li>
+                          <li>{{x.AnnouncementDate?x.AnnouncementDate:"-"}}</li>
+                          <li>{{x.AnnouncementName?x.AnnouncementName:"-"}}</li>
+                          <li>{{x.AtlastMCRNumber?x.AtlastMCRNumber:"-"}}</li>
+                          <li>{{x.AudioLanguageDescription?x.AudioLanguageDescription:"-"}}</li>
+                          <li>{{x.BroadcastVehicle?x.BroadcastVehicle:"-"}}</li>
+                          <li>{{x.BundleVideoVersionNumber?x.BundleVideoVersionNumber:"-"}}</li>
+                          <li>{{x.BusinessUnit?x.BusinessUnit:"-"}}</li>
+                          <li>{{x.ChangeStatus?x.ChangeStatus:"-"}}</li>
+                          <li>{{x.ChangedFields?x.ChangedFields:"-"}}</li>
+                          <li>{{x.Channel?x.Channel:"-"}}</li>
+                          <li>{{x.ClearedForSale?x.ClearedForSale:"-"}}</li>
+                          <li>{{x.ClientEndDate?x.ClientEndDate:"-"}}</li>
                         </ul>
                         <!-- <div class="" >
                             <div class="table-3"> -->
                         <div *ngIf="close" id="dataShow">
-                          <ul *ngFor="let x of details" class="pl-2" [ngStyle]="{'width':getWidth()}">
-                            <li>{{x.AbstractEIDR}}</li>
-                            <li>{{x.ActivationStatus}}</li>
+                          <ul *ngFor="let x of globalData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-100'">
+                            <li>{{x.AbstractEIDR?x.AbstractEIDR:"-"}}</li>
+                            <li>{{x.ActivationStatus?x.ActivationStatus:"-"}}</li>
                             <li class="border-custom" name="fieldName" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'G')">{{metaDataListUpdateVal}}</li>
-                            <li>{{x.AiredEndDate}}</li>
-                            <li>{{x.AiredFromDate}}</li>
-                            <li>{{x.AnnouncementDate}}</li>
-                            <li>{{x.AnnouncementName}}</li>
-                            <li>{{x.AtlastMCRNumber}}</li>
-                            <li>{{x.AudioLanguageDescription}}</li>
-                            <li>{{x.BroadcastVehicle}}</li>
-                            <li>{{x.BundleVideoVersionNumber}}</li>
-                            <li>{{x.BusinessUnit}}</li>
-                            <li>{{x.ChangeStatus}}</li>
-                            <li>{{x.ChangedFields}}</li>
-                            <li>{{x.Channel}}</li>
-                            <li>{{x.ClearedForSale}}</li>
-                            <li>{{x.ClientEndDate}}</li>
-                            <!-- <li>{{x.ClientEnd}}</li>
-                                      <li>{{x.ClientEnd}}</li> -->
+                            <li>{{x.AiredEndDate?x.AiredEndDate:"-"}}</li>
+                            <li>{{x.AiredFromDate?x.AiredFromDate:"-"}}</li>
+                            <li>{{x.AnnouncementDate?x.AnnouncementDate:"-"}}</li>
+                            <li>{{x.AnnouncementName?x.AnnouncementName:"-"}}</li>
+                            <li>{{x.AtlastMCRNumber?x.AtlastMCRNumber:"-"}}</li>
+                            <li>{{x.AudioLanguageDescription?x.AudioLanguageDescription:"-"}}</li>
+                            <li>{{x.BroadcastVehicle?x.BroadcastVehicle:"-"}}</li>
+                            <li>{{x.BundleVideoVersionNumber?x.BundleVideoVersionNumber:"-"}}</li>
+                            <li>{{x.BusinessUnit?x.BusinessUnit:"-"}}</li>
+                            <li>{{x.ChangeStatus?x.ChangeStatus:"-"}}</li>
+                            <li>{{x.ChangedFields?x.ChangedFields:"-"}}</li>
+                            <li>{{x.Channel?x.Channel:"-"}}</li>
+                            <li>{{x.ClearedForSale?x.ClearedForSale:"-"}}</li>
+                            <li>{{x.ClientEndDate?x.ClientEndDate:"-"}}</li>
                           </ul>
                         </div>
                         <!-- </div>
@@ -266,7 +277,8 @@
                           <ul class="nav nav-tabs">
                             <li class="nav-item ">
                               <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
-                                <i class="material-icons atom-icon">cloud_done</i></a>
+                                <i class="material-icons atom-icon">cloud_done</i>
+                              </a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
@@ -291,18 +303,19 @@
                   </div>
                   <div id="Language" class="tab-pane fade">
                     <div class="container-fluid p-12">
-                      <a class="avail-details d-flex mb-1">
-                        <i class="material-icons md-18 md-grey v-align">translate</i>{{uniqueLanguagesCount}} Languages</a>
+                      <div class="avail-details d-flex mb-1">
+                        <i class="material-icons md-18 md-grey v-align">translate</i>{{uniqueLanguagesCount}} Languages
+                      </div>
                       <div class="top-heading">
                         <div class="language-data">
-
                           <div class="progress progress-main">
-                            <div class="progress-bar bg-success c-pointer" *ngIf="resultLanguageCompleted!=0" [ngStyle]="{'width.%': resultLanguageCompleted}"
-                              data-toggle="tooltip" data-placement="left" title="{{LanguagesCompletedCount}}">
+                            <div class="progress-bar bg-success c-pointer" (click)="filterlanguages('Complete');" *ngIf="resultLanguageCompleted!=0"
+                              [ngStyle]="{'width.%': resultLanguageCompleted}" data-toggle="tooltip" data-placement="left"
+                              title="{{LanguagesCompletedCount}}">
                               <span class="status-padding">{{LanguagesCompletedCount}}</span>
                             </div>
-                            <div class="progress-bar c-pointer" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}" data-toggle="tooltip"
-                              data-placement="left" title="{{LanguagesPendingCount}}">
+                            <div class="progress-bar c-pointer" (click)="filterlanguages('Pending');" *ngIf="resultLanguagePending!=0" [ngStyle]="{'width.%': resultLanguagePending}"
+                              data-toggle="tooltip" data-placement="left" title="{{LanguagesPendingCount}}">
                               <span class="status-padding">{{LanguagesPendingCount}}</span>
                             </div>
                           </div>
@@ -311,16 +324,26 @@
                               <!-- <div >
                                 <div > -->
                               <span *ngFor="let z of translationList" [ngClass]="[z.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
-                                <ul class="list-style list-description">
+                                <ul class="list-style list-description ellips" data-toggle="tooltip" data-placement="top" title="{{z.Language}}">
                                   <li class="cursor-pointer" (click)="languageName(z.Language)">
-                                    <span class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Language}}">{{z.Language}}
-                                    </span>
+                                    <span>{{z.Language}} </span>
                                   </li>
                                   <!-- <li (click)="languageName(z.language_name)">{{z.Language}} </li> -->
                                 </ul>
                               </span>
                               <!-- </div>
                               </div> -->
+                            </div>
+                          </div>
+                          <div *ngIf="clickedOnLanguage" class="row row-list mt-2 text-white language-scroll">
+                            <div class="col-md-12 avail-list mt-2">
+                              <span *ngFor="let filterLanguage of filteredLanguage" [ngClass]="[filterLanguage.TranslationStatus == 'Complete' ? 'progress bg-success' : 'progress']">
+                                <ul class="list-style list-description">
+                                  <li class="cursor-pointer" (click)="languageName(filterLanguage.Language)">
+                                    <span>{{filterLanguage.Language}} </span>
+                                  </li>
+                                </ul>
+                              </span>
                             </div>
                           </div>
                           <!-- <div *ngIf="clickedOnLanguage" class="row row-list">
@@ -380,7 +403,8 @@
                             <ul class="nav nav-tabs">
                               <li class="nav-item ">
                                 <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
-                                  <i class="material-icons atom-icon">cloud_done</i></a>
+                                  <i class="material-icons atom-icon">cloud_done</i>
+                                </a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
@@ -414,23 +438,33 @@
                         <div class="language-data">
 
                           <div class="progress progress-main">
-                            <div class="progress-bar bg-success c-pointer" *ngIf="resultTerritoryCompleted!=0" [ngStyle]="{'width.%': resultTerritoryCompleted}"
-                              data-toggle="tooltip" data-placement="left" title="{{countriesCompletedCount}}">
+                            <div class="progress-bar bg-success c-pointer" (click)="filterCountries('Complete');" *ngIf="resultTerritoryCompleted!=0"
+                              [ngStyle]="{'width.%': resultTerritoryCompleted}" data-toggle="tooltip" data-placement="left"
+                              title="{{countriesCompletedCount}}">
                               <span class="status-padding">{{countriesCompletedCount}}</span>
                             </div>
-                            <div class="progress-bar c-pointer" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}" data-toggle="tooltip"
-                              data-placement="left" title="{{countriesPendingCount}}">
+                            <div class="progress-bar c-pointer" (click)="filterCountries('Pending');" *ngIf="resultTerritoryPending!=0" [ngStyle]="{'width.%': resultTerritoryPending}"
+                              data-toggle="tooltip" data-placement="left" title="{{countriesPendingCount}}">
                               <span class="status-padding">{{countriesPendingCount}}</span>
                             </div>
                           </div>
                           <!--'clickedOnCountry' should-->
-                          <div class="row row-list text-white language-scroll mt-2">
+                          <div *ngIf="!clickedOnCountry" class="row row-list text-white language-scroll mt-2">
                             <div class="col-md-12 avail-list mt-2">
-
-
                               <span *ngFor="let z of countryList" [ngClass]="[z.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
                                 <ul class="list-style list-description">
                                   <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{z.Country}}">{{z.Country}}
+                                  </li>
+                                </ul>
+                              </span>
+
+                            </div>
+                          </div>
+                          <div *ngIf="clickedOnCountry" class="row row-list text-white language-scroll mt-2">
+                            <div class="col-md-12 avail-list mt-2">
+                              <span *ngFor="let filterCountry of filteredCountry" [ngClass]="[filterCountry.CountryStatus == 'Complete' ? 'progress bg-success' : 'progress']">
+                                <ul class="list-style list-description">
+                                  <li class="title-text" data-toggle="tooltip" data-placement="left" title="{{filterCountry.Country}}">{{filterCountry.Country}}
                                   </li>
                                 </ul>
                               </span>
@@ -468,20 +502,19 @@
                             </div>
                             <div class="table-2 d-flex">
                               <ul *ngFor="let x of countryData" id="OriginalData" [ngClass]="(changedWidth) ? 'width-50' : 'width-px'">
-                                <li>{{x.Rating}}</li>
+                                <li>{{x.Rating?x.Rating:"-"}}</li>
                                 <li class="cursor-pointer datahide" name="fieldName2" ngDefaultControl [(ngModel)]="x.RatingComments" (click)="dataShow(x.RatingComments, 'T')">{{metaDataCountryUpdateVal}}</li>
                                 <!-- <li (click)="dataShow(x.RatingComments)">{{x.RatingComments}}</li> -->
-                                <li>{{x.ShortDescription}}</li>
-                                <li>{{x.InitialReleaseDate}}</li>
-                                <li>{{x.CurrentReleaseDate}}</li>
-                                <li>{{x.RightsWindowBeginDate}}</li>
-                                <li>{{x.RightsWindowEndDate}}</li>
-                                <li>{{x.AnnouncementDate}}</li>
-                                <li *ngIf="!checkNaN(x.Pre-SellDate)">{{x.Pre-SellDate}}</li>
-                                <li *ngIf="checkNaN(x.Pre-SellDate)"></li>
-                                <li>{{x.WebWHVInternal}}</li>
-                                <li>{{x.WebRetailers}}</li>
-                                <li>{{x.VendorsId}}</li>
+                                <li>{{x.ShortDescription?x.ShortDescription:"-"}}</li>
+                                <li>{{x.InitialReleaseDate?x.InitialReleaseDate:"-"}}</li>
+                                <li>{{x.CurrentReleaseDate?x.CurrentReleaseDate:"-"}}</li>
+                                <li>{{x.RightsWindowBeginDate?x.RightsWindowBeginDate:"-"}}</li>
+                                <li>{{x.RightsWindowEndDate?x.RightsWindowEndDate:"-"}}</li>
+                                <li>{{x.AnnouncementDate?x.AnnouncementDate:"-"}}</li>
+                                <li>{{x.Pre-SellDate?x.Pre-SellDate:"-"}}</li>
+                                <li>{{x.WebWHVInternal?x.WebWHVInternal:"-"}}</li>
+                                <li>{{x.WebRetailers?x.WebRetailers:"-"}}</li>
+                                <li>{{x.VendorsId?x.VendorsId:"-"}}</li>
                                 <!-- <li>{{x.ClientEnd}}</li>
                                               <li>{{x.ClientEnd}}</li> -->
                               </ul>
@@ -510,7 +543,8 @@
                             <ul class="nav nav-tabs">
                               <li class="nav-item ">
                                 <a class="nav-link active d-flex justify-content-between" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('atom')}">ATOM
-                                  <i class="material-icons atom-icon">cloud_done</i></a>
+                                  <i class="material-icons atom-icon">cloud_done</i>
+                                </a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#" [ngStyle]="{'background-color':dataSource('cas')}">CAS</a>
@@ -553,24 +587,45 @@
                     </div>
                     <div class="circle-class d-flex justify-content-center width-100 align-items-center">
                       <div class="circle" (click)="showTitleStatus()">
-                        <circle-progress class="c-pointer" [percent]="0" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
-                          [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                        <circle-progress class="c-pointer" [percent]="percentage ? percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2"
+                          [space]="-2" [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
                           [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
                           [lazy]="false"></circle-progress>
                       </div>
                     </div>
-
                   </div>
                   <div class="cust-text status-text-padding p-2 " *ngIf="showStatus===true">
-                    <h6 class="status-text text-primary">Status</h6>
-                    <p class="status mb-1">
-                      <b class="font-number"> -</b> Pending Translations</p>
+                    <h6 class="status-text primary-clr">Status</h6>
+                    <!-- <p class="status mb-1">
+                        <b class="font-number"> -</b> Pending Translations</p>
                     <p class="status mb-1">
                       <b class="font-number"> -</b> Pending Ratings</p>
                     <p class="status mb-1">
                       <b class="font-number">-</b> Pending Clarifications</p>
                     <p class="status mb-1">
-                      <b class="font-number">-</b> Escalations</p>
+                        <b class="font-number">-</b> Escalations</p> -->
+                    <div class="d-flex ratings-box">
+                      <ul class="text-right pr-2">
+                        <!-- <li>{{metaDataList.PendingTranslations?metaDataList.PendingTranslations:"-"}}</li>
+                            <li>{{metaDataList.PendingRatings?metaDataList.PendingRatings:"-"}}</li>
+                            <li>{{metaDataList.PedingClarification?metaDataList.PedingClarification:"-"}}</li>
+                            <li>{{metaDataList.PendingRatings?metaDataList.PendingRatings:"-"}}</li> -->
+                        <li *ngIf="metaDataList.PendingTranslations!='' || metaDataList.PendingTranslations!= null">{{metaDataList.PendingTranslations}}</li>
+                        <li *ngIf="metaDataList.PendingTranslations===''|| metaDataList.PendingTranslations=== null ">-</li>
+                        <li *ngIf="metaDataList.PendingRatings!='' || metaDataList.PendingRatings!= null">{{metaDataList.PendingRatings}}</li>
+                        <li *ngIf="metaDataList.PendingRatings==='' || metaDataList.PendingRatings=== null">-</li>
+                        <li *ngIf="metaDataList.PedingClarification!='' || metaDataList.PedingClarification!= null">{{metaDataList.PedingClarification}}</li>
+                        <li *ngIf="metaDataList.PedingClarification==='' || metaDataList.PedingClarification=== null">-</li>
+                        <li *ngIf="metaDataList.PendingEscalation!='' || metaDataList.PendingEscalation!= null">{{metaDataList.PendingEscalation}}</li>
+                        <li *ngIf="metaDataList.PendingEscalation==='' || metaDataList.PendingEscalation=== null">-</li>
+                      </ul>
+                      <ul>
+                        <li>Pending Translations</li>
+                        <li>Pending Ratings</li>
+                        <li>Pending Clarifications</li>
+                        <li>Escalations</li>
+                      </ul>
+                    </div>
 
                   </div>
 
@@ -599,7 +654,9 @@
                         <div class="main-comment">
                           <div id="mySidenav" class="sidenav">
                             <div class="custom-comment" [ngClass]="(changeColor) ? 'border-red' : 'border-blue'">
-                              <div><a class="closebtn" (click)="closeNav()">{{changeText}}</a></div>
+                              <div>
+                                <a class="closebtn" (click)="closeNav()">{{changeText}}</a>
+                              </div>
                               <label class="switch">
                                 <input type="checkbox" id="commentSwitch" [(ngModel)]="switchvalue" checked (click)="valuechange($event, switchvalue)">
                                 <span class="slider round"></span>

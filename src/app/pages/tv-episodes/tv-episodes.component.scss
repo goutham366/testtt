@@ -387,7 +387,7 @@
     }
     .last{
         position: relative;
-        right:64px;
+        right:63px;
     }
     .marginProgress{
         margin-top: -10%; // negative values
@@ -467,4 +467,9 @@
  
     .pointer{
         cursor: pointer;
+    }
+    .circle-outline {
+        :focus {
+            outline: none;
+        }
     }

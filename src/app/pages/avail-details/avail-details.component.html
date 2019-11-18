@@ -31,12 +31,16 @@
               <h6 class="main-calender"><img src="assets/images/Icons/PNG/calendar.png">{{avail.StartDate | date:'MM/dd'}}
                 - {{avail.DueDate | date:'MM/dd'}} </h6>
               <span class="avail-status">
-                <div *ngIf="avail.TitleData.AvailPercentage"  class="current"  [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
+                  <circle-progress class="c-pointer" [percent]="avail.TitleData.AvailPercentage?avail.TitleData.AvailPercentage:0" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                  [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
+                  [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
+                  [lazy]="false"></circle-progress>
+                <!-- <div *ngIf="avail.TitleData.AvailPercentage"  class="current"  [ngStyle]="getOverlayStyle()">{{avail.TitleData.AvailPercentage}}%</div>
                 <div *ngIf="!avail.TitleData.AvailPercentage"  class="current"  [ngStyle]="getOverlayStyle()">0%</div>
                 <round-progress class="round-outline" [current]="avail.TitleData.AvailPercentage?avail.TitleData.AvailPercentage:0" [max]="100"
                   [color]="'#008040'" [background]="'#006FAD'" [radius]="22" [stroke]="2.3" [semicircle]="false" [rounded]="true"
                   [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0">
-                </round-progress>
+                </round-progress> -->
               </span>
             </div>
           </div>

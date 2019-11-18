@@ -19,11 +19,11 @@
                             </li>
                             <li class="avail-date">
                                 <img src="assets/images/Icons/PNG/calendar.png">{{tv.StartDate | date:'MM/dd'}} -
-                                <span>{{tv.DueDate | date:'MM/dd'}}</span>
+                                <span>{{tv.DueDate | date:'MM/dd'}}</span> 
                             </li>
                         </ul>
-                        <div class="circle-outline">
-                                <circle-progress class="c-pointer" [percent]="tv.AvailPercentage ? tv.AvailPercentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                        <div class="circle-outline"> 
+                                <circle-progress class="c-pointer" [percent]="tv.TitleData.AvailPercentage ? tv.TitleData.AvailPercentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
                                 [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
                                 [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
                                 [lazy]="false" [queryParams]="{ avail_name: tv.AvailName, page:'TV' }" routerLink="/pages/details"></circle-progress>
@@ -40,21 +40,22 @@
                                 <div class="pb-2">
                                     <span>
                                         <img src="assets/images/Icons/PNG/titles.png">
-                                        <span class="font-text"> {{tv.TitleData.EpisodeCountriesCount}} Total (Titles + Countries)</span>
+                                        <span class="font-text"> {{tv.TitleData.EpisodeCountriesCount}} Total (Titles + Locale)</span>
                                     </span>
                                 </div>
                                 <div class="progressBar">
                                     <div class="progress">
                                         <div class="bg-success avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.EpisodesCompletedCount}}" [ngStyle]="{'width.%': getCompleted(i,'E')}">
                                             <span class="status-padding" *ngIf="getCompleted(i,'E')!==0">{{tv.TitleData.EpisodesCompletedCount}}
-                                                (Unique Titles)</span>
+                                                </span>
                                         </div>
                                         <div class="avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{tv.TitleData.EpisodesPendingCount}}" [ngStyle]="{'width.%': getPending(i,'E')}">
                                             <span class="status-padding" *ngIf="getPending(i,'E')!==0">{{tv.TitleData.EpisodesPendingCount}}
-                                                (Unique Titles)</span>
+                                               </span>
                                         </div> 
                                     </div>
                                 </div>
+                                <div class="unique-titles-text">Unique Titles</div>
                             </div>
                             <div class="pb-2">
                                 <div class="pb-2">

@@ -56,8 +56,11 @@
                                                                 <div class="cus-text text-col" *ngIf="showStatus!==i">
                                                                     <ol class="wizard-progress d-flex">
                                                                         <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
-                                                                            <span class="step-name">
+                                                                            <span *ngIf="!completeFlag" class="step-name">
                                                                                 <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                                                                            </span>
+                                                                            <span *ngIf="completeFlag" class="step-name">
+                                                                                <span *ngIf="i==3"  [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
                                                                             </span>
                                                                             <span class="visuallyhidden"></span>
                                                                             <span class="step-num"></span>

@@ -45,6 +45,7 @@ export class ItunesTitlesComponent implements OnInit {
   fullapoList: any;
   apoListlength: number;
   searchval: any;
+  completeFlag: boolean;
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute,private cdr: ChangeDetectorRef) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.availName = params['avail_name'];
@@ -180,6 +181,13 @@ export class ItunesTitlesComponent implements OnInit {
     }
   }
   getProgressSwitch(title, l) {
+    for(let j=0;j<l;j++){
+      if(title[j].StatusMessage == "Completed"){
+        this.completeFlag = true;
+      }else{
+        this.completeFlag = false;
+      }
+    }
     switch (title[l - 1].StatusMessage) {
       case "Announced": this.progress = 0;
         break;
@@ -188,6 +196,8 @@ export class ItunesTitlesComponent implements OnInit {
       case "Quality Audit": this.progress = 2;
         break;
       case "Data Delivery": this.progress = 3;
+        break;
+      case "Completed": this.progress = 3;
         break;
       case "": this.progress = 0;
         break;

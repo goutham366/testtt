@@ -11,6 +11,49 @@
 body{
     overflow: hidden;
 }
+// @media (min-width: 1367px){
+//     .mac-font{
+//         font-size: 36px !important;
+//     }
+//     .card{
+//         font-size: 36px !important;
+//         .d-flex{
+//             .flex-description{
+//                 &.box-1{
+//                 }
+//                 &.box-2{
+//                     .d-flex{
+//                     }
+//                     .card-data{
+//                         .card-content{
+//                             line-height: 32px !important;
+//                             ul{
+//                             }
+//                         }
+//                     }
+//                     .card-menu{
+//                         .nav-link{
+//                             &.active{
+//                             }
+//                             &.active::after{
+                               
+//                             }
+//                         }
+//                     }
+//                 }
+//                 &.box-3{
+                    
+//                     i{
+//                         font-size: inherit;
+//                     }
+//                 }
+//             }
+//         }
+//     .img-card{
+//         height: auto !important;
+//     }}
+// }
+.primary-clr { color: #007cc3; }
 .over-flow{
     overflow: hidden;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -157,6 +200,13 @@ i{
                                 list-style: none;
                                 margin: 0;
                                 padding: 0;
+                                .global-title{
+                                    overflow: hidden !important;
+                                    text-overflow: ellipsis !important;
+                                    max-width: 200px;
+                                    outline: none;
+                                    white-space: nowrap;
+                                }
                             }
                         }
                     }
@@ -236,7 +286,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
-                            height: 20.1px;
+                            //height: 20.1px;
                         }
                         .title-padding{
                             padding: 2px 8px;
@@ -266,7 +316,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
-                            height: 20.1px;
+                            //height: 20.1px;
                         }
                     }
                     ul li:nth-of-type(odd){
@@ -293,7 +343,7 @@ i{
                             overflow: hidden;
                             white-space: nowrap;
                             width: 100%;
-                            height: 20.1px;
+                            //height: 20.1px;
                         }
                     }
                     ul li:nth-of-type(odd){
@@ -574,6 +624,7 @@ i{
                     #Log{
                         overflow: scroll;
                         overflow-x: hidden;
+                        overflow-y: auto;
                         height: 230px;
                         li{
                             background: $white;
@@ -585,6 +636,15 @@ i{
                         
                     }
                 }
+            .cust-text{
+                .ratings-box{
+                    flex-direction: row;
+                    ul{
+                        list-style: none;
+                        padding: 0px;
+                    }
+                }
+            }
             }
         }
     }
@@ -810,7 +870,7 @@ i{
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
-                height: 20.1px;
+                //height: 20.1px;
                 span{
                     width: 300px;
                 }
@@ -838,7 +898,7 @@ i{
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
-                height: 20.1px;
+                //height: 20.1px;
             }
             .datahide{
                 text-overflow: ellipsis;
@@ -873,7 +933,7 @@ i{
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
-                height: 20.1px;
+                //height: 20.1px;
             }
         }
         ul li:nth-of-type(odd){
@@ -910,12 +970,7 @@ i{
         }
     }
 }
-.true{
-    background-color: red;
-}
-.false{
-    background-color: yellow;
-}
+
 .title-text{
     // font-size: 12px;
     // font-family: 'Roboto', sans-serif;
@@ -932,5 +987,11 @@ i{
         outline: none;
     }
 }
-
+.ellips{
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 80px;
+    outline: none;
+    white-space: nowrap;
+}
     

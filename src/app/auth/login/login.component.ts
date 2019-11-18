@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   showError = false;
-  userDetails = [{ 'name': 'joe', 'password': 'joe1' }, { 'name': 'neha', 'password': 'neha1' }, 
+  userDetails = [{ 'name': 'neha', 'password': 'neha1' }, 
   { 'name': 'jayesh', 'password': 'jayesh1' },
   { 'name': 'manoj', 'password': 'manoj1' },
   { 'name': 'sridhar', 'password': 'sridhar1' },

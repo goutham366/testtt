@@ -54,7 +54,7 @@
                                                                     
                                                                 </ul>
                                                                 <div>
-                                                                        <circle-progress [percent]="x.Percentage ? x.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
+                                                                        <circle-progress [percent]="x.PercentageOfCompletion ? x.PercentageOfCompletion : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
                                                                         [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
                                                                         [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
                                                                         [lazy]="false"></circle-progress>
@@ -106,10 +106,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && seasonStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesCompletedCount}}" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" *ngIf="x.EpisodesCompletedCount!=0" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.EpisodesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesPendingCount}}" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" *ngIf="x.EpisodesPendingCount" data-toggle="tooltip" data-placement="top" title="{{x.EpisodesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.EpisodesPendingCount}}
                                                                 </div>
                                                                 
@@ -120,10 +120,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && langStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{x.CountriesCompletedCount}}" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" *ngIf="x.CountriesCompletedCount!=0" data-toggle="tooltip" data-placement="top" title="{x.CountriesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.CountriesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" *ngIf="x.CountriesPendingCount!=0" data-toggle="tooltip" data-placement="top" title="{{x.CountriesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.CountriesPendingCount}}
                                                                 </div>
                                                             </div>
@@ -131,10 +131,10 @@
                                                         </div>
                                                         <div class="progressBar" *ngIf="seasonName===x.SeasonNumber && transStatus">
                                                             <div class="progress progress-main">
-                                                                <div class="completeColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" [style.width.%]="width">
+                                                                <div class="completeColor avail-titleEllipses pointer" *ngIf="x.LanguagesCompletedCount!=0" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesCompletedCount}}" [style.width.%]="width">
                                                                     {{x.LanguagesCompletedCount}}
                                                                 </div>
-                                                                <div class="pendingColor avail-titleEllipses pointer" data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" [style.width.%]="remaining">
+                                                                <div class="pendingColor avail-titleEllipses pointer" *ngIf="x.LanguagesPendingCount!=0"data-toggle="tooltip" data-placement="top" title="{{x.LanguagesPendingCount}}" [style.width.%]="remaining">
                                                                     {{x.LanguagesPendingCount}}
                                                                 </div>
                                                             </div>

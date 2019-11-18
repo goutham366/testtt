@@ -114,7 +114,7 @@
         background: rgba(0, 0, 0, 0.03);
       }
     .status-padding{
-        padding: 13.5px;
+       // padding: 13.5px;
         color: white;
         vertical-align: text-top;
         
@@ -241,3 +241,10 @@
     cursor: pointer;
 
 }
+.unique-titles-text {
+    font-size: 10px;
+    color: black;
+    position: absolute;
+    left: 31%;
+    top: 30%;  
+}  

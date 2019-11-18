@@ -9,7 +9,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RoundProgressModule, ROUND_PROGRESS_DEFAULTS } from 'angular-svg-round-progressbar';
 import { FormsModule } from '@angular/forms';
 
-fdescribe('AvailDetailsComponent', () => {
+xdescribe('AvailDetailsComponent', () => {
   let component: AvailDetailsComponent;
   let fixture: ComponentFixture<AvailDetailsComponent>;
   let service: HttpService;

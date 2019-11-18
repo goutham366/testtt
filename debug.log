@@ -1,1 +1,3 @@
-[1106/153029.362:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[1115/124616.120:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[1116/124616.686:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[1117/124617.119:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports

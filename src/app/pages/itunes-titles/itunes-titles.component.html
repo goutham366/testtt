@@ -54,7 +54,7 @@
                         </span>
                       </li>
                     </ul>
-                    <div>
+                    <div class="circle-outline">
                         <circle-progress class="c-pointer" [percent]="x.Percentage ? x.Percentage : '0'" [radius]="20" [outerStrokeWidth]="3" [innerStrokeWidth]="2" [space]="-2"
                             [outerStrokeColor]="'#008040'" [innerStrokeColor]="'#006FAD'" [titleFontSize]="13" [unitsFontSize]="13"
                             [showSubtitle]="false" [animation]="true" [animationDuration]="10" [startFromZero]="true" [responsive]="false"
@@ -65,9 +65,12 @@
                     <ol class="wizard-progress d-flex">
 
                       <li [ngStyle]="{'width':i === 3 ? '0%' : '30%' }" [ngClass]="{'active-step': i<=getProgressFill(x.TitleStatus)}" *ngFor="let stage of stages, let i = index">
-                        <span class="step-name">
+                        <span *ngIf="!completeFlag" class="step-name">
                           <span *ngIf="stage.stageTitle==x.TitleStatus[getProgress(x.TitleStatus)].StatusMessage" [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
                         </span>
+                        <span *ngIf="completeFlag" class="step-name">
+                            <span *ngIf="i==3"  [ngClass]="{'mid': (i==2 || i==1), 'last': i==3}">{{stage.stageTitle}}</span>
+                        </span> 
                         <span class="visuallyhidden"></span>
                         <span class="step-num"></span>
                       </li>
