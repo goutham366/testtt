@@ -189,8 +189,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.classAdd = true;
     //for (var i = 0; i < this.userDetails.length; i++) {
-      if (("joe" == this.loginForm.value.name && "joe1" == this.loginForm.value.password)
-       || ("neha" == this.loginForm.value.name && "neha1" == this.loginForm.value.password)
+      if (
+        ("neha" == this.loginForm.value.name && "neha1" == this.loginForm.value.password)
        || ("jayesh" == this.loginForm.value.name && "jayesh1" == this.loginForm.value.password)
        || ("manoj" == this.loginForm.value.name && "manoj1" == this.loginForm.value.password)
        || ("sridhar" == this.loginForm.value.name && "sridhar1" == this.loginForm.value.password)
