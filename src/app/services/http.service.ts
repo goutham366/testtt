@@ -10,13 +10,15 @@ export class HttpService {
     throw new Error("Method not implemented.");
   }
   url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
-  lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
+  //lambda: string = 'https://z0lcb1siad.execute-api.us-west-2.amazonaws.com/Stage';
+  lambda: string = 'https://sc3ewf3uy1.execute-api.us-west-2.amazonaws.com/Prod';
  // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   //lambda: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8081/WBPlatform';
   // lambda: string = 'https://jcm3vwswzd.execute-api.us-west-2.amazonaws.com/Stage';
   // awsS3Url: string = 'http://s3ecsalb-384269995.us-west-2.elb.amazonaws.com/AWSS3';
-  awsS3Url: string = 'http://wbs3ecsalb-527911498.us-west-2.elb.amazonaws.com/AWSS3';
+  //awsS3Url: string = 'http://wbs3ecsalb-527911498.us-west-2.elb.amazonaws.com/AWSS3';
  // awsS3Url: string = 'http://ec2-54-190-182-149.us-west-2.compute.amazonaws.com:8082/AWSS3';
+  awsS3Url: string = 'http://wbs3ecsalb-978922016.us-west-2.elb.amazonaws.com/AWSS3/';
   localurl: string = 'http://10.219.20.213:8082/AWSS3';
   refreshcomp: Subject<any>;
   availrefreshcomp: Subject<any>;
