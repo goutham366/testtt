@@ -1,0 +1,60 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #git-credential-helper: yes
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=034034396584.dkr.ecr.us-west-2.amazonaws.com/testui
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      nodejs: 10
+      # name: version
+    commands:
+      - echo Running Install phase...
+      - npm install
+      - npm install -g @angular/cli
+      - npm rebuild node-sass
+  #pre_build:
+    #commands:
+      # - command
+      # - command
+
+  build:
+     commands:
+      - echo Installing source NPM dependencies...
+      - node --version
+      - npm --version
+      - ng build --prod --aot
+      - echo Building the Docker image after source build...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"UIpipeline-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+    files:
+      - imagedefinitions.json
+      - appspec.yaml
+#cache:
+  #paths:
+    # - paths
